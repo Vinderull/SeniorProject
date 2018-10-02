@@ -1,21 +1,22 @@
-[ip, fs] = audioread('audioHighE.mp4', [1 20000]); %[1 20000]
+%[ip, fs] = audioread('440pure.mp4', [1 20000]); %[1 20000]
 %a = csvread('low_e_10k.csv', 11);
-%a = csvread('high_e_10kHz2.csv', 11);
+%a = csvread('high_e_10kHz.csv', 11);
 % a = csvread('d_10k.csv', 11);
-% ip = a(:,2);
-% axis = a(:,1);
-% ip = ip*100;
-% avg = mean(ip)
-%  ip = ip -avg %-2.5;
-% fs = 10e3;
+a = csvread('a_10k.csv', 11);
+ip = a(:,2);
+axis = a(:,1);
+ip = ip*100;
+avg = mean(ip)
+ip = ip -avg %-2.5;
+fs = 10e3;
 
 
 min_expected_period = 50;
 max_expected_period = 500;
-frame_len = 1000;
+frame_len = 1024;
 
-% figure(1)
-% plot(axis, ip);
+figure(1)
+plot(axis, ip);
 
 
 
@@ -61,7 +62,7 @@ for k = 1 : length(ip)/(frame_len -1)
         
         
         if((onlyPeaks(i) - onlyPeaks(i-1) > 0) && ((onlyPeaks(i+1) - onlyPeaks(i)) < 0))
-            thePeakIs = i
+            thePeakIs = i 
              
         elseif((onlyPeaks(i) - onlyPeaks(i-1) > 0))
             continue
@@ -76,16 +77,6 @@ for k = 1 : length(ip)/(frame_len -1)
     note = fs/(frame_len-thePeakIs)
     
             
-  
-    %samp = peak1d(ryy,1, 500)
-    
-    [maxy loc] = max(ryy);
-    
-%     for i = 1 :length(ryy)
-%          
-%         if
-%     
-    
   
       
     %create x-axis dimension
