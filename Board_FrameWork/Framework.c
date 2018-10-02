@@ -143,18 +143,18 @@ int main(void)
   /* zero out negative correlations */
       for(i=0;i<nsamp;i++){
 
-         if(output[i]<0) output[i] = 0;
+         if(output1[i]<0) output1[i] = 0;
 
       }
 
       arm_mean_f32(output1, nsamp,  &avg);
-      arm_std_f32(output1, nsamp, &std);
+      arm_std_f32(output1, nsamp, &dev);
 
       /*look only at peaks above the deviation threshold */
       /*helps with false positives */
       for(i=0; i<nsamp; i++){
 
-          if(output[i]<(avg+std)) output[i] = 0;
+          if(output1[i]<(avg+dev)) output1[i] = 0;
       }
 
 

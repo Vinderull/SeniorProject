@@ -2,7 +2,8 @@
 %a = csvread('low_e_10k.csv', 11);
 %a = csvread('high_e_10kHz.csv', 11);
 % a = csvread('d_10k.csv', 11);
-a = csvread('a_10k.csv', 11);
+%a = csvread('a_10k.csv', 11);
+a = textread('a_10k.csv',%d, 11);
 ip = a(:,2);
 axis = a(:,1);
 ip = ip*100;
