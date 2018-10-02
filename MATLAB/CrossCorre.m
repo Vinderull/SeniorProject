@@ -24,19 +24,30 @@ for k = 1 : length(ip)/(frame_len -1)
    frame = ip(range);
      %frame = ip ;
     
+     
+    %Perform autocorrelation
+    %this is the equivalent computation but in frequency domain
     fftx = fft(frame);
     magSquare = abs(fftx).*abs(fftx);
     rxx = ifft(magSquare);
     
+    
+    %normalized
+    %the origin of the autocorrelated is the energy, E, contained
+    %in the signal
     ryy = rxx/rxx(1);
     
    
+    %zero out negative correlations
     index = find(ryy<0);
     ryy(index) = 0;
     
+    %find standard deviation and mean
     dev = std(ryy);
     avg = mean(ryy);
     
+    
+    %zero out terms less than threshold
     indexes = find(ryy<(avg+dev));
     
     ryy(indexes) = 0;
@@ -44,7 +55,10 @@ for k = 1 : length(ip)/(frame_len -1)
     %onlyPeaks = ryy(indexes);
     onlyPeaks = ryy;
     
+    
+    %%perform rudimentary peak detection
     for i = 2:(length(onlyPeaks)-1)
+        
         
         if((onlyPeaks(i) - onlyPeaks(i-1) > 0) && ((onlyPeaks(i+1) - onlyPeaks(i)) < 0))
             thePeakIs = i
@@ -57,6 +71,8 @@ for k = 1 : length(ip)/(frame_len -1)
         end
     end
     
+    %returns mirror image on other end of array
+    %calculate note value
     note = fs/(frame_len-thePeakIs)
     
             
@@ -72,11 +88,13 @@ for k = 1 : length(ip)/(frame_len -1)
     
   
       
-
+    %create x-axis dimension
     x = 1:1:length(rxx);
     
     figure(2)
     plot(x, ryy)
+    
+    %pause and wait for use input
     pause
     
 end
