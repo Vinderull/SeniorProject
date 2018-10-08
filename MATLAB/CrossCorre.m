@@ -2,8 +2,8 @@
 %a = csvread('low_e_10k.csv', 11);
 %a = csvread('high_e_10kHz.csv', 11);
 % a = csvread('d_10k.csv', 11);
-%a = csvread('a_10k.csv', 11);
-a = textread('a_10k.csv',%d, 11);
+a = csvread('a_10k.csv', 11);
+%a = textread('a_10k.csv',%d, 11);
 ip = a(:,2);
 axis = a(:,1);
 ip = ip*100;
@@ -18,6 +18,9 @@ frame_len = 1024;
 
 figure(1)
 plot(axis, ip);
+xlabel('Time')
+xlim([0 .2024])
+ylabel('Voltage')
 
 
 
@@ -28,13 +31,14 @@ for k = 1 : length(ip)/(frame_len -1)
     
      
     %Perform autocorrelation
-    %this is the equivalent computation but in frequency domain
+    %this is the equivalent computation as a series of discrete sums
+    %but in the frequency domain
     fftx = fft(frame);
     magSquare = abs(fftx).*abs(fftx);
     rxx = ifft(magSquare);
     
     
-    %normalized
+    %normalized by the amount of energy in the signal
     %the origin of the autocorrelated is the energy, E, contained
     %in the signal
     ryy = rxx/rxx(1);
