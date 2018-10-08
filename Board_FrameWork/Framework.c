@@ -72,9 +72,9 @@ int main(void)
    * on the development board.
    */
   setblocksize(nsamp);
-  initialize_ece486(FS_10K, MONO_IN, MONO_OUT, MSI_INTERNAL_RC);
+  initialize_ece486(FS_48K, MONO_IN, MONO_OUT, MSI_INTERNAL_RC);
   UART2_Init();
-  //initialize_ece486(FS_48K, MONO_IN, STEREO_OUT, HSE_EXTERNAL_8MHz);
+  //initialize_ece486(FS_10K, MONO_IN, MONO_OUT, HSE_EXTERNAL_8MHz);
 
   /*
    * Allocate Required Memory
@@ -131,6 +131,7 @@ int main(void)
     DIGITAL_IO_SET(); 	// Use a scope on PD0 to measure execution time
     getblock(input);
 
+    putblock(input);
 
     //this will also keep track of how many blocks collected
     //since decimating we will need #D blocks until FFT is full
@@ -139,6 +140,16 @@ int main(void)
   arm_cmplx_mag_squared_f32(output1, output2, nsamp);
 
   arm_rfft_fast_f32(fftStruct, output2, output1, 1);
+
+
+
+  /* Normalize signal*/
+  /* since we performed Autocorrelation, the signal energy is located at origin */
+      for(i=0;i<nsamp;i++){
+
+         output1[i] /= output1[0];
+
+      }
 
   /* zero out negative correlations */
       for(i=0;i<nsamp;i++){
@@ -177,8 +188,8 @@ int main(void)
       /* this is the conversion for A401
       1/0.21144 = 4.73 approx, multiplies are cheaper */
       /*0.44f is the DC offset of ADC, maybe. Subtract it to get accurate reading */
-        n = sprintf((char *)buffer, "Average = %f\t\r\n", ((a-0.002619f)*4.73f)-0.44f);
-    		n += sprintf((char *)buffer + n, "Equivalent Voltage = %f\r\n", a);
+        n = sprintf((char *)buffer, "Average = %f\t\r\n", avg);
+    		//n += sprintf((char *)buffer + n, "Equivalent Voltage = %f\r\n", a);
     		USART_Write(USART2, buffer, n);
     		//a = a + 1;
     		//b = (float)a/100;
