@@ -27,7 +27,7 @@
 //#include "UART.c"
 
 
-#define nsamp 1024
+#define nsamp 1000
 
 
 extern FlagStatus KeyPressed;   // Use to detect button presses
@@ -35,9 +35,9 @@ extern FlagStatus KeyPressed;   // Use to detect button presses
 int main(void)
 {
 
-  int i, n, j;
-  float avg, dev;
-  float input[nsamp], output1[nsamp*2], output2[nsamp/2], output3[nsamp/2];
+  int i, n, j, maxIndex;
+  float avg, dev, note, maxVal;
+  float input[nsamp], output1[nsamp*2], output2[nsamp], output3[nsamp/2];
   static float sign=1.0;
   static int button_count = 0;
   uint16_t FFT_len = nsamp;
@@ -73,7 +73,7 @@ int main(void)
   n = 1;
   avg = 1.0;
 
-  arm_rfft_fast_init_f32(&fftStruct, FFT_len);
+  //arm_rfft_fast_init_f32(&fftStruct, FFT_len);
 
 
 
@@ -120,22 +120,80 @@ int main(void)
 
     arm_correlate_f32(input, nsamp, input, nsamp, output1);
    //arm_rfft_fast_f32(&fftStruct, input, output1, 0);
+   arm_mean_f32(output1, nsamp*2, &avg);
+
+
+
+
+  /* subtract mean */
+   for(i=0; i<nsamp*2; i++){
+     output1[i] -= avg;
+
+     /*zero out negative correlations */
+     //if(output1[i]<0) output1[i] = 0;
+   }
+
+
+      arm_max_f32(output1, nsamp*2, &maxVal, &maxIndex);
+
+
+   /* normalize */
+      for(i=0; i<nsamp*2; i++){
+        output1[i] /= maxVal;
+      }
+
+
+
+      /* set origin of autocorre to be max peak */
+      for(i=0; i<nsamp; i++){
+        output2[i] = output1[maxIndex+i];
+   }
+
+   /*find std deviation and mean of normalized signal */
+    arm_mean_f32(output2, nsamp, &avg);
+    arm_std_f32(output2, nsamp, &dev);
+
+
+
+   /* eliminate non dominant peaks */
+    for(i=0; i<nsamp*2; i++){
+     if ((output2[i] < avg + (2*dev)) output2[i] = 0;
+    }
+
+
+   /* peak detection */
+      for(i = 1; i<nsamp-1; i++ ){
+
+         if(((output2[i] - output2[i-1])>0) && ((output2[i+1]-output2[i])<0)){
+           n = i;
+         }
+
+         else if((output2[i] - output2[i-1])>0) continue;
+
+         else if((output2[i+1] - output2[i]) < 0) continue;
+      }
+
+      note = 10000.0/((float) n);
+
+
 
    //arm_cmplx_mag_squared_f32(output1, output2, 512);
 
     //arm_rfft_fast_f32(fftStruct, output2, output3, 1);
 
 
-  for(i=0; i<nsamp*2; i++){
+  for(i=0; i<nsamp; i++){
 
 
-    printf("%f, ", output1[i]);
+    printf("%f, ", note);
+
+  }
 
     //snprintf((char *)buffer, BufferSize, "TEST: %f\t\r\n", input[i]);
     //n += sprintf((char *)buffer + n, "Equivalent Voltage = %f\r\n", a);
     //USART_Write(USART2, buffer, n);
 
-  }
+
 
 
 
@@ -166,6 +224,8 @@ int main(void)
       BSP_LCD_GLASS_DisplayString( (uint8_t *)lcd_str);
       BSP_LED_Toggle(LED5);
     }
-  while(1);
+
+    //dummy while to get only one output
+    while(1);
   }
 }
