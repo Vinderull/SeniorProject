@@ -36,24 +36,14 @@ int main(void)
 {
 
   int nsamp, i, n, j;
-  float a, avg, dev;
+  float avg, dev;
   float *input, *output1, *output2, *outputFin;
   static float sign=1.0;
   static int button_count = 0;
   char lcd_str[8];
-  int blockCount = 0;
-  int beginning = 0;
-  arm_rfft_fast_instance_f32 *fftStruct = NULL;
+  arm_rfft_fast_instance_f32 *fftStruct;
 
   nsamp = 1024;
-
-  // state buffer used by arm routine of size 2*NUM_SECTIONS
-
-
-  float B[BL] = {
-     -0.06638234109,   0.5662301779,   0.5662301779, -0.06638234109
-  };
-
 
 
   /*
@@ -72,7 +62,7 @@ int main(void)
    * on the development board.
    */
   setblocksize(nsamp);
-  initialize_ece486(FS_48K, MONO_IN, MONO_OUT, MSI_INTERNAL_RC);
+  initialize_ece486(FS_10K, MONO_IN, MONO_OUT, MSI_INTERNAL_RC);
   UART2_Init();
   //initialize_ece486(FS_10K, MONO_IN, MONO_OUT, HSE_EXTERNAL_8MHz);
 
@@ -80,7 +70,7 @@ int main(void)
    * Allocate Required Memory
    */
   n = 1;
-  a = 1.0;
+  avg = 1.0;
 
   arm_rfft_fast_init_f32(fftStruct, FFT_len);
 
@@ -131,27 +121,28 @@ int main(void)
     DIGITAL_IO_SET(); 	// Use a scope on PD0 to measure execution time
     getblock(input);
 
-    putblock(input);
+    //putblock(input);
 
     //this will also keep track of how many blocks collected
     //since decimating we will need #D blocks until FFT is full
-  arm_rfft_fast_f32(fftStruct, input, output1, 0);
+    arm_rfft_fast_f32(fftStruct, input, output1, 0);
 
-  arm_cmplx_mag_squared_f32(output1, output2, nsamp);
+    arm_cmplx_mag_squared_f32(output1, output2, nsamp);
 
-  arm_rfft_fast_f32(fftStruct, output2, output1, 1);
+    arm_rfft_fast_f32(fftStruct, output2, output1, 1);
 
 
 
-  /* Normalize signal*/
-  /* since we performed Autocorrelation, the signal energy is located at origin */
+    /* Normalize signal*/
+    /* since we performed Autocorrelation, the signal energy is located at origin */
       for(i=0;i<nsamp;i++){
 
          output1[i] /= output1[0];
 
       }
 
-  /* zero out negative correlations */
+
+    /* zero out negative correlations */
       for(i=0;i<nsamp;i++){
 
          if(output1[i]<0) output1[i] = 0;
@@ -163,10 +154,12 @@ int main(void)
 
       /*look only at peaks above the deviation threshold */
       /*helps with false positives */
-      for(i=0; i<nsamp; i++){
+        for(i=0; i<nsamp; i++){
 
           if(output1[i]<(avg+dev)) output1[i] = 0;
       }
+
+
 
 
 
@@ -176,10 +169,6 @@ int main(void)
 
 
 
-    /*
-     * pass the processed working buffer back for DAC output
-     */
-  //  putblockstereo(output1, output1);
 
 
         /* this is the conversion for the A201 */
@@ -191,11 +180,8 @@ int main(void)
         n = sprintf((char *)buffer, "Average = %f\t\r\n", avg);
     		//n += sprintf((char *)buffer + n, "Equivalent Voltage = %f\r\n", a);
     		USART_Write(USART2, buffer, n);
-    		//a = a + 1;
-    		//b = (float)a/100;
-    		for (i = 0; i < 8000000; i++);
 
-    //}
+
 
 
     if (KeyPressed) {
