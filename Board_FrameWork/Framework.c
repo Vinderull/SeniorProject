@@ -156,8 +156,8 @@ int main(void)
 
 
    /* eliminate non dominant peaks */
-    for(i=0; i<nsamp*2; i++){
-     if ((output2[i] < avg + (2*dev)) output2[i] = 0;
+    for(i=0; i<nsamp; i++){
+     if ((output2[i] < avg + (2*dev))) output2[i] = 0;
     }
 
 
@@ -182,12 +182,12 @@ int main(void)
     //arm_rfft_fast_f32(fftStruct, output2, output3, 1);
 
 
-  for(i=0; i<nsamp; i++){
+  /*for(i=0; i<nsamp; i++){
 
 
     printf("%f, ", note);
 
-  }
+  } */
 
     //snprintf((char *)buffer, BufferSize, "TEST: %f\t\r\n", input[i]);
     //n += sprintf((char *)buffer + n, "Equivalent Voltage = %f\r\n", a);
@@ -220,12 +220,12 @@ int main(void)
        * depending on your sample rate.
        */
       button_count++;
-      sprintf(lcd_str, "BTN %2d", button_count);
+      sprintf(lcd_str, "%2f", note);
       BSP_LCD_GLASS_DisplayString( (uint8_t *)lcd_str);
       BSP_LED_Toggle(LED5);
     }
 
     //dummy while to get only one output
-    while(1);
+    //while(1);
   }
 }
