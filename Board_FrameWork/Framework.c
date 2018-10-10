@@ -20,30 +20,31 @@
 #include "stm32l4xx_hal.h"
 #include "stm32l476g_discovery.h"
 #include "ece486.h"
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <stdio.h>
 #include "arm_math.h"
 #include <math.h>
-#include "UART.c"
+//#include "UART.c"
 
-#define FFT_len 1024
-#define decimation 20
-#define BL 4
+
+#define nsamp 1024
+
+
 extern FlagStatus KeyPressed;   // Use to detect button presses
-uint8_t buffer[BufferSize];
 
 int main(void)
 {
 
-  int nsamp, i, n, j;
+  int i, n, j;
   float avg, dev;
-  float *input, *output1, *output2, *outputFin;
+  float input[nsamp], output1[nsamp*2], output2[nsamp/2], output3[nsamp/2];
   static float sign=1.0;
   static int button_count = 0;
+  uint16_t FFT_len = nsamp;
   char lcd_str[8];
-  arm_rfft_fast_instance_f32 *fftStruct;
+  arm_rfft_fast_instance_f32 fftStruct;
 
-  nsamp = 1024;
+
 
 
   /*
@@ -63,7 +64,7 @@ int main(void)
    */
   setblocksize(nsamp);
   initialize_ece486(FS_10K, MONO_IN, MONO_OUT, MSI_INTERNAL_RC);
-  UART2_Init();
+  //UART2_Init();
   //initialize_ece486(FS_10K, MONO_IN, MONO_OUT, HSE_EXTERNAL_8MHz);
 
   /*
@@ -72,19 +73,10 @@ int main(void)
   n = 1;
   avg = 1.0;
 
-  arm_rfft_fast_init_f32(fftStruct, FFT_len);
+  arm_rfft_fast_init_f32(&fftStruct, FFT_len);
 
 
 
-  input = (float *)malloc(sizeof(float)*nsamp);
-  output1 = (float *)malloc(sizeof(float)*nsamp);
-  output2 = (float *)malloc(sizeof(float)*nsamp);
-  //outputFin = (float *)malloc(sizeof(float)*nsamp);
-
-  if (input==NULL || output1==NULL || output2==NULL) {
-    flagerror(MEMORY_ALLOCATION_ERROR);
-    while(1);
-  }
 
    /*
    * Normally we avoid printf()... especially once we start actually
@@ -125,39 +117,27 @@ int main(void)
 
     //this will also keep track of how many blocks collected
     //since decimating we will need #D blocks until FFT is full
-    arm_rfft_fast_f32(fftStruct, input, output1, 0);
 
-    arm_cmplx_mag_squared_f32(output1, output2, nsamp);
+    arm_correlate_f32(input, nsamp, input, nsamp, output1);
+   //arm_rfft_fast_f32(&fftStruct, input, output1, 0);
 
-    arm_rfft_fast_f32(fftStruct, output2, output1, 1);
+   //arm_cmplx_mag_squared_f32(output1, output2, 512);
 
-
-
-    /* Normalize signal*/
-    /* since we performed Autocorrelation, the signal energy is located at origin */
-      for(i=0;i<nsamp;i++){
-
-         output1[i] /= output1[0];
-
-      }
+    //arm_rfft_fast_f32(fftStruct, output2, output3, 1);
 
 
-    /* zero out negative correlations */
-      for(i=0;i<nsamp;i++){
+  for(i=0; i<nsamp*2; i++){
 
-         if(output1[i]<0) output1[i] = 0;
 
-      }
+    printf("%f, ", output1[i]);
 
-      arm_mean_f32(output1, nsamp,  &avg);
-      arm_std_f32(output1, nsamp, &dev);
+    //snprintf((char *)buffer, BufferSize, "TEST: %f\t\r\n", input[i]);
+    //n += sprintf((char *)buffer + n, "Equivalent Voltage = %f\r\n", a);
+    //USART_Write(USART2, buffer, n);
 
-      /*look only at peaks above the deviation threshold */
-      /*helps with false positives */
-        for(i=0; i<nsamp; i++){
+  }
 
-          if(output1[i]<(avg+dev)) output1[i] = 0;
-      }
+
 
 
 
@@ -171,22 +151,8 @@ int main(void)
 
 
 
-        /* this is the conversion for the A201 */
-      //  n = sprintf((char *)buffer, "Average = %f\t\r\n", (a-0.002691)/0.004566);
-
-      /* this is the conversion for A401
-      1/0.21144 = 4.73 approx, multiplies are cheaper */
-      /*0.44f is the DC offset of ADC, maybe. Subtract it to get accurate reading */
-        n = sprintf((char *)buffer, "Average = %f\t\r\n", avg);
-    		//n += sprintf((char *)buffer + n, "Equivalent Voltage = %f\r\n", a);
-    		USART_Write(USART2, buffer, n);
-
-
-
-
     if (KeyPressed) {
       KeyPressed = RESET;
-      sign *= -1.0;		// Invert output1
 
       /*
        * On each press, modify the LCD display, and toggle an LED
@@ -200,5 +166,6 @@ int main(void)
       BSP_LCD_GLASS_DisplayString( (uint8_t *)lcd_str);
       BSP_LED_Toggle(LED5);
     }
+  while(1);
   }
 }
