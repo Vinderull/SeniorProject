@@ -1,0 +1,20 @@
+PCAD Importer Log
+Project : LQFP64.LibPkg
+
+Section : C:\Users\ComputerConnection\Desktop\PCB_COmponents_Senior_Project\STM32L476RGT6\LQFP64.lia
+    Section : PCB Library - LQFP64.PcbLib
+        Section : Load Messages
+            Warning - 1 : Skipping Token isVisible On Line 153
+            Warning - 1 : Skipping Token isVisible On Line 154
+            Warning - 1 : Skipping Token isVisible On Line 155
+            Warning - 1 : Skipping Token isVisible On Line 156
+            Warning - 1 : Skipping Token isVisible On Line 157
+            Warning - 1 : Skipping Token isVisible On Line 158
+            Warning - 1 : Skipping Token isVisible On Line 159
+            Warning - 1 : Skipping Token isVisible On Line 160
+        EndSection
+
+        Section : Import Messages
+        EndSection
+    EndSection
+EndSection

@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP TLV6004IPWR
+D Operational Amplifiers - Op Amps 1-MHz, Low-Power Operational Amplifier for Cost-Sensitive Systems 14-TSSOP -40 to 125
+K
+F http://www.ti.com/lit/gpn/tlv6004
+$ENDCMP
+#
+#End Doc Library
