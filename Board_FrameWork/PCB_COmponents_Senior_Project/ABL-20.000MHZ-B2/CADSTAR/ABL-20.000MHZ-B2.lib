@@ -1,0 +1,17 @@
+.ABL-20.000MHZ-B2 :1 ;ABRACON - ABL-20.000MHZ-B2 - CRYSTAL, 20MHZ, 18PF CL, HC49/4H
+HC/49US__AT49_PTH
+*STM Y
+*NGS
+*PLB 1="1" 2="2"
+*MXP 2
+*DFN ABL-20.000MHZ-B2
+~!Manufacturer_Name (ABRACON)
+~!Manufacturer_Part_Number (ABL-20.000MHZ-B2)
+~!RS Part Number (1710202)
+~!Link RS Price/Stock (http://uk.rs-online.com/web/p/products/1710202)
+~!Arrow Part Number (ABL-20.000MHZ-B2)
+~!Link Arrow Price/Stock (https://www.arrow.com/en/products/abl-20.000mhz-b2/abracon)
+~!Link Datasheet (http://www.abracon.com/Resonators/ABL.pdf)
+~!Height (-)
+ABL-20.000MHZ-B2
+1.1!U 2.1!U 

@@ -1,0 +1,17 @@
+.TSM-110-01-L-SV :1 ;SAMTEC - TSM-110-01-L-SV - HEADER, 2.54MM, SMT, 1X10WAY
+TSM-110-01-L-SH
+*STM J
+*NGS
+*PLB 1="1" 2="2" 3="3" 4="4" 5="5" 6="6" 7="7" 8="8" 9="9" 10="10"
+*MXP 10
+*DFN TSM-110-01-L-SV
+~!Manufacturer_Name (SAMTEC)
+~!Manufacturer_Part_Number (TSM-110-01-L-SV)
+~!RS Part Number (7656619P)
+~!Link RS Price/Stock (http://uk.rs-online.com/web/p/products/7656619P)
+~!Arrow Part Number (TSM-110-01-L-SV)
+~!Link Arrow Price/Stock (http://uk.rs-online.com/web/p/products/7656619P)
+~!Link Datasheet (http://www.farnell.com/datasheets/1847330.pdf)
+~!Height (-)
+TSM-110-01-L-SV
+1.1!U 3.1!U 5.1!U 7.1!U 9.1!U 2.1!U 4.1!U 6.1!U 8.1!U 10.1!U 

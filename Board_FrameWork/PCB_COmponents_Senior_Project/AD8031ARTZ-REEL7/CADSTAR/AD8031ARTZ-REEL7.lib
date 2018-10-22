@@ -1,0 +1,17 @@
+.AD8031ARTZ-REEL7 :1 ;80MHz Rail-to-Rail I/O Amplifiers
+SOT95P290X145-5N
+*STM IC
+*NGS
+*PLB 1="VOUT" 2="-VS" 3="+IN" 4="-IN" 5="+VS"
+*MXP 5
+*DFN AD8031ARTZ-REEL7
+~!Manufacturer_Name (Analog Devices)
+~!Manufacturer_Part_Number (AD8031ARTZ-REEL7)
+~!RS Part Number (-)
+~!RS Price/Stock (-)
+~!Arrow Part Number (AD8031ARTZ-REEL7)
+~!Link Arrow Price/Stock (https://www.arrow.com/en/products/ad8031artz-reel7/analog-devices)
+~!Link Datasheet (http://componentsearchengine.com/Datasheets/1/AD8031ARTZ-REEL7.pdf)
+~!Height (-)
+AD8031ARTZ-REEL7
+1.1!U 2.1!U 3.1!U 4.1!U 5.1!U 

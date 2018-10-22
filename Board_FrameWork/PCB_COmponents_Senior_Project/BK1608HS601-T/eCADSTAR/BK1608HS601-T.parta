@@ -1,0 +1,66 @@
+(Japanese_coding: sjis)
+(function "ECS_788944"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-12-30-13:10:41)
+    (utime 2018-05-29-06:32:58)
+    (interface
+        (port "1" (symbPinId 1) (portType INOUT))
+        (port "2" (symbPinId 2) (portType INOUT))
+    )
+    (property "symbolName" "BK1608HS601-T")
+)
+
+
+(pinAssign "ECS_788944"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-12-30-13:10:41)
+    (utime 2018-05-29-06:32:58)
+    (interface
+        (port "1" (symbPinId 1) (portName "1") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "2") (portType INOUT))
+    )
+    (internal
+        (funcInst (functionRef "ECS_788944")
+                (port "1" (match "1"))
+                (port "2" (match "2"))
+        )
+    )
+    (property "usePowerBox" "No")
+    (property "symbolName" "BK1608HS601-T")
+)
+
+
+(part "BK1608HS601-T"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-12-30-13:10:41)
+    (utime 2018-05-29-06:32:58)
+    (packageRef "BK1608HS601-T")
+    (pinAssignRef "ECS_788944")
+    (interface
+        (port "1" (symbPinId 1) (portName "1") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "2") (portType INOUT))
+    )
+    (partClass UNDEF)
+    (useInSchema Y)
+    (useInLayout Y)
+    (inPartsList Y)
+    (partType NORMAL)
+    (placeRestriction FREE)
+    (property "enetNonSeries" "YES")
+    (property "refDesPrefix" "FB")
+    (property "description" "TAIYO YUDEN - BK1608HS601-T - FERRITE BEAD, 0.45OHM, 350mA, 0603")
+    (property "uaManufacturer" "TAIYO YUDEN")
+    (property "uaManufacturerPartNumber" "BK1608HS601-T")
+    (property "uaVendor" "Arrow")
+    (property "uaVendorReference" "")
+    (property "uaAttribute1" "https://componentsearchengine.com/Datasheets/2/BK1608HS601-T.pdf")
+    (property "compAreaTopHeight" 0.95)
+)
+
+

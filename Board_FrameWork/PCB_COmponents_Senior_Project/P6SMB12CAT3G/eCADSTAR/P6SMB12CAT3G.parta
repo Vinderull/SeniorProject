@@ -1,0 +1,66 @@
+(Japanese_coding: sjis)
+(function "ECS_936961"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2018-02-21-13:27:38)
+    (utime 2018-06-06-11:10:46)
+    (interface
+        (port "1" (symbPinId 1) (portType INOUT))
+        (port "2" (symbPinId 2) (portType INOUT))
+    )
+    (property "symbolName" "P6SMB12CAT3G")
+)
+
+
+(pinAssign "ECS_936961"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2018-02-21-13:27:38)
+    (utime 2018-06-06-11:10:46)
+    (interface
+        (port "1" (symbPinId 1) (portName "1") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "2") (portType INOUT))
+    )
+    (internal
+        (funcInst (functionRef "ECS_936961")
+                (port "1" (match "1"))
+                (port "2" (match "2"))
+        )
+    )
+    (property "usePowerBox" "No")
+    (property "symbolName" "P6SMB12CAT3G")
+)
+
+
+(part "P6SMB12CAT3G"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2018-02-21-13:27:38)
+    (utime 2018-06-06-11:10:46)
+    (packageRef "P6SMB12CAT3G")
+    (pinAssignRef "ECS_936961")
+    (interface
+        (port "1" (symbPinId 1) (portName "1") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "2") (portType INOUT))
+    )
+    (partClass UNDEF)
+    (useInSchema Y)
+    (useInLayout Y)
+    (inPartsList Y)
+    (partType NORMAL)
+    (placeRestriction FREE)
+    (property "enetNonSeries" "NO")
+    (property "refDesPrefix" "D")
+    (property "description" "Littelfuse P6SMB12CAT3G, Bi-Directional TVS Diode, 600W, 2-Pin SMB")
+    (property "uaManufacturer" "LITTELFUSE")
+    (property "uaManufacturerPartNumber" "P6SMB12CAT3G")
+    (property "uaVendor" "Arrow")
+    (property "uaVendorReference" "P6SMB12CAT3G")
+    (property "uaAttribute1" "http://m.littelfuse.com/~/media/electronics/datasheets/tvs_diodes/littelfuse_tvs_diode_p6smb11cat3_d_datasheet.pdf.pdf")
+    (property "compAreaTopHeight" 2.47)
+)
+
+

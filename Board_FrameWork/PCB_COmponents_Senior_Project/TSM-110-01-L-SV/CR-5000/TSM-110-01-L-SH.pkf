@@ -1,0 +1,10 @@
+(unit MM)
+
+(package "TSM-110-01-L-SH"
+    (type UNDEF)
+    (uver 2)
+    (mountForm default
+        (footprintRef "TSM-110-01-L-SH")
+        (spec "default")
+    )
+)

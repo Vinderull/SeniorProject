@@ -1,0 +1,28 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#SamacSys ECAD Model VLF10040T-4R7N5R4
+#/357408/67790/2.32/2/4/Inductor
+DEF VLF10040T-4R7N5R4 L 0 30 Y Y 1 F N
+F0 "L" 650 250 50 H V L CNN
+F1 "VLF10040T-4R7N5R4" 650 150 50 H V L CNN
+F2 "VLF10045" 650 50 50 H I L CNN
+F3 "https://componentsearchengine.com/Datasheets/2/VLF10040T-4R7N5R4..pdf" 650 -50 50 H I L CNN
+F4 "TDK - VLF10040T-4R7N5R4. - INDUCTOR, 4.7UH, 5.6A, 30%" 650 -150 50 H I L CNN "Description"
+F5 "" 650 -250 50 H I L CNN "Height"
+F6 "TDK" 650 -350 50 H I L CNN "Manufacturer_Name"
+F7 "VLF10040T-4R7N5R4" 650 -450 50 H I L CNN "Manufacturer_Part_Number"
+F8 "6442185P" 650 -550 50 H I L CNN "RS Part Number"
+F9 "http://uk.rs-online.com/web/p/products/6442185P" 650 -650 50 H I L CNN "RS Price/Stock"
+F10 "VLF10040T-4R7N5R4" 650 -750 50 H I L CNN "Arrow Part Number"
+F11 "http://www.arrow.com/en/products/vlf10040t-4r7n5r4/tdk" 650 -850 50 H I L CNN "Arrow Price/Stock"
+DRAW
+X ~ 1 0 0 200 R 50 50 0 0 B
+X ~ 2 800 0 200 L 50 50 0 0 B
+A 250 -2 50 -2 177 0 1 6 N 300 0 200 0
+A 350 -2 50 -2 177 0 1 6 N 400 0 300 0
+A 450 -2 50 -2 177 0 1 6 N 500 0 400 0
+A 550 -2 50 -2 177 0 1 6 N 600 0 500 0
+ENDDRAW
+ENDDEF
+#
+#End Library

@@ -1,0 +1,29 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#SamacSys ECAD Model P6SMB12CAT3G
+#/936961/67790/2.32/2/4/TVS Diode (Bi-directional)
+DEF P6SMB12CAT3G D 0 30 Y Y 1 F N
+F0 "D" 600 350 50 H V L BNN
+F1 "P6SMB12CAT3G" 600 250 50 H V L BNN
+F2 "DIONM5436X247N" 600 150 50 H I L BNN
+F3 "http://m.littelfuse.com/~/media/electronics/datasheets/tvs_diodes/littelfuse_tvs_diode_p6smb11cat3_d_datasheet.pdf.pdf" 600 50 50 H I L BNN
+F4 "Littelfuse P6SMB12CAT3G, Bi-Directional TVS Diode, 600W, 2-Pin SMB" 600 -50 50 H I L BNN "Description"
+F5 "2.47" 600 -150 50 H I L BNN "Height"
+F6 "LITTELFUSE" 600 -250 50 H I L BNN "Manufacturer_Name"
+F7 "P6SMB12CAT3G" 600 -350 50 H I L BNN "Manufacturer_Part_Number"
+F8 "8021522P" 600 -450 50 H I L BNN "RS Part Number"
+F9 "http://uk.rs-online.com/web/p/products/8021522P" 600 -550 50 H I L BNN "RS Price/Stock"
+F10 "P6SMB12CAT3G" 600 -650 50 H I L BNN "Arrow Part Number"
+F11 "https://www.arrow.com/en/products/p6smb12cat3g/littelfuse" 600 -750 50 H I L BNN "Arrow Price/Stock"
+DRAW
+X ~ 1 0 0 200 R 50 50 0 0 B
+X ~ 2 800 0 200 L 50 50 0 0 B
+P 4 0 1 6 400 0 600 100 600 -100 400 0 N
+P 4 0 1 6 400 0 200 100 200 -100 400 0 N
+P 2 0 1 6 400 -80 440 -100 N
+P 2 0 1 6 360 100 400 80 N
+P 2 0 1 6 400 -80 400 80 N
+ENDDRAW
+ENDDEF
+#
+#End Library

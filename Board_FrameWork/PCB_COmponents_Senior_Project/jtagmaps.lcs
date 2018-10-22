@@ -1,0 +1,23 @@
+# JTAG Technologies Sentinel RMS features
+# Copyright (c) 2009 - 2016 JTAG Technologies B.V.
+# 2018-10-21 23:58:41
+# jtlicgen Version 1.0.1.35 - 20161014 Linux
+# RefNum#: JTW012747
+
+# Transaction ID : 1
+# Customer       : Phil
+# Company        : University of Maine
+# E-Mail         : phil.robb@maine.edu
+# Sentinel RMS TEMP NL MAC 02004C4F4F50 (LockCode: 0x469C0010) (Expire date: 2019-10-21)
+
+# Summary
+# RefNum#: JTW012747, Sentinel RMS TEMP NL MAC 02004C4F4F50 (Expire date: 2019-10-21), Customer: Phil, Company: University of Maine
+
+# +-----+----------------------+--------------------------------------------------------------+
+# | Cnt | Package Name         | Description                                                  |
+# +-----+----------------------+--------------------------------------------------------------+
+# |   - | JTAG Maps for Altium | JTAG Maps for Altium Designer                                |
+# +-----+----------------------+--------------------------------------------------------------+
+
+10 bsdl 1.0 LONG NORMAL STANDALONE EXCL 1_KEYS INFINITE_KEYS 20 OCT 2018 21 OCT 2019 NiL SLM_CODE CL_ND_LCK NiL 0X469C0010 NiL NiL NiL 5_MINS VLsvaSFz8:5cd3D8VVv,Vij4gHWAUIGZI9RD2SZr8SfD7lAGSHuky5zYejn3vemf33WOwJIaYTX97qsGGP0Ejd3R
+10 quickscan2 1.0 LONG NORMAL STANDALONE EXCL 1_KEYS INFINITE_KEYS 20 OCT 2018 21 OCT 2019 NiL SLM_CODE CL_ND_LCK NiL 0X469C0010 NiL NiL NiL 5_MINS gNqVbX35BDtk:3056K6tL6FBjaxnKAplpe1DsJ25pkVZczB4nVTuNrKtc,vo9wwE3ECTnnLTJSWWPHJ7Knkgq3Ln

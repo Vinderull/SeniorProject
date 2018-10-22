@@ -1,0 +1,65 @@
+(Japanese_coding: sjis)
+(function "ECS_243457"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-05-28-13:14:48)
+    (utime 2018-06-06-11:10:46)
+    (interface
+        (port "1" (symbPinId 1) (portType INOUT))
+        (port "2" (symbPinId 2) (portType INOUT))
+    )
+    (property "symbolName" "ABL-20_000MHZ-B2")
+)
+
+
+(pinAssign "ECS_243457"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-05-28-13:14:48)
+    (utime 2018-06-06-11:10:46)
+    (interface
+        (port "1" (symbPinId 1) (portName "1") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "2") (portType INOUT))
+    )
+    (internal
+        (funcInst (functionRef "ECS_243457")
+                (port "1" (match "1"))
+                (port "2" (match "2"))
+        )
+    )
+    (property "usePowerBox" "No")
+    (property "symbolName" "ABL-20_000MHZ-B2")
+)
+
+
+(part "ABL-20_000MHZ-B2"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-05-28-13:14:48)
+    (utime 2018-06-06-11:10:46)
+    (packageRef "ABL-20_000MHZ-B2")
+    (pinAssignRef "ECS_243457")
+    (interface
+        (port "1" (symbPinId 1) (portName "1") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "2") (portType INOUT))
+    )
+    (partClass UNDEF)
+    (useInSchema Y)
+    (useInLayout Y)
+    (inPartsList Y)
+    (partType NORMAL)
+    (placeRestriction FREE)
+    (property "enetNonSeries" "YES")
+    (property "refDesPrefix" "Y")
+    (property "description" "ABRACON - ABL-20.000MHZ-B2 - CRYSTAL, 20MHZ, 18PF CL, HC49/4H")
+    (property "uaManufacturer" "ABRACON")
+    (property "uaManufacturerPartNumber" "ABL-20.000MHZ-B2")
+    (property "uaVendor" "Arrow")
+    (property "uaVendorReference" "ABL-20.000MHZ-B2")
+    (property "uaAttribute1" "http://www.abracon.com/Resonators/ABL.pdf")
+)
+
+

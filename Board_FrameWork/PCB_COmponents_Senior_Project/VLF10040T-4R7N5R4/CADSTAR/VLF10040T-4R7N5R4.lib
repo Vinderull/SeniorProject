@@ -1,0 +1,17 @@
+.VLF10040T-4R7N5R4 :1 ;TDK - VLF10040T-4R7N5R4. - INDUCTOR, 4.7UH, 5.6A, 30%
+VLF10045
+*STM L
+*NGS
+*PLB 1="1" 2="2"
+*MXP 2
+*DFN VLF10040T-4R7N5R4
+~!Manufacturer_Name (TDK)
+~!Manufacturer_Part_Number (VLF10040T-4R7N5R4)
+~!RS Part Number (6442185P)
+~!Link RS Price/Stock (http://uk.rs-online.com/web/p/products/6442185P)
+~!Arrow Part Number (VLF10040T-4R7N5R4)
+~!Link Arrow Price/Stock (http://www.arrow.com/en/products/vlf10040t-4r7n5r4/tdk)
+~!Link Datasheet (https://componentsearchengine.com/Datasheets/2/VLF10040T-4R7N5R4..pdf)
+~!Height (-)
+VLF10040T-4R7N5R4
+1.1!U 2.1!U 

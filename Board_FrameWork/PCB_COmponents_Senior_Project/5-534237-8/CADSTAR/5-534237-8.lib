@@ -1,0 +1,19 @@
+.5-534237-8 :1 ;MOD II PCB Receptacle 2.54mm 10 way TE Connectivity AMPMODU Mod II Series 2.54mm Pitch 10 Way 1 Row Straight PCB Socket, Through Hole, Solder Termination
+SHDR10W77P0X254_1X10_2540X354X877P
+*STM J
+*NGS
+*PLB 1="1" 2="2" 3="3" 4="4" 5="5" 6="6" 7="7" 8="8" 9="9" 10="10"
+*MXP 10
+*DFN 5-534237-8
+~!Manufacturer_Name (TE Connectivity)
+~!Manufacturer_Part_Number (5-534237-8)
+~!RS Part Number (7973233P)
+~!Link RS Price/Stock (http://uk.rs-online.com/web/p/products/7973233P)
+~!Allied_Number (70346596)
+~!Link Allied Price/Stock (https://www.alliedelec.com/te-connectivity-5-534237-8/70346596/)
+~!Arrow Part Number (5-534237-8)
+~!Link Arrow Price/Stock (https://www.arrow.com/en/products/5-534237-8/te-connectivity)
+~!Link Datasheet (https://componentsearchengine.com/Datasheets/2/5-534237-8.pdf)
+~!Height (8.77mm)
+"5-534237-8"
+1.1!U 2.1!U 3.1!U 4.1!U 5.1!U 6.1!U 7.1!G 8.1!U 9.1!U 10.1!U 
