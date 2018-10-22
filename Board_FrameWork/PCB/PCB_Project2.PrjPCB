@@ -38,23 +38,6 @@ PrefsVaultGUID=
 PrefsRevisionGUID=
 
 [Document1]
-DocumentPath=Butterwoth_FIlter_8th_Order_Active.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=TLLRLYXO
-
-[Document2]
 DocumentPath=..\..\..\..\..\Desktop\PCB_COmponents_Senior_Project\STM32L476RGT6\Altium\Imported PADS Libraries.PrjPcb\QFP50P1200X1200X160-64N.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -71,7 +54,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document3]
+[Document2]
 DocumentPath=..\..\..\..\..\Desktop\PCB_COmponents_Senior_Project\STM32L476RGT6\Altium\Imported PADS Libraries.PrjPcb\STM32L476RGT6.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -88,7 +71,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=IRPAQQVD
 
-[Document4]
+[Document3]
 DocumentPath=..\..\..\..\..\..\Public\Documents\Altium\AD18\Library\Miscellaneous Devices.IntLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -105,7 +88,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document5]
+[Document4]
 DocumentPath=STM32L476_MCU.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -122,7 +105,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ARUVMDYY
 
-[Document6]
+[Document5]
 DocumentPath=Power_Supply.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -139,8 +122,46 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=KESXVEHG
 
+[Document6]
+DocumentPath=Mic_Circuit.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=IDXBDRRX
+
+[Document7]
+DocumentPath=ButterWorth_8th_order_Filter.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=VXUMOBDV
+
 [SearchPath1]
 Path=..\..\..\..\..\Desktop\PCB_COmponents_Senior_Project\Texas Instruments\*.*
+IncludeSubFolders=1
+
+[SearchPath2]
+Path=..\..\..\..\..\Desktop\PCB_COmponents_Senior_Project\Analog Devices\*.*
 IncludeSubFolders=1
 
 [Configuration1]
