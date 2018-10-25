@@ -1,0 +1,43 @@
+Removed Pin From Net: NetName=NetBuck_8 Pin=D1P-1
+Removed Pin From Net: NetName=GND Pin=D1P-2
+Removed Member From Class: ClassName=ButterWorth_8th_order_Filter Member=BC20
+Removed Member From Class: ClassName=Power_Supply Member=D1P
+Change Component Footprint: Designator=C5A Old Footprint=1608[0603] New Footprint=C1206
+Change Component Footprint: Designator=C5B Old Footprint=1608[0603] New Footprint=C1206
+Change Component Footprint: Designator=C5C Old Footprint=1608[0603] New Footprint=C1206
+Change Component Footprint: Designator=C5D Old Footprint=1608[0603] New Footprint=C1206
+Change Component Footprint: Designator=C5E Old Footprint=1608[0603] New Footprint=C1206
+Change Component Footprint: Designator=C1M Old Footprint=1608[0603] New Footprint=CAPPM6032X280N
+Change Component Footprint: Designator=C2M Old Footprint=1608[0603] New Footprint=CAPPM6032X280N
+Change Component Designator: OldDesignator=BC20 NewDesignator=C9M
+Added Component: Designator=C101M(CAPPM6032X280N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "29-May-2009"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "IPC-7351 Footprint Added."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Chip Capacitor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "C1206"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ".1uF"; VariantName = "[No Variations]"
+Added Component: Designator=D1(DIOM5336X250N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Arrow_Part_Number"; Value = "B330B-13-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow_Price-Stock"; Value = "https://www.arrow.com/en/products/b330b-13-f/diodes-incorporated"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceName"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceSetName"; Value = "B330B-13-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "GateName_1"; Value = "G$1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "2.5mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LibraryName"; Value = "B330B-13-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Diodes Inc."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "B330B-13-F"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "DIOM5336X250N"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Part_Number"; Value = "9228339"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Price-Stock"; Value = "http://uk.rs-online.com/web/p/products/9228339"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SymbolName_1"; Value = "B330B-13-F"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=C101M-1
+Added Pin To Net: NetName=VCC Pin=C101M-2
+Added Pin To Net: NetName=NetBuck_8 Pin=D1-1
+Added Pin To Net: NetName=GND Pin=D1-2
+Added Member To Class: ClassName=ButterWorth_8th_order_Filter Member=Component BC5 Cap Semi
+Added Member To Class: ClassName=Power_Supply Member=Component C101M Cap Semi
+Added Member To Class: ClassName=Power_Supply Member=Component D1 B330B
