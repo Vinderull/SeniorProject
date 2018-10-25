@@ -1,0 +1,23 @@
+Removed Pin From Net: NetName=NetBuck_8 Pin=L1P-1
+Removed Pin From Net: NetName=NetBuck_5 Pin=L1P-2
+Removed Member From Class: ClassName=Power_Supply Member=L1P
+Added Component: Designator=Buck(INDM102102X400N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Arrow_Part_Number"; Value = "MSS1038-183MLB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow_Price-Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceName"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceSetName"; Value = "MSS1038-183MLB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "GateName_1"; Value = "G$1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "4mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LibraryName"; Value = "MSS1038-183MLB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "COILCRAFT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "MSS1038-183MLB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "INDM102102X400N"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Part_Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Price-Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SymbolName_1"; Value = "MSS1038-183MLB"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetBuck_8 Pin=Buck-1
+Added Pin To Net: NetName=NetBuck_5 Pin=Buck-2
+Change Net Name : Old Net Name=NetBuck_5 New Net Name=NetBuck_2
+Change Net Name : Old Net Name=NetBuck_8 New Net Name=NetBuck_1
+Added Member To Class: ClassName=Power_Supply Member=Component Buck Fixed Inductors MSS1038 SMT Shielded 18 uH 20 % 3.35 ASource:  Datasheet

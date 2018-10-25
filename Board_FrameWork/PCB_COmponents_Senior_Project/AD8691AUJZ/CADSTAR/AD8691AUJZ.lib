@@ -1,0 +1,18 @@
+.AD8691AUJZ :1 ;ANALOG DEVICES - AD8691AUJZ - IC, OP AMP, CMOS, SMD, 8691, TSOT-5
+SOT95P280X100-5N
+*STM IC
+*NGS
+*PLB 1="OUT" 2="V-" 3="+IN" 4="-IN" 5="V+"
+*MXP 5
+*DFN AD8691AUJZ
+~!Manufacturer_Name (Analog Devices)
+~!Manufacturer_Part_Number (AD8691AUJZ)
+~!RS Part Number (-)
+~!RS Price/Stock (-)
+~!Arrow Part Number (AD8691AUJZ)
+~!Arrow Price/Stock (-)
+~!Link Datasheet (http://www.analog.com/media/en/technical-documentation/data-sheets/AD8691_8692_8694.pdf)
+~!Height (1mm)
+~!3D_Model (AD8691AUJZ)
+AD8691AUJZ
+1.1!U 2.1!U 3.1!U 4.1!U 5.1!U 

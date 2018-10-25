@@ -1,0 +1,18 @@
+.MSS1038-183MLB :1 ;Fixed Inductors MSS1038 SMT Shielded 18 uH 20 % 3.35 A
+INDM102102X400N
+*STM L
+*NGS
+*PLB 1="1" 2="2"
+*MXP 2
+*DFN MSS1038-183MLB
+~!Manufacturer_Name (COILCRAFT)
+~!Manufacturer_Part_Number (MSS1038-183MLB)
+~!RS Part Number (-)
+~!RS Price/Stock (-)
+~!Arrow Part Number (MSS1038-183MLB)
+~!Arrow Price/Stock (-)
+~!Link Datasheet (http://www.mouser.com/ds/2/597/mss1038t-270707.pdf)
+~!Height (4mm)
+~!3D_Model (MSS1038-183MLB)
+MSS1038-183MLB
+1.1!U 2.1!U 

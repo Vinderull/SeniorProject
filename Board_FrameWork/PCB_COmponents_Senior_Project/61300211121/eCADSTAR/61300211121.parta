@@ -1,0 +1,66 @@
+(Japanese_coding: sjis)
+(function "ECS_330383"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-10-30-10:48:18)
+    (utime 2018-06-06-11:10:46)
+    (interface
+        (port "1" (symbPinId 1) (portType INOUT))
+        (port "2" (symbPinId 2) (portType INOUT))
+    )
+    (property "symbolName" "61300211121")
+)
+
+
+(pinAssign "ECS_330383"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-10-30-10:48:18)
+    (utime 2018-06-06-11:10:46)
+    (interface
+        (port "1" (symbPinId 1) (portName "1") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "2") (portType INOUT))
+    )
+    (internal
+        (funcInst (functionRef "ECS_330383")
+                (port "1" (match "1"))
+                (port "2" (match "2"))
+        )
+    )
+    (property "usePowerBox" "No")
+    (property "symbolName" "61300211121")
+)
+
+
+(part "61300211121"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-10-30-10:48:18)
+    (utime 2018-06-06-11:10:46)
+    (packageRef "61300211121")
+    (pinAssignRef "ECS_330383")
+    (interface
+        (port "1" (symbPinId 1) (portName "1") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "2") (portType INOUT))
+    )
+    (partClass UNDEF)
+    (useInSchema Y)
+    (useInLayout Y)
+    (inPartsList Y)
+    (partType NORMAL)
+    (placeRestriction FREE)
+    (property "enetNonSeries" "YES")
+    (property "refDesPrefix" "J")
+    (property "description" "WURTH ELEKTRONIK - 61300211121 - HEADER, 2.54MM, PIN, THT, VERTICAL, 2WAY")
+    (property "uaManufacturer" "Wurth Elektronik")
+    (property "uaManufacturerPartNumber" "61300211121")
+    (property "uaVendor" "Arrow")
+    (property "uaVendorReference" "8281581P")
+    (property "uaAttribute1" "https://componentsearchengine.com/Datasheets/2/61300211121.pdf")
+    (property "compAreaTopHeight" 8.54)
+)
+
+

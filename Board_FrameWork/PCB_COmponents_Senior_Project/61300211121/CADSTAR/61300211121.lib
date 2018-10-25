@@ -1,0 +1,17 @@
+.61300211121 :1 ;WURTH ELEKTRONIK - 61300211121 - HEADER, 2.54MM, PIN, THT, VERTICAL, 2WAY
+HDRV2W110P0X254_1X2_508X254X854P
+*STM J
+*NGS
+*PLB 1="1" 2="2"
+*MXP 2
+*DFN 61300211121
+~!Manufacturer_Name (Wurth Elektronik)
+~!Manufacturer_Part_Number (61300211121)
+~!RS Part Number (8281581P)
+~!Link RS Price/Stock (http://uk.rs-online.com/web/p/products/8281581P)
+~!Arrow Part Number (61300211121)
+~!Link Arrow Price/Stock (http://uk.rs-online.com/web/p/products/8281581P)
+~!Link Datasheet (https://componentsearchengine.com/Datasheets/2/61300211121.pdf)
+~!Height (8.54mm)
+"61300211121"
+1.1!U 2.1!U 

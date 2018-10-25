@@ -1,0 +1,20 @@
+.ROX3SJ220R :1 ;TE Connectivity ROX3S Series Axial Metal Film Resistor 220 5% 3W 300ppm/C
+RESAD3800W75L1600D550
+*STM R
+*NGS
+*PLB 1="1" 2="2"
+*MXP 2
+*DFN ROX3SJ220R
+~!Manufacturer_Name (TE Connectivity)
+~!Manufacturer_Part_Number (ROX3SJ220R)
+~!RS Part Number (1615998)
+~!Link RS Price/Stock (http://uk.rs-online.com/web/p/products/1615998)
+~!Allied_Number (70063816)
+~!Link Allied Price/Stock (https://www.alliedelec.com/te-connectivity-rox3sj220r/70063816/)
+~!Arrow Part Number (ROX3SJ220R)
+~!Link Arrow Price/Stock (https://www.arrow.com/en/products/rox3sj220r/te-connectivity)
+~!Link Datasheet (https://componentsearchengine.com/Datasheets/2/ROX3SJ220R.pdf)
+~!Height (-)
+~!3D_Model (ROX3SJ220R)
+ROX3SJ220R
+1.1!U 2.1!U 

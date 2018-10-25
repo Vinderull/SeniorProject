@@ -1,0 +1,70 @@
+(Japanese_coding: sjis)
+(function "ECS_649754"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-02-23-03:05:55)
+    (utime 2018-05-21-06:35:14)
+    (interface
+        (port "1" (symbPinId 1) (portType INOUT))
+        (port "2" (symbPinId 2) (portType INOUT))
+        (port "3" (symbPinId 3) (portType INOUT))
+    )
+    (property "symbolName" "61300311121")
+)
+
+
+(pinAssign "ECS_649754"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-02-23-03:05:55)
+    (utime 2018-05-21-06:35:14)
+    (interface
+        (port "1" (symbPinId 1) (portName "1") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "2") (portType INOUT))
+        (port "3" (symbPinId 3) (portName "3") (portType INOUT))
+    )
+    (internal
+        (funcInst (functionRef "ECS_649754")
+                (port "1" (match "1"))
+                (port "2" (match "2"))
+                (port "3" (match "3"))
+        )
+    )
+    (property "usePowerBox" "No")
+    (property "symbolName" "61300311121")
+)
+
+
+(part "61300311121"
+    (uver 1)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (ctime 2017-02-23-03:05:55)
+    (utime 2018-05-21-06:35:14)
+    (packageRef "61300311121")
+    (pinAssignRef "ECS_649754")
+    (interface
+        (port "1" (symbPinId 1) (portName "1") (portType INOUT))
+        (port "2" (symbPinId 2) (portName "2") (portType INOUT))
+        (port "3" (symbPinId 3) (portName "3") (portType INOUT))
+    )
+    (partClass UNDEF)
+    (useInSchema Y)
+    (useInLayout Y)
+    (inPartsList Y)
+    (partType NORMAL)
+    (placeRestriction FREE)
+    (property "enetNonSeries" "YES")
+    (property "refDesPrefix" "J")
+    (property "description" "HEADER 3 POSITION 2.54MM 0.100" VERTICLE UNSHROUDED BREAKAWAY THROUGH-HOLE")
+    (property "uaManufacturer" "Wurth Elektronik")
+    (property "uaManufacturerPartNumber" "61300311121")
+    (property "uaVendor" "Arrow")
+    (property "uaVendorReference" "1725145")
+    (property "uaAttribute1" "http://katalog.we-online.de/em/datasheet/6130xx11121.pdf")
+    (property "compAreaTopHeight" 8.69)
+)
+
+

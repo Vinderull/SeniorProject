@@ -1,0 +1,9 @@
+Output: Tango Netlist
+Type  : TangoNetlist
+From  : Project [AD8691AUJZ.PrjPcb]
+
+
+Files Generated   : 0
+Documents Printed : 0
+
+Finished Output Generation At 2:56:50 PM On 10/25/2018

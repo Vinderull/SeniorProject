@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP MSS1038-183MLB
+D Fixed Inductors MSS1038 SMT Shielded 18 uH 20 % 3.35 A
+K
+F http://www.mouser.com/ds/2/597/mss1038t-270707.pdf
+$ENDCMP
+#
+#End Doc Library

@@ -1,0 +1,60 @@
+*PADS-LIBRARY-SCH-DECALS-V9*
+
+ROX3SJ220R 32000 32000 100 10 100 10 4 1 0 2 24
+TIMESTAMP 2018.01.18.07.51.25
+"Default Font"
+"Default Font"
+550   250   0 8 100 10 "Default Font"
+REF-DES
+550   150   0 8 100 10 "Default Font"
+PART-TYPE
+350   -100  0 12 100 10 "Default Font"
+*
+350   -200  0 12 100 10 "Default Font"
+*
+CLOSED 5 10 0 -1
+200   50   
+500   50   
+500   -50  
+200   -50  
+200   50   
+T0     0     0 0 0     10    0 0 0     -10   0 32 PIN
+P-520  0     0 2 -80   0     0 2 0
+T700   0     0 2 0     10    0 0 0     -10   0 32 PIN
+P-520  0     0 2 -80   0     0 2 0
+
+PIN 34000 34000 0 0 0 0 4 1 0 0 0
+TIMESTAMP 2018.10.23.19.21.35
+"Default Font"
+"Default Font"
+140 20 0 1 100 10
+REF-DES
+230 0 0 8 100 10
+PART-TYPE
+-520 0 0 1 100 10
+*
+-80 0 0 1 100 10
+*
+OPEN 2 10 0 -1
+0 0
+200 0
+
+PINSHORT 34000 34000 0 0 0 0 4 1 0 0 0
+TIMESTAMP 2018.10.23.19.21.35
+"Default Font"
+"Default Font"
+60 10 0 1 100 10
+REF-DES
+140 10 0 8 100 10
+PART-TYPE
+-530 10 0 1 100 10
+*
+-70 10 0 1 100 10
+*
+OPEN 2 10 0 -1
+0 0
+100 0
+
+*END*
+
+
