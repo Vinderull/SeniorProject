@@ -1,0 +1,62 @@
+*PADS-LIBRARY-SCH-DECALS-V9*
+
+B330B-13-F        32000 32000 100 10 100 10 4 2 0 2 24
+TIMESTAMP 2018.01.18.07.53.00
+"Default Font"
+"Default Font"
+450   200   0 8 100 10 "Default Font"
+REF-DES
+450   100   0 8 100 10 "Default Font"
+PART-TYPE
+300   -150  0 12 100 10 "Default Font"
+*
+300   -250  0 12 100 10 "Default Font"
+*
+CLOSED 4 10 0 -1
+200   0    
+400   100  
+400   -100 
+200   0    
+OPEN   2 10 0 -1
+200   100  
+200   -100 
+T0     0     0 0 0     10    0 0 0     -10   0 32 PIN
+P-520  0     0 2 -80   0     0 2 0
+T600   0     0 2 0     10    0 0 0     -10   0 32 PIN
+P-520  0     0 2 -80   0     0 2 0
+
+PIN 34000 34000 0 0 0 0 4 1 0 0 0
+TIMESTAMP 2018.10.25.23.12.03
+"Default Font"
+"Default Font"
+140 20 0 1 100 10
+REF-DES
+230 0 0 8 100 10
+PART-TYPE
+-520 0 0 1 100 10
+*
+-80 0 0 1 100 10
+*
+OPEN 2 10 0 -1
+0 0
+200 0
+
+PINSHORT 34000 34000 0 0 0 0 4 1 0 0 0
+TIMESTAMP 2018.10.25.23.12.03
+"Default Font"
+"Default Font"
+60 10 0 1 100 10
+REF-DES
+140 10 0 8 100 10
+PART-TYPE
+-530 10 0 1 100 10
+*
+-70 10 0 1 100 10
+*
+OPEN 2 10 0 -1
+0 0
+100 0
+
+*END*
+
+

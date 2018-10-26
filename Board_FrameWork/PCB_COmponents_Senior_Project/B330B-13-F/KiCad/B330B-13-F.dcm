@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP B330B-13-F
+D Diodes Inc B330B-13-F, SMT Schottky Diode, 30V 3A, 2-Pin DO-214AA
+K
+F https://www.diodes.com/assets/Datasheets/ds30924.pdf
+$ENDCMP
+#
+#End Doc Library

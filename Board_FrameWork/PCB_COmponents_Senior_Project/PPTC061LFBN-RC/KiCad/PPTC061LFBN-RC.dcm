@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP PPTC061LFBN-RC
+D CONN HEADER FEMALE 6POS .1" TIN
+K
+F http://www.sullinscorp.com/drawings/78_P(N)PxCxxxLFBN-RC,_10492-H.pdf
+$ENDCMP
+#
+#End Doc Library
