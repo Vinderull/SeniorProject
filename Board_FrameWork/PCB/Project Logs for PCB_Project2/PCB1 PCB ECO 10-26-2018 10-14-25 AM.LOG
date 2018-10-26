@@ -1,0 +1,21 @@
+Added Component: Designator=  (HDRV3W95P0X254_1X3_762X254X869)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Arrow_Part_Number"; Value = "61300311121"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow_Price-Stock"; Value = "http://uk.rs-online.com/web/p/products/1725145"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceName"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceSetName"; Value = "61300311121"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "GateName_1"; Value = "G$1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "8.69mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LibraryName"; Value = "61300311121"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Wurth Elektronik"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "61300311121"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "HDRV3W95P0X254_1X3_762X254X869"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Part_Number"; Value = "1725145"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Price-Stock"; Value = "http://uk.rs-online.com/web/p/products/1725145"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SymbolName_1"; Value = "61300311121"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=  -1
+Added Pin To Net: NetName=VDD Pin=  -3
+Added Pin To Net: NetName=Net  _2 Pin=  -2
+Added Pin To Net: NetName=Net  _2 Pin=B1-59
+Added Net: Name=Net  _2
+Added Member To Class: ClassName=STM32L476_MCU Member=Component    J5
