@@ -1,0 +1,26 @@
+Added Component: Designator=J6(SHDR6W87P254_2X3_812X508X870P)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Arrow_Part_Number"; Value = "PPTC061LFBN-RC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow_Price-Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceName"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceSetName"; Value = "PPTC061LFBN-RC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "GateName_1"; Value = "G$1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "8.7mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LibraryName"; Value = "PPTC061LFBN-RC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Sullins"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "PPTC061LFBN-RC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "SHDR6W87P254_2X3_812X508X870P"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Part_Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Price-Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SymbolName_1"; Value = "PPTC061LFBN-RC"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetB1_57 Pin=B1-57
+Added Pin To Net: NetName=NetB1_57 Pin=J6-1
+Added Net: Name=NetB1_57
+Added Pin To Net: NetName=NetB1_58 Pin=B1-58
+Added Pin To Net: NetName=NetB1_58 Pin=J6-2
+Added Net: Name=NetB1_58
+Added Pin To Net: NetName=NetB1_60 Pin=B1-60
+Added Pin To Net: NetName=NetB1_60 Pin=J6-3
+Added Net: Name=NetB1_60
+Added Member To Class: ClassName=STM32L476_MCU Member=Component J6 CONN HEADER FEMALE 6POS .1" TINSource:  Datasheet
+Added Member To Class: ClassName=ButterWorth_8th_order_Filter Member=Component RE4 Res3
