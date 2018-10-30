@@ -1,0 +1,23 @@
+Removed Pin From Net: NetName=VSIG Pin=CMK-1
+Removed Pin From Net: NetName=VSIG Pin=RM2-2
+Added Component: Designator=JM1(HDRV2W110P0X254_1X2_508X254X85)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Arrow_Part_Number"; Value = "61300211121"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow_Price-Stock"; Value = "http://uk.rs-online.com/web/p/products/8281581P"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceName"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceSetName"; Value = "61300211121"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "GateName_1"; Value = "G$1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "8.54mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LibraryName"; Value = "61300211121"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Wurth Elektronik"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "61300211121"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "HDRV2W110P0X254_1X2_508X254X85"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Part_Number"; Value = "8281581P"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Price-Stock"; Value = "http://uk.rs-online.com/web/p/products/8281581P"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SymbolName_1"; Value = "61300211121"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VSIG Pin=JM1-2
+Added Pin To Net: NetName=NetCMK_1 Pin=CMK-1
+Added Pin To Net: NetName=NetCMK_1 Pin=JM1-1
+Added Pin To Net: NetName=NetCMK_1 Pin=RM2-2
+Added Net: Name=NetCMK_1
+Added Member To Class: ClassName=Mic_Circuit Member=Component JM1 2PIN

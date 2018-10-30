@@ -1,0 +1,26 @@
+Change Component Designator: OldDesignator=J? NewDesignator=JO1
+Change Component Designator: OldDesignator=J? NewDesignator=JO2
+Change Component Designator: OldDesignator=J? NewDesignator=JO3
+Change Component Designator: OldDesignator=J? NewDesignator=JO5
+Change Component Designator: OldDesignator=J? NewDesignator=JO6
+Added Component: Designator=JO4(68000-401HLF)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Arrow_Part_Number"; Value = "68000-401HLF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow_Price-Stock"; Value = "https://www.arrow.com/en/products/68000-401hlf/amphenol-fci"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceName"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DeviceSetName"; Value = "68000-401HLF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "GateName_1"; Value = "G$1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LibraryName"; Value = "68000-401HLF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "FCI"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "68000-401HLF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "68000-401HLF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Part_Number"; Value = "8632706"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RS_Price-Stock"; Value = "http://uk.rs-online.com/web/p/products/8632706"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SymbolName_1"; Value = "68000-401HLF"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetC5C_1 Pin=JO4-1
+Added Member To Class: ClassName=ButterWorth_8th_order_Filter Member=Component JO2 1Pin Header
+Added Member To Class: ClassName=ButterWorth_8th_order_Filter Member=Component JO3 1Pin Header
+Added Member To Class: ClassName=ButterWorth_8th_order_Filter Member=Component JO4 1Pin Header
+Added Member To Class: ClassName=ButterWorth_8th_order_Filter Member=Component JO5 1Pin Header
+Added Member To Class: ClassName=ButterWorth_8th_order_Filter Member=Component JO6 2PIN

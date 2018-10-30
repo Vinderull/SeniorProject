@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: PCB1.PcbDoc   10/30/2018  12:47:59 PM
+NCDrill File Report For: PCB1.PcbDoc   10/30/2018  2:37:51 PM
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
@@ -13,10 +13,11 @@ T3      28mil (0.7mm)                                             Round         
 T4      28mil (0.711mm)                                           Round             9         PTH        0.00inch (0.00mm)
 T5      37mil (0.95mm)                                            Round             2         PTH        0.00inch (0.00mm)
 T6      40mil (1.016mm)                                           Round             20        PTH        0.00inch (0.00mm)
-T7      45mil (1.14mm)                                            Round             4         PTH        0.00inch (0.00mm)
-T8      45mil (1.15mm)                                            Round             12        PTH        0.00inch (0.00mm)
-T9      51mil (1.3mm)                                             Round             4         PTH        0.00inch (0.00mm)
+T7      43mil (1.1mm)                                             Round             5         PTH        0.00inch (0.00mm)
+T8      45mil (1.14mm)                                            Round             4         PTH        0.00inch (0.00mm)
+T9      45mil (1.15mm)                                            Round             12        PTH        0.00inch (0.00mm)
+T10     51mil (1.3mm)                                             Round             8         PTH        0.00inch (0.00mm)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              114
+Totals                                                                              123
 
-Total Processing Time (hh:mm:ss) : 00:00:00
+Total Processing Time (hh:mm:ss) : 00:00:01
