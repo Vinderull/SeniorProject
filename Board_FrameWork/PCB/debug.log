@@ -128,3 +128,5 @@
 [1024/114804:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
 [1024/114804:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
 [1024/114804:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[1030/021821:ERROR:ipc_channel_win.cc(217)] pipe error: 109
+[1030/021823:ERROR:browser_gpu_channel_host_factory.cc(119)] Failed to launch GPU process.
