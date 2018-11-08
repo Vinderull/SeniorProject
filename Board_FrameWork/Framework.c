@@ -35,7 +35,7 @@ extern FlagStatus KeyPressed;   // Use to detect button presses
 int main(void)
 {
 
-  int i, n, j, maxIndex;
+  uint32_t i, n, j, maxIndex;
   float avg, dev, note, maxVal;
   float input[nsamp], output1[nsamp*2], output2[nsamp], output3[nsamp/2];
   static float sign=1.0;
@@ -127,6 +127,7 @@ int main(void)
 
   /* subtract mean */
    for(i=0; i<nsamp*2; i++){
+     //output1[i] *= 10;
      output1[i] -= avg;
 
      /*zero out negative correlations */
@@ -166,6 +167,7 @@ int main(void)
 
          if(((output2[i] - output2[i-1])>0) && ((output2[i+1]-output2[i])<0)){
            n = i;
+           break;
          }
 
          else if((output2[i] - output2[i-1])>0) continue;
@@ -182,12 +184,12 @@ int main(void)
     //arm_rfft_fast_f32(fftStruct, output2, output3, 1);
 
 
-  /*for(i=0; i<nsamp; i++){
 
 
-    printf("%f, ", note);
 
-  } */
+     printf("%f\n\r", note);
+
+
 
     //snprintf((char *)buffer, BufferSize, "TEST: %f\t\r\n", input[i]);
     //n += sprintf((char *)buffer + n, "Equivalent Voltage = %f\r\n", a);
