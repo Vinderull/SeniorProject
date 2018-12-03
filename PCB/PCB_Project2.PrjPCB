@@ -356,14 +356,6 @@ DItemRevisionGUID=
 DocumentPath=Project Outputs for PCB_Project2\PCB1.TXT
 DItemRevisionGUID=
 
-[GeneratedDocument34]
-DocumentPath=Project Outputs for PCB_Project2\PCB_Project2.xlsx
-DItemRevisionGUID=
-
-[GeneratedDocument35]
-DocumentPath=Project Outputs for PCB_Project2\STM32L476_MCU.NET
-DItemRevisionGUID=
-
 [SearchPath1]
 Path=..\PCB_COmponents_Senior_Project\*.*
 IncludeSubFolders=1
@@ -528,7 +520,7 @@ OutputDefault20=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=Brother HL-L2380DW series Printer
+TargetPrinter=Microsoft Print to PDF
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 
 [OutputGroup3]
@@ -646,7 +638,7 @@ OutputDefault3=0
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=Brother HL-L2380DW series Printer
+TargetPrinter=Microsoft Print to PDF
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=NC Drill
 OutputName1=NC Drill Files
