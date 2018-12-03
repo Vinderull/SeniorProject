@@ -1,4 +1,4 @@
-DRC Rules Export File for PCB: C:\Users\ComputerConnection\Documents\GitHub\SeniorProject\Board_FrameWork\PCB\PCB1.PcbDoc
+DRC Rules Export File for PCB: C:\Users\Roast Beefy\Documents\GitHub\SeniorProject\PCB\PCB1.PcbDoc
 RuleKind=MinimumAnnularRing|RuleName=MinimumAnnularRing|Scope=Board|Minimum=4.00
 RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
 RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=2.50
