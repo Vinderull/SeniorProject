@@ -1,5 +1,0 @@
-Change Component Comment : Designator=Buck Old Comment=Fixed Inductors MSS1038 SMT Shielded 18 uH 20 % 3.35 ASource:  Datasheet New Comment=MSS1038
-Change Component Designator: OldDesignator=Buck NewDesignator=LB
-Change Net Name : Old Net Name=NetBuck_1 New Net Name=NetBuck_8
-Change Net Name : Old Net Name=NetBuck_2 New Net Name=NetBuck_5
-Added Member To Class: ClassName=Power_Supply Member=Component LB MSS1038

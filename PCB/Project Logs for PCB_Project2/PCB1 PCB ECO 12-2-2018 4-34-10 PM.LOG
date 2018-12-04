@@ -1,7 +1,0 @@
-Change Component Footprint: Designator=S1 Old Footprint=DPST-4 New Footprint=D6C10F1LFS
-Change Component Footprint: Designator=P2 Old Footprint=HDR1X2 New Footprint=HDRV2W110P0X254_1X2_508X254X85
-Change Component Footprint: Designator=P1 Old Footprint=HDR1X3 New Footprint=HDRV3W95P0X254_1X3_762X254X869
-Added Room: Name=ButterWorth_8th_order_Filter
-Added Room: Name=Mic_Circuit
-Added Room: Name=Power_Supply
-Added Room: Name=STM32L476_MCU

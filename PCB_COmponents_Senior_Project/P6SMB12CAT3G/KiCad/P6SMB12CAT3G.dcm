@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP P6SMB12CAT3G
-D Littelfuse P6SMB12CAT3G, Bi-Directional TVS Diode, 600W, 2-Pin SMB
-K
-F http://m.littelfuse.com/~/media/electronics/datasheets/tvs_diodes/littelfuse_tvs_diode_p6smb11cat3_d_datasheet.pdf.pdf
-$ENDCMP
-#
-#End Doc Library
