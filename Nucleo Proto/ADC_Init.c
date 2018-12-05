@@ -69,11 +69,11 @@ has a 50% duty cycle.
   /*
   //000: 2.5 ADC clock cycles
   //001: 6.5 ADC clock cycles
-//010: 12.5 ADC clock cycles
-//011: 24.5 ADC clock cycles
-//100: 47.5 ADC clock cycles
-//101: 92.5 ADC clock cycles
-//110: 247.5 ADC clock cycles
+  //010: 12.5 ADC clock cycles
+  //011: 24.5 ADC clock cycles
+  //100: 47.5 ADC clock cycles
+  //101: 92.5 ADC clock cycles
+  //110: 247.5 ADC clock cycles
   //111: 640.5 ADC clock cycles
  */
   ADC1->SMPR1 &= ~ADC_SMPR1_SMP6;
