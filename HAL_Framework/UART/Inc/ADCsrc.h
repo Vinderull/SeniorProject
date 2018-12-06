@@ -10,3 +10,5 @@ void GPIO_Init(void);
 void TIM4_Init(void);
 
 void DMA1_IRQHandler(void);
+
+void ADC_Calibration(void);

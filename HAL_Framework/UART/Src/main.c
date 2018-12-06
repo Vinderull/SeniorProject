@@ -100,8 +100,11 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  GPIO_Init(void);
-  TIM4_Init(void);
+  GPIO_Init();
+  TIM4_Init();
+  ADC_Calibration();
+  ADC1_init();
+  DMA_Init(1000);
 
   /* USER CODE END 2 */
 
@@ -109,16 +112,17 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    while(ADC_DMA_DONE == 0);
 
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
   /*Save sensor reading to string */
-  sprintf(Message, "The Sensor is %f\n\r", ((float) adc[i]) * vsense);
+  sprintf(Message, "The Sensor is %f\n\r", ((float) pReadyProcess[i]));
 
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
-
+  ADC_DMA_DONE = 0;
   }
   /* USER CODE END 3 */
 
