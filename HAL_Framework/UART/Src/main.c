@@ -41,6 +41,7 @@
 #include "stm32l4xx_hal.h"
 #include "usart.h"
 #include "gpio.h"
+#include "ADCsrc.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -99,6 +100,8 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  GPIO_Init(void);
+  TIM4_Init(void);
 
   /* USER CODE END 2 */
 

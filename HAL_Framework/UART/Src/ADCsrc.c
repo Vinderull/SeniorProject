@@ -2,6 +2,15 @@
 
 #include "ADCsrc.h"
 #include "stm32l476xx.h"
+
+#DEFINE SAMPLE_SIZE 1000
+
+uint32_t Buffer_Ping[SAMPLE_SIZE];
+uint32_t Buffer_Pong[SAMPLE_SIZE];
+uint32_t *pReadyWrite = Buffer_Ping;
+uint32_t *pReadyProcess = Buffer_Pong;
+volatile uint32_t ADC_DMA_DONE = 0;
+
 ///ADC1 Initialization
 /// NOTE: ADC needs HSI
 
