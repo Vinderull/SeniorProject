@@ -1,6 +1,7 @@
 ///big source file
 
-
+#include "ADCsrc.h"
+#include "stm32l476xx.h"
 ///ADC1 Initialization
 /// NOTE: ADC needs HSI
 
@@ -93,13 +94,13 @@ has a 50% duty cycle.
   ADC->CR |= ADC_CR_ADEN;
 
   /*wait for ADC1 to be ready */
-  while(!(ADC1->ISR | ADC_ISR_ADRDY));
+  while(!(ADC1->ISR & ADC_ISR_ADRDY));
 }
 
 
 /* This ADC1_Wakeup wakes the ADC on the STM32L476 MCU*/
 
-void ADC1_Wakeup (void) {
+void ADC1_Wakeup(void){
   int wait_time = 0;
   /*Start ADC operations: DEEPPWD = 0: ADC not in deep pwoer mode*/
   /*DEEPPWD = 1: ADC in deep power mode (reset state) */
@@ -193,9 +194,6 @@ DMA1_CSELR->CSELR &= ~DMA_CSELR_C1S;
 
 //Enable DMA channel
 DMA1_Channel1->CCR |= DMA_CCR_EN;
-
-
-
 
 }
 
