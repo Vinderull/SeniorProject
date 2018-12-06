@@ -55,7 +55,15 @@ DMA1_Channel1->CNDTR = arg;
 DMA1_Channel1->CPAR = (uint32_t) &(ADC1->DR);
 
 //memory address registers
-DMA1_Channel1->CMAR = (uint32_t) ADC_Results;
+//ping pong buffer
+DMA1_Channel1->CMAR = (uint32_t) pReadyProcess;
+
+//transfer complete interrupt enable
+DMA1_Channel1->CCR |= DMA_CCR_TCIE;
+
+//enable DMA INTERRUPT
+NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+
 
 //DMA Channel selection
 //map DMA channel 1 to ADC1
