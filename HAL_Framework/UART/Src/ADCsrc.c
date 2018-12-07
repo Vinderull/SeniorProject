@@ -91,13 +91,13 @@ has a 50% duty cycle.
   //111: 640.5 ADC clock cycles
  */
   ADC1->SMPR1 &= ~ADC_SMPR1_SMP6;
-  ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_1;
+  ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_1 | ADC_SMPR1_SMP6_2;
 
   /*Set ADC in discontinuous mode */
   // 0 = discontinuous
   // 1 = continuous
   ADC1->CFGR &= ~ADC_CFGR_CONT;
-  ADC1->CFGR |= ADC_CFGR_CONT;
+  //ADC1->CFGR |= ADC_CFGR_CONT;
 
   // configure ADC for DMA in circular mode
   ADC1->CFGR |= ADC_CFGR_DMACFG;

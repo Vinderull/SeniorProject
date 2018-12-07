@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
   28:Src/ADCsrc.c  **** 
   29:Src/ADCsrc.c  ****   /*Configure ADC prescalar to select ADC clock frequency */
   30:Src/ADCsrc.c  **** /*The clock is common for all the ADCs.
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 2
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 2
 
 
   31:Src/ADCsrc.c  **** 0000: input ADC clock not divided
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
   85:Src/ADCsrc.c  ****   //001: 6.5 ADC clock cycles
   86:Src/ADCsrc.c  ****   //010: 12.5 ADC clock cycles
   87:Src/ADCsrc.c  ****   //011: 24.5 ADC clock cycles
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 3
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 3
 
 
   88:Src/ADCsrc.c  ****   //100: 47.5 ADC clock cycles
@@ -127,13 +127,13 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
   91:Src/ADCsrc.c  ****   //111: 640.5 ADC clock cycles
   92:Src/ADCsrc.c  ****  */
   93:Src/ADCsrc.c  ****   ADC1->SMPR1 &= ~ADC_SMPR1_SMP6;
-  94:Src/ADCsrc.c  ****   ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_1;
+  94:Src/ADCsrc.c  ****   ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_1 | ADC_SMPR1_SMP6_2;
   95:Src/ADCsrc.c  **** 
   96:Src/ADCsrc.c  ****   /*Set ADC in discontinuous mode */
   97:Src/ADCsrc.c  ****   // 0 = discontinuous
   98:Src/ADCsrc.c  ****   // 1 = continuous
   99:Src/ADCsrc.c  ****   ADC1->CFGR &= ~ADC_CFGR_CONT;
- 100:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_CONT;
+ 100:Src/ADCsrc.c  ****   //ADC1->CFGR |= ADC_CFGR_CONT;
  101:Src/ADCsrc.c  **** 
  102:Src/ADCsrc.c  ****   // configure ADC for DMA in circular mode
  103:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_DMACFG;
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
   36 0000 0A4B     		ldr	r3, .L5
   37 0002 9B68     		ldr	r3, [r3, #8]
   38 0004 13F0005F 		tst	r3, #536870912
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 4
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 4
 
 
   39 0008 04D0     		beq	.L2
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
   78              		.thumb_func
   80              	ADC1_Init:
   81              	.LFB123:
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 5
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 5
 
 
   11:Src/ADCsrc.c  ****   /*Enable clock to ADC */
@@ -253,13 +253,13 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
   90              		.cfi_offset 14, -4
   13:Src/ADCsrc.c  **** 
   91              		.loc 1 13 0
-  92 0002 3C4A     		ldr	r2, .L10
+  92 0002 3A4A     		ldr	r2, .L10
   93 0004 D36C     		ldr	r3, [r2, #76]
   94 0006 43F40053 		orr	r3, r3, #8192
   95 000a D364     		str	r3, [r2, #76]
   16:Src/ADCsrc.c  **** 
   96              		.loc 1 16 0
-  97 000c 3A4C     		ldr	r4, .L10+4
+  97 000c 384C     		ldr	r4, .L10+4
   98 000e A368     		ldr	r3, [r4, #8]
   99 0010 23F00103 		bic	r3, r3, #1
  100 0014 A360     		str	r3, [r4, #8]
@@ -275,7 +275,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
  108 0024 E360     		str	r3, [r4, #12]
   24:Src/ADCsrc.c  **** 
  109              		.loc 1 24 0
- 110 0026 354B     		ldr	r3, .L10+8
+ 110 0026 334B     		ldr	r3, .L10+8
  111 0028 9A68     		ldr	r2, [r3, #8]
  112 002a 42F48072 		orr	r2, r2, #256
  113 002e 9A60     		str	r2, [r3, #8]
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
  126              		.loc 1 57 0
  127 0048 9A68     		ldr	r2, [r3, #8]
  128 004a 42F48032 		orr	r2, r2, #65536
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 6
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 6
 
 
  129 004e 9A60     		str	r2, [r3, #8]
@@ -341,7 +341,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
  158 0084 D4F8B030 		ldr	r3, [r4, #176]
  159 0088 23F04003 		bic	r3, r3, #64
  160 008c C4F8B030 		str	r3, [r4, #176]
-  93:Src/ADCsrc.c  ****   ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_1;
+  93:Src/ADCsrc.c  ****   ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_1 | ADC_SMPR1_SMP6_2;
  161              		.loc 1 93 0
  162 0090 6369     		ldr	r3, [r4, #20]
  163 0092 23F4E013 		bic	r3, r3, #1835008
@@ -349,84 +349,79 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
   94:Src/ADCsrc.c  **** 
  165              		.loc 1 94 0
  166 0098 6369     		ldr	r3, [r4, #20]
- 167 009a 43F44023 		orr	r3, r3, #786432
+ 167 009a 43F4E013 		orr	r3, r3, #1835008
  168 009e 6361     		str	r3, [r4, #20]
-  99:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_CONT;
+  99:Src/ADCsrc.c  ****   //ADC1->CFGR |= ADC_CFGR_CONT;
  169              		.loc 1 99 0
  170 00a0 E368     		ldr	r3, [r4, #12]
  171 00a2 23F40053 		bic	r3, r3, #8192
  172 00a6 E360     		str	r3, [r4, #12]
- 100:Src/ADCsrc.c  **** 
- 173              		.loc 1 100 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 7
+ 103:Src/ADCsrc.c  ****   //DMA enable?
+ 173              		.loc 1 103 0
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 7
 
 
  174 00a8 E368     		ldr	r3, [r4, #12]
- 175 00aa 43F40053 		orr	r3, r3, #8192
+ 175 00aa 43F00203 		orr	r3, r3, #2
  176 00ae E360     		str	r3, [r4, #12]
- 103:Src/ADCsrc.c  ****   //DMA enable?
- 177              		.loc 1 103 0
- 178 00b0 E368     		ldr	r3, [r4, #12]
- 179 00b2 43F00203 		orr	r3, r3, #2
- 180 00b6 E360     		str	r3, [r4, #12]
  105:Src/ADCsrc.c  **** 
- 181              		.loc 1 105 0
- 182 00b8 E368     		ldr	r3, [r4, #12]
- 183 00ba 43F00103 		orr	r3, r3, #1
- 184 00be E360     		str	r3, [r4, #12]
+ 177              		.loc 1 105 0
+ 178 00b0 E368     		ldr	r3, [r4, #12]
+ 179 00b2 43F00103 		orr	r3, r3, #1
+ 180 00b6 E360     		str	r3, [r4, #12]
  113:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_EXTEN_0;
- 185              		.loc 1 113 0
- 186 00c0 E368     		ldr	r3, [r4, #12]
- 187 00c2 23F44063 		bic	r3, r3, #3072
- 188 00c6 E360     		str	r3, [r4, #12]
+ 181              		.loc 1 113 0
+ 182 00b8 E368     		ldr	r3, [r4, #12]
+ 183 00ba 23F44063 		bic	r3, r3, #3072
+ 184 00be E360     		str	r3, [r4, #12]
  114:Src/ADCsrc.c  **** 
- 189              		.loc 1 114 0
- 190 00c8 E368     		ldr	r3, [r4, #12]
- 191 00ca 43F48063 		orr	r3, r3, #1024
- 192 00ce E360     		str	r3, [r4, #12]
+ 185              		.loc 1 114 0
+ 186 00c0 E368     		ldr	r3, [r4, #12]
+ 187 00c2 43F48063 		orr	r3, r3, #1024
+ 188 00c6 E360     		str	r3, [r4, #12]
  117:Src/ADCsrc.c  **** 
- 193              		.loc 1 117 0
- 194 00d0 A368     		ldr	r3, [r4, #8]
- 195 00d2 43F00403 		orr	r3, r3, #4
- 196 00d6 A360     		str	r3, [r4, #8]
+ 189              		.loc 1 117 0
+ 190 00c8 A368     		ldr	r3, [r4, #8]
+ 191 00ca 43F00403 		orr	r3, r3, #4
+ 192 00ce A360     		str	r3, [r4, #8]
  120:Src/ADCsrc.c  ****   ADC1->CR |= ADC_CR_ADEN;
- 197              		.loc 1 120 0
- 198 00d8 A368     		ldr	r3, [r4, #8]
- 199 00da 23F00103 		bic	r3, r3, #1
- 200 00de A360     		str	r3, [r4, #8]
+ 193              		.loc 1 120 0
+ 194 00d0 A368     		ldr	r3, [r4, #8]
+ 195 00d2 23F00103 		bic	r3, r3, #1
+ 196 00d6 A360     		str	r3, [r4, #8]
  121:Src/ADCsrc.c  **** 
- 201              		.loc 1 121 0
- 202 00e0 A368     		ldr	r3, [r4, #8]
- 203 00e2 43F00103 		orr	r3, r3, #1
- 204 00e6 A360     		str	r3, [r4, #8]
- 205              	.L8:
+ 197              		.loc 1 121 0
+ 198 00d8 A368     		ldr	r3, [r4, #8]
+ 199 00da 43F00103 		orr	r3, r3, #1
+ 200 00de A360     		str	r3, [r4, #8]
+ 201              	.L8:
  124:Src/ADCsrc.c  **** }
- 206              		.loc 1 124 0 discriminator 1
- 207 00e8 034B     		ldr	r3, .L10+4
- 208 00ea 1B68     		ldr	r3, [r3]
- 209 00ec 13F0010F 		tst	r3, #1
- 210 00f0 FAD0     		beq	.L8
+ 202              		.loc 1 124 0 discriminator 1
+ 203 00e0 034B     		ldr	r3, .L10+4
+ 204 00e2 1B68     		ldr	r3, [r3]
+ 205 00e4 13F0010F 		tst	r3, #1
+ 206 00e8 FAD0     		beq	.L8
  125:Src/ADCsrc.c  **** 
- 211              		.loc 1 125 0
- 212 00f2 10BD     		pop	{r4, pc}
- 213              	.L11:
- 214              		.align	2
- 215              	.L10:
- 216 00f4 00100240 		.word	1073876992
- 217 00f8 00000450 		.word	1342439424
- 218 00fc 00030450 		.word	1342440192
- 219              		.cfi_endproc
- 220              	.LFE123:
- 222              		.section	.text.GPIO_Init,"ax",%progbits
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 8
+ 207              		.loc 1 125 0
+ 208 00ea 10BD     		pop	{r4, pc}
+ 209              	.L11:
+ 210              		.align	2
+ 211              	.L10:
+ 212 00ec 00100240 		.word	1073876992
+ 213 00f0 00000450 		.word	1342439424
+ 214 00f4 00030450 		.word	1342440192
+ 215              		.cfi_endproc
+ 216              	.LFE123:
+ 218              		.section	.text.GPIO_Init,"ax",%progbits
+ 219              		.align	2
+ 220              		.global	GPIO_Init
+ 221              		.thumb
+ 222              		.thumb_func
+ 224              	GPIO_Init:
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 8
 
 
- 223              		.align	2
- 224              		.global	GPIO_Init
- 225              		.thumb
- 226              		.thumb_func
- 228              	GPIO_Init:
- 229              	.LFB125:
+ 225              	.LFB125:
  150:Src/ADCsrc.c  **** 
  151:Src/ADCsrc.c  **** 
  152:Src/ADCsrc.c  **** 
@@ -437,71 +432,71 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
  157:Src/ADCsrc.c  **** 
  158:Src/ADCsrc.c  **** void GPIO_Init(void)
  159:Src/ADCsrc.c  **** {
- 230              		.loc 1 159 0
- 231              		.cfi_startproc
- 232              		@ args = 0, pretend = 0, frame = 0
- 233              		@ frame_needed = 0, uses_anonymous_args = 0
- 234              		@ link register save eliminated.
+ 226              		.loc 1 159 0
+ 227              		.cfi_startproc
+ 228              		@ args = 0, pretend = 0, frame = 0
+ 229              		@ frame_needed = 0, uses_anonymous_args = 0
+ 230              		@ link register save eliminated.
  160:Src/ADCsrc.c  **** //Enabled clock for GPIO: A
  161:Src/ADCsrc.c  **** RCC->AHB2ENR &= ~RCC_AHB2ENR_GPIOAEN;
- 235              		.loc 1 161 0
- 236 0000 0D4B     		ldr	r3, .L13
- 237 0002 DA6C     		ldr	r2, [r3, #76]
- 238 0004 22F00102 		bic	r2, r2, #1
- 239 0008 DA64     		str	r2, [r3, #76]
+ 231              		.loc 1 161 0
+ 232 0000 0D4B     		ldr	r3, .L13
+ 233 0002 DA6C     		ldr	r2, [r3, #76]
+ 234 0004 22F00102 		bic	r2, r2, #1
+ 235 0008 DA64     		str	r2, [r3, #76]
  162:Src/ADCsrc.c  **** RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
- 240              		.loc 1 162 0
- 241 000a DA6C     		ldr	r2, [r3, #76]
- 242 000c 42F00102 		orr	r2, r2, #1
- 243 0010 DA64     		str	r2, [r3, #76]
+ 236              		.loc 1 162 0
+ 237 000a DA6C     		ldr	r2, [r3, #76]
+ 238 000c 42F00102 		orr	r2, r2, #1
+ 239 0010 DA64     		str	r2, [r3, #76]
  163:Src/ADCsrc.c  **** 
  164:Src/ADCsrc.c  **** 
  165:Src/ADCsrc.c  **** /*SET PA1 as analog*/
  166:Src/ADCsrc.c  **** /*00 = digital input, 01 = digital Output*/
  167:Src/ADCsrc.c  **** /*10 = alternate function, 11 = analog (default) */
  168:Src/ADCsrc.c  **** GPIOA->MODER &= ~GPIO_MODER_MODE1;
- 244              		.loc 1 168 0
- 245 0012 4FF09043 		mov	r3, #1207959552
- 246 0016 1A68     		ldr	r2, [r3]
- 247 0018 22F00C02 		bic	r2, r2, #12
- 248 001c 1A60     		str	r2, [r3]
+ 240              		.loc 1 168 0
+ 241 0012 4FF09043 		mov	r3, #1207959552
+ 242 0016 1A68     		ldr	r2, [r3]
+ 243 0018 22F00C02 		bic	r2, r2, #12
+ 244 001c 1A60     		str	r2, [r3]
  169:Src/ADCsrc.c  **** GPIOA->MODER |= GPIO_MODER_MODE1_0 | GPIO_MODER_MODE1_1;
- 249              		.loc 1 169 0
- 250 001e 1A68     		ldr	r2, [r3]
- 251 0020 42F00C02 		orr	r2, r2, #12
- 252 0024 1A60     		str	r2, [r3]
+ 245              		.loc 1 169 0
+ 246 001e 1A68     		ldr	r2, [r3]
+ 247 0020 42F00C02 		orr	r2, r2, #12
+ 248 0024 1A60     		str	r2, [r3]
  170:Src/ADCsrc.c  **** 
  171:Src/ADCsrc.c  **** 
  172:Src/ADCsrc.c  **** //clear pupdr
  173:Src/ADCsrc.c  **** GPIOA->PUPDR &= ~GPIO_PUPDR_PUPD1;
- 253              		.loc 1 173 0
- 254 0026 DA68     		ldr	r2, [r3, #12]
- 255 0028 22F00C02 		bic	r2, r2, #12
- 256 002c DA60     		str	r2, [r3, #12]
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 9
-
-
+ 249              		.loc 1 173 0
+ 250 0026 DA68     		ldr	r2, [r3, #12]
+ 251 0028 22F00C02 		bic	r2, r2, #12
+ 252 002c DA60     		str	r2, [r3, #12]
  174:Src/ADCsrc.c  **** 
  175:Src/ADCsrc.c  **** /*set firsrt bit of ASCR to close analog switch */
  176:Src/ADCsrc.c  **** GPIOA->ASCR |= GPIO_ASCR_ASC1;
- 257              		.loc 1 176 0
- 258 002e DA6A     		ldr	r2, [r3, #44]
- 259 0030 42F00202 		orr	r2, r2, #2
- 260 0034 DA62     		str	r2, [r3, #44]
- 261 0036 7047     		bx	lr
- 262              	.L14:
- 263              		.align	2
- 264              	.L13:
- 265 0038 00100240 		.word	1073876992
- 266              		.cfi_endproc
- 267              	.LFE125:
- 269              		.section	.text.TIM4_Init,"ax",%progbits
- 270              		.align	2
- 271              		.global	TIM4_Init
- 272              		.thumb
- 273              		.thumb_func
- 275              	TIM4_Init:
- 276              	.LFB126:
+ 253              		.loc 1 176 0
+ 254 002e DA6A     		ldr	r2, [r3, #44]
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 9
+
+
+ 255 0030 42F00202 		orr	r2, r2, #2
+ 256 0034 DA62     		str	r2, [r3, #44]
+ 257 0036 7047     		bx	lr
+ 258              	.L14:
+ 259              		.align	2
+ 260              	.L13:
+ 261 0038 00100240 		.word	1073876992
+ 262              		.cfi_endproc
+ 263              	.LFE125:
+ 265              		.section	.text.TIM4_Init,"ax",%progbits
+ 266              		.align	2
+ 267              		.global	TIM4_Init
+ 268              		.thumb
+ 269              		.thumb_func
+ 271              	TIM4_Init:
+ 272              	.LFB126:
  177:Src/ADCsrc.c  **** 
  178:Src/ADCsrc.c  **** 
  179:Src/ADCsrc.c  **** 
@@ -512,40 +507,40 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
  184:Src/ADCsrc.c  **** 
  185:Src/ADCsrc.c  **** void TIM4_Init(void)
  186:Src/ADCsrc.c  **** {
- 277              		.loc 1 186 0
- 278              		.cfi_startproc
- 279              		@ args = 0, pretend = 0, frame = 0
- 280              		@ frame_needed = 0, uses_anonymous_args = 0
- 281              		@ link register save eliminated.
+ 273              		.loc 1 186 0
+ 274              		.cfi_startproc
+ 275              		@ args = 0, pretend = 0, frame = 0
+ 276              		@ frame_needed = 0, uses_anonymous_args = 0
+ 277              		@ link register save eliminated.
  187:Src/ADCsrc.c  ****   /*Enable Clock for Timer 4 */
  188:Src/ADCsrc.c  ****   RCC->APB1ENR1 |= RCC_APB1ENR1_TIM4EN;
- 282              		.loc 1 188 0
- 283 0000 184A     		ldr	r2, .L16
- 284 0002 936D     		ldr	r3, [r2, #88]
- 285 0004 43F00403 		orr	r3, r3, #4
- 286 0008 9365     		str	r3, [r2, #88]
+ 278              		.loc 1 188 0
+ 279 0000 184A     		ldr	r2, .L16
+ 280 0002 936D     		ldr	r3, [r2, #88]
+ 281 0004 43F00403 		orr	r3, r3, #4
+ 282 0008 9365     		str	r3, [r2, #88]
  189:Src/ADCsrc.c  **** 
  190:Src/ADCsrc.c  ****   /*clear edge-aligned mode */
  191:Src/ADCsrc.c  ****   TIM4->CR1 &= ~TIM_CR1_CMS;
- 287              		.loc 1 191 0
- 288 000a 174B     		ldr	r3, .L16+4
- 289 000c 1A68     		ldr	r2, [r3]
- 290 000e 22F06002 		bic	r2, r2, #96
- 291 0012 1A60     		str	r2, [r3]
+ 283              		.loc 1 191 0
+ 284 000a 174B     		ldr	r3, .L16+4
+ 285 000c 1A68     		ldr	r2, [r3]
+ 286 000e 22F06002 		bic	r2, r2, #96
+ 287 0012 1A60     		str	r2, [r3]
  192:Src/ADCsrc.c  **** 
  193:Src/ADCsrc.c  ****   /*Counting Direction up counting */
  194:Src/ADCsrc.c  ****   TIM4->CR1 &= ~TIM_CR1_DIR;
- 292              		.loc 1 194 0
- 293 0014 1A68     		ldr	r2, [r3]
- 294 0016 22F01002 		bic	r2, r2, #16
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 10
-
-
- 295 001a 1A60     		str	r2, [r3]
+ 288              		.loc 1 194 0
+ 289 0014 1A68     		ldr	r2, [r3]
+ 290 0016 22F01002 		bic	r2, r2, #16
+ 291 001a 1A60     		str	r2, [r3]
  195:Src/ADCsrc.c  **** 
  196:Src/ADCsrc.c  ****   /*Master Mode Selection */
  197:Src/ADCsrc.c  ****   /*000: UG bit from the EGR register is used as trigger output (TRGO) */
  198:Src/ADCsrc.c  ****   /*001: Enable - The counter enable signal is used as trigger output (TRGO) */
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 10
+
+
  199:Src/ADCsrc.c  ****   /*010: Update - the update event is selected as trigger output (TRGO) */
  200:Src/ADCsrc.c  ****   /*011: Compare pulse - the trigger output send a positive when CC1IF flag */
  201:Src/ADCsrc.c  ****   /* CC1IF flag is to be set (Even if it was already high) */
@@ -556,79 +551,79 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
  206:Src/ADCsrc.c  **** 
  207:Src/ADCsrc.c  ****   /*Clear mster mode select */
  208:Src/ADCsrc.c  ****   TIM4->CR2 &= ~TIM_CR2_MMS;
- 296              		.loc 1 208 0
- 297 001c 5A68     		ldr	r2, [r3, #4]
- 298 001e 22F07002 		bic	r2, r2, #112
- 299 0022 5A60     		str	r2, [r3, #4]
+ 292              		.loc 1 208 0
+ 293 001c 5A68     		ldr	r2, [r3, #4]
+ 294 001e 22F07002 		bic	r2, r2, #112
+ 295 0022 5A60     		str	r2, [r3, #4]
  209:Src/ADCsrc.c  **** 
  210:Src/ADCsrc.c  ****   /*Select 100, OC1REF as trigger */
  211:Src/ADCsrc.c  ****   TIM4->CR2 |= TIM_CR2_MMS_2;
- 300              		.loc 1 211 0
- 301 0024 5A68     		ldr	r2, [r3, #4]
- 302 0026 42F04002 		orr	r2, r2, #64
- 303 002a 5A60     		str	r2, [r3, #4]
+ 296              		.loc 1 211 0
+ 297 0024 5A68     		ldr	r2, [r3, #4]
+ 298 0026 42F04002 		orr	r2, r2, #64
+ 299 002a 5A60     		str	r2, [r3, #4]
  212:Src/ADCsrc.c  **** 
  213:Src/ADCsrc.c  ****   /*OC1M: Output compare 1 mode */
  214:Src/ADCsrc.c  ****   TIM4->CCMR1 &= ~TIM_CCMR1_OC1M;
- 304              		.loc 1 214 0
- 305 002c 9A69     		ldr	r2, [r3, #24]
- 306 002e 22F48032 		bic	r2, r2, #65536
- 307 0032 22F07002 		bic	r2, r2, #112
- 308 0036 9A61     		str	r2, [r3, #24]
+ 300              		.loc 1 214 0
+ 301 002c 9A69     		ldr	r2, [r3, #24]
+ 302 002e 22F48032 		bic	r2, r2, #65536
+ 303 0032 22F07002 		bic	r2, r2, #112
+ 304 0036 9A61     		str	r2, [r3, #24]
  215:Src/ADCsrc.c  ****   /*0110 PWM mode 1*/
  216:Src/ADCsrc.c  ****   TIM4->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2;
- 309              		.loc 1 216 0
- 310 0038 9A69     		ldr	r2, [r3, #24]
- 311 003a 42F06002 		orr	r2, r2, #96
- 312 003e 9A61     		str	r2, [r3, #24]
+ 305              		.loc 1 216 0
+ 306 0038 9A69     		ldr	r2, [r3, #24]
+ 307 003a 42F06002 		orr	r2, r2, #96
+ 308 003e 9A61     		str	r2, [r3, #24]
  217:Src/ADCsrc.c  **** 
  218:Src/ADCsrc.c  ****   /*Timer driving frequency = 80MHz/(1+PSC) = 80M/(1+7)= 10MHz */
  219:Src/ADCsrc.c  ****   /*Trigger frequency 10MHz / (1 + ARR)= 10KHz */
  220:Src/ADCsrc.c  ****   TIM4->PSC = 7;
- 313              		.loc 1 220 0
- 314 0040 0722     		movs	r2, #7
- 315 0042 9A62     		str	r2, [r3, #40]
+ 309              		.loc 1 220 0
+ 310 0040 0722     		movs	r2, #7
+ 311 0042 9A62     		str	r2, [r3, #40]
  221:Src/ADCsrc.c  ****   TIM4->ARR = 999;
- 316              		.loc 1 221 0
- 317 0044 40F2E732 		movw	r2, #999
- 318 0048 DA62     		str	r2, [r3, #44]
+ 312              		.loc 1 221 0
+ 313 0044 40F2E732 		movw	r2, #999
+ 314 0048 DA62     		str	r2, [r3, #44]
  222:Src/ADCsrc.c  ****   /*Duty ratio of 50% */
  223:Src/ADCsrc.c  ****   TIM4->CCR1 = 500;
- 319              		.loc 1 223 0
- 320 004a 4FF4FA72 		mov	r2, #500
- 321 004e 5A63     		str	r2, [r3, #52]
+ 315              		.loc 1 223 0
+ 316 004a 4FF4FA72 		mov	r2, #500
+ 317 004e 5A63     		str	r2, [r3, #52]
  224:Src/ADCsrc.c  **** 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 11
-
-
  225:Src/ADCsrc.c  ****   /*OC1 Signal is output */
  226:Src/ADCsrc.c  ****   TIM4->CCER |= TIM_CCER_CC1E;
- 322              		.loc 1 226 0
- 323 0050 1A6A     		ldr	r2, [r3, #32]
- 324 0052 42F00102 		orr	r2, r2, #1
- 325 0056 1A62     		str	r2, [r3, #32]
+ 318              		.loc 1 226 0
+ 319 0050 1A6A     		ldr	r2, [r3, #32]
+ 320 0052 42F00102 		orr	r2, r2, #1
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 11
+
+
+ 321 0056 1A62     		str	r2, [r3, #32]
  227:Src/ADCsrc.c  **** 
  228:Src/ADCsrc.c  ****   /*Enable Timer */
  229:Src/ADCsrc.c  ****   TIM4->CR1 |= TIM_CR1_CEN;
- 326              		.loc 1 229 0
- 327 0058 1A68     		ldr	r2, [r3]
- 328 005a 42F00102 		orr	r2, r2, #1
- 329 005e 1A60     		str	r2, [r3]
- 330 0060 7047     		bx	lr
- 331              	.L17:
- 332 0062 00BF     		.align	2
- 333              	.L16:
- 334 0064 00100240 		.word	1073876992
- 335 0068 00080040 		.word	1073743872
- 336              		.cfi_endproc
- 337              	.LFE126:
- 339              		.section	.text.ADC_Calibration,"ax",%progbits
- 340              		.align	2
- 341              		.global	ADC_Calibration
- 342              		.thumb
- 343              		.thumb_func
- 345              	ADC_Calibration:
- 346              	.LFB127:
+ 322              		.loc 1 229 0
+ 323 0058 1A68     		ldr	r2, [r3]
+ 324 005a 42F00102 		orr	r2, r2, #1
+ 325 005e 1A60     		str	r2, [r3]
+ 326 0060 7047     		bx	lr
+ 327              	.L17:
+ 328 0062 00BF     		.align	2
+ 329              	.L16:
+ 330 0064 00100240 		.word	1073876992
+ 331 0068 00080040 		.word	1073743872
+ 332              		.cfi_endproc
+ 333              	.LFE126:
+ 335              		.section	.text.ADC_Calibration,"ax",%progbits
+ 336              		.align	2
+ 337              		.global	ADC_Calibration
+ 338              		.thumb
+ 339              		.thumb_func
+ 341              	ADC_Calibration:
+ 342              	.LFB127:
  230:Src/ADCsrc.c  **** }
  231:Src/ADCsrc.c  **** 
  232:Src/ADCsrc.c  **** 
@@ -637,93 +632,93 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
  235:Src/ADCsrc.c  **** /* The function described below calibrates the ADC after wake up*/
  236:Src/ADCsrc.c  **** 
  237:Src/ADCsrc.c  **** void ADC_Calibration(void){
- 347              		.loc 1 237 0
- 348              		.cfi_startproc
- 349              		@ args = 0, pretend = 0, frame = 0
- 350              		@ frame_needed = 0, uses_anonymous_args = 0
- 351              		@ link register save eliminated.
+ 343              		.loc 1 237 0
+ 344              		.cfi_startproc
+ 345              		@ args = 0, pretend = 0, frame = 0
+ 346              		@ frame_needed = 0, uses_anonymous_args = 0
+ 347              		@ link register save eliminated.
  238:Src/ADCsrc.c  ****   /*Make sure the ADC is off*/
  239:Src/ADCsrc.c  ****   ADC1 -> CR &= ~ADC_CR_ADEN;
- 352              		.loc 1 239 0
- 353 0000 0B4A     		ldr	r2, .L21
- 354 0002 9368     		ldr	r3, [r2, #8]
- 355 0004 23F00103 		bic	r3, r3, #1
- 356 0008 9360     		str	r3, [r2, #8]
- 357              	.L19:
+ 348              		.loc 1 239 0
+ 349 0000 0B4A     		ldr	r2, .L21
+ 350 0002 9368     		ldr	r3, [r2, #8]
+ 351 0004 23F00103 		bic	r3, r3, #1
+ 352 0008 9360     		str	r3, [r2, #8]
+ 353              	.L19:
  240:Src/ADCsrc.c  **** 
  241:Src/ADCsrc.c  ****   /*Wait until ADRDY is reset by the hardware*/
  242:Src/ADCsrc.c  ****   while((ADC1 -> ISR & ADC_ISR_ADRDY) == ADC_ISR_ADRDY);
- 358              		.loc 1 242 0 discriminator 1
- 359 000a 094B     		ldr	r3, .L21
- 360 000c 1B68     		ldr	r3, [r3]
- 361 000e 13F0010F 		tst	r3, #1
- 362 0012 FAD1     		bne	.L19
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 12
-
-
+ 354              		.loc 1 242 0 discriminator 1
+ 355 000a 094B     		ldr	r3, .L21
+ 356 000c 1B68     		ldr	r3, [r3]
+ 357 000e 13F0010F 		tst	r3, #1
+ 358 0012 FAD1     		bne	.L19
  243:Src/ADCsrc.c  **** 
  244:Src/ADCsrc.c  ****   /*Calibrate for single ended ADC input*/
  245:Src/ADCsrc.c  ****   /*ADCALDIF = 0: Single ended, = 1 for differential input*/
  246:Src/ADCsrc.c  ****   ADC1 -> CR &= ~ADC_CR_ADCALDIF;
- 363              		.loc 1 246 0
- 364 0014 064B     		ldr	r3, .L21
- 365 0016 9A68     		ldr	r2, [r3, #8]
- 366 0018 22F08042 		bic	r2, r2, #1073741824
- 367 001c 9A60     		str	r2, [r3, #8]
+ 359              		.loc 1 246 0
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 12
+
+
+ 360 0014 064B     		ldr	r3, .L21
+ 361 0016 9A68     		ldr	r2, [r3, #8]
+ 362 0018 22F08042 		bic	r2, r2, #1073741824
+ 363 001c 9A60     		str	r2, [r3, #8]
  247:Src/ADCsrc.c  **** 
  248:Src/ADCsrc.c  ****   /*ADC Calibration can only happen when ADEN = 0 which is disabled*/
  249:Src/ADCsrc.c  ****   /*Each ADC provides automatic calibration procedure*/
  250:Src/ADCsrc.c  ****   ADC1 -> CR |= ADC_CR_ADCAL;
- 368              		.loc 1 250 0
- 369 001e 9A68     		ldr	r2, [r3, #8]
- 370 0020 42F00042 		orr	r2, r2, #-2147483648
- 371 0024 9A60     		str	r2, [r3, #8]
- 372              	.L20:
+ 364              		.loc 1 250 0
+ 365 001e 9A68     		ldr	r2, [r3, #8]
+ 366 0020 42F00042 		orr	r2, r2, #-2147483648
+ 367 0024 9A60     		str	r2, [r3, #8]
+ 368              	.L20:
  251:Src/ADCsrc.c  **** 
  252:Src/ADCsrc.c  ****   /*ADCAL stays at 1 during the entire calibration process*/
  253:Src/ADCsrc.c  ****   /*cleared by hardware after calibration is complete, needs to wait*/
  254:Src/ADCsrc.c  ****   while((ADC1 -> CR & ADC_CR_ADCAL) == ADC_CR_ADCAL);
- 373              		.loc 1 254 0 discriminator 1
- 374 0026 024B     		ldr	r3, .L21
- 375 0028 9B68     		ldr	r3, [r3, #8]
- 376 002a 002B     		cmp	r3, #0
- 377 002c FBDB     		blt	.L20
+ 369              		.loc 1 254 0 discriminator 1
+ 370 0026 024B     		ldr	r3, .L21
+ 371 0028 9B68     		ldr	r3, [r3, #8]
+ 372 002a 002B     		cmp	r3, #0
+ 373 002c FBDB     		blt	.L20
  255:Src/ADCsrc.c  **** 
  256:Src/ADCsrc.c  **** }
- 378              		.loc 1 256 0
- 379 002e 7047     		bx	lr
- 380              	.L22:
- 381              		.align	2
- 382              	.L21:
- 383 0030 00000450 		.word	1342439424
- 384              		.cfi_endproc
- 385              	.LFE127:
- 387              		.text
- 388              	.Letext0:
- 389              		.file 2 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_ty
- 390              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h"
- 391              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
- 392              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 13
+ 374              		.loc 1 256 0
+ 375 002e 7047     		bx	lr
+ 376              	.L22:
+ 377              		.align	2
+ 378              	.L21:
+ 379 0030 00000450 		.word	1342439424
+ 380              		.cfi_endproc
+ 381              	.LFE127:
+ 383              		.text
+ 384              	.Letext0:
+ 385              		.file 2 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_ty
+ 386              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h"
+ 387              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
+ 388              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ADCsrc.c
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:21     .text.ADC1_Wakeup:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:26     .text.ADC1_Wakeup:0000000000000000 ADC1_Wakeup
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:70     .text.ADC1_Wakeup:000000000000002c $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:75     .text.ADC1_Init:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:80     .text.ADC1_Init:0000000000000000 ADC1_Init
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:216    .text.ADC1_Init:00000000000000f4 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:223    .text.GPIO_Init:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:228    .text.GPIO_Init:0000000000000000 GPIO_Init
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:265    .text.GPIO_Init:0000000000000038 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:270    .text.TIM4_Init:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:275    .text.TIM4_Init:0000000000000000 TIM4_Init
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:334    .text.TIM4_Init:0000000000000064 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:340    .text.ADC_Calibration:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:345    .text.ADC_Calibration:0000000000000000 ADC_Calibration
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:383    .text.ADC_Calibration:0000000000000030 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:21     .text.ADC1_Wakeup:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:26     .text.ADC1_Wakeup:0000000000000000 ADC1_Wakeup
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:70     .text.ADC1_Wakeup:000000000000002c $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:75     .text.ADC1_Init:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:80     .text.ADC1_Init:0000000000000000 ADC1_Init
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:212    .text.ADC1_Init:00000000000000ec $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:219    .text.GPIO_Init:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:224    .text.GPIO_Init:0000000000000000 GPIO_Init
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:261    .text.GPIO_Init:0000000000000038 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:266    .text.TIM4_Init:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:271    .text.TIM4_Init:0000000000000000 TIM4_Init
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:330    .text.TIM4_Init:0000000000000064 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:336    .text.ADC_Calibration:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:341    .text.ADC_Calibration:0000000000000000 ADC_Calibration
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccs2HeHP.s:379    .text.ADC_Calibration:0000000000000030 $d
                      .debug_frame:0000000000000010 $d
 
 NO UNDEFINED SYMBOLS

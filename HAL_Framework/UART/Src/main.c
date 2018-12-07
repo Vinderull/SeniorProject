@@ -55,10 +55,10 @@
 /* USER CODE BEGIN PV */
 #define SAMPLE_SIZE 1000
 
-uint32_t Buffer_Ping[SAMPLE_SIZE];
-uint32_t Buffer_Pong[SAMPLE_SIZE];
-uint32_t *pReadyWrite = Buffer_Ping;
-uint32_t *pReadyProcess = Buffer_Pong;
+volatile uint32_t Buffer_Ping[SAMPLE_SIZE];
+volatile uint32_t Buffer_Pong[SAMPLE_SIZE];
+volatile uint32_t *pReadyWrite = Buffer_Ping;
+volatile uint32_t *pReadyProcess = Buffer_Pong;
 volatile uint32_t ADC_DMA_DONE = 0;
 /* Private variables ---------------------------------------------------------*/
 
@@ -74,7 +74,7 @@ void DMA1_Channel1_IRQHandler(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-float vsense = 3.3/1023.0;
+float vsense = 3.3/4095.0;
 
 /* USER CODE END 0 */
 
@@ -88,6 +88,7 @@ int main(void)
   /* USER CODE BEGIN 1 */
   char Message[40] = "Thing\n\r";
   int i = 0;
+  float volt = 0.0;
 
   /* USER CODE END 1 */
 
@@ -129,7 +130,6 @@ int main(void)
   DMA_Init(1);
 
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
-    sprintf(Message, "Thing6\n\r");
 
   /* USER CODE END 2 */
 
@@ -138,21 +138,22 @@ int main(void)
   //ADC1->CR |= ADC_CR_ADSTART;
   while (1)
   {
-    sprintf(Message, "The ADC is %d\n\r",(ADC1->DR)*vsense);
-    HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+  //  sprintf(Message, "The ADC is %d\n\r",(ADC1->DR)*vsense);
+    //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
     while(ADC_DMA_DONE == 0);
 
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
   /*Save sensor reading to string */
-  sprintf(Message, "The Sensor is %f\n\r", ((float) pReadyProcess[i]));
+  volt = pReadyProcess[0] * vsense;
+  gcvt(volt, 5, Message);
+  //sprintf(Message, "The Sensor is %d\n\r", pReadyProcess[0]);
 
   /*transmit sring over usart2 */
-  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
   ADC_DMA_DONE = 0;
-  //ADC1->CR |= ADC_CR_ADSTART;
-  //ADC1->ISR |= ADC_ISR_OVR;
+  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 
@@ -319,7 +320,7 @@ if((DMA1->ISR & DMA_ISR_TCIF1) == DMA_ISR_TCIF1){
   //write 1 to clear flag
   DMA1->IFCR |= DMA_IFCR_CTCIF1;
 
-  if (pReadyWrite == Buffer_Pong){
+  if (pReadyWrite == Buffer_Ping){
     pReadyWrite = Buffer_Pong;
     pReadyProcess = Buffer_Ping;
   }
