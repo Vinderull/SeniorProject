@@ -44,12 +44,22 @@
 #include "ADCsrc.h"
 
 /* USER CODE BEGIN Includes */
+#include <stdint.h>
+
+
 
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+#define SAMPLE_SIZE 1000
+
+uint32_t Buffer_Ping[SAMPLE_SIZE];
+uint32_t Buffer_Pong[SAMPLE_SIZE];
+uint32_t *pReadyWrite = Buffer_Ping;
+uint32_t *pReadyProcess = Buffer_Pong;
+volatile uint32_t ADC_DMA_DONE = 0;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE END PV */
@@ -59,7 +69,8 @@ void SystemClock_Config(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
+void DMA_Init(int arg);
+void DMA1_Channel1_IRQHandler(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -99,19 +110,36 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
   /* USER CODE BEGIN 2 */
   GPIO_Init();
+  sprintf(Message, "Thing1\n\r");
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+    sprintf(Message, "Thing2\n\r");
   TIM4_Init();
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+  sprintf(Message, "Thing3\n\r");
+
   ADC_Calibration();
-  ADC1_init();
-  DMA_Init(1000);
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+    sprintf(Message, "Thing4\n\r");
+  ADC1_Init();
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+    sprintf(Message, "Thing5\n\r");
+  DMA_Init(1);
+
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+    sprintf(Message, "Thing6\n\r");
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  //ADC1->CR |= ADC_CR_ADSTART;
   while (1)
   {
+    sprintf(Message, "The ADC is %d\n\r",(ADC1->DR)*vsense);
+    HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
     while(ADC_DMA_DONE == 0);
 
   /* USER CODE END WHILE */
@@ -123,6 +151,8 @@ int main(void)
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
   ADC_DMA_DONE = 0;
+  //ADC1->CR |= ADC_CR_ADSTART;
+  //ADC1->ISR |= ADC_ISR_OVR;
   }
   /* USER CODE END 3 */
 
@@ -191,6 +221,121 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+//DMA Init
+
+
+void DMA_Init(int arg)
+{
+//arg number of conversions
+//uint16_t ADC_Results[arg];
+
+/* Enable DMA1 Clock */
+RCC->AHB1ENR |= RCC_AHB1ENR_DMA1EN;
+
+/*DMA1 channel 1 config for ADC1 */
+//disable memory to memory mode
+DMA1_Channel1->CCR &= ~DMA_CCR_MEM2MEM;
+
+//Channel Priorty level
+// 00 = low, 01 = medium, 10 = high, 11 = very high
+//set to high priority
+DMA1_Channel1->CCR &= ~DMA_CCR_PL;
+DMA1_Channel1->CCR |= DMA_CCR_PL_1;
+
+//peripheral size
+//00 = 8bit, 01 = 16-bit, 10 = 32 bit, 11 = reserved
+DMA1_Channel1->CCR &= ~DMA_CCR_PSIZE;
+DMA1_Channel1->CCR |= DMA_CCR_PSIZE_0;
+
+//Memory size
+//00 = 8bit, 01 = 16-bit, 10 = 32 bit, 11 = reserved
+DMA1_Channel1->CCR &= ~DMA_CCR_MSIZE;
+DMA1_Channel1->CCR |= DMA_CCR_MSIZE_0;
+
+//peripheral increment mode
+//0 = disabled, 1 = enabled
+DMA1_Channel1->CCR &= ~DMA_CCR_PINC;
+
+
+//memory increment mode
+//0 = disabled, 1 = enabled
+DMA1_Channel1->CCR &= ~DMA_CCR_MINC;
+DMA1_Channel1->CCR |= DMA_CCR_MINC;
+
+//Circular
+// 0 = disabled, 1 = enabled
+DMA1_Channel1->CCR |= DMA_CCR_CIRC;
+
+//Data trasnfer rate
+//O read from peripheral
+//1 read from memory
+DMA1_Channel1->CCR &= ~DMA_CCR_DIR;
+
+//number of ADC results to transfer
+DMA1_Channel1->CNDTR = arg;
+
+//peripheral address registers
+DMA1_Channel1->CPAR = (uint32_t) &(ADC1->DR);
+
+//memory address registers
+//ping pong buffer
+DMA1_Channel1->CMAR = (uint32_t) pReadyProcess;
+
+//transfer complete interrupt enable
+DMA1_Channel1->CCR |= DMA_CCR_TCIE;
+
+//disable half complete
+DMA1_Channel1->CCR &= ~DMA_CCR_HTIE;
+
+//set DMA interrupt priority
+NVIC_SetPriority(DMA1_Channel1_IRQn, 0);
+
+//enable DMA INTERRUPT
+NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+
+
+//DMA Channel selection
+//map DMA channel 1 to ADC1
+//0000: Channel 1 mapped to ADC1
+DMA1_CSELR->CSELR &= ~DMA_CSELR_C1S;
+
+//Enable DMA channel
+DMA1_Channel1->CCR |= DMA_CCR_EN;
+
+}
+
+
+
+
+
+
+//*ADC DMA IRQ handler*/
+
+void DMA1_Channel1_IRQHandler(void){
+
+if((DMA1->ISR & DMA_ISR_TCIF1) == DMA_ISR_TCIF1){
+
+  //write 1 to clear flag
+  DMA1->IFCR |= DMA_IFCR_CTCIF1;
+
+  if (pReadyWrite == Buffer_Pong){
+    pReadyWrite = Buffer_Pong;
+    pReadyProcess = Buffer_Ping;
+  }
+  else{
+    pReadyWrite = Buffer_Ping;
+    pReadyProcess = Buffer_Pong;
+  }
+
+  //DMA memory address
+  DMA1_Channel1->CMAR = (uint32_t) pReadyWrite;
+  ADC_DMA_DONE = 1;
+ }
+
+//clear flags
+DMA1->IFCR |= (DMA_IFCR_CHTIF1 | DMA_IFCR_CGIF1 | DMA_IFCR_CTEIF1);
+}
 
 /* USER CODE END 4 */
 

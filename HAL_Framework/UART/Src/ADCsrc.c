@@ -3,13 +3,6 @@
 #include "ADCsrc.h"
 #include "stm32l476xx.h"
 
-#DEFINE SAMPLE_SIZE 1000
-
-uint32_t Buffer_Ping[SAMPLE_SIZE];
-uint32_t Buffer_Pong[SAMPLE_SIZE];
-uint32_t *pReadyWrite = Buffer_Ping;
-uint32_t *pReadyProcess = Buffer_Pong;
-volatile uint32_t ADC_DMA_DONE = 0;
 
 ///ADC1 Initialization
 /// NOTE: ADC needs HSI
@@ -21,6 +14,11 @@ void ADC1_Init(void)
 
   /*disable ADC1 by clearing */
   ADC1->CR &= ~ADC_CR_ADEN;
+
+
+  //select TIm4_TRGO
+  ADC1->CFGR &= ~ADC_CFGR_EXTSEL;
+  ADC1->CFGR |= ADC_CFGR_EXTSEL_3 | ADC_CFGR_EXTSEL_2;
 
   /*Enable I/O analog switches voltage booster */
   ADC123_COMMON->CCR |= SYSCFG_CFGR1_BOOSTEN;
@@ -74,6 +72,9 @@ has a 50% duty cycle.
   /*Select nnumber of conversions */
   ADC1->SQR1 &= ~(ADC_SQR1_L);
 
+  //select channel 6 for conversions
+  ADC1->SQR1 |= ADC_SQR1_SQ1_2 | ADC_SQR1_SQ1_1;
+
   /*Configure channel 6 as single ended */
   ADC1->DIFSEL &= ~ADC_DIFSEL_DIFSEL_6;
 
@@ -93,14 +94,31 @@ has a 50% duty cycle.
   ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_1;
 
   /*Set ADC in discontinuous mode */
+  // 0 = discontinuous
+  // 1 = continuous
   ADC1->CFGR &= ~ADC_CFGR_CONT;
+  ADC1->CFGR |= ADC_CFGR_CONT;
+
+  // configure ADC for DMA in circular mode
+  ADC1->CFGR |= ADC_CFGR_DMACFG;
+  //DMA enable?
+  ADC1->CFGR |= ADC_CFGR_DMAEN;
 
   /*Select software trigger */
+  //select rising edge of hardware triggers
+  // 00: software triggers
+  // 01: hardware trigger, rising edge
+  // 10 HW trig, falling edge
+  // 11:HW trigg, both
   ADC1->CFGR &= ~ADC_CFGR_EXTEN;
+  ADC1->CFGR |= ADC_CFGR_EXTEN_0;
+
+  //trigger becomes immediately effective once software starts ADC
+  ADC1->CR |= ADC_CR_ADSTART;
 
   /*enable ADC1 */
   ADC1->CR &= ~ADC_CR_ADEN;
-  ADC->CR |= ADC_CR_ADEN;
+  ADC1->CR |= ADC_CR_ADEN;
 
   /*wait for ADC1 to be ready */
   while(!(ADC1->ISR & ADC_ISR_ADRDY));
@@ -113,14 +131,14 @@ void ADC1_Wakeup(void){
   int wait_time = 0;
   /*Start ADC operations: DEEPPWD = 0: ADC not in deep pwoer mode*/
   /*DEEPPWD = 1: ADC in deep power mode (reset state) */
-  if ((ADC1 -> CR & ADC_CR_DEEPPWD) == ADC_CR_DEEPPWD){
-    ADC1 -> CR &= ~ADC_CR_DEEPPWD;
+  if ((ADC1->CR & ADC_CR_DEEPPWD) == ADC_CR_DEEPPWD){
+    ADC1->CR &= ~ADC_CR_DEEPPWD;
   }
 
   /* Enable the ADC voltage Regulator */
-  /* must enable before calibration of ADC, use software
-  to wait for regulator startup time */
-  ADC1 -> CR |= ADC_CR_ADVREGEN;
+  /* must enable before calibration of ADC, use software */
+  /* to wait for regulator startup time */
+  ADC1->CR |= ADC_CR_ADVREGEN;
 
   /* wait for ADC regulator */
   wait_time = 20 * (80000000 / 100000);
@@ -129,83 +147,6 @@ void ADC1_Wakeup(void){
   }
 
 }
-//DMA Init
-
-
-void DMA_Init(int arg)
-{
-//arg number of conversions
-uint16_t ADC_Results[arg];
-
-/* Enable DMA1 Clock */
-RCC->AHB1ENR |= RCC_AHB1ENR_DMA1EN;
-
-/*DMA1 channel 1 config for ADC1 */
-//disable memory to memory mode
-DMA1_Channel1->CCR &= ~DMA_CCR_MEM2MEM;
-
-//Channel Priorty level
-// 00 = low, 01 = medium, 10 = high, 11 = very high
-//set to high priority
-DMA1_Channel1->CCR &= ~DMA_CCR_PL;
-DMA1_Channel1->CCR |= DMA_CCR_PL_1;
-
-//peripheral size
-//00 = 8bit, 01 = 16-bit, 10 = 32 bit, 11 = reserved
-DMA1_Channel1->CCR &= ~DMA_CCR_PSIZE;
-DMA1_Channel1->CCR |= DMA_CCR_PSIZE_0;
-
-//Memory size
-//00 = 8bit, 01 = 16-bit, 10 = 32 bit, 11 = reserved
-DMA1_Channel1->CCR &= ~DMA_CCR_MSIZE;
-DMA1_Channel1->CCR |= DMA_CCR_MSIZE_0;
-
-//peripheral increment mode
-//0 = disabled, 1 = enabled
-DMA1_Channel1->CCR &= ~DMA_CCR_PINC;
-
-
-//memory increment mode
-//0 = disabled, 1 = enabled
-DMA1_Channel1->CCR &= ~DMA_CCR_MINC;
-DMA1_Channel1->CCR |= DMA_CCR_MINC;
-
-//Circular
-// 0 = disabled, 1 = enabled
-DMA1_Channel1->CCR |= DMA_CCR_CIRC;
-
-//Data trasnfer rate
-//O read from peripheral
-//1 read from memory
-DMA1_Channel1->CCR &= ~DMA_CCR_DIR;
-
-//number of ADC results to transfer
-DMA1_Channel1->CNDTR = arg;
-
-//peripheral address registers
-DMA1_Channel1->CPAR = (uint32_t) &(ADC1->DR);
-
-//memory address registers
-//ping pong buffer
-DMA1_Channel1->CMAR = (uint32_t) pReadyProcess;
-
-//transfer complete interrupt enable
-DMA1_Channel1->CCR |= DMA_CCR_TCIE;
-
-//enable DMA INTERRUPT
-NVIC_EnableIRQ(DMA1_Channel1_IRQn);
-
-
-//DMA Channel selection
-//map DMA channel 1 to ADC1
-//0000: Channel 1 mapped to ADC1
-DMA1_CSELR->CSELR &= ~DMA_CSELR_C1S;
-
-//Enable DMA channel
-DMA1_Channel1->CCR |= DMA_CCR_EN;
-
-}
-
 
 
 
@@ -224,11 +165,15 @@ RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
 /*SET PA1 as analog*/
 /*00 = digital input, 01 = digital Output*/
 /*10 = alternate function, 11 = analog (default) */
-GPIOA->MODER &= ~(3UL<<4);
-GPIOA->MODER |= GPIO_MODER_MODE0_0 | GPIO_MODER_MODE0_1;
+GPIOA->MODER &= ~GPIO_MODER_MODE1;
+GPIOA->MODER |= GPIO_MODER_MODE1_0 | GPIO_MODER_MODE1_1;
+
+
+//clear pupdr
+GPIOA->PUPDR &= ~GPIO_PUPDR_PUPD1;
 
 /*set firsrt bit of ASCR to close analog switch */
-GPIO->ASCR |= GPIO_ASCR_ASC1;
+GPIOA->ASCR |= GPIO_ASCR_ASC1;
 
 
 
@@ -240,7 +185,7 @@ GPIO->ASCR |= GPIO_ASCR_ASC1;
 void TIM4_Init(void)
 {
   /*Enable Clock for Timer 4 */
-  RCC->APB1ENR1 |= RCC_APB1ENR_TIM4EN;
+  RCC->APB1ENR1 |= RCC_APB1ENR1_TIM4EN;
 
   /*clear edge-aligned mode */
   TIM4->CR1 &= ~TIM_CR1_CMS;
@@ -253,14 +198,14 @@ void TIM4_Init(void)
   /*001: Enable - The counter enable signal is used as trigger output (TRGO) */
   /*010: Update - the update event is selected as trigger output (TRGO) */
   /*011: Compare pulse - the trigger output send a positive when CC1IF flag */
-  /* CC1IF flag is to be set (Even if it was already high)
+  /* CC1IF flag is to be set (Even if it was already high) */
   /*100: Compare - OC1REF signal is used as trigger output (TRGO)
   /*101: Compare- OC2REF signal is used as trigger output*/
   /*110: Compare - OC3REF signal "" */
   /*111: Compare - OC4REF signal ""*/
 
   /*Clear mster mode select */
-  TIM4->CR2 &= ~TIM_CR2_MMS
+  TIM4->CR2 &= ~TIM_CR2_MMS;
 
   /*Select 100, OC1REF as trigger */
   TIM4->CR2 |= TIM_CR2_MMS_2;
@@ -284,46 +229,21 @@ void TIM4_Init(void)
   TIM4->CR1 |= TIM_CR1_CEN;
 }
 
-//*ADC DMA IRQ handler*/
 
-void DMA1_IRQHandler(void){
-
-if((DMA1->ISR & DMA_ISR_TCIF1) == DMA_ISR_TCIF1){
-
-  //write 1 to clear flag
-  DMA->IFCR |= DMA_IFCR_CTCIF1;
-
-  if (pReadyWrite = Buffer_Pong){
-    pReadyWrite = Buffer_Pong;
-    pReadyProcess = Buffer_Ping;
-  }
-  else{
-    pReadyWrite = Buffer_Ping;
-    pReadyProcess = BUffer_Pong;
-  }
-
-  //DMA memory address
-  DMA1_Channel1->CMAR = (uint32_t) pReadyWrite;
-  ADC_DMA_DONE = 1;
- }
-
-//clear flags
-DMA1->IFCR |= (DMA_IFCR_CHTIF1 | DMA_IFCR_CGIF1 | DMA_IFCR_CTEIF1);
-}
 
 
 /* The function described below calibrates the ADC after wake up*/
 
 void ADC_Calibration(void){
   /*Make sure the ADC is off*/
-  ADC1 -> CR &= ~ADC_CR_ADEN
+  ADC1 -> CR &= ~ADC_CR_ADEN;
 
   /*Wait until ADRDY is reset by the hardware*/
   while((ADC1 -> ISR & ADC_ISR_ADRDY) == ADC_ISR_ADRDY);
 
   /*Calibrate for single ended ADC input*/
   /*ADCALDIF = 0: Single ended, = 1 for differential input*/
-  ADC1 -> CR &= ~ADC_CR_CALDIF;
+  ADC1 -> CR &= ~ADC_CR_ADCALDIF;
 
   /*ADC Calibration can only happen when ADEN = 0 which is disabled*/
   /*Each ADC provides automatic calibration procedure*/

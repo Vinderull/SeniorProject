@@ -1,0 +1,729 @@
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.file	"ADCsrc.c"
+  17              		.text
+  18              	.Ltext0:
+  19              		.cfi_sections	.debug_frame
+  20              		.section	.text.ADC1_Wakeup,"ax",%progbits
+  21              		.align	2
+  22              		.global	ADC1_Wakeup
+  23              		.thumb
+  24              		.thumb_func
+  26              	ADC1_Wakeup:
+  27              	.LFB124:
+  28              		.file 1 "Src/ADCsrc.c"
+   1:Src/ADCsrc.c  **** ///big source file
+   2:Src/ADCsrc.c  **** 
+   3:Src/ADCsrc.c  **** #include "ADCsrc.h"
+   4:Src/ADCsrc.c  **** #include "stm32l476xx.h"
+   5:Src/ADCsrc.c  **** 
+   6:Src/ADCsrc.c  **** 
+   7:Src/ADCsrc.c  **** ///ADC1 Initialization
+   8:Src/ADCsrc.c  **** /// NOTE: ADC needs HSI
+   9:Src/ADCsrc.c  **** 
+  10:Src/ADCsrc.c  **** void ADC1_Init(void)
+  11:Src/ADCsrc.c  **** {
+  12:Src/ADCsrc.c  ****   /*Enable clock to ADC */
+  13:Src/ADCsrc.c  ****   RCC->AHB2ENR |= RCC_AHB2ENR_ADCEN;
+  14:Src/ADCsrc.c  **** 
+  15:Src/ADCsrc.c  ****   /*disable ADC1 by clearing */
+  16:Src/ADCsrc.c  ****   ADC1->CR &= ~ADC_CR_ADEN;
+  17:Src/ADCsrc.c  **** 
+  18:Src/ADCsrc.c  **** 
+  19:Src/ADCsrc.c  ****   //select TIm4_TRGO
+  20:Src/ADCsrc.c  ****   ADC1->CFGR &= ~ADC_CFGR_EXTSEL;
+  21:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_EXTSEL_3 | ADC_CFGR_EXTSEL_2;
+  22:Src/ADCsrc.c  **** 
+  23:Src/ADCsrc.c  ****   /*Enable I/O analog switches voltage booster */
+  24:Src/ADCsrc.c  ****   ADC123_COMMON->CCR |= SYSCFG_CFGR1_BOOSTEN;
+  25:Src/ADCsrc.c  **** 
+  26:Src/ADCsrc.c  ****   /*Enable conversion of internal channels */
+  27:Src/ADCsrc.c  ****   ADC123_COMMON->CCR |= ADC_CCR_VREFEN;
+  28:Src/ADCsrc.c  **** 
+  29:Src/ADCsrc.c  ****   /*Configure ADC prescalar to select ADC clock frequency */
+  30:Src/ADCsrc.c  **** /*The clock is common for all the ADCs.
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 2
+
+
+  31:Src/ADCsrc.c  **** 0000: input ADC clock not divided
+  32:Src/ADCsrc.c  **** 0001: input ADC clock divided by 2
+  33:Src/ADCsrc.c  **** 0010: input ADC clock divided by 4
+  34:Src/ADCsrc.c  **** 0011: input ADC clock divided by 6
+  35:Src/ADCsrc.c  **** 0100: input ADC clock divided by 8
+  36:Src/ADCsrc.c  **** 0101: input ADC clock divided by 10
+  37:Src/ADCsrc.c  **** 0110: input ADC clock divided by 12
+  38:Src/ADCsrc.c  **** 0111: input ADC clock divided by 16
+  39:Src/ADCsrc.c  **** 1000: input ADC clock divided by 32
+  40:Src/ADCsrc.c  **** 1001: input ADC clock divided by 64
+  41:Src/ADCsrc.c  **** 1010: input ADC clock divided by 128
+  42:Src/ADCsrc.c  **** 1011: input ADC clock divided by 256
+  43:Src/ADCsrc.c  **** */
+  44:Src/ADCsrc.c  ****   ADC123_COMMON->CCR &= ~ADC_CCR_PRESC;
+  45:Src/ADCsrc.c  **** 
+  46:Src/ADCsrc.c  ****   /*configure ADC clock to be synchonous HCLK/1 */
+  47:Src/ADCsrc.c  **** /*
+  48:Src/ADCsrc.c  **** 00: CK_ADCx (x=123) (Asynchronous clock mode), generated at product level (refer to
+  49:Src/ADCsrc.c  **** Section 6: Reset and clock control (RCC))
+  50:Src/ADCsrc.c  **** 01: HCLK/1 (Synchronous clock mode). This configuration must be enabled only if the AHB
+  51:Src/ADCsrc.c  **** clock prescaler is set to 1 (HPRE[3:0] = 0xxx in RCC_CFGR register) and if the system clock
+  52:Src/ADCsrc.c  **** has a 50% duty cycle.
+  53:Src/ADCsrc.c  **** 10: HCLK/2 (Synchronous clock mode)
+  54:Src/ADCsrc.c  **** 11: HCLK/4 (Synchronous clock mode)
+  55:Src/ADCsrc.c  **** */
+  56:Src/ADCsrc.c  ****   ADC123_COMMON->CCR &= ~ADC_CCR_CKMODE;
+  57:Src/ADCsrc.c  ****   ADC123_COMMON->CCR |= ADC_CCR_CKMODE_0;
+  58:Src/ADCsrc.c  **** 
+  59:Src/ADCsrc.c  ****   /*Configure all ADCs as independent mode */
+  60:Src/ADCsrc.c  ****   ADC123_COMMON->CCR &= ~ADC_CCR_DUAL;
+  61:Src/ADCsrc.c  **** 
+  62:Src/ADCsrc.c  ****   /*Wait for ADC come out of deep-power-down mode */
+  63:Src/ADCsrc.c  ****   ADC1_Wakeup();
+  64:Src/ADCsrc.c  **** 
+  65:Src/ADCsrc.c  ****   /*Configure resoltion, 00= 12bit */
+  66:Src/ADCsrc.c  ****   ADC1->CFGR &= ~ADC_CFGR_RES_0;
+  67:Src/ADCsrc.c  ****   ADC1->CFGR &= ~ADC_CFGR_RES_1;
+  68:Src/ADCsrc.c  **** 
+  69:Src/ADCsrc.c  ****   /*Select right alignment */
+  70:Src/ADCsrc.c  ****   ADC1->CFGR &= ~ADC_CFGR_ALIGN;
+  71:Src/ADCsrc.c  **** 
+  72:Src/ADCsrc.c  ****   /*Select nnumber of conversions */
+  73:Src/ADCsrc.c  ****   ADC1->SQR1 &= ~(ADC_SQR1_L);
+  74:Src/ADCsrc.c  **** 
+  75:Src/ADCsrc.c  ****   //select channel 6 for conversions
+  76:Src/ADCsrc.c  ****   ADC1->SQR1 |= ADC_SQR1_SQ1_2 | ADC_SQR1_SQ1_1;
+  77:Src/ADCsrc.c  **** 
+  78:Src/ADCsrc.c  ****   /*Configure channel 6 as single ended */
+  79:Src/ADCsrc.c  ****   ADC1->DIFSEL &= ~ADC_DIFSEL_DIFSEL_6;
+  80:Src/ADCsrc.c  **** 
+  81:Src/ADCsrc.c  ****   /*Configure sample time, needs to be long enough for cap of */
+  82:Src/ADCsrc.c  ****   /* sample and hold circuit to be charged */
+  83:Src/ADCsrc.c  ****   /*
+  84:Src/ADCsrc.c  ****   //000: 2.5 ADC clock cycles
+  85:Src/ADCsrc.c  ****   //001: 6.5 ADC clock cycles
+  86:Src/ADCsrc.c  ****   //010: 12.5 ADC clock cycles
+  87:Src/ADCsrc.c  ****   //011: 24.5 ADC clock cycles
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 3
+
+
+  88:Src/ADCsrc.c  ****   //100: 47.5 ADC clock cycles
+  89:Src/ADCsrc.c  ****   //101: 92.5 ADC clock cycles
+  90:Src/ADCsrc.c  ****   //110: 247.5 ADC clock cycles
+  91:Src/ADCsrc.c  ****   //111: 640.5 ADC clock cycles
+  92:Src/ADCsrc.c  ****  */
+  93:Src/ADCsrc.c  ****   ADC1->SMPR1 &= ~ADC_SMPR1_SMP6;
+  94:Src/ADCsrc.c  ****   ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_1;
+  95:Src/ADCsrc.c  **** 
+  96:Src/ADCsrc.c  ****   /*Set ADC in discontinuous mode */
+  97:Src/ADCsrc.c  ****   // 0 = discontinuous
+  98:Src/ADCsrc.c  ****   // 1 = continuous
+  99:Src/ADCsrc.c  ****   ADC1->CFGR &= ~ADC_CFGR_CONT;
+ 100:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_CONT;
+ 101:Src/ADCsrc.c  **** 
+ 102:Src/ADCsrc.c  ****   // configure ADC for DMA in circular mode
+ 103:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_DMACFG;
+ 104:Src/ADCsrc.c  ****   //DMA enable?
+ 105:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_DMAEN;
+ 106:Src/ADCsrc.c  **** 
+ 107:Src/ADCsrc.c  ****   /*Select software trigger */
+ 108:Src/ADCsrc.c  ****   //select rising edge of hardware triggers
+ 109:Src/ADCsrc.c  ****   // 00: software triggers
+ 110:Src/ADCsrc.c  ****   // 01: hardware trigger, rising edge
+ 111:Src/ADCsrc.c  ****   // 10 HW trig, falling edge
+ 112:Src/ADCsrc.c  ****   // 11:HW trigg, both
+ 113:Src/ADCsrc.c  ****   ADC1->CFGR &= ~ADC_CFGR_EXTEN;
+ 114:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_EXTEN_0;
+ 115:Src/ADCsrc.c  **** 
+ 116:Src/ADCsrc.c  ****   //trigger becomes immediately effective once software starts ADC
+ 117:Src/ADCsrc.c  ****   ADC1->CR |= ADC_CR_ADSTART;
+ 118:Src/ADCsrc.c  **** 
+ 119:Src/ADCsrc.c  ****   /*enable ADC1 */
+ 120:Src/ADCsrc.c  ****   ADC1->CR &= ~ADC_CR_ADEN;
+ 121:Src/ADCsrc.c  ****   ADC1->CR |= ADC_CR_ADEN;
+ 122:Src/ADCsrc.c  **** 
+ 123:Src/ADCsrc.c  ****   /*wait for ADC1 to be ready */
+ 124:Src/ADCsrc.c  ****   while(!(ADC1->ISR & ADC_ISR_ADRDY));
+ 125:Src/ADCsrc.c  **** }
+ 126:Src/ADCsrc.c  **** 
+ 127:Src/ADCsrc.c  **** 
+ 128:Src/ADCsrc.c  **** /* This ADC1_Wakeup wakes the ADC on the STM32L476 MCU*/
+ 129:Src/ADCsrc.c  **** 
+ 130:Src/ADCsrc.c  **** void ADC1_Wakeup(void){
+  29              		.loc 1 130 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34              	.LVL0:
+ 131:Src/ADCsrc.c  ****   int wait_time = 0;
+ 132:Src/ADCsrc.c  ****   /*Start ADC operations: DEEPPWD = 0: ADC not in deep pwoer mode*/
+ 133:Src/ADCsrc.c  ****   /*DEEPPWD = 1: ADC in deep power mode (reset state) */
+ 134:Src/ADCsrc.c  ****   if ((ADC1->CR & ADC_CR_DEEPPWD) == ADC_CR_DEEPPWD){
+  35              		.loc 1 134 0
+  36 0000 0A4B     		ldr	r3, .L5
+  37 0002 9B68     		ldr	r3, [r3, #8]
+  38 0004 13F0005F 		tst	r3, #536870912
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 4
+
+
+  39 0008 04D0     		beq	.L2
+ 135:Src/ADCsrc.c  ****     ADC1->CR &= ~ADC_CR_DEEPPWD;
+  40              		.loc 1 135 0
+  41 000a 084A     		ldr	r2, .L5
+  42 000c 9368     		ldr	r3, [r2, #8]
+  43 000e 23F00053 		bic	r3, r3, #536870912
+  44 0012 9360     		str	r3, [r2, #8]
+  45              	.L2:
+ 136:Src/ADCsrc.c  ****   }
+ 137:Src/ADCsrc.c  **** 
+ 138:Src/ADCsrc.c  ****   /* Enable the ADC voltage Regulator */
+ 139:Src/ADCsrc.c  ****   /* must enable before calibration of ADC, use software */
+ 140:Src/ADCsrc.c  ****   /* to wait for regulator startup time */
+ 141:Src/ADCsrc.c  ****   ADC1->CR |= ADC_CR_ADVREGEN;
+  46              		.loc 1 141 0
+  47 0014 054A     		ldr	r2, .L5
+  48 0016 9368     		ldr	r3, [r2, #8]
+  49 0018 43F08053 		orr	r3, r3, #268435456
+  50 001c 9360     		str	r3, [r2, #8]
+  51              	.LVL1:
+ 142:Src/ADCsrc.c  **** 
+ 143:Src/ADCsrc.c  ****   /* wait for ADC regulator */
+ 144:Src/ADCsrc.c  ****   wait_time = 20 * (80000000 / 100000);
+  52              		.loc 1 144 0
+  53 001e 4FF47A53 		mov	r3, #16000
+ 145:Src/ADCsrc.c  ****   while (wait_time != 0){
+  54              		.loc 1 145 0
+  55 0022 00E0     		b	.L3
+  56              	.LVL2:
+  57              	.L4:
+ 146:Src/ADCsrc.c  ****   wait_time--;
+  58              		.loc 1 146 0
+  59 0024 013B     		subs	r3, r3, #1
+  60              	.LVL3:
+  61              	.L3:
+ 145:Src/ADCsrc.c  ****   while (wait_time != 0){
+  62              		.loc 1 145 0
+  63 0026 002B     		cmp	r3, #0
+  64 0028 FCD1     		bne	.L4
+ 147:Src/ADCsrc.c  ****   }
+ 148:Src/ADCsrc.c  **** 
+ 149:Src/ADCsrc.c  **** }
+  65              		.loc 1 149 0
+  66 002a 7047     		bx	lr
+  67              	.L6:
+  68              		.align	2
+  69              	.L5:
+  70 002c 00000450 		.word	1342439424
+  71              		.cfi_endproc
+  72              	.LFE124:
+  74              		.section	.text.ADC1_Init,"ax",%progbits
+  75              		.align	2
+  76              		.global	ADC1_Init
+  77              		.thumb
+  78              		.thumb_func
+  80              	ADC1_Init:
+  81              	.LFB123:
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 5
+
+
+  11:Src/ADCsrc.c  ****   /*Enable clock to ADC */
+  82              		.loc 1 11 0
+  83              		.cfi_startproc
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86 0000 10B5     		push	{r4, lr}
+  87              	.LCFI0:
+  88              		.cfi_def_cfa_offset 8
+  89              		.cfi_offset 4, -8
+  90              		.cfi_offset 14, -4
+  13:Src/ADCsrc.c  **** 
+  91              		.loc 1 13 0
+  92 0002 3C4A     		ldr	r2, .L10
+  93 0004 D36C     		ldr	r3, [r2, #76]
+  94 0006 43F40053 		orr	r3, r3, #8192
+  95 000a D364     		str	r3, [r2, #76]
+  16:Src/ADCsrc.c  **** 
+  96              		.loc 1 16 0
+  97 000c 3A4C     		ldr	r4, .L10+4
+  98 000e A368     		ldr	r3, [r4, #8]
+  99 0010 23F00103 		bic	r3, r3, #1
+ 100 0014 A360     		str	r3, [r4, #8]
+  20:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_EXTSEL_3 | ADC_CFGR_EXTSEL_2;
+ 101              		.loc 1 20 0
+ 102 0016 E368     		ldr	r3, [r4, #12]
+ 103 0018 23F47073 		bic	r3, r3, #960
+ 104 001c E360     		str	r3, [r4, #12]
+  21:Src/ADCsrc.c  **** 
+ 105              		.loc 1 21 0
+ 106 001e E368     		ldr	r3, [r4, #12]
+ 107 0020 43F44073 		orr	r3, r3, #768
+ 108 0024 E360     		str	r3, [r4, #12]
+  24:Src/ADCsrc.c  **** 
+ 109              		.loc 1 24 0
+ 110 0026 354B     		ldr	r3, .L10+8
+ 111 0028 9A68     		ldr	r2, [r3, #8]
+ 112 002a 42F48072 		orr	r2, r2, #256
+ 113 002e 9A60     		str	r2, [r3, #8]
+  27:Src/ADCsrc.c  **** 
+ 114              		.loc 1 27 0
+ 115 0030 9A68     		ldr	r2, [r3, #8]
+ 116 0032 42F48002 		orr	r2, r2, #4194304
+ 117 0036 9A60     		str	r2, [r3, #8]
+  44:Src/ADCsrc.c  **** 
+ 118              		.loc 1 44 0
+ 119 0038 9A68     		ldr	r2, [r3, #8]
+ 120 003a 22F47012 		bic	r2, r2, #3932160
+ 121 003e 9A60     		str	r2, [r3, #8]
+  56:Src/ADCsrc.c  ****   ADC123_COMMON->CCR |= ADC_CCR_CKMODE_0;
+ 122              		.loc 1 56 0
+ 123 0040 9A68     		ldr	r2, [r3, #8]
+ 124 0042 22F44032 		bic	r2, r2, #196608
+ 125 0046 9A60     		str	r2, [r3, #8]
+  57:Src/ADCsrc.c  **** 
+ 126              		.loc 1 57 0
+ 127 0048 9A68     		ldr	r2, [r3, #8]
+ 128 004a 42F48032 		orr	r2, r2, #65536
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 6
+
+
+ 129 004e 9A60     		str	r2, [r3, #8]
+  60:Src/ADCsrc.c  **** 
+ 130              		.loc 1 60 0
+ 131 0050 9A68     		ldr	r2, [r3, #8]
+ 132 0052 22F01F02 		bic	r2, r2, #31
+ 133 0056 9A60     		str	r2, [r3, #8]
+  63:Src/ADCsrc.c  **** 
+ 134              		.loc 1 63 0
+ 135 0058 FFF7FEFF 		bl	ADC1_Wakeup
+ 136              	.LVL4:
+  66:Src/ADCsrc.c  ****   ADC1->CFGR &= ~ADC_CFGR_RES_1;
+ 137              		.loc 1 66 0
+ 138 005c E368     		ldr	r3, [r4, #12]
+ 139 005e 23F00803 		bic	r3, r3, #8
+ 140 0062 E360     		str	r3, [r4, #12]
+  67:Src/ADCsrc.c  **** 
+ 141              		.loc 1 67 0
+ 142 0064 E368     		ldr	r3, [r4, #12]
+ 143 0066 23F01003 		bic	r3, r3, #16
+ 144 006a E360     		str	r3, [r4, #12]
+  70:Src/ADCsrc.c  **** 
+ 145              		.loc 1 70 0
+ 146 006c E368     		ldr	r3, [r4, #12]
+ 147 006e 23F02003 		bic	r3, r3, #32
+ 148 0072 E360     		str	r3, [r4, #12]
+  73:Src/ADCsrc.c  **** 
+ 149              		.loc 1 73 0
+ 150 0074 236B     		ldr	r3, [r4, #48]
+ 151 0076 23F00F03 		bic	r3, r3, #15
+ 152 007a 2363     		str	r3, [r4, #48]
+  76:Src/ADCsrc.c  **** 
+ 153              		.loc 1 76 0
+ 154 007c 236B     		ldr	r3, [r4, #48]
+ 155 007e 43F4C073 		orr	r3, r3, #384
+ 156 0082 2363     		str	r3, [r4, #48]
+  79:Src/ADCsrc.c  **** 
+ 157              		.loc 1 79 0
+ 158 0084 D4F8B030 		ldr	r3, [r4, #176]
+ 159 0088 23F04003 		bic	r3, r3, #64
+ 160 008c C4F8B030 		str	r3, [r4, #176]
+  93:Src/ADCsrc.c  ****   ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_1;
+ 161              		.loc 1 93 0
+ 162 0090 6369     		ldr	r3, [r4, #20]
+ 163 0092 23F4E013 		bic	r3, r3, #1835008
+ 164 0096 6361     		str	r3, [r4, #20]
+  94:Src/ADCsrc.c  **** 
+ 165              		.loc 1 94 0
+ 166 0098 6369     		ldr	r3, [r4, #20]
+ 167 009a 43F44023 		orr	r3, r3, #786432
+ 168 009e 6361     		str	r3, [r4, #20]
+  99:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_CONT;
+ 169              		.loc 1 99 0
+ 170 00a0 E368     		ldr	r3, [r4, #12]
+ 171 00a2 23F40053 		bic	r3, r3, #8192
+ 172 00a6 E360     		str	r3, [r4, #12]
+ 100:Src/ADCsrc.c  **** 
+ 173              		.loc 1 100 0
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 7
+
+
+ 174 00a8 E368     		ldr	r3, [r4, #12]
+ 175 00aa 43F40053 		orr	r3, r3, #8192
+ 176 00ae E360     		str	r3, [r4, #12]
+ 103:Src/ADCsrc.c  ****   //DMA enable?
+ 177              		.loc 1 103 0
+ 178 00b0 E368     		ldr	r3, [r4, #12]
+ 179 00b2 43F00203 		orr	r3, r3, #2
+ 180 00b6 E360     		str	r3, [r4, #12]
+ 105:Src/ADCsrc.c  **** 
+ 181              		.loc 1 105 0
+ 182 00b8 E368     		ldr	r3, [r4, #12]
+ 183 00ba 43F00103 		orr	r3, r3, #1
+ 184 00be E360     		str	r3, [r4, #12]
+ 113:Src/ADCsrc.c  ****   ADC1->CFGR |= ADC_CFGR_EXTEN_0;
+ 185              		.loc 1 113 0
+ 186 00c0 E368     		ldr	r3, [r4, #12]
+ 187 00c2 23F44063 		bic	r3, r3, #3072
+ 188 00c6 E360     		str	r3, [r4, #12]
+ 114:Src/ADCsrc.c  **** 
+ 189              		.loc 1 114 0
+ 190 00c8 E368     		ldr	r3, [r4, #12]
+ 191 00ca 43F48063 		orr	r3, r3, #1024
+ 192 00ce E360     		str	r3, [r4, #12]
+ 117:Src/ADCsrc.c  **** 
+ 193              		.loc 1 117 0
+ 194 00d0 A368     		ldr	r3, [r4, #8]
+ 195 00d2 43F00403 		orr	r3, r3, #4
+ 196 00d6 A360     		str	r3, [r4, #8]
+ 120:Src/ADCsrc.c  ****   ADC1->CR |= ADC_CR_ADEN;
+ 197              		.loc 1 120 0
+ 198 00d8 A368     		ldr	r3, [r4, #8]
+ 199 00da 23F00103 		bic	r3, r3, #1
+ 200 00de A360     		str	r3, [r4, #8]
+ 121:Src/ADCsrc.c  **** 
+ 201              		.loc 1 121 0
+ 202 00e0 A368     		ldr	r3, [r4, #8]
+ 203 00e2 43F00103 		orr	r3, r3, #1
+ 204 00e6 A360     		str	r3, [r4, #8]
+ 205              	.L8:
+ 124:Src/ADCsrc.c  **** }
+ 206              		.loc 1 124 0 discriminator 1
+ 207 00e8 034B     		ldr	r3, .L10+4
+ 208 00ea 1B68     		ldr	r3, [r3]
+ 209 00ec 13F0010F 		tst	r3, #1
+ 210 00f0 FAD0     		beq	.L8
+ 125:Src/ADCsrc.c  **** 
+ 211              		.loc 1 125 0
+ 212 00f2 10BD     		pop	{r4, pc}
+ 213              	.L11:
+ 214              		.align	2
+ 215              	.L10:
+ 216 00f4 00100240 		.word	1073876992
+ 217 00f8 00000450 		.word	1342439424
+ 218 00fc 00030450 		.word	1342440192
+ 219              		.cfi_endproc
+ 220              	.LFE123:
+ 222              		.section	.text.GPIO_Init,"ax",%progbits
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 8
+
+
+ 223              		.align	2
+ 224              		.global	GPIO_Init
+ 225              		.thumb
+ 226              		.thumb_func
+ 228              	GPIO_Init:
+ 229              	.LFB125:
+ 150:Src/ADCsrc.c  **** 
+ 151:Src/ADCsrc.c  **** 
+ 152:Src/ADCsrc.c  **** 
+ 153:Src/ADCsrc.c  **** //GPIO Initialization
+ 154:Src/ADCsrc.c  **** 
+ 155:Src/ADCsrc.c  **** 
+ 156:Src/ADCsrc.c  **** 
+ 157:Src/ADCsrc.c  **** 
+ 158:Src/ADCsrc.c  **** void GPIO_Init(void)
+ 159:Src/ADCsrc.c  **** {
+ 230              		.loc 1 159 0
+ 231              		.cfi_startproc
+ 232              		@ args = 0, pretend = 0, frame = 0
+ 233              		@ frame_needed = 0, uses_anonymous_args = 0
+ 234              		@ link register save eliminated.
+ 160:Src/ADCsrc.c  **** //Enabled clock for GPIO: A
+ 161:Src/ADCsrc.c  **** RCC->AHB2ENR &= ~RCC_AHB2ENR_GPIOAEN;
+ 235              		.loc 1 161 0
+ 236 0000 0D4B     		ldr	r3, .L13
+ 237 0002 DA6C     		ldr	r2, [r3, #76]
+ 238 0004 22F00102 		bic	r2, r2, #1
+ 239 0008 DA64     		str	r2, [r3, #76]
+ 162:Src/ADCsrc.c  **** RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
+ 240              		.loc 1 162 0
+ 241 000a DA6C     		ldr	r2, [r3, #76]
+ 242 000c 42F00102 		orr	r2, r2, #1
+ 243 0010 DA64     		str	r2, [r3, #76]
+ 163:Src/ADCsrc.c  **** 
+ 164:Src/ADCsrc.c  **** 
+ 165:Src/ADCsrc.c  **** /*SET PA1 as analog*/
+ 166:Src/ADCsrc.c  **** /*00 = digital input, 01 = digital Output*/
+ 167:Src/ADCsrc.c  **** /*10 = alternate function, 11 = analog (default) */
+ 168:Src/ADCsrc.c  **** GPIOA->MODER &= ~GPIO_MODER_MODE1;
+ 244              		.loc 1 168 0
+ 245 0012 4FF09043 		mov	r3, #1207959552
+ 246 0016 1A68     		ldr	r2, [r3]
+ 247 0018 22F00C02 		bic	r2, r2, #12
+ 248 001c 1A60     		str	r2, [r3]
+ 169:Src/ADCsrc.c  **** GPIOA->MODER |= GPIO_MODER_MODE1_0 | GPIO_MODER_MODE1_1;
+ 249              		.loc 1 169 0
+ 250 001e 1A68     		ldr	r2, [r3]
+ 251 0020 42F00C02 		orr	r2, r2, #12
+ 252 0024 1A60     		str	r2, [r3]
+ 170:Src/ADCsrc.c  **** 
+ 171:Src/ADCsrc.c  **** 
+ 172:Src/ADCsrc.c  **** //clear pupdr
+ 173:Src/ADCsrc.c  **** GPIOA->PUPDR &= ~GPIO_PUPDR_PUPD1;
+ 253              		.loc 1 173 0
+ 254 0026 DA68     		ldr	r2, [r3, #12]
+ 255 0028 22F00C02 		bic	r2, r2, #12
+ 256 002c DA60     		str	r2, [r3, #12]
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 9
+
+
+ 174:Src/ADCsrc.c  **** 
+ 175:Src/ADCsrc.c  **** /*set firsrt bit of ASCR to close analog switch */
+ 176:Src/ADCsrc.c  **** GPIOA->ASCR |= GPIO_ASCR_ASC1;
+ 257              		.loc 1 176 0
+ 258 002e DA6A     		ldr	r2, [r3, #44]
+ 259 0030 42F00202 		orr	r2, r2, #2
+ 260 0034 DA62     		str	r2, [r3, #44]
+ 261 0036 7047     		bx	lr
+ 262              	.L14:
+ 263              		.align	2
+ 264              	.L13:
+ 265 0038 00100240 		.word	1073876992
+ 266              		.cfi_endproc
+ 267              	.LFE125:
+ 269              		.section	.text.TIM4_Init,"ax",%progbits
+ 270              		.align	2
+ 271              		.global	TIM4_Init
+ 272              		.thumb
+ 273              		.thumb_func
+ 275              	TIM4_Init:
+ 276              	.LFB126:
+ 177:Src/ADCsrc.c  **** 
+ 178:Src/ADCsrc.c  **** 
+ 179:Src/ADCsrc.c  **** 
+ 180:Src/ADCsrc.c  **** }
+ 181:Src/ADCsrc.c  **** 
+ 182:Src/ADCsrc.c  **** 
+ 183:Src/ADCsrc.c  **** //TIMER 4 Initialization for ADC
+ 184:Src/ADCsrc.c  **** 
+ 185:Src/ADCsrc.c  **** void TIM4_Init(void)
+ 186:Src/ADCsrc.c  **** {
+ 277              		.loc 1 186 0
+ 278              		.cfi_startproc
+ 279              		@ args = 0, pretend = 0, frame = 0
+ 280              		@ frame_needed = 0, uses_anonymous_args = 0
+ 281              		@ link register save eliminated.
+ 187:Src/ADCsrc.c  ****   /*Enable Clock for Timer 4 */
+ 188:Src/ADCsrc.c  ****   RCC->APB1ENR1 |= RCC_APB1ENR1_TIM4EN;
+ 282              		.loc 1 188 0
+ 283 0000 184A     		ldr	r2, .L16
+ 284 0002 936D     		ldr	r3, [r2, #88]
+ 285 0004 43F00403 		orr	r3, r3, #4
+ 286 0008 9365     		str	r3, [r2, #88]
+ 189:Src/ADCsrc.c  **** 
+ 190:Src/ADCsrc.c  ****   /*clear edge-aligned mode */
+ 191:Src/ADCsrc.c  ****   TIM4->CR1 &= ~TIM_CR1_CMS;
+ 287              		.loc 1 191 0
+ 288 000a 174B     		ldr	r3, .L16+4
+ 289 000c 1A68     		ldr	r2, [r3]
+ 290 000e 22F06002 		bic	r2, r2, #96
+ 291 0012 1A60     		str	r2, [r3]
+ 192:Src/ADCsrc.c  **** 
+ 193:Src/ADCsrc.c  ****   /*Counting Direction up counting */
+ 194:Src/ADCsrc.c  ****   TIM4->CR1 &= ~TIM_CR1_DIR;
+ 292              		.loc 1 194 0
+ 293 0014 1A68     		ldr	r2, [r3]
+ 294 0016 22F01002 		bic	r2, r2, #16
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 10
+
+
+ 295 001a 1A60     		str	r2, [r3]
+ 195:Src/ADCsrc.c  **** 
+ 196:Src/ADCsrc.c  ****   /*Master Mode Selection */
+ 197:Src/ADCsrc.c  ****   /*000: UG bit from the EGR register is used as trigger output (TRGO) */
+ 198:Src/ADCsrc.c  ****   /*001: Enable - The counter enable signal is used as trigger output (TRGO) */
+ 199:Src/ADCsrc.c  ****   /*010: Update - the update event is selected as trigger output (TRGO) */
+ 200:Src/ADCsrc.c  ****   /*011: Compare pulse - the trigger output send a positive when CC1IF flag */
+ 201:Src/ADCsrc.c  ****   /* CC1IF flag is to be set (Even if it was already high) */
+ 202:Src/ADCsrc.c  ****   /*100: Compare - OC1REF signal is used as trigger output (TRGO)
+ 203:Src/ADCsrc.c  ****   /*101: Compare- OC2REF signal is used as trigger output*/
+ 204:Src/ADCsrc.c  ****   /*110: Compare - OC3REF signal "" */
+ 205:Src/ADCsrc.c  ****   /*111: Compare - OC4REF signal ""*/
+ 206:Src/ADCsrc.c  **** 
+ 207:Src/ADCsrc.c  ****   /*Clear mster mode select */
+ 208:Src/ADCsrc.c  ****   TIM4->CR2 &= ~TIM_CR2_MMS;
+ 296              		.loc 1 208 0
+ 297 001c 5A68     		ldr	r2, [r3, #4]
+ 298 001e 22F07002 		bic	r2, r2, #112
+ 299 0022 5A60     		str	r2, [r3, #4]
+ 209:Src/ADCsrc.c  **** 
+ 210:Src/ADCsrc.c  ****   /*Select 100, OC1REF as trigger */
+ 211:Src/ADCsrc.c  ****   TIM4->CR2 |= TIM_CR2_MMS_2;
+ 300              		.loc 1 211 0
+ 301 0024 5A68     		ldr	r2, [r3, #4]
+ 302 0026 42F04002 		orr	r2, r2, #64
+ 303 002a 5A60     		str	r2, [r3, #4]
+ 212:Src/ADCsrc.c  **** 
+ 213:Src/ADCsrc.c  ****   /*OC1M: Output compare 1 mode */
+ 214:Src/ADCsrc.c  ****   TIM4->CCMR1 &= ~TIM_CCMR1_OC1M;
+ 304              		.loc 1 214 0
+ 305 002c 9A69     		ldr	r2, [r3, #24]
+ 306 002e 22F48032 		bic	r2, r2, #65536
+ 307 0032 22F07002 		bic	r2, r2, #112
+ 308 0036 9A61     		str	r2, [r3, #24]
+ 215:Src/ADCsrc.c  ****   /*0110 PWM mode 1*/
+ 216:Src/ADCsrc.c  ****   TIM4->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2;
+ 309              		.loc 1 216 0
+ 310 0038 9A69     		ldr	r2, [r3, #24]
+ 311 003a 42F06002 		orr	r2, r2, #96
+ 312 003e 9A61     		str	r2, [r3, #24]
+ 217:Src/ADCsrc.c  **** 
+ 218:Src/ADCsrc.c  ****   /*Timer driving frequency = 80MHz/(1+PSC) = 80M/(1+7)= 10MHz */
+ 219:Src/ADCsrc.c  ****   /*Trigger frequency 10MHz / (1 + ARR)= 10KHz */
+ 220:Src/ADCsrc.c  ****   TIM4->PSC = 7;
+ 313              		.loc 1 220 0
+ 314 0040 0722     		movs	r2, #7
+ 315 0042 9A62     		str	r2, [r3, #40]
+ 221:Src/ADCsrc.c  ****   TIM4->ARR = 999;
+ 316              		.loc 1 221 0
+ 317 0044 40F2E732 		movw	r2, #999
+ 318 0048 DA62     		str	r2, [r3, #44]
+ 222:Src/ADCsrc.c  ****   /*Duty ratio of 50% */
+ 223:Src/ADCsrc.c  ****   TIM4->CCR1 = 500;
+ 319              		.loc 1 223 0
+ 320 004a 4FF4FA72 		mov	r2, #500
+ 321 004e 5A63     		str	r2, [r3, #52]
+ 224:Src/ADCsrc.c  **** 
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 11
+
+
+ 225:Src/ADCsrc.c  ****   /*OC1 Signal is output */
+ 226:Src/ADCsrc.c  ****   TIM4->CCER |= TIM_CCER_CC1E;
+ 322              		.loc 1 226 0
+ 323 0050 1A6A     		ldr	r2, [r3, #32]
+ 324 0052 42F00102 		orr	r2, r2, #1
+ 325 0056 1A62     		str	r2, [r3, #32]
+ 227:Src/ADCsrc.c  **** 
+ 228:Src/ADCsrc.c  ****   /*Enable Timer */
+ 229:Src/ADCsrc.c  ****   TIM4->CR1 |= TIM_CR1_CEN;
+ 326              		.loc 1 229 0
+ 327 0058 1A68     		ldr	r2, [r3]
+ 328 005a 42F00102 		orr	r2, r2, #1
+ 329 005e 1A60     		str	r2, [r3]
+ 330 0060 7047     		bx	lr
+ 331              	.L17:
+ 332 0062 00BF     		.align	2
+ 333              	.L16:
+ 334 0064 00100240 		.word	1073876992
+ 335 0068 00080040 		.word	1073743872
+ 336              		.cfi_endproc
+ 337              	.LFE126:
+ 339              		.section	.text.ADC_Calibration,"ax",%progbits
+ 340              		.align	2
+ 341              		.global	ADC_Calibration
+ 342              		.thumb
+ 343              		.thumb_func
+ 345              	ADC_Calibration:
+ 346              	.LFB127:
+ 230:Src/ADCsrc.c  **** }
+ 231:Src/ADCsrc.c  **** 
+ 232:Src/ADCsrc.c  **** 
+ 233:Src/ADCsrc.c  **** 
+ 234:Src/ADCsrc.c  **** 
+ 235:Src/ADCsrc.c  **** /* The function described below calibrates the ADC after wake up*/
+ 236:Src/ADCsrc.c  **** 
+ 237:Src/ADCsrc.c  **** void ADC_Calibration(void){
+ 347              		.loc 1 237 0
+ 348              		.cfi_startproc
+ 349              		@ args = 0, pretend = 0, frame = 0
+ 350              		@ frame_needed = 0, uses_anonymous_args = 0
+ 351              		@ link register save eliminated.
+ 238:Src/ADCsrc.c  ****   /*Make sure the ADC is off*/
+ 239:Src/ADCsrc.c  ****   ADC1 -> CR &= ~ADC_CR_ADEN;
+ 352              		.loc 1 239 0
+ 353 0000 0B4A     		ldr	r2, .L21
+ 354 0002 9368     		ldr	r3, [r2, #8]
+ 355 0004 23F00103 		bic	r3, r3, #1
+ 356 0008 9360     		str	r3, [r2, #8]
+ 357              	.L19:
+ 240:Src/ADCsrc.c  **** 
+ 241:Src/ADCsrc.c  ****   /*Wait until ADRDY is reset by the hardware*/
+ 242:Src/ADCsrc.c  ****   while((ADC1 -> ISR & ADC_ISR_ADRDY) == ADC_ISR_ADRDY);
+ 358              		.loc 1 242 0 discriminator 1
+ 359 000a 094B     		ldr	r3, .L21
+ 360 000c 1B68     		ldr	r3, [r3]
+ 361 000e 13F0010F 		tst	r3, #1
+ 362 0012 FAD1     		bne	.L19
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 12
+
+
+ 243:Src/ADCsrc.c  **** 
+ 244:Src/ADCsrc.c  ****   /*Calibrate for single ended ADC input*/
+ 245:Src/ADCsrc.c  ****   /*ADCALDIF = 0: Single ended, = 1 for differential input*/
+ 246:Src/ADCsrc.c  ****   ADC1 -> CR &= ~ADC_CR_ADCALDIF;
+ 363              		.loc 1 246 0
+ 364 0014 064B     		ldr	r3, .L21
+ 365 0016 9A68     		ldr	r2, [r3, #8]
+ 366 0018 22F08042 		bic	r2, r2, #1073741824
+ 367 001c 9A60     		str	r2, [r3, #8]
+ 247:Src/ADCsrc.c  **** 
+ 248:Src/ADCsrc.c  ****   /*ADC Calibration can only happen when ADEN = 0 which is disabled*/
+ 249:Src/ADCsrc.c  ****   /*Each ADC provides automatic calibration procedure*/
+ 250:Src/ADCsrc.c  ****   ADC1 -> CR |= ADC_CR_ADCAL;
+ 368              		.loc 1 250 0
+ 369 001e 9A68     		ldr	r2, [r3, #8]
+ 370 0020 42F00042 		orr	r2, r2, #-2147483648
+ 371 0024 9A60     		str	r2, [r3, #8]
+ 372              	.L20:
+ 251:Src/ADCsrc.c  **** 
+ 252:Src/ADCsrc.c  ****   /*ADCAL stays at 1 during the entire calibration process*/
+ 253:Src/ADCsrc.c  ****   /*cleared by hardware after calibration is complete, needs to wait*/
+ 254:Src/ADCsrc.c  ****   while((ADC1 -> CR & ADC_CR_ADCAL) == ADC_CR_ADCAL);
+ 373              		.loc 1 254 0 discriminator 1
+ 374 0026 024B     		ldr	r3, .L21
+ 375 0028 9B68     		ldr	r3, [r3, #8]
+ 376 002a 002B     		cmp	r3, #0
+ 377 002c FBDB     		blt	.L20
+ 255:Src/ADCsrc.c  **** 
+ 256:Src/ADCsrc.c  **** }
+ 378              		.loc 1 256 0
+ 379 002e 7047     		bx	lr
+ 380              	.L22:
+ 381              		.align	2
+ 382              	.L21:
+ 383 0030 00000450 		.word	1342439424
+ 384              		.cfi_endproc
+ 385              	.LFE127:
+ 387              		.text
+ 388              	.Letext0:
+ 389              		.file 2 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_ty
+ 390              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h"
+ 391              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
+ 392              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 ADCsrc.c
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:21     .text.ADC1_Wakeup:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:26     .text.ADC1_Wakeup:0000000000000000 ADC1_Wakeup
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:70     .text.ADC1_Wakeup:000000000000002c $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:75     .text.ADC1_Init:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:80     .text.ADC1_Init:0000000000000000 ADC1_Init
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:216    .text.ADC1_Init:00000000000000f4 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:223    .text.GPIO_Init:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:228    .text.GPIO_Init:0000000000000000 GPIO_Init
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:265    .text.GPIO_Init:0000000000000038 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:270    .text.TIM4_Init:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:275    .text.TIM4_Init:0000000000000000 TIM4_Init
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:334    .text.TIM4_Init:0000000000000064 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:340    .text.ADC_Calibration:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:345    .text.ADC_Calibration:0000000000000000 ADC_Calibration
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccfTEihl.s:383    .text.ADC_Calibration:0000000000000030 $d
+                     .debug_frame:0000000000000010 $d
+
+NO UNDEFINED SYMBOLS
