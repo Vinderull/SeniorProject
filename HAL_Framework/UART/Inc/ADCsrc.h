@@ -8,7 +8,7 @@ void ADC1_Init(void);
 
 void ADC1_Wakeup(void);
 
-
+float findFrequency(float *samples, int nsamp);
 
 void GPIO_Init(void);
 

@@ -53,7 +53,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-#define SAMPLE_SIZE 1024
+#define SAMPLE_SIZE 1000
 
 volatile uint32_t Buffer_Ping[SAMPLE_SIZE];
 volatile uint32_t Buffer_Pong[SAMPLE_SIZE];
@@ -88,7 +88,8 @@ int main(void)
   /* USER CODE BEGIN 1 */
   char Message[40] = "Thing\n\r";
   int i = 0;
-  float volt[1000];
+  float volt[SAMPLE_SIZE];
+  float frequency;
 
   /* USER CODE END 1 */
 
@@ -129,7 +130,7 @@ int main(void)
 
   ADC1_Init();
 
-  DMA_Init(512);
+  DMA_Init(1);
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
     sprintf(Message, "Thing5\n\r");
 
@@ -145,7 +146,7 @@ int main(void)
   {
 
 //ADC1->CR |= ADC_CR_ADSTART;
-//  for(i =0; i<1000; i++){
+  for(i =0; i<1000; i++){
   //  sprintf(Message, "The ADC is %d\n\r",(ADC1->DR)*vsense);
     //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
     while(ADC_DMA_DONE == 0);
@@ -158,33 +159,30 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-  for(i = 0; i<26; i++){
- volt[i] = pReadyProcess[i] * vsense;
 
-  //gcvt(volt[i], 5, Message);
-  if(pReadyProcess[i] < 10000){
-  sprintf(Message, "The Sensor is %d\n\r", pReadyProcess[i]);
-  /*transmit sring over usart2 */
-  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
-  //sprintf(Message, "\n\r");
+ volt[i] = pReadyProcess[0] * vsense;
+
   //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
-}
-
-else{
-  sprintf(Message, "NULL\n\r", pReadyProcess[i]);
-  /*transmit sring over usart2 */
-  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
-}
+  ADC_DMA_DONE = 0;
+  /*end For */
+ }
 
 
-ADC_DMA_DONE = 0;
+ frequency = noteCalc(volt, SAMPLE_SIZE);
+
+ gcvt(frequency, 4, Message);
+ //sprintf(Message, "The Sensor is %d\n\r", pReadyProcess[0]);
+ /*transmit sring over usart2 */
+ HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
+
+
+//ADC_DMA_DONE = 0;
   }
 
-  HAL_Delay(1000);
+  //HAL_Delay(1000);
 }
   /* USER CODE END 3 */
 
-}
 
 /**
   * @brief System Clock Configuration
