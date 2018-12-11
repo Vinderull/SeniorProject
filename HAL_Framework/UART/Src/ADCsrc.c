@@ -16,10 +16,6 @@ void ADC1_Init(void)
   ADC1->CR &= ~ADC_CR_ADEN;
 
 
-  //select TIm4_TRGO
-  ADC1->CFGR &= ~ADC_CFGR_EXTSEL;
-  ADC1->CFGR |= ADC_CFGR_EXTSEL_3 | ADC_CFGR_EXTSEL_2;
-
   /*Enable I/O analog switches voltage booster */
   ADC123_COMMON->CCR |= SYSCFG_CFGR1_BOOSTEN;
 
@@ -97,12 +93,23 @@ has a 50% duty cycle.
   // 0 = discontinuous
   // 1 = continuous
   ADC1->CFGR &= ~ADC_CFGR_CONT;
-  //ADC1->CFGR |= ADC_CFGR_CONT;
+  ADC1->CFGR |= ADC_CFGR_CONT;
 
   // configure ADC for DMA in circular mode
   ADC1->CFGR |= ADC_CFGR_DMACFG;
   //DMA enable?
   ADC1->CFGR |= ADC_CFGR_DMAEN;
+
+  /* set overrun to overwrite */
+  ADC1->CFGR |= ADC_CFGR_OVRMOD;
+  //ADC1->CFGR &= ~ADC_CFGR_OVRMOD;
+
+
+
+
+    //select TIm4_TRGO
+    ADC1->CFGR &= ~ADC_CFGR_EXTSEL;
+    ADC1->CFGR |= ADC_CFGR_EXTSEL_3 | ADC_CFGR_EXTSEL_2;
 
   /*Select software trigger */
   //select rising edge of hardware triggers
@@ -113,6 +120,14 @@ has a 50% duty cycle.
   ADC1->CFGR &= ~ADC_CFGR_EXTEN;
   ADC1->CFGR |= ADC_CFGR_EXTEN_0;
 
+  /*enable end of conversion flag */
+   ADC1->IER |= ADC_IER_EOCIE;
+
+  //set DMA interrupt priority
+  NVIC_SetPriority(ADC1_2_IRQn, 0);
+
+  //enable DMA INTERRUPT
+  NVIC_EnableIRQ(ADC1_2_IRQn);
   //trigger becomes immediately effective once software starts ADC
   ADC1->CR |= ADC_CR_ADSTART;
 

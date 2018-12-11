@@ -53,7 +53,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-#define SAMPLE_SIZE 1000
+#define SAMPLE_SIZE 25
 
 volatile uint32_t Buffer_Ping[SAMPLE_SIZE];
 volatile uint32_t Buffer_Pong[SAMPLE_SIZE];
@@ -88,7 +88,7 @@ int main(void)
   /* USER CODE BEGIN 1 */
   char Message[40] = "Thing\n\r";
   int i = 0;
-  float volt = 0.0;
+  float volt[1000];
 
   /* USER CODE END 1 */
 
@@ -124,10 +124,15 @@ int main(void)
   ADC_Calibration();
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
     sprintf(Message, "Thing4\n\r");
+
+
+
   ADC1_Init();
+
+  DMA_Init(25);
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
     sprintf(Message, "Thing5\n\r");
-  DMA_Init(1);
+
 
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
 
@@ -138,23 +143,39 @@ int main(void)
   //ADC1->CR |= ADC_CR_ADSTART;
   while (1)
   {
+
+//ADC1->CR |= ADC_CR_ADSTART;
+//  for(i =0; i<1000; i++){
   //  sprintf(Message, "The ADC is %d\n\r",(ADC1->DR)*vsense);
     //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
     while(ADC_DMA_DONE == 0);
 
+    //volt[i] = pReadyProcess[0] * vsense;
+
+    //ADC_DMA_DONE = 0;
+
+//}
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-  /*Save sensor reading to string */
-  volt = pReadyProcess[0] * vsense;
-  gcvt(volt, 5, Message);
-  //sprintf(Message, "The Sensor is %d\n\r", pReadyProcess[0]);
+  for(i = 0; i<25; i++){
+ volt[i] = pReadyProcess[i] * vsense;
 
+  //gcvt(volt[i], 5, Message);
+  if(pReadyProcess[i] < 10000){
+  sprintf(Message, "The Sensor is %d\n\r", pReadyProcess[i]);
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
-  ADC_DMA_DONE = 0;
-  HAL_Delay(1000);
+  //sprintf(Message, "\n\r");
+  //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
+}
+
+
+ADC_DMA_DONE = 0;
   }
+
+  HAL_Delay(1000);
+}
   /* USER CODE END 3 */
 
 }
@@ -231,8 +252,12 @@ void DMA_Init(int arg)
 //arg number of conversions
 //uint16_t ADC_Results[arg];
 
+
 /* Enable DMA1 Clock */
 RCC->AHB1ENR |= RCC_AHB1ENR_DMA1EN;
+
+//Enable DMA channel
+DMA1_Channel1->CCR &= ~DMA_CCR_EN;
 
 /*DMA1 channel 1 config for ADC1 */
 //disable memory to memory mode
@@ -281,16 +306,22 @@ DMA1_Channel1->CPAR = (uint32_t) &(ADC1->DR);
 
 //memory address registers
 //ping pong buffer
-DMA1_Channel1->CMAR = (uint32_t) pReadyProcess;
+DMA1_Channel1->CMAR =  (uint32_t) pReadyProcess;
 
 //transfer complete interrupt enable
 DMA1_Channel1->CCR |= DMA_CCR_TCIE;
 
 //disable half complete
 DMA1_Channel1->CCR &= ~DMA_CCR_HTIE;
+DMA1_Channel1->CCR |= DMA_CCR_HTIE;
+
+// configure ADC for DMA in circular mode
+//ADC1->CFGR |= ADC_CFGR_DMACFG;
+//DMA enable?
+//ADC1->CFGR |= ADC_CFGR_DMAEN;
 
 //set DMA interrupt priority
-NVIC_SetPriority(DMA1_Channel1_IRQn, 0);
+NVIC_SetPriority(DMA1_Channel1_IRQn, 1);
 
 //enable DMA INTERRUPT
 NVIC_EnableIRQ(DMA1_Channel1_IRQn);
@@ -334,8 +365,22 @@ if((DMA1->ISR & DMA_ISR_TCIF1) == DMA_ISR_TCIF1){
   ADC_DMA_DONE = 1;
  }
 
+ else if(DMA1->ISR & DMA_ISR_TEIF1){
+   while(1);
+ }
+
 //clear flags
-DMA1->IFCR |= (DMA_IFCR_CHTIF1 | DMA_IFCR_CGIF1 | DMA_IFCR_CTEIF1);
+DMA1->IFCR |= (DMA_IFCR_CHTIF1 | DMA_IFCR_CGIF1); //| DMA_IFCR_CTEIF1);
+}
+
+
+
+void ADC1_2_IRQHandler(void)
+{
+  if((ADC1->ISR & ADC_ISR_EOC) == ADC_ISR_EOC){
+    ADC1->ISR |= ADC_ISR_EOS;
+
+  }
 }
 
 /* USER CODE END 4 */
