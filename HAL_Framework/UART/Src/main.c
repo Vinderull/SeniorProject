@@ -53,7 +53,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-#define SAMPLE_SIZE 25
+#define SAMPLE_SIZE 1024
 
 volatile uint32_t Buffer_Ping[SAMPLE_SIZE];
 volatile uint32_t Buffer_Pong[SAMPLE_SIZE];
@@ -129,7 +129,7 @@ int main(void)
 
   ADC1_Init();
 
-  DMA_Init(25);
+  DMA_Init(512);
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
     sprintf(Message, "Thing5\n\r");
 
@@ -158,7 +158,7 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-  for(i = 0; i<25; i++){
+  for(i = 0; i<26; i++){
  volt[i] = pReadyProcess[i] * vsense;
 
   //gcvt(volt[i], 5, Message);
@@ -168,6 +168,12 @@ int main(void)
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
   //sprintf(Message, "\n\r");
   //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
+}
+
+else{
+  sprintf(Message, "NULL\n\r", pReadyProcess[i]);
+  /*transmit sring over usart2 */
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 }
 
 
