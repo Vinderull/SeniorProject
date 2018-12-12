@@ -66,6 +66,7 @@ has a 50% duty cycle.
 
   /*Select right alignment */
   ADC1->CFGR &= ~ADC_CFGR_ALIGN;
+  ADC1->CFGR |= ADC_CFGR_ALIGN;
 
   /*Select nnumber of conversions */
   ADC1->SQR1 &= ~(ADC_SQR1_L);
