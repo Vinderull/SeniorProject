@@ -2,6 +2,7 @@
 
 #include "ADCsrc.h"
 #include "stm32l476xx.h"
+#include "arm_math.h"
 
 
 ///ADC1 Initialization
@@ -274,83 +275,1370 @@ void ADC_Calibration(void){
 
 float findFrequency(float *samples, int nsamp)
 {
-    uint32_t i, n, j, maxIndex;
-    float avg, dev, note, maxVal;
-    float input[nsamp], output1[nsamp*2], output2[nsamp];
+   uint32_t i, n, j, maxIndex;
+   float avg, dev, note, maxVal;
+   float input[nsamp], output1[nsamp*2], output2[nsamp];
 
-  //this will also keep track of how many blocks collected
-  //since decimating we will need #D blocks until FFT is full
+ //this will also keep track of how many blocks collected
+ //since decimating we will need #D blocks until FFT is full
 
-  arm_correlate_f32(input, nsamp, input, nsamp, output1);
- //arm_rfft_fast_f32(&fftStruct, input, output1, 0);
-   arm_mean_f32(output1, nsamp*2, &avg);
+ arm_correlate_f32(input, nsamp, input, nsamp, output1);
+//arm_rfft_fast_f32(&fftStruct, input, output1, 0);
+  arm_mean_f32(output1, nsamp*2, &avg);
 
 
 
 
 /* subtract mean */
- for(i=0; i<nsamp*2; i++){
-   //output1[i] *= 10;
-   output1[i] -= avg;
+for(i=0; i<nsamp*2; i++){
+  //output1[i] *= 10;
+  output1[i] -= avg;
 
-   /*zero out negative correlations */
-   //if(output1[i]<0) output1[i] = 0;
+  /*zero out negative correlations */
+  //if(output1[i]<0) output1[i] = 0;
+}
+
+
+   arm_max_f32(output1, nsamp*2, &maxVal, &maxIndex);
+
+
+/* normalize */
+   for(i=0; i<nsamp*2; i++){
+     output1[i] /= maxVal;
+   }
+
+
+
+   /* set origin of autocorre to be max peak */
+   for(i=0; i<nsamp; i++){
+     output2[i] = output1[maxIndex+i];
+}
+
+/*find std deviation and mean of normalized signal */
+ arm_mean_f32(output2, nsamp, &avg);
+ arm_std_f32(output2, nsamp, &dev);
+
+
+
+/* eliminate non dominant peaks */
+ for(i=0; i<nsamp; i++){
+  if ((output2[i] < avg + (2*dev))) output2[i] = 0;
  }
 
 
-    arm_max_f32(output1, nsamp*2, &maxVal, &maxIndex);
+/* peak detection */
+   for(i = 1; i<nsamp-1; i++ ){
+
+      if(((output2[i] - output2[i-1])>0) && ((output2[i+1]-output2[i])<0)){
+        n = i;
+        break;
+      }
+
+      else if((output2[i] - output2[i-1])>0) continue;
+
+      else if((output2[i+1] - output2[i]) < 0) continue;
+   }
+
+   note = 10000.0/((float) n);
 
 
- /* normalize */
-    for(i=0; i<nsamp*2; i++){
-      output1[i] /= maxVal;
-    }
+ return note;
+//arm_cmplx_mag_squared_f32(output1, output2, 512);
 
-
-
-    /* set origin of autocorre to be max peak */
-    for(i=0; i<nsamp; i++){
-      output2[i] = output1[maxIndex+i];
- }
-
- /*find std deviation and mean of normalized signal */
-  arm_mean_f32(output2, nsamp, &avg);
-  arm_std_f32(output2, nsamp, &dev);
-
-
-
- /* eliminate non dominant peaks */
-  for(i=0; i<nsamp; i++){
-   if ((output2[i] < avg + (2*dev))) output2[i] = 0;
-  }
-
-
- /* peak detection */
-    for(i = 1; i<nsamp-1; i++ ){
-
-       if(((output2[i] - output2[i-1])>0) && ((output2[i+1]-output2[i])<0)){
-         n = i;
-         break;
-       }
-
-       else if((output2[i] - output2[i-1])>0) continue;
-
-       else if((output2[i+1] - output2[i]) < 0) continue;
-    }
-
-    note = 10000.0/((float) n);
-
-
-
- //arm_cmplx_mag_squared_f32(output1, output2, 512);
-
-  //arm_rfft_fast_f32(fftStruct, output2, output3, 1);
+ //arm_rfft_fast_f32(fftStruct, output2, output3, 1);
 
 
 
 
 
-   printf("%f\n\r", note);
+  //printf("%f\n\r", note);
 
 
 }
+
+
+
+
+
+
+/* ----------------------------------------------------------------------
+* Copyright (C) 2010-2014 ARM Limited. All rights reserved.
+*
+* $Date:        19. March 2015
+* $Revision: 	V.1.4.5
+*
+* Project: 	    CMSIS DSP Library
+* Title:		arm_mean_f32.c
+*
+* Description:	Mean value of a floating-point vector.
+*
+* Target Processor: Cortex-M4/Cortex-M3/Cortex-M0
+*
+* Redistribution and use in source and binary forms, with or without
+* modification, are permitted provided that the following conditions
+* are met:
+*   - Redistributions of source code must retain the above copyright
+*     notice, this list of conditions and the following disclaimer.
+*   - Redistributions in binary form must reproduce the above copyright
+*     notice, this list of conditions and the following disclaimer in
+*     the documentation and/or other materials provided with the
+*     distribution.
+*   - Neither the name of ARM LIMITED nor the names of its contributors
+*     may be used to endorse or promote products derived from this
+*     software without specific prior written permission.
+*
+* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+* "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+* LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+* FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+* COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+* INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+* BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+* LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+* LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+* ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+* POSSIBILITY OF SUCH DAMAGE.
+* ---------------------------------------------------------------------------- */
+
+
+
+/**
+ * @ingroup groupStats
+ */
+
+/**
+ * @defgroup mean Mean
+ *
+ * Calculates the mean of the input vector. Mean is defined as the average of the elements in the vector.
+ * The underlying algorithm is used:
+ *
+ * <pre>
+ * 	Result = (pSrc[0] + pSrc[1] + pSrc[2] + ... + pSrc[blockSize-1]) / blockSize;
+ * </pre>
+ *
+ * There are separate functions for floating-point, Q31, Q15, and Q7 data types.
+ */
+
+/**
+ * @addtogroup mean
+ * @{
+ */
+
+
+/**
+ * @brief Mean value of a floating-point vector.
+ * @param[in]       *pSrc points to the input vector
+ * @param[in]       blockSize length of the input vector
+ * @param[out]      *pResult mean value returned here
+ * @return none.
+ */
+
+
+void arm_mean_f32(
+  float32_t * pSrc,
+  uint32_t blockSize,
+  float32_t * pResult)
+{
+  float32_t sum = 0.0f;                          /* Temporary result storage */
+  uint32_t blkCnt;                               /* loop counter */
+
+#ifndef ARM_MATH_CM0_FAMILY
+
+  /* Run the below code for Cortex-M4 and Cortex-M3 */
+  float32_t in1, in2, in3, in4;
+
+  /*loop Unrolling */
+  blkCnt = blockSize >> 2u;
+
+  /* First part of the processing with loop unrolling.  Compute 4 outputs at a time.
+   ** a second loop below computes the remaining 1 to 3 samples. */
+  while(blkCnt > 0u)
+  {
+    /* C = (A[0] + A[1] + A[2] + ... + A[blockSize-1]) */
+    in1 = *pSrc++;
+    in2 = *pSrc++;
+    in3 = *pSrc++;
+    in4 = *pSrc++;
+
+    sum += in1;
+    sum += in2;
+    sum += in3;
+    sum += in4;
+
+    /* Decrement the loop counter */
+    blkCnt--;
+  }
+
+  /* If the blockSize is not a multiple of 4, compute any remaining output samples here.
+   ** No loop unrolling is used. */
+  blkCnt = blockSize % 0x4u;
+
+#else
+
+  /* Run the below code for Cortex-M0 */
+
+  /* Loop over blockSize number of values */
+  blkCnt = blockSize;
+
+#endif /* #ifndef ARM_MATH_CM0_FAMILY */
+
+  while(blkCnt > 0u)
+  {
+    /* C = (A[0] + A[1] + A[2] + ... + A[blockSize-1]) */
+    sum += *pSrc++;
+
+    /* Decrement the loop counter */
+    blkCnt--;
+  }
+
+  /* C = (A[0] + A[1] + A[2] + ... + A[blockSize-1]) / blockSize  */
+  /* Store the result to the destination */
+  *pResult = sum / (float32_t) blockSize;
+}
+
+/**
+ * @} end of mean group
+ */
+
+
+
+ /* ----------------------------------------------------------------------
+ * Copyright (C) 2010-2014 ARM Limited. All rights reserved.
+ *
+ * $Date:        19. March 2015
+ * $Revision: 	V.1.4.5
+ *
+ * Project: 	    CMSIS DSP Library
+ * Title:		arm_std_f32.c
+ *
+ * Description:	Standard deviation of the elements of a floating-point vector.
+ *
+ * Target Processor: Cortex-M4/Cortex-M3/Cortex-M0
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *   - Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *   - Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in
+ *     the documentation and/or other materials provided with the
+ *     distribution.
+ *   - Neither the name of ARM LIMITED nor the names of its contributors
+ *     may be used to endorse or promote products derived from this
+ *     software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ * ---------------------------------------------------------------------------- */
+
+
+
+ /**
+  * @ingroup groupStats
+  */
+
+ /**
+  * @defgroup STD Standard deviation
+  *
+  * Calculates the standard deviation of the elements in the input vector.
+  * The underlying algorithm is used:
+  *
+  * <pre>
+  * 	Result = sqrt((sumOfSquares - sum<sup>2</sup> / blockSize) / (blockSize - 1))
+  *
+  *	   where, sumOfSquares = pSrc[0] * pSrc[0] + pSrc[1] * pSrc[1] + ... + pSrc[blockSize-1] * pSrc[blockSize-1]
+  *
+  *	                   sum = pSrc[0] + pSrc[1] + pSrc[2] + ... + pSrc[blockSize-1]
+  * </pre>
+  *
+  * There are separate functions for floating point, Q31, and Q15 data types.
+  */
+
+ /**
+  * @addtogroup STD
+  * @{
+  */
+
+
+ /**
+  * @brief Standard deviation of the elements of a floating-point vector.
+  * @param[in]       *pSrc points to the input vector
+  * @param[in]       blockSize length of the input vector
+  * @param[out]      *pResult standard deviation value returned here
+  * @return none.
+  *
+  */
+
+
+ void arm_std_f32(
+   float32_t * pSrc,
+   uint32_t blockSize,
+   float32_t * pResult)
+ {
+   float32_t sum = 0.0f;                          /* Temporary result storage */
+   float32_t sumOfSquares = 0.0f;                 /* Sum of squares */
+   float32_t in;                                  /* input value */
+   uint32_t blkCnt;                               /* loop counter */
+
+ #ifndef ARM_MATH_CM0_FAMILY
+
+   /* Run the below code for Cortex-M4 and Cortex-M3 */
+
+   float32_t meanOfSquares, mean, squareOfMean;
+
+ 	if(blockSize == 1)
+ 	{
+ 		*pResult = 0;
+ 		return;
+ 	}
+
+   /*loop Unrolling */
+   blkCnt = blockSize >> 2u;
+
+   /* First part of the processing with loop unrolling.  Compute 4 outputs at a time.
+    ** a second loop below computes the remaining 1 to 3 samples. */
+   while(blkCnt > 0u)
+   {
+     /* C = (A[0] * A[0] + A[1] * A[1] + ... + A[blockSize-1] * A[blockSize-1])  */
+     /* Compute Sum of squares of the input samples
+      * and then store the result in a temporary variable, sum. */
+     in = *pSrc++;
+     sum += in;
+     sumOfSquares += in * in;
+     in = *pSrc++;
+     sum += in;
+     sumOfSquares += in * in;
+     in = *pSrc++;
+     sum += in;
+     sumOfSquares += in * in;
+     in = *pSrc++;
+     sum += in;
+     sumOfSquares += in * in;
+
+     /* Decrement the loop counter */
+     blkCnt--;
+   }
+
+   /* If the blockSize is not a multiple of 4, compute any remaining output samples here.
+    ** No loop unrolling is used. */
+   blkCnt = blockSize % 0x4u;
+
+   while(blkCnt > 0u)
+   {
+     /* C = (A[0] * A[0] + A[1] * A[1] + ... + A[blockSize-1] * A[blockSize-1]) */
+     /* Compute Sum of squares of the input samples
+      * and then store the result in a temporary variable, sum. */
+     in = *pSrc++;
+     sum += in;
+     sumOfSquares += in * in;
+
+     /* Decrement the loop counter */
+     blkCnt--;
+   }
+
+   /* Compute Mean of squares of the input samples
+    * and then store the result in a temporary variable, meanOfSquares. */
+   meanOfSquares = sumOfSquares / ((float32_t) blockSize - 1.0f);
+
+   /* Compute mean of all input values */
+   mean = sum / (float32_t) blockSize;
+
+   /* Compute square of mean */
+   squareOfMean = (mean * mean) * (((float32_t) blockSize) /
+                                   ((float32_t) blockSize - 1.0f));
+
+   /* Compute standard deviation and then store the result to the destination */
+   arm_sqrt_f32((meanOfSquares - squareOfMean), pResult);
+
+ #else
+
+   /* Run the below code for Cortex-M0 */
+
+   float32_t squareOfSum;                         /* Square of Sum */
+   float32_t var;                                 /* Temporary varaince storage */
+
+ 	if(blockSize == 1)
+ 	{
+ 		*pResult = 0;
+ 		return;
+ 	}
+
+   /* Loop over blockSize number of values */
+   blkCnt = blockSize;
+
+   while(blkCnt > 0u)
+   {
+     /* C = (A[0] * A[0] + A[1] * A[1] + ... + A[blockSize-1] * A[blockSize-1]) */
+     /* Compute Sum of squares of the input samples
+      * and then store the result in a temporary variable, sumOfSquares. */
+     in = *pSrc++;
+     sumOfSquares += in * in;
+
+     /* C = (A[0] + A[1] + ... + A[blockSize-1]) */
+     /* Compute Sum of the input samples
+      * and then store the result in a temporary variable, sum. */
+     sum += in;
+
+     /* Decrement the loop counter */
+     blkCnt--;
+   }
+
+   /* Compute the square of sum */
+   squareOfSum = ((sum * sum) / (float32_t) blockSize);
+
+   /* Compute the variance */
+   var = ((sumOfSquares - squareOfSum) / (float32_t) (blockSize - 1.0f));
+
+   /* Compute standard deviation and then store the result to the destination */
+   arm_sqrt_f32(var, pResult);
+
+ #endif /* #ifndef ARM_MATH_CM0_FAMILY */
+
+ }
+
+ /**
+  * @} end of STD group
+  */
+
+
+  /* ----------------------------------------------------------------------
+  * Copyright (C) 2010-2014 ARM Limited. All rights reserved.
+  *
+  * $Date:        19. March 2015
+  * $Revision: 	V.1.4.5
+  *
+  * Project: 	    CMSIS DSP Library
+  * Title:		arm_max_f32.c
+  *
+  * Description:	Maximum value of a floating-point vector.
+  *
+  * Target Processor: Cortex-M4/Cortex-M3/Cortex-M0
+  *
+  * Redistribution and use in source and binary forms, with or without
+  * modification, are permitted provided that the following conditions
+  * are met:
+  *   - Redistributions of source code must retain the above copyright
+  *     notice, this list of conditions and the following disclaimer.
+  *   - Redistributions in binary form must reproduce the above copyright
+  *     notice, this list of conditions and the following disclaimer in
+  *     the documentation and/or other materials provided with the
+  *     distribution.
+  *   - Neither the name of ARM LIMITED nor the names of its contributors
+  *     may be used to endorse or promote products derived from this
+  *     software without specific prior written permission.
+  *
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+  * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+  * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+  * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  * POSSIBILITY OF SUCH DAMAGE.
+  * ---------------------------------------------------------------------------- */
+
+
+
+  /**
+   * @ingroup groupStats
+   */
+
+  /**
+   * @defgroup Max Maximum
+   *
+   * Computes the maximum value of an array of data.
+   * The function returns both the maximum value and its position within the array.
+   * There are separate functions for floating-point, Q31, Q15, and Q7 data types.
+   */
+
+  /**
+   * @addtogroup Max
+   * @{
+   */
+
+
+  /**
+   * @brief Maximum value of a floating-point vector.
+   * @param[in]       *pSrc points to the input vector
+   * @param[in]       blockSize length of the input vector
+   * @param[out]      *pResult maximum value returned here
+   * @param[out]      *pIndex index of maximum value returned here
+   * @return none.
+   */
+
+  void arm_max_f32(
+    float32_t * pSrc,
+    uint32_t blockSize,
+    float32_t * pResult,
+    uint32_t * pIndex)
+  {
+  #ifndef ARM_MATH_CM0_FAMILY
+
+    /* Run the below code for Cortex-M4 and Cortex-M3 */
+    float32_t maxVal1, maxVal2, out;               /* Temporary variables to store the output value. */
+    uint32_t blkCnt, outIndex, count;              /* loop counter */
+
+    /* Initialise the count value. */
+    count = 0u;
+    /* Initialise the index value to zero. */
+    outIndex = 0u;
+    /* Load first input value that act as reference value for comparision */
+    out = *pSrc++;
+
+    /* Loop unrolling */
+    blkCnt = (blockSize - 1u) >> 2u;
+
+    /* Run the below code for Cortex-M4 and Cortex-M3 */
+    while(blkCnt > 0u)
+    {
+      /* Initialize maxVal to the next consecutive values one by one */
+      maxVal1 = *pSrc++;
+
+      maxVal2 = *pSrc++;
+
+      /* compare for the maximum value */
+      if(out < maxVal1)
+      {
+        /* Update the maximum value and its index */
+        out = maxVal1;
+        outIndex = count + 1u;
+      }
+
+      maxVal1 = *pSrc++;
+
+      /* compare for the maximum value */
+      if(out < maxVal2)
+      {
+        /* Update the maximum value and its index */
+        out = maxVal2;
+        outIndex = count + 2u;
+      }
+
+      maxVal2 = *pSrc++;
+
+      /* compare for the maximum value */
+      if(out < maxVal1)
+      {
+        /* Update the maximum value and its index */
+        out = maxVal1;
+        outIndex = count + 3u;
+      }
+
+      /* compare for the maximum value */
+      if(out < maxVal2)
+      {
+        /* Update the maximum value and its index */
+        out = maxVal2;
+        outIndex = count + 4u;
+      }
+
+      count += 4u;
+
+      /* Decrement the loop counter */
+      blkCnt--;
+    }
+
+    /* if (blockSize - 1u) is not multiple of 4 */
+    blkCnt = (blockSize - 1u) % 4u;
+
+  #else
+
+    /* Run the below code for Cortex-M0 */
+    float32_t maxVal1, out;                        /* Temporary variables to store the output value. */
+    uint32_t blkCnt, outIndex;                     /* loop counter */
+
+    /* Initialise the index value to zero. */
+    outIndex = 0u;
+    /* Load first input value that act as reference value for comparision */
+    out = *pSrc++;
+
+    blkCnt = (blockSize - 1u);
+
+  #endif /* #ifndef ARM_MATH_CM0_FAMILY */
+
+    while(blkCnt > 0u)
+    {
+      /* Initialize maxVal to the next consecutive values one by one */
+      maxVal1 = *pSrc++;
+
+      /* compare for the maximum value */
+      if(out < maxVal1)
+      {
+        /* Update the maximum value and it's index */
+        out = maxVal1;
+        outIndex = blockSize - blkCnt;
+      }
+
+
+      /* Decrement the loop counter */
+      blkCnt--;
+
+    }
+
+    /* Store the maximum value and it's index into destination pointers */
+    *pResult = out;
+    *pIndex = outIndex;
+  }
+
+  /**
+   * @} end of Max group
+   */
+
+
+
+
+   /* ----------------------------------------------------------------------------
+   * Copyright (C) 2010-2014 ARM Limited. All rights reserved.
+   *
+   * $Date:        19. March 2015
+   * $Revision: 	V.1.4.5
+   *
+   * Project: 	    CMSIS DSP Library
+   * Title:		arm_correlate_f32.c
+   *
+   * Description:	 Correlation of floating-point sequences.
+   *
+   * Target Processor: Cortex-M4/Cortex-M3/Cortex-M0
+   *
+   * Redistribution and use in source and binary forms, with or without
+   * modification, are permitted provided that the following conditions
+   * are met:
+   *   - Redistributions of source code must retain the above copyright
+   *     notice, this list of conditions and the following disclaimer.
+   *   - Redistributions in binary form must reproduce the above copyright
+   *     notice, this list of conditions and the following disclaimer in
+   *     the documentation and/or other materials provided with the
+   *     distribution.
+   *   - Neither the name of ARM LIMITED nor the names of its contributors
+   *     may be used to endorse or promote products derived from this
+   *     software without specific prior written permission.
+   *
+   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+   * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+   * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+   * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+   * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+   * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+   * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+   * POSSIBILITY OF SUCH DAMAGE.
+   * -------------------------------------------------------------------------- */
+
+
+
+   /**
+    * @ingroup groupFilters
+    */
+
+   /**
+    * @defgroup Corr Correlation
+    *
+    * Correlation is a mathematical operation that is similar to convolution.
+    * As with convolution, correlation uses two signals to produce a third signal.
+    * The underlying algorithms in correlation and convolution are identical except that one of the inputs is flipped in convolution.
+    * Correlation is commonly used to measure the similarity between two signals.
+    * It has applications in pattern recognition, cryptanalysis, and searching.
+    * The CMSIS library provides correlation functions for Q7, Q15, Q31 and floating-point data types.
+    * Fast versions of the Q15 and Q31 functions are also provided.
+    *
+    * \par Algorithm
+    * Let <code>a[n]</code> and <code>b[n]</code> be sequences of length <code>srcALen</code> and <code>srcBLen</code> samples respectively.
+    * The convolution of the two signals is denoted by
+    * <pre>
+    *                   c[n] = a[n] * b[n]
+    * </pre>
+    * In correlation, one of the signals is flipped in time
+    * <pre>
+    *                   c[n] = a[n] * b[-n]
+    * </pre>
+    *
+    * \par
+    * and this is mathematically defined as
+    * \image html CorrelateEquation.gif
+    * \par
+    * The <code>pSrcA</code> points to the first input vector of length <code>srcALen</code> and <code>pSrcB</code> points to the second input vector of length <code>srcBLen</code>.
+    * The result <code>c[n]</code> is of length <code>2 * max(srcALen, srcBLen) - 1</code> and is defined over the interval <code>n=0, 1, 2, ..., (2 * max(srcALen, srcBLen) - 2)</code>.
+    * The output result is written to <code>pDst</code> and the calling function must allocate <code>2 * max(srcALen, srcBLen) - 1</code> words for the result.
+    *
+    * <b>Note</b>
+    * \par
+    * The <code>pDst</code> should be initialized to all zeros before being used.
+    *
+    * <b>Fixed-Point Behavior</b>
+    * \par
+    * Correlation requires summing up a large number of intermediate products.
+    * As such, the Q7, Q15, and Q31 functions run a risk of overflow and saturation.
+    * Refer to the function specific documentation below for further details of the particular algorithm used.
+    *
+    *
+    * <b>Fast Versions</b>
+    *
+    * \par
+    * Fast versions are supported for Q31 and Q15.  Cycles for Fast versions are less compared to Q31 and Q15 of correlate and the design requires
+    * the input signals should be scaled down to avoid intermediate overflows.
+    *
+    *
+    * <b>Opt Versions</b>
+    *
+    * \par
+    * Opt versions are supported for Q15 and Q7.  Design uses internal scratch buffer for getting good optimisation.
+    * These versions are optimised in cycles and consumes more memory(Scratch memory) compared to Q15 and Q7 versions of correlate
+    */
+
+   /**
+    * @addtogroup Corr
+    * @{
+    */
+   /**
+    * @brief Correlation of floating-point sequences.
+    * @param[in]  *pSrcA points to the first input sequence.
+    * @param[in]  srcALen length of the first input sequence.
+    * @param[in]  *pSrcB points to the second input sequence.
+    * @param[in]  srcBLen length of the second input sequence.
+    * @param[out] *pDst points to the location where the output result is written.  Length 2 * max(srcALen, srcBLen) - 1.
+    * @return none.
+    */
+
+   void arm_correlate_f32(
+     float32_t * pSrcA,
+     uint32_t srcALen,
+     float32_t * pSrcB,
+     uint32_t srcBLen,
+     float32_t * pDst)
+   {
+
+
+   #ifndef ARM_MATH_CM0_FAMILY
+
+     /* Run the below code for Cortex-M4 and Cortex-M3 */
+
+     float32_t *pIn1;                               /* inputA pointer */
+     float32_t *pIn2;                               /* inputB pointer */
+     float32_t *pOut = pDst;                        /* output pointer */
+     float32_t *px;                                 /* Intermediate inputA pointer */
+     float32_t *py;                                 /* Intermediate inputB pointer */
+     float32_t *pSrc1;                              /* Intermediate pointers */
+     float32_t sum, acc0, acc1, acc2, acc3;         /* Accumulators */
+     float32_t x0, x1, x2, x3, c0;                  /* temporary variables for holding input and coefficient values */
+     uint32_t j, k = 0u, count, blkCnt, outBlockSize, blockSize1, blockSize2, blockSize3;  /* loop counters */
+     int32_t inc = 1;                               /* Destination address modifier */
+
+
+     /* The algorithm implementation is based on the lengths of the inputs. */
+     /* srcB is always made to slide across srcA. */
+     /* So srcBLen is always considered as shorter or equal to srcALen */
+     /* But CORR(x, y) is reverse of CORR(y, x) */
+     /* So, when srcBLen > srcALen, output pointer is made to point to the end of the output buffer */
+     /* and the destination pointer modifier, inc is set to -1 */
+     /* If srcALen > srcBLen, zero pad has to be done to srcB to make the two inputs of same length */
+     /* But to improve the performance,
+      * we assume zeroes in the output instead of zero padding either of the the inputs*/
+     /* If srcALen > srcBLen,
+      * (srcALen - srcBLen) zeroes has to included in the starting of the output buffer */
+     /* If srcALen < srcBLen,
+      * (srcALen - srcBLen) zeroes has to included in the ending of the output buffer */
+     if(srcALen >= srcBLen)
+     {
+       /* Initialization of inputA pointer */
+       pIn1 = pSrcA;
+
+       /* Initialization of inputB pointer */
+       pIn2 = pSrcB;
+
+       /* Number of output samples is calculated */
+       outBlockSize = (2u * srcALen) - 1u;
+
+       /* When srcALen > srcBLen, zero padding has to be done to srcB
+        * to make their lengths equal.
+        * Instead, (outBlockSize - (srcALen + srcBLen - 1))
+        * number of output samples are made zero */
+       j = outBlockSize - (srcALen + (srcBLen - 1u));
+
+       /* Updating the pointer position to non zero value */
+       pOut += j;
+
+       //while(j > 0u)
+       //{
+       //  /* Zero is stored in the destination buffer */
+       //  *pOut++ = 0.0f;
+
+       //  /* Decrement the loop counter */
+       //  j--;
+       //}
+
+     }
+     else
+     {
+       /* Initialization of inputA pointer */
+       pIn1 = pSrcB;
+
+       /* Initialization of inputB pointer */
+       pIn2 = pSrcA;
+
+       /* srcBLen is always considered as shorter or equal to srcALen */
+       j = srcBLen;
+       srcBLen = srcALen;
+       srcALen = j;
+
+       /* CORR(x, y) = Reverse order(CORR(y, x)) */
+       /* Hence set the destination pointer to point to the last output sample */
+       pOut = pDst + ((srcALen + srcBLen) - 2u);
+
+       /* Destination address modifier is set to -1 */
+       inc = -1;
+
+     }
+
+     /* The function is internally
+      * divided into three parts according to the number of multiplications that has to be
+      * taken place between inputA samples and inputB samples. In the first part of the
+      * algorithm, the multiplications increase by one for every iteration.
+      * In the second part of the algorithm, srcBLen number of multiplications are done.
+      * In the third part of the algorithm, the multiplications decrease by one
+      * for every iteration.*/
+     /* The algorithm is implemented in three stages.
+      * The loop counters of each stage is initiated here. */
+     blockSize1 = srcBLen - 1u;
+     blockSize2 = srcALen - (srcBLen - 1u);
+     blockSize3 = blockSize1;
+
+     /* --------------------------
+      * Initializations of stage1
+      * -------------------------*/
+
+     /* sum = x[0] * y[srcBlen - 1]
+      * sum = x[0] * y[srcBlen-2] + x[1] * y[srcBlen - 1]
+      * ....
+      * sum = x[0] * y[0] + x[1] * y[1] +...+ x[srcBLen - 1] * y[srcBLen - 1]
+      */
+
+     /* In this stage the MAC operations are increased by 1 for every iteration.
+        The count variable holds the number of MAC operations performed */
+     count = 1u;
+
+     /* Working pointer of inputA */
+     px = pIn1;
+
+     /* Working pointer of inputB */
+     pSrc1 = pIn2 + (srcBLen - 1u);
+     py = pSrc1;
+
+     /* ------------------------
+      * Stage1 process
+      * ----------------------*/
+
+     /* The first stage starts here */
+     while(blockSize1 > 0u)
+     {
+       /* Accumulator is made zero for every iteration */
+       sum = 0.0f;
+
+       /* Apply loop unrolling and compute 4 MACs simultaneously. */
+       k = count >> 2u;
+
+       /* First part of the processing with loop unrolling.  Compute 4 MACs at a time.
+        ** a second loop below computes MACs for the remaining 1 to 3 samples. */
+       while(k > 0u)
+       {
+         /* x[0] * y[srcBLen - 4] */
+         sum += *px++ * *py++;
+         /* x[1] * y[srcBLen - 3] */
+         sum += *px++ * *py++;
+         /* x[2] * y[srcBLen - 2] */
+         sum += *px++ * *py++;
+         /* x[3] * y[srcBLen - 1] */
+         sum += *px++ * *py++;
+
+         /* Decrement the loop counter */
+         k--;
+       }
+
+       /* If the count is not a multiple of 4, compute any remaining MACs here.
+        ** No loop unrolling is used. */
+       k = count % 0x4u;
+
+       while(k > 0u)
+       {
+         /* Perform the multiply-accumulate */
+         /* x[0] * y[srcBLen - 1] */
+         sum += *px++ * *py++;
+
+         /* Decrement the loop counter */
+         k--;
+       }
+
+       /* Store the result in the accumulator in the destination buffer. */
+       *pOut = sum;
+       /* Destination pointer is updated according to the address modifier, inc */
+       pOut += inc;
+
+       /* Update the inputA and inputB pointers for next MAC calculation */
+       py = pSrc1 - count;
+       px = pIn1;
+
+       /* Increment the MAC count */
+       count++;
+
+       /* Decrement the loop counter */
+       blockSize1--;
+     }
+
+     /* --------------------------
+      * Initializations of stage2
+      * ------------------------*/
+
+     /* sum = x[0] * y[0] + x[1] * y[1] +...+ x[srcBLen-1] * y[srcBLen-1]
+      * sum = x[1] * y[0] + x[2] * y[1] +...+ x[srcBLen] * y[srcBLen-1]
+      * ....
+      * sum = x[srcALen-srcBLen-2] * y[0] + x[srcALen-srcBLen-1] * y[1] +...+ x[srcALen-1] * y[srcBLen-1]
+      */
+
+     /* Working pointer of inputA */
+     px = pIn1;
+
+     /* Working pointer of inputB */
+     py = pIn2;
+
+     /* count is index by which the pointer pIn1 to be incremented */
+     count = 0u;
+
+     /* -------------------
+      * Stage2 process
+      * ------------------*/
+
+     /* Stage2 depends on srcBLen as in this stage srcBLen number of MACS are performed.
+      * So, to loop unroll over blockSize2,
+      * srcBLen should be greater than or equal to 4, to loop unroll the srcBLen loop */
+     if(srcBLen >= 4u)
+     {
+       /* Loop unroll over blockSize2, by 4 */
+       blkCnt = blockSize2 >> 2u;
+
+       while(blkCnt > 0u)
+       {
+         /* Set all accumulators to zero */
+         acc0 = 0.0f;
+         acc1 = 0.0f;
+         acc2 = 0.0f;
+         acc3 = 0.0f;
+
+         /* read x[0], x[1], x[2] samples */
+         x0 = *(px++);
+         x1 = *(px++);
+         x2 = *(px++);
+
+         /* Apply loop unrolling and compute 4 MACs simultaneously. */
+         k = srcBLen >> 2u;
+
+         /* First part of the processing with loop unrolling.  Compute 4 MACs at a time.
+          ** a second loop below computes MACs for the remaining 1 to 3 samples. */
+         do
+         {
+           /* Read y[0] sample */
+           c0 = *(py++);
+
+           /* Read x[3] sample */
+           x3 = *(px++);
+
+           /* Perform the multiply-accumulate */
+           /* acc0 +=  x[0] * y[0] */
+           acc0 += x0 * c0;
+           /* acc1 +=  x[1] * y[0] */
+           acc1 += x1 * c0;
+           /* acc2 +=  x[2] * y[0] */
+           acc2 += x2 * c0;
+           /* acc3 +=  x[3] * y[0] */
+           acc3 += x3 * c0;
+
+           /* Read y[1] sample */
+           c0 = *(py++);
+
+           /* Read x[4] sample */
+           x0 = *(px++);
+
+           /* Perform the multiply-accumulate */
+           /* acc0 +=  x[1] * y[1] */
+           acc0 += x1 * c0;
+           /* acc1 +=  x[2] * y[1] */
+           acc1 += x2 * c0;
+           /* acc2 +=  x[3] * y[1] */
+           acc2 += x3 * c0;
+           /* acc3 +=  x[4] * y[1] */
+           acc3 += x0 * c0;
+
+           /* Read y[2] sample */
+           c0 = *(py++);
+
+           /* Read x[5] sample */
+           x1 = *(px++);
+
+           /* Perform the multiply-accumulates */
+           /* acc0 +=  x[2] * y[2] */
+           acc0 += x2 * c0;
+           /* acc1 +=  x[3] * y[2] */
+           acc1 += x3 * c0;
+           /* acc2 +=  x[4] * y[2] */
+           acc2 += x0 * c0;
+           /* acc3 +=  x[5] * y[2] */
+           acc3 += x1 * c0;
+
+           /* Read y[3] sample */
+           c0 = *(py++);
+
+           /* Read x[6] sample */
+           x2 = *(px++);
+
+           /* Perform the multiply-accumulates */
+           /* acc0 +=  x[3] * y[3] */
+           acc0 += x3 * c0;
+           /* acc1 +=  x[4] * y[3] */
+           acc1 += x0 * c0;
+           /* acc2 +=  x[5] * y[3] */
+           acc2 += x1 * c0;
+           /* acc3 +=  x[6] * y[3] */
+           acc3 += x2 * c0;
+
+
+         } while(--k);
+
+         /* If the srcBLen is not a multiple of 4, compute any remaining MACs here.
+          ** No loop unrolling is used. */
+         k = srcBLen % 0x4u;
+
+         while(k > 0u)
+         {
+           /* Read y[4] sample */
+           c0 = *(py++);
+
+           /* Read x[7] sample */
+           x3 = *(px++);
+
+           /* Perform the multiply-accumulates */
+           /* acc0 +=  x[4] * y[4] */
+           acc0 += x0 * c0;
+           /* acc1 +=  x[5] * y[4] */
+           acc1 += x1 * c0;
+           /* acc2 +=  x[6] * y[4] */
+           acc2 += x2 * c0;
+           /* acc3 +=  x[7] * y[4] */
+           acc3 += x3 * c0;
+
+           /* Reuse the present samples for the next MAC */
+           x0 = x1;
+           x1 = x2;
+           x2 = x3;
+
+           /* Decrement the loop counter */
+           k--;
+         }
+
+         /* Store the result in the accumulator in the destination buffer. */
+         *pOut = acc0;
+         /* Destination pointer is updated according to the address modifier, inc */
+         pOut += inc;
+
+         *pOut = acc1;
+         pOut += inc;
+
+         *pOut = acc2;
+         pOut += inc;
+
+         *pOut = acc3;
+         pOut += inc;
+
+         /* Increment the pointer pIn1 index, count by 4 */
+         count += 4u;
+
+         /* Update the inputA and inputB pointers for next MAC calculation */
+         px = pIn1 + count;
+         py = pIn2;
+
+         /* Decrement the loop counter */
+         blkCnt--;
+       }
+
+       /* If the blockSize2 is not a multiple of 4, compute any remaining output samples here.
+        ** No loop unrolling is used. */
+       blkCnt = blockSize2 % 0x4u;
+
+       while(blkCnt > 0u)
+       {
+         /* Accumulator is made zero for every iteration */
+         sum = 0.0f;
+
+         /* Apply loop unrolling and compute 4 MACs simultaneously. */
+         k = srcBLen >> 2u;
+
+         /* First part of the processing with loop unrolling.  Compute 4 MACs at a time.
+          ** a second loop below computes MACs for the remaining 1 to 3 samples. */
+         while(k > 0u)
+         {
+           /* Perform the multiply-accumulates */
+           sum += *px++ * *py++;
+           sum += *px++ * *py++;
+           sum += *px++ * *py++;
+           sum += *px++ * *py++;
+
+           /* Decrement the loop counter */
+           k--;
+         }
+
+         /* If the srcBLen is not a multiple of 4, compute any remaining MACs here.
+          ** No loop unrolling is used. */
+         k = srcBLen % 0x4u;
+
+         while(k > 0u)
+         {
+           /* Perform the multiply-accumulate */
+           sum += *px++ * *py++;
+
+           /* Decrement the loop counter */
+           k--;
+         }
+
+         /* Store the result in the accumulator in the destination buffer. */
+         *pOut = sum;
+         /* Destination pointer is updated according to the address modifier, inc */
+         pOut += inc;
+
+         /* Increment the pointer pIn1 index, count by 1 */
+         count++;
+
+         /* Update the inputA and inputB pointers for next MAC calculation */
+         px = pIn1 + count;
+         py = pIn2;
+
+         /* Decrement the loop counter */
+         blkCnt--;
+       }
+     }
+     else
+     {
+       /* If the srcBLen is not a multiple of 4,
+        * the blockSize2 loop cannot be unrolled by 4 */
+       blkCnt = blockSize2;
+
+       while(blkCnt > 0u)
+       {
+         /* Accumulator is made zero for every iteration */
+         sum = 0.0f;
+
+         /* Loop over srcBLen */
+         k = srcBLen;
+
+         while(k > 0u)
+         {
+           /* Perform the multiply-accumulate */
+           sum += *px++ * *py++;
+
+           /* Decrement the loop counter */
+           k--;
+         }
+
+         /* Store the result in the accumulator in the destination buffer. */
+         *pOut = sum;
+         /* Destination pointer is updated according to the address modifier, inc */
+         pOut += inc;
+
+         /* Increment the pointer pIn1 index, count by 1 */
+         count++;
+
+         /* Update the inputA and inputB pointers for next MAC calculation */
+         px = pIn1 + count;
+         py = pIn2;
+
+         /* Decrement the loop counter */
+         blkCnt--;
+       }
+     }
+
+     /* --------------------------
+      * Initializations of stage3
+      * -------------------------*/
+
+     /* sum += x[srcALen-srcBLen+1] * y[0] + x[srcALen-srcBLen+2] * y[1] +...+ x[srcALen-1] * y[srcBLen-1]
+      * sum += x[srcALen-srcBLen+2] * y[0] + x[srcALen-srcBLen+3] * y[1] +...+ x[srcALen-1] * y[srcBLen-1]
+      * ....
+      * sum +=  x[srcALen-2] * y[0] + x[srcALen-1] * y[1]
+      * sum +=  x[srcALen-1] * y[0]
+      */
+
+     /* In this stage the MAC operations are decreased by 1 for every iteration.
+        The count variable holds the number of MAC operations performed */
+     count = srcBLen - 1u;
+
+     /* Working pointer of inputA */
+     pSrc1 = pIn1 + (srcALen - (srcBLen - 1u));
+     px = pSrc1;
+
+     /* Working pointer of inputB */
+     py = pIn2;
+
+     /* -------------------
+      * Stage3 process
+      * ------------------*/
+
+     while(blockSize3 > 0u)
+     {
+       /* Accumulator is made zero for every iteration */
+       sum = 0.0f;
+
+       /* Apply loop unrolling and compute 4 MACs simultaneously. */
+       k = count >> 2u;
+
+       /* First part of the processing with loop unrolling.  Compute 4 MACs at a time.
+        ** a second loop below computes MACs for the remaining 1 to 3 samples. */
+       while(k > 0u)
+       {
+         /* Perform the multiply-accumulates */
+         /* sum += x[srcALen - srcBLen + 4] * y[3] */
+         sum += *px++ * *py++;
+         /* sum += x[srcALen - srcBLen + 3] * y[2] */
+         sum += *px++ * *py++;
+         /* sum += x[srcALen - srcBLen + 2] * y[1] */
+         sum += *px++ * *py++;
+         /* sum += x[srcALen - srcBLen + 1] * y[0] */
+         sum += *px++ * *py++;
+
+         /* Decrement the loop counter */
+         k--;
+       }
+
+       /* If the count is not a multiple of 4, compute any remaining MACs here.
+        ** No loop unrolling is used. */
+       k = count % 0x4u;
+
+       while(k > 0u)
+       {
+         /* Perform the multiply-accumulates */
+         sum += *px++ * *py++;
+
+         /* Decrement the loop counter */
+         k--;
+       }
+
+       /* Store the result in the accumulator in the destination buffer. */
+       *pOut = sum;
+       /* Destination pointer is updated according to the address modifier, inc */
+       pOut += inc;
+
+       /* Update the inputA and inputB pointers for next MAC calculation */
+       px = ++pSrc1;
+       py = pIn2;
+
+       /* Decrement the MAC count */
+       count--;
+
+       /* Decrement the loop counter */
+       blockSize3--;
+     }
+
+   #else
+
+     /* Run the below code for Cortex-M0 */
+
+     float32_t *pIn1 = pSrcA;                       /* inputA pointer */
+     float32_t *pIn2 = pSrcB + (srcBLen - 1u);      /* inputB pointer */
+     float32_t sum;                                 /* Accumulator */
+     uint32_t i = 0u, j;                            /* loop counters */
+     uint32_t inv = 0u;                             /* Reverse order flag */
+     uint32_t tot = 0u;                             /* Length */
+
+     /* The algorithm implementation is based on the lengths of the inputs. */
+     /* srcB is always made to slide across srcA. */
+     /* So srcBLen is always considered as shorter or equal to srcALen */
+     /* But CORR(x, y) is reverse of CORR(y, x) */
+     /* So, when srcBLen > srcALen, output pointer is made to point to the end of the output buffer */
+     /* and a varaible, inv is set to 1 */
+     /* If lengths are not equal then zero pad has to be done to  make the two
+      * inputs of same length. But to improve the performance, we assume zeroes
+      * in the output instead of zero padding either of the the inputs*/
+     /* If srcALen > srcBLen, (srcALen - srcBLen) zeroes has to included in the
+      * starting of the output buffer */
+     /* If srcALen < srcBLen, (srcALen - srcBLen) zeroes has to included in the
+      * ending of the output buffer */
+     /* Once the zero padding is done the remaining of the output is calcualted
+      * using convolution but with the shorter signal time shifted. */
+
+     /* Calculate the length of the remaining sequence */
+     tot = ((srcALen + srcBLen) - 2u);
+
+     if(srcALen > srcBLen)
+     {
+       /* Calculating the number of zeros to be padded to the output */
+       j = srcALen - srcBLen;
+
+       /* Initialise the pointer after zero padding */
+       pDst += j;
+     }
+
+     else if(srcALen < srcBLen)
+     {
+       /* Initialization to inputB pointer */
+       pIn1 = pSrcB;
+
+       /* Initialization to the end of inputA pointer */
+       pIn2 = pSrcA + (srcALen - 1u);
+
+       /* Initialisation of the pointer after zero padding */
+       pDst = pDst + tot;
+
+       /* Swapping the lengths */
+       j = srcALen;
+       srcALen = srcBLen;
+       srcBLen = j;
+
+       /* Setting the reverse flag */
+       inv = 1;
+
+     }
+
+     /* Loop to calculate convolution for output length number of times */
+     for (i = 0u; i <= tot; i++)
+     {
+       /* Initialize sum with zero to carry on MAC operations */
+       sum = 0.0f;
+
+       /* Loop to perform MAC operations according to convolution equation */
+       for (j = 0u; j <= i; j++)
+       {
+         /* Check the array limitations */
+         if((((i - j) < srcBLen) && (j < srcALen)))
+         {
+           /* z[i] += x[i-j] * y[j] */
+           sum += pIn1[j] * pIn2[-((int32_t) i - j)];
+         }
+       }
+       /* Store the output in the destination buffer */
+       if(inv == 1)
+         *pDst-- = sum;
+       else
+         *pDst++ = sum;
+     }
+
+   #endif /*   #ifndef ARM_MATH_CM0_FAMILY */
+
+   }
+
+   /**
+    * @} end of Corr group
+    */
