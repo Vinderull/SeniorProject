@@ -162,17 +162,17 @@ int main(void)
 
  volt[i] = pReadyProcess[0] * vsense;
 
-  sprintf(Message, "The Sensor is %d\n\r", pReadyProcess[0]);
-  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
+  //sprintf(Message, "The Sensor is %d\n\r", pReadyProcess[0]);
+  //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
   ADC_DMA_DONE = 0;
   /*end For */
  }
 
 
- frequency = findFrequency(volt, SAMPLE_SIZE);
+ findFrequency(volt, SAMPLE_SIZE, &frequency);
 
- gcvt(frequency, 4, Message);
- //sprintf(Message, "The Sensor is %d\n\r", pReadyProcess[0]);
+ //gcvt(frequency, 4, Message);
+ sprintf(Message, "The Note is %f\n\r", frequency);
  /*transmit sring over usart2 */
  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 

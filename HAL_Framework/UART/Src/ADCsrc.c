@@ -273,11 +273,12 @@ void ADC_Calibration(void){
 
 
 
-float findFrequency(float *samples, int nsamp)
+void findFrequency(float *samples, int nsamp, float *note)
 {
    uint32_t i, n, j, maxIndex;
-   float avg, dev, note, maxVal;
+   float avg, dev, maxVal;
    float input[nsamp], output1[nsamp*2], output2[nsamp];
+   n=1;
 
  //this will also keep track of how many blocks collected
  //since decimating we will need #D blocks until FFT is full
@@ -298,7 +299,7 @@ for(i=0; i<nsamp*2; i++){
   //if(output1[i]<0) output1[i] = 0;
 }
 
-
+  /*Find Max value as well as corresponding index of said value */
    arm_max_f32(output1, nsamp*2, &maxVal, &maxIndex);
 
 
@@ -339,15 +340,9 @@ for(i=0; i<nsamp*2; i++){
       else if((output2[i+1] - output2[i]) < 0) continue;
    }
 
-   note = 10000.0/((float) n);
-
-
- return note;
-//arm_cmplx_mag_squared_f32(output1, output2, 512);
-
- //arm_rfft_fast_f32(fftStruct, output2, output3, 1);
-
-
+          /*sample rate /divided by number of samples to peak */
+          /*returns frequency in Hz */
+   *note = 10000.0/((float) n);
 
 
 
