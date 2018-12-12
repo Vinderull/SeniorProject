@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
   28:Src/main.c    ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
   29:Src/main.c    ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
   30:Src/main.c    ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 2
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 2
 
 
   31:Src/main.c    ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
   85:Src/main.c    ****   */
   86:Src/main.c    **** int main(void)
   87:Src/main.c    **** {
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 3
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 3
 
 
   88:Src/main.c    ****   /* USER CODE BEGIN 1 */
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  142:Src/main.c    ****   /* Infinite loop */
  143:Src/main.c    ****   /* USER CODE BEGIN WHILE */
  144:Src/main.c    ****   //ADC1->CR |= ADC_CR_ADSTART;
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 4
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 4
 
 
  145:Src/main.c    ****   while (1)
@@ -211,7 +211,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  172:Src/main.c    ****  findFrequency(volt, SAMPLE_SIZE, &frequency);
  173:Src/main.c    **** 
  174:Src/main.c    ****  //gcvt(frequency, 4, Message);
- 175:Src/main.c    ****  sprintf(Message, "The Note is %f\n\r", frequency);
+ 175:Src/main.c    ****  sprintf(Message, "The Note is %f, voltage is%d \n\r", frequency, pReadyProcess[0]);
  176:Src/main.c    ****  /*transmit sring over usart2 */
  177:Src/main.c    ****  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
  178:Src/main.c    **** 
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  199:Src/main.c    ****     /**Initializes the CPU, AHB and APB busses clocks
  200:Src/main.c    ****     */
  201:Src/main.c    ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 5
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 5
 
 
  202:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  256:Src/main.c    **** {
   29              		.loc 1 256 0
   30              		.cfi_startproc
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 6
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 6
 
 
   31              		@ args = 0, pretend = 0, frame = 0
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
   61              		.loc 1 280 0
   62 0034 1A68     		ldr	r2, [r3]
   63 0036 42F48072 		orr	r2, r2, #256
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 7
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 7
 
 
   64 003a 1A60     		str	r2, [r3]
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  306:Src/main.c    **** //number of ADC results to transfer
  307:Src/main.c    **** DMA1_Channel1->CNDTR = arg;
   93              		.loc 1 307 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 8
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 8
 
 
   94 0074 5860     		str	r0, [r3, #4]
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
   17:Drivers/CMSIS/Include/core_cm4.h ****    - Neither the name of ARM nor the names of its contributors may be used
   18:Drivers/CMSIS/Include/core_cm4.h ****      to endorse or promote products derived from this software without
   19:Drivers/CMSIS/Include/core_cm4.h ****      specific prior written permission.
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 9
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 9
 
 
   20:Drivers/CMSIS/Include/core_cm4.h ****    *
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
   74:Drivers/CMSIS/Include/core_cm4.h **** #define __CM4_CMSIS_VERSION_MAIN  (0x04U)                                      /*!< [31:16] CMSIS H
   75:Drivers/CMSIS/Include/core_cm4.h **** #define __CM4_CMSIS_VERSION_SUB   (0x1EU)                                      /*!< [15:0]  CMSIS H
   76:Drivers/CMSIS/Include/core_cm4.h **** #define __CM4_CMSIS_VERSION       ((__CM4_CMSIS_VERSION_MAIN << 16U) | \
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 10
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 10
 
 
   77:Drivers/CMSIS/Include/core_cm4.h ****                                     __CM4_CMSIS_VERSION_SUB           )        /*!< CMSIS HAL versi
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  131:Drivers/CMSIS/Include/core_cm4.h ****     #endif
  132:Drivers/CMSIS/Include/core_cm4.h ****   #else
  133:Drivers/CMSIS/Include/core_cm4.h ****     #define __FPU_USED         0U
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 11
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 11
 
 
  134:Drivers/CMSIS/Include/core_cm4.h ****   #endif
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  188:Drivers/CMSIS/Include/core_cm4.h ****     #else
  189:Drivers/CMSIS/Include/core_cm4.h ****       #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)
  190:Drivers/CMSIS/Include/core_cm4.h ****       #define __FPU_USED       0U
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 12
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 12
 
 
  191:Drivers/CMSIS/Include/core_cm4.h ****     #endif
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  245:Drivers/CMSIS/Include/core_cm4.h **** 
  246:Drivers/CMSIS/Include/core_cm4.h ****   #ifndef __NVIC_PRIO_BITS
  247:Drivers/CMSIS/Include/core_cm4.h ****     #define __NVIC_PRIO_BITS          4U
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 13
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 13
 
 
  248:Drivers/CMSIS/Include/core_cm4.h ****     #warning "__NVIC_PRIO_BITS not defined in device header file; using default!"
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  302:Drivers/CMSIS/Include/core_cm4.h ****   @{
  303:Drivers/CMSIS/Include/core_cm4.h ****  */
  304:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 14
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 14
 
 
  305:Drivers/CMSIS/Include/core_cm4.h **** /**
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  359:Drivers/CMSIS/Include/core_cm4.h **** #define IPSR_ISR_Msk                       (0x1FFUL /*<< IPSR_ISR_Pos*/)                  /*!< IPSR
  360:Drivers/CMSIS/Include/core_cm4.h **** 
  361:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 15
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 15
 
 
  362:Drivers/CMSIS/Include/core_cm4.h **** /**
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  416:Drivers/CMSIS/Include/core_cm4.h **** typedef union
  417:Drivers/CMSIS/Include/core_cm4.h **** {
  418:Drivers/CMSIS/Include/core_cm4.h ****   struct
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 16
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 16
 
 
  419:Drivers/CMSIS/Include/core_cm4.h ****   {
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  473:Drivers/CMSIS/Include/core_cm4.h **** 
  474:Drivers/CMSIS/Include/core_cm4.h **** 
  475:Drivers/CMSIS/Include/core_cm4.h **** /**
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 17
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 17
 
 
  476:Drivers/CMSIS/Include/core_cm4.h ****   \ingroup  CMSIS_core_register
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  530:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSVSET_Pos             28U                                            /*!< SCB 
  531:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSVSET_Msk             (1UL << SCB_ICSR_PENDSVSET_Pos)                /*!< SCB 
  532:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 18
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 18
 
 
  533:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_ICSR_PENDSVCLR_Pos             27U                                            /*!< SCB 
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  587:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SLEEPDEEP_Pos               2U                                            /*!< SCB 
  588:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SLEEPDEEP_Msk              (1UL << SCB_SCR_SLEEPDEEP_Pos)                 /*!< SCB 
  589:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 19
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 19
 
 
  590:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SCR_SLEEPONEXIT_Pos             1U                                            /*!< SCB 
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  644:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_SVCALLACT_Msk            (1UL << SCB_SHCSR_SVCALLACT_Pos)               /*!< SCB 
  645:Drivers/CMSIS/Include/core_cm4.h **** 
  646:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_USGFAULTACT_Pos           3U                                            /*!< SCB 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 20
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 20
 
 
  647:Drivers/CMSIS/Include/core_cm4.h **** #define SCB_SHCSR_USGFAULTACT_Msk          (1UL << SCB_SHCSR_USGFAULTACT_Pos)             /*!< SCB 
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  701:Drivers/CMSIS/Include/core_cm4.h **** /**
  702:Drivers/CMSIS/Include/core_cm4.h ****   \brief  Structure type to access the System Control and ID Register not in the SCB.
  703:Drivers/CMSIS/Include/core_cm4.h ****  */
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 21
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 21
 
 
  704:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  758:Drivers/CMSIS/Include/core_cm4.h **** 
  759:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_TICKINT_Pos            1U                                            /*!< SysT
  760:Drivers/CMSIS/Include/core_cm4.h **** #define SysTick_CTRL_TICKINT_Msk           (1UL << SysTick_CTRL_TICKINT_Pos)              /*!< SysT
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 22
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 22
 
 
  761:Drivers/CMSIS/Include/core_cm4.h **** 
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  815:Drivers/CMSIS/Include/core_cm4.h ****   __OM  uint32_t LAR;                    /*!< Offset: 0xFB0 ( /W)  ITM Lock Access Register */
  816:Drivers/CMSIS/Include/core_cm4.h ****   __IM  uint32_t LSR;                    /*!< Offset: 0xFB4 (R/ )  ITM Lock Status Register */
  817:Drivers/CMSIS/Include/core_cm4.h ****         uint32_t RESERVED5[6U];
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 23
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 23
 
 
  818:Drivers/CMSIS/Include/core_cm4.h ****   __IM  uint32_t PID4;                   /*!< Offset: 0xFD0 (R/ )  ITM Peripheral Identification Re
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  872:Drivers/CMSIS/Include/core_cm4.h **** /* ITM Integration Mode Control Register Definitions */
  873:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_IMCR_INTEGRATION_Pos            0U                                            /*!< ITM 
  874:Drivers/CMSIS/Include/core_cm4.h **** #define ITM_IMCR_INTEGRATION_Msk           (1UL /*<< ITM_IMCR_INTEGRATION_Pos*/)          /*!< ITM 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 24
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 24
 
 
  875:Drivers/CMSIS/Include/core_cm4.h **** 
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  929:Drivers/CMSIS/Include/core_cm4.h **** 
  930:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NOTRCPKT_Pos              27U                                         /*!< DWT CTR
  931:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_CTRL_NOTRCPKT_Msk              (0x1UL << DWT_CTRL_NOTRCPKT_Pos)            /*!< DWT CTR
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 25
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 25
 
 
  932:Drivers/CMSIS/Include/core_cm4.h **** 
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  986:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_EXCCNT_EXCCNT_Pos               0U                                         /*!< DWT EXC
  987:Drivers/CMSIS/Include/core_cm4.h **** #define DWT_EXCCNT_EXCCNT_Msk              (0xFFUL /*<< DWT_EXCCNT_EXCCNT_Pos*/)       /*!< DWT EXC
  988:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 26
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 26
 
 
  989:Drivers/CMSIS/Include/core_cm4.h **** /* DWT Sleep Count Register Definitions */
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1043:Drivers/CMSIS/Include/core_cm4.h **** /**
 1044:Drivers/CMSIS/Include/core_cm4.h ****   \brief  Structure type to access the Trace Port Interface Register (TPI).
 1045:Drivers/CMSIS/Include/core_cm4.h ****  */
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 27
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 27
 
 
 1046:Drivers/CMSIS/Include/core_cm4.h **** typedef struct
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1100:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_FFCR_EnFCont_Msk               (0x1UL << TPI_FFCR_EnFCont_Pos)             /*!< TPI FFC
 1101:Drivers/CMSIS/Include/core_cm4.h **** 
 1102:Drivers/CMSIS/Include/core_cm4.h **** /* TPI TRIGGER Register Definitions */
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 28
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 28
 
 
 1103:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_TRIGGER_TRIGGER_Pos             0U                                         /*!< TPI TRI
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1157:Drivers/CMSIS/Include/core_cm4.h **** 
 1158:Drivers/CMSIS/Include/core_cm4.h **** /* TPI Integration Mode Control Register Definitions */
 1159:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_ITCTRL_Mode_Pos                 0U                                         /*!< TPI ITC
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 29
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 29
 
 
 1160:Drivers/CMSIS/Include/core_cm4.h **** #define TPI_ITCTRL_Mode_Msk                (0x1UL /*<< TPI_ITCTRL_Mode_Pos*/)          /*!< TPI ITC
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1214:Drivers/CMSIS/Include/core_cm4.h ****   __IOM uint32_t RASR_A3;                /*!< Offset: 0x028 (R/W)  MPU Alias 3 Region Attribute and
 1215:Drivers/CMSIS/Include/core_cm4.h **** } MPU_Type;
 1216:Drivers/CMSIS/Include/core_cm4.h **** 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 30
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 30
 
 
 1217:Drivers/CMSIS/Include/core_cm4.h **** /* MPU Type Register Definitions */
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1271:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_B_Msk                     (1UL << MPU_RASR_B_Pos)                        /*!< MPU 
 1272:Drivers/CMSIS/Include/core_cm4.h **** 
 1273:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_SRD_Pos                    8U                                            /*!< MPU 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 31
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 31
 
 
 1274:Drivers/CMSIS/Include/core_cm4.h **** #define MPU_RASR_SRD_Msk                   (0xFFUL << MPU_RASR_SRD_Pos)                   /*!< MPU 
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1328:Drivers/CMSIS/Include/core_cm4.h **** 
 1329:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_USER_Pos                  1U                                            /*!< FPCC
 1330:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_FPCCR_USER_Msk                 (1UL << FPU_FPCCR_USER_Pos)                    /*!< FPCC
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 32
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 32
 
 
 1331:Drivers/CMSIS/Include/core_cm4.h **** 
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1385:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_D_NaN_mode_Msk           (0xFUL << FPU_MVFR1_D_NaN_mode_Pos)            /*!< MVFR
 1386:Drivers/CMSIS/Include/core_cm4.h **** 
 1387:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_FtZ_mode_Pos              0U                                            /*!< MVFR
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 33
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 33
 
 
 1388:Drivers/CMSIS/Include/core_cm4.h **** #define FPU_MVFR1_FtZ_mode_Msk             (0xFUL /*<< FPU_MVFR1_FtZ_mode_Pos*/)          /*!< MVFR
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1442:Drivers/CMSIS/Include/core_cm4.h **** 
 1443:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_HALT_Pos          1U                                            /*!< Core
 1444:Drivers/CMSIS/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_HALT_Msk         (1UL << CoreDebug_DHCSR_C_HALT_Pos)            /*!< Core
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 34
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 34
 
 
 1445:Drivers/CMSIS/Include/core_cm4.h **** 
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1499:Drivers/CMSIS/Include/core_cm4.h **** /**
 1500:Drivers/CMSIS/Include/core_cm4.h ****   \ingroup    CMSIS_core_register
 1501:Drivers/CMSIS/Include/core_cm4.h ****   \defgroup   CMSIS_core_bitfield     Core register bit field macros
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 35
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 35
 
 
 1502:Drivers/CMSIS/Include/core_cm4.h ****   \brief      Macros for use with bit field definitions (xxx_Pos, xxx_Msk).
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1556:Drivers/CMSIS/Include/core_cm4.h **** #if (__FPU_PRESENT == 1U)
 1557:Drivers/CMSIS/Include/core_cm4.h ****   #define FPU_BASE          (SCS_BASE +  0x0F30UL)                    /*!< Floating Point Unit */
 1558:Drivers/CMSIS/Include/core_cm4.h ****   #define FPU               ((FPU_Type       *)     FPU_BASE      )   /*!< Floating Point Unit */
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 36
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 36
 
 
 1559:Drivers/CMSIS/Include/core_cm4.h **** #endif
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1613:Drivers/CMSIS/Include/core_cm4.h ****   \return                Priority grouping field (SCB->AIRCR [10:8] PRIGROUP field).
 1614:Drivers/CMSIS/Include/core_cm4.h ****  */
 1615:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE uint32_t NVIC_GetPriorityGrouping(void)
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 37
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 37
 
 
 1616:Drivers/CMSIS/Include/core_cm4.h **** {
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
 1670:Drivers/CMSIS/Include/core_cm4.h ****   \param [in]      IRQn  External interrupt number. Value cannot be negative.
 1671:Drivers/CMSIS/Include/core_cm4.h ****  */
 1672:Drivers/CMSIS/Include/core_cm4.h **** __STATIC_INLINE void NVIC_ClearPendingIRQ(IRQn_Type IRQn)
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 38
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 38
 
 
 1673:Drivers/CMSIS/Include/core_cm4.h **** {
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  327:Src/main.c    **** 
  328:Src/main.c    **** //set DMA interrupt priority
  329:Src/main.c    **** NVIC_SetPriority(DMA1_Channel1_IRQn, 1);
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 39
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 39
 
 
  330:Src/main.c    **** 
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  165              		@ frame_needed = 0, uses_anonymous_args = 0
  166              		@ link register save eliminated.
  353:Src/main.c    **** 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 40
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 40
 
 
  354:Src/main.c    **** if((DMA1->ISR & DMA_ISR_TCIF1) == DMA_ISR_TCIF1){
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  205 003c 0D4B     		ldr	r3, .L10+20
  206 003e DA60     		str	r2, [r3, #12]
  370:Src/main.c    ****   ADC_DMA_DONE = 1;
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 41
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 41
 
 
  207              		.loc 1 370 0
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  249              		.loc 1 384 0
  250              		.cfi_startproc
  251              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 42
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 42
 
 
  252              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  404:Src/main.c    ****   {
  405:Src/main.c    ****   }
  289              		.loc 1 405 0 discriminator 1
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 43
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 43
 
 
  290 0000 FEE7     		b	.L17
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  338 0028 2293     		str	r3, [sp, #136]
  214:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
  339              		.loc 1 214 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 44
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 44
 
 
  340 002a 0123     		movs	r3, #1
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  383 0068 0B48     		ldr	r0, .L24
  384 006a EB21     		movs	r1, #235
  385 006c FFF7FEFF 		bl	_Error_Handler
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 45
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 45
 
 
  386              	.LVL11:
@@ -2697,27 +2697,27 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  436              		.cfi_offset 4, -12
  437              		.cfi_offset 5, -8
  438              		.cfi_offset 14, -4
- 439 0002 ADF6D47D 		subw	sp, sp, #4052
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 46
+ 439 0002 ADF6DC7D 		subw	sp, sp, #4060
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 46
 
 
  440              	.LCFI4:
- 441              		.cfi_def_cfa_offset 4064
+ 441              		.cfi_def_cfa_offset 4072
   89:Src/main.c    ****   int i = 0;
  442              		.loc 1 89 0
- 443 0006 524B     		ldr	r3, .L31
- 444 0008 0DF6A874 		addw	r4, sp, #4008
+ 443 0006 544B     		ldr	r3, .L31
+ 444 0008 0DF57B64 		add	r4, sp, #4016
  445 000c 93E80300 		ldmia	r3, {r0, r1}
  446 0010 84E80300 		stmia	r4, {r0, r1}
  447 0014 0023     		movs	r3, #0
- 448 0016 CDF8B03F 		str	r3, [sp, #4016]
- 449 001a CDF8B43F 		str	r3, [sp, #4020]
- 450 001e CDF8B83F 		str	r3, [sp, #4024]
- 451 0022 CDF8BC3F 		str	r3, [sp, #4028]
- 452 0026 CDF8C03F 		str	r3, [sp, #4032]
- 453 002a CDF8C43F 		str	r3, [sp, #4036]
- 454 002e CDF8C83F 		str	r3, [sp, #4040]
- 455 0032 CDF8CC3F 		str	r3, [sp, #4044]
+ 448 0016 CDF8B83F 		str	r3, [sp, #4024]
+ 449 001a CDF8BC3F 		str	r3, [sp, #4028]
+ 450 001e CDF8C03F 		str	r3, [sp, #4032]
+ 451 0022 CDF8C43F 		str	r3, [sp, #4036]
+ 452 0026 CDF8C83F 		str	r3, [sp, #4040]
+ 453 002a CDF8CC3F 		str	r3, [sp, #4044]
+ 454 002e CDF8D03F 		str	r3, [sp, #4048]
+ 455 0032 CDF8D43F 		str	r3, [sp, #4052]
  456              	.LVL16:
   99:Src/main.c    **** 
  457              		.loc 1 99 0
@@ -2737,7 +2737,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  468              	.LVL20:
  115:Src/main.c    ****   /* USER CODE BEGIN 2 */
  469              		.loc 1 115 0
- 470 0046 434D     		ldr	r5, .L31+4
+ 470 0046 454D     		ldr	r5, .L31+4
  471 0048 2846     		mov	r0, r5
  472 004a 2146     		mov	r1, r4
  473 004c 0F22     		movs	r2, #15
@@ -2750,7 +2750,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  479              	.LVL22:
  118:Src/main.c    ****   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
  480              		.loc 1 118 0
- 481 005a 3F4A     		ldr	r2, .L31+8
+ 481 005a 414A     		ldr	r2, .L31+8
  482 005c 2346     		mov	r3, r4
  483 005e 07CA     		ldmia	r2, {r0, r1, r2}
  484 0060 03C3     		stmia	r3!, {r0, r1}
@@ -2758,7 +2758,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  119:Src/main.c    ****     sprintf(Message, "Thing2\n\r");
  486              		.loc 1 119 0
  487 0064 2846     		mov	r0, r5
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 47
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 47
 
 
  488 0066 2146     		mov	r1, r4
@@ -2768,7 +2768,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  492              	.LVL23:
  120:Src/main.c    ****   TIM4_Init();
  493              		.loc 1 120 0
- 494 0072 3A4A     		ldr	r2, .L31+12
+ 494 0072 3C4A     		ldr	r2, .L31+12
  495 0074 2346     		mov	r3, r4
  496 0076 07CA     		ldmia	r2, {r0, r1, r2}
  497 0078 03C3     		stmia	r3!, {r0, r1}
@@ -2787,7 +2787,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  508              	.LVL25:
  123:Src/main.c    **** 
  509              		.loc 1 123 0
- 510 008e 344A     		ldr	r2, .L31+16
+ 510 008e 364A     		ldr	r2, .L31+16
  511 0090 2346     		mov	r3, r4
  512 0092 07CA     		ldmia	r2, {r0, r1, r2}
  513 0094 03C3     		stmia	r3!, {r0, r1}
@@ -2806,7 +2806,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  524              	.LVL27:
  127:Src/main.c    **** 
  525              		.loc 1 127 0
- 526 00aa 2E4A     		ldr	r2, .L31+20
+ 526 00aa 304A     		ldr	r2, .L31+20
  527 00ac 2346     		mov	r3, r4
  528 00ae 07CA     		ldmia	r2, {r0, r1, r2}
  529 00b0 03C3     		stmia	r3!, {r0, r1}
@@ -2818,7 +2818,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  133:Src/main.c    ****   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
  534              		.loc 1 133 0
  535 00b8 0120     		movs	r0, #1
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 48
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 48
 
 
  536 00ba FFF7FEFF 		bl	DMA_Init
@@ -2833,7 +2833,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  544              	.LVL30:
  135:Src/main.c    **** 
  545              		.loc 1 135 0
- 546 00cc 264A     		ldr	r2, .L31+24
+ 546 00cc 284A     		ldr	r2, .L31+24
  547 00ce 2346     		mov	r3, r4
  548 00d0 07CA     		ldmia	r2, {r0, r1, r2}
  549 00d2 03C3     		stmia	r3!, {r0, r1}
@@ -2855,30 +2855,30 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  563              	.L28:
  152:Src/main.c    **** 
  564              		.loc 1 152 0 discriminator 1
- 565 00e8 204B     		ldr	r3, .L31+28
+ 565 00e8 224B     		ldr	r3, .L31+28
  566 00ea 1B68     		ldr	r3, [r3]
  567 00ec 002B     		cmp	r3, #0
  568 00ee FBD0     		beq	.L28
  163:Src/main.c    **** 
  569              		.loc 1 163 0 discriminator 2
- 570 00f0 1F4B     		ldr	r3, .L31+32
+ 570 00f0 214B     		ldr	r3, .L31+32
  571 00f2 1B68     		ldr	r3, [r3]
  572 00f4 D3ED007A 		flds	s15, [r3]	@ int
  573 00f8 F8EE677A 		fuitos	s15, s15
- 574 00fc 1D4B     		ldr	r3, .L31+36
+ 574 00fc 1F4B     		ldr	r3, .L31+36
  575 00fe 93ED007A 		flds	s14, [r3]
  576 0102 67EE877A 		fmuls	s15, s15, s14
- 577 0106 02AB     		add	r3, sp, #8
+ 577 0106 04AB     		add	r3, sp, #16
  578 0108 03EB8203 		add	r3, r3, r2, lsl #2
  579 010c C3ED007A 		fsts	s15, [r3]
  167:Src/main.c    ****   /*end For */
  580              		.loc 1 167 0 discriminator 2
  581 0110 0021     		movs	r1, #0
- 582 0112 164B     		ldr	r3, .L31+28
+ 582 0112 184B     		ldr	r3, .L31+28
  583 0114 1960     		str	r1, [r3]
  149:Src/main.c    ****   //  sprintf(Message, "The ADC is %d\n\r",(ADC1->DR)*vsense);
  584              		.loc 1 149 0 discriminator 2
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 49
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 49
 
 
  585 0116 0132     		adds	r2, r2, #1
@@ -2890,182 +2890,186 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 1
  590 011c E4DB     		blt	.L28
  172:Src/main.c    **** 
  591              		.loc 1 172 0 is_stmt 1
- 592 011e 02A8     		add	r0, sp, #8
+ 592 011e 04A8     		add	r0, sp, #16
  593 0120 4FF47A71 		mov	r1, #1000
- 594 0124 01AA     		add	r2, sp, #4
+ 594 0124 03AA     		add	r2, sp, #12
  595              	.LVL34:
  596 0126 FFF7FEFF 		bl	findFrequency
  597              	.LVL35:
  175:Src/main.c    ****  /*transmit sring over usart2 */
  598              		.loc 1 175 0
- 599 012a 0198     		ldr	r0, [sp, #4]	@ float
- 600 012c FFF7FEFF 		bl	__aeabi_f2d
- 601              	.LVL36:
- 602 0130 0246     		mov	r2, r0
- 603 0132 0B46     		mov	r3, r1
- 604 0134 0DF6A870 		addw	r0, sp, #4008
- 605 0138 0F49     		ldr	r1, .L31+40
- 606 013a FFF7FEFF 		bl	sprintf
- 607              	.LVL37:
+ 599 012a 134B     		ldr	r3, .L31+32
+ 600 012c 1B68     		ldr	r3, [r3]
+ 601 012e 1C68     		ldr	r4, [r3]
+ 602 0130 0398     		ldr	r0, [sp, #12]	@ float
+ 603 0132 FFF7FEFF 		bl	__aeabi_f2d
+ 604              	.LVL36:
+ 605 0136 0246     		mov	r2, r0
+ 606 0138 0B46     		mov	r3, r1
+ 607 013a 0094     		str	r4, [sp]
+ 608 013c 0DF57B60 		add	r0, sp, #4016
+ 609 0140 0F49     		ldr	r1, .L31+40
+ 610 0142 FFF7FEFF 		bl	sprintf
+ 611              	.LVL37:
  177:Src/main.c    **** 
- 608              		.loc 1 177 0
- 609 013e 0548     		ldr	r0, .L31+4
- 610 0140 0DF6A871 		addw	r1, sp, #4008
- 611 0144 2822     		movs	r2, #40
- 612 0146 40F6FF73 		movw	r3, #4095
- 613 014a FFF7FEFF 		bl	HAL_UART_Transmit
- 614              	.LVL38:
+ 612              		.loc 1 177 0
+ 613 0146 0548     		ldr	r0, .L31+4
+ 614 0148 0DF57B61 		add	r1, sp, #4016
+ 615 014c 2822     		movs	r2, #40
+ 616 014e 40F6FF73 		movw	r3, #4095
+ 617 0152 FFF7FEFF 		bl	HAL_UART_Transmit
+ 618              	.LVL38:
  181:Src/main.c    **** 
- 615              		.loc 1 181 0
- 616 014e C9E7     		b	.L29
- 617              	.L32:
- 618              		.align	2
- 619              	.L31:
- 620 0150 00000000 		.word	.LANCHOR3
- 621 0154 00000000 		.word	huart2
- 622 0158 0C000000 		.word	.LC2
- 623 015c 18000000 		.word	.LC3
- 624 0160 24000000 		.word	.LC4
- 625 0164 30000000 		.word	.LC5
- 626 0168 3C000000 		.word	.LC6
- 627 016c 00000000 		.word	.LANCHOR2
- 628 0170 00000000 		.word	.LANCHOR0
- 629 0174 00000000 		.word	.LANCHOR4
- 630 0178 48000000 		.word	.LC7
- 631              		.cfi_endproc
- 632              	.LFE123:
- 634              		.global	vsense
- 635              		.global	ADC_DMA_DONE
- 636              		.global	pReadyProcess
- 637              		.global	pReadyWrite
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 50
+ 619              		.loc 1 181 0
+ 620 0156 C5E7     		b	.L29
+ 621              	.L32:
+ 622              		.align	2
+ 623              	.L31:
+ 624 0158 00000000 		.word	.LANCHOR3
+ 625 015c 00000000 		.word	huart2
+ 626 0160 0C000000 		.word	.LC2
+ 627 0164 18000000 		.word	.LC3
+ 628 0168 24000000 		.word	.LC4
+ 629 016c 30000000 		.word	.LC5
+ 630 0170 3C000000 		.word	.LC6
+ 631 0174 00000000 		.word	.LANCHOR2
+ 632 0178 00000000 		.word	.LANCHOR0
+ 633 017c 00000000 		.word	.LANCHOR4
+ 634 0180 48000000 		.word	.LC7
+ 635              		.cfi_endproc
+ 636              	.LFE123:
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 50
 
 
- 638              		.comm	Buffer_Pong,4000,4
- 639              		.comm	Buffer_Ping,4000,4
- 640              		.section	.rodata
- 641              		.align	2
- 642              		.set	.LANCHOR3,. + 0
- 643              	.LC1:
- 644 0000 5468696E 		.ascii	"Thing\012\015\000"
- 644      670A0D00 
- 645 0008 00000000 		.space	32
- 645      00000000 
- 645      00000000 
- 645      00000000 
- 645      00000000 
- 646              		.section	.data.pReadyWrite,"aw",%progbits
- 647              		.align	2
- 648              		.set	.LANCHOR1,. + 0
- 651              	pReadyWrite:
- 652 0000 00000000 		.word	Buffer_Ping
- 653              		.section	.bss.ADC_DMA_DONE,"aw",%nobits
- 654              		.align	2
- 655              		.set	.LANCHOR2,. + 0
- 658              	ADC_DMA_DONE:
- 659 0000 00000000 		.space	4
- 660              		.section	.data.pReadyProcess,"aw",%progbits
- 661              		.align	2
- 662              		.set	.LANCHOR0,. + 0
- 665              	pReadyProcess:
- 666 0000 00000000 		.word	Buffer_Pong
- 667              		.section	.rodata.str1.4,"aMS",%progbits,1
- 668              		.align	2
- 669              	.LC0:
- 670 0000 5372632F 		.ascii	"Src/main.c\000"
- 670      6D61696E 
- 670      2E6300
- 671 000b 00       		.space	1
- 672              	.LC2:
- 673 000c 5468696E 		.ascii	"Thing1\012\015\000"
- 673      67310A0D 
- 673      00
- 674 0015 000000   		.space	3
- 675              	.LC3:
- 676 0018 5468696E 		.ascii	"Thing2\012\015\000"
- 676      67320A0D 
- 676      00
- 677 0021 000000   		.space	3
- 678              	.LC4:
- 679 0024 5468696E 		.ascii	"Thing3\012\015\000"
- 679      67330A0D 
- 679      00
- 680 002d 000000   		.space	3
- 681              	.LC5:
- 682 0030 5468696E 		.ascii	"Thing4\012\015\000"
- 682      67340A0D 
- 682      00
- 683 0039 000000   		.space	3
- 684              	.LC6:
- 685 003c 5468696E 		.ascii	"Thing5\012\015\000"
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 51
+ 638              		.global	vsense
+ 639              		.global	ADC_DMA_DONE
+ 640              		.global	pReadyProcess
+ 641              		.global	pReadyWrite
+ 642              		.comm	Buffer_Pong,4000,4
+ 643              		.comm	Buffer_Ping,4000,4
+ 644              		.section	.rodata
+ 645              		.align	2
+ 646              		.set	.LANCHOR3,. + 0
+ 647              	.LC1:
+ 648 0000 5468696E 		.ascii	"Thing\012\015\000"
+ 648      670A0D00 
+ 649 0008 00000000 		.space	32
+ 649      00000000 
+ 649      00000000 
+ 649      00000000 
+ 649      00000000 
+ 650              		.section	.data.pReadyWrite,"aw",%progbits
+ 651              		.align	2
+ 652              		.set	.LANCHOR1,. + 0
+ 655              	pReadyWrite:
+ 656 0000 00000000 		.word	Buffer_Ping
+ 657              		.section	.bss.ADC_DMA_DONE,"aw",%nobits
+ 658              		.align	2
+ 659              		.set	.LANCHOR2,. + 0
+ 662              	ADC_DMA_DONE:
+ 663 0000 00000000 		.space	4
+ 664              		.section	.data.pReadyProcess,"aw",%progbits
+ 665              		.align	2
+ 666              		.set	.LANCHOR0,. + 0
+ 669              	pReadyProcess:
+ 670 0000 00000000 		.word	Buffer_Pong
+ 671              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 672              		.align	2
+ 673              	.LC0:
+ 674 0000 5372632F 		.ascii	"Src/main.c\000"
+ 674      6D61696E 
+ 674      2E6300
+ 675 000b 00       		.space	1
+ 676              	.LC2:
+ 677 000c 5468696E 		.ascii	"Thing1\012\015\000"
+ 677      67310A0D 
+ 677      00
+ 678 0015 000000   		.space	3
+ 679              	.LC3:
+ 680 0018 5468696E 		.ascii	"Thing2\012\015\000"
+ 680      67320A0D 
+ 680      00
+ 681 0021 000000   		.space	3
+ 682              	.LC4:
+ 683 0024 5468696E 		.ascii	"Thing3\012\015\000"
+ 683      67330A0D 
+ 683      00
+ 684 002d 000000   		.space	3
+ 685              	.LC5:
+ 686 0030 5468696E 		.ascii	"Thing4\012\015\000"
+ 686      67340A0D 
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 51
 
 
- 685      67350A0D 
- 685      00
- 686 0045 000000   		.space	3
- 687              	.LC7:
- 688 0048 54686520 		.ascii	"The Note is %f\012\015\000"
- 688      4E6F7465 
- 688      20697320 
- 688      25660A0D 
- 688      00
- 689              		.section	.data.vsense,"aw",%progbits
- 690              		.align	2
- 691              		.set	.LANCHOR4,. + 0
- 694              	vsense:
- 695 0000 6740533A 		.word	978534503
- 696              		.text
- 697              	.Letext0:
- 698              		.file 3 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
- 699              		.file 4 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_ty
- 700              		.file 5 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h"
- 701              		.file 6 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
- 702              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h"
- 703              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc_ex.h"
- 704              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
- 705              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h"
- 706              		.file 11 "Inc/usart.h"
- 707              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h"
- 708              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
- 709              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
- 710              		.file 15 "Inc/gpio.h"
- 711              		.file 16 "Inc/ADCsrc.h"
- 712              		.file 17 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/stdio.h"
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s 			page 52
+ 686      00
+ 687 0039 000000   		.space	3
+ 688              	.LC6:
+ 689 003c 5468696E 		.ascii	"Thing5\012\015\000"
+ 689      67350A0D 
+ 689      00
+ 690 0045 000000   		.space	3
+ 691              	.LC7:
+ 692 0048 54686520 		.ascii	"The Note is %f, voltage is%d \012\015\000"
+ 692      4E6F7465 
+ 692      20697320 
+ 692      25662C20 
+ 692      766F6C74 
+ 693              		.section	.data.vsense,"aw",%progbits
+ 694              		.align	2
+ 695              		.set	.LANCHOR4,. + 0
+ 698              	vsense:
+ 699 0000 6740533A 		.word	978534503
+ 700              		.text
+ 701              	.Letext0:
+ 702              		.file 3 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
+ 703              		.file 4 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_ty
+ 704              		.file 5 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h"
+ 705              		.file 6 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 706              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h"
+ 707              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc_ex.h"
+ 708              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+ 709              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h"
+ 710              		.file 11 "Inc/usart.h"
+ 711              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h"
+ 712              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
+ 713              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+ 714              		.file 15 "Inc/gpio.h"
+ 715              		.file 16 "Inc/ADCsrc.h"
+ 716              		.file 17 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/stdio.h"
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s 			page 52
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:21     .text.DMA_Init:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:26     .text.DMA_Init:0000000000000000 DMA_Init
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:145    .text.DMA_Init:00000000000000bc $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:155    .text.DMA1_Channel1_IRQHandler:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:160    .text.DMA1_Channel1_IRQHandler:0000000000000000 DMA1_Channel1_IRQHandler
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:231    .text.DMA1_Channel1_IRQHandler:0000000000000060 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:21     .text.DMA_Init:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:26     .text.DMA_Init:0000000000000000 DMA_Init
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:145    .text.DMA_Init:00000000000000bc $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:155    .text.DMA1_Channel1_IRQHandler:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:160    .text.DMA1_Channel1_IRQHandler:0000000000000000 DMA1_Channel1_IRQHandler
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:231    .text.DMA1_Channel1_IRQHandler:0000000000000060 $d
                             *COM*:0000000000000fa0 Buffer_Ping
                             *COM*:0000000000000fa0 Buffer_Pong
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:242    .text.ADC1_2_IRQHandler:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:247    .text.ADC1_2_IRQHandler:0000000000000000 ADC1_2_IRQHandler
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:269    .text.ADC1_2_IRQHandler:0000000000000018 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:274    .text._Error_Handler:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:279    .text._Error_Handler:0000000000000000 _Error_Handler
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:295    .text.SystemClock_Config:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:300    .text.SystemClock_Config:0000000000000000 SystemClock_Config
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:415    .text.SystemClock_Config:0000000000000098 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:422    .text.main:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:427    .text.main:0000000000000000 main
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:620    .text.main:0000000000000150 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:694    .data.vsense:0000000000000000 vsense
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:658    .bss.ADC_DMA_DONE:0000000000000000 ADC_DMA_DONE
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:665    .data.pReadyProcess:0000000000000000 pReadyProcess
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:651    .data.pReadyWrite:0000000000000000 pReadyWrite
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:641    .rodata:0000000000000000 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:647    .data.pReadyWrite:0000000000000000 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:654    .bss.ADC_DMA_DONE:0000000000000000 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:661    .data.pReadyProcess:0000000000000000 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:668    .rodata.str1.4:0000000000000000 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccF4mtfH.s:690    .data.vsense:0000000000000000 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:242    .text.ADC1_2_IRQHandler:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:247    .text.ADC1_2_IRQHandler:0000000000000000 ADC1_2_IRQHandler
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:269    .text.ADC1_2_IRQHandler:0000000000000018 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:274    .text._Error_Handler:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:279    .text._Error_Handler:0000000000000000 _Error_Handler
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:295    .text.SystemClock_Config:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:300    .text.SystemClock_Config:0000000000000000 SystemClock_Config
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:415    .text.SystemClock_Config:0000000000000098 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:422    .text.main:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:427    .text.main:0000000000000000 main
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:624    .text.main:0000000000000158 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:698    .data.vsense:0000000000000000 vsense
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:662    .bss.ADC_DMA_DONE:0000000000000000 ADC_DMA_DONE
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:669    .data.pReadyProcess:0000000000000000 pReadyProcess
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:655    .data.pReadyWrite:0000000000000000 pReadyWrite
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:645    .rodata:0000000000000000 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:651    .data.pReadyWrite:0000000000000000 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:658    .bss.ADC_DMA_DONE:0000000000000000 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:665    .data.pReadyProcess:0000000000000000 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:672    .rodata.str1.4:0000000000000000 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVVVVux.s:694    .data.vsense:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

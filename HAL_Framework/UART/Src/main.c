@@ -172,7 +172,7 @@ int main(void)
  findFrequency(volt, SAMPLE_SIZE, &frequency);
 
  //gcvt(frequency, 4, Message);
- sprintf(Message, "The Note is %f\n\r", frequency);
+ sprintf(Message, "The Note is %f, voltage is%d \n\r", frequency, pReadyProcess[0]);
  /*transmit sring over usart2 */
  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 
