@@ -18,7 +18,7 @@ void ADC1_Init(void)
 
 
   /*Enable I/O analog switches voltage booster */
-  ADC123_COMMON->CCR |= SYSCFG_CFGR1_BOOSTEN;
+  SYSCFG->CFGR1 |= SYSCFG_CFGR1_BOOSTEN;
 
   /*Enable conversion of internal channels */
   ADC123_COMMON->CCR |= ADC_CCR_VREFEN;
@@ -39,6 +39,7 @@ void ADC1_Init(void)
 1011: input ADC clock divided by 256
 */
   ADC123_COMMON->CCR &= ~ADC_CCR_PRESC;
+  ADC123_COMMON->CCR |= ADC_CCR_PRESC_0;
 
   /*configure ADC clock to be synchonous HCLK/1 */
 /*
@@ -88,7 +89,7 @@ has a 50% duty cycle.
   //111: 640.5 ADC clock cycles
  */
   ADC1->SMPR1 &= ~ADC_SMPR1_SMP6;
-  ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_1 | ADC_SMPR1_SMP6_2;
+  ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_2;
 
   /*Set ADC in discontinuous mode */
   // 0 = discontinuous
@@ -122,13 +123,13 @@ has a 50% duty cycle.
   ADC1->CFGR |= ADC_CFGR_EXTEN_0;
 
   /*enable end of conversion flag */
-  // ADC1->IER |= ADC_IER_EOCIE;
+   ADC1->IER |= ADC_IER_EOCIE;
 
   //set DMA interrupt priority
-  //NVIC_SetPriority(ADC1_2_IRQn, 0);
+  NVIC_SetPriority(ADC1_2_IRQn, 0);
 
   //enable DMA INTERRUPT
-  //NVIC_EnableIRQ(ADC1_2_IRQn);
+  NVIC_EnableIRQ(ADC1_2_IRQn);
   //trigger becomes immediately effective once software starts ADC
   ADC1->CR |= ADC_CR_ADSTART;
 
@@ -273,15 +274,22 @@ void ADC_Calibration(void){
 
 
 
-void findFrequency(float *samples, int nsamp, float *note)
+void findFrequency(float *input, int nsamp, float *note)
 {
    uint32_t i, n, j, maxIndex;
    float avg, dev, maxVal;
-   float input[nsamp], output1[nsamp*2], output2[nsamp];
+   float output1[nsamp*2], output2[nsamp];
    n=1;
 
- //this will also keep track of how many blocks collected
- //since decimating we will need #D blocks until FFT is full
+
+
+   // Now convert the valid ADC data into the caller's array of floats.
+   // Samples are normalized to range from -1.0 to 1.0
+   // 1/32768 = 3.0517578e-05  (Multiplication is much faster than dividing)
+
+    for(i = 0; i<nsamp; i++){
+    input[i] = ((float)((int)input[i]-32767))*3.0517578e-05f;
+  }
 
  arm_correlate_f32(input, nsamp, input, nsamp, output1);
 //arm_rfft_fast_f32(&fftStruct, input, output1, 0);

@@ -160,7 +160,11 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
 
- volt[i] = pReadyProcess[0] * vsense;
+  // Now convert the valid ADC data into the caller's array of floats.
+  // Samples are normalized to range from -1.0 to 1.0
+  // 1/32768 = 3.0517578e-05  (Multiplication is much faster than dividing)
+
+ volt[i] = ((float)((int)pReadyProcess[0]-32767))*3.0517578e-05f;
 
   //sprintf(Message, "The Sensor is %d\n\r", pReadyProcess[0]);
   //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
@@ -383,7 +387,7 @@ DMA1->IFCR |= (DMA_IFCR_CHTIF1 | DMA_IFCR_CGIF1); //| DMA_IFCR_CTEIF1);
 void ADC1_2_IRQHandler(void)
 {
   if((ADC1->ISR & ADC_ISR_EOC) == ADC_ISR_EOC){
-    ADC1->ISR |= ADC_ISR_EOS;
+    ADC1->ISR |= ADC_ISR_EOC | ADC_ISR_EOS;
 
   }
 }
