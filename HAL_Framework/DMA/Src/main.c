@@ -59,11 +59,12 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-void DMA_Init(int arg);
+//void DMA_Init(int arg);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config_MSI(void);
+void DMA_Init(int arg);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -98,25 +99,25 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  SystemClock_Config_MSI();
   /* USER CODE END Init */
 
   /* Configure the system clock */
-  SystemClock_Config_MSI();
 
   /* USER CODE BEGIN SysInit */
+  DMA_Init(SAMPLE_SIZE);
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   //MX_DMA_Init();
-  DMA_Init(SAMPLE_SIZE);  //ADC_Calibration();
+  //ADC_Calibration();
   MX_ADC1_Init();
   //MX_TIM4_Init();
-  TIM4_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  TIM4_Init();
 
   /* USER CODE END 2 */
 
@@ -134,6 +135,8 @@ int main(void)
   /* USER CODE END WHILE */
 
 
+  /* USER CODE BEGIN 3 */
+
   while(ADC_DMA_DONE == 0);
   getFloat(pReadyProcess, samples, SAMPLE_SIZE);
   findFrequency(samples, SAMPLE_SIZE, &frequency);
@@ -147,9 +150,6 @@ int main(void)
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 
-
-  /* USER CODE BEGIN 3 */
-
   }
   /* USER CODE END 3 */
 
@@ -158,44 +158,6 @@ int main(void)
 
 
 
-
-void SystemClock_Config_MSI(void)
-{
-      RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-     RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-
-      /* MSI is enabled after System reset, activate PLL with MSI as source */
-     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
-     RCC_OscInitStruct.MSIState = RCC_MSI_ON;
-      RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_8;
-       RCC_OscInitStruct.MSICalibrationValue = RCC_MSICALIBRATION_DEFAULT;
-
-      RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-        RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
-       RCC_OscInitStruct.PLL.PLLM = 2;
-       RCC_OscInitStruct.PLL.PLLN = 20;
-       RCC_OscInitStruct.PLL.PLLR = 2;
-       RCC_OscInitStruct.PLL.PLLP = 7;
-       RCC_OscInitStruct.PLL.PLLQ = 5;
-      if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-     {
-        /* Initialization Error */
-       while(1);
-       }
-
-   /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2
-    clocks dividers */
-   RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-if(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
-   {
-   /* Initialization Error */
-    while(1);
-  }
- }
 /**
   * @brief System Clock Configuration
   * @retval None
@@ -266,7 +228,46 @@ void SystemClock_Config(void)
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
-/* USER CODE BEGIN 4 */
+/* USER CODE BEGIN 4
+
+
+void SystemClock_Config_MSI(void)
+{
+      RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+     RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+
+      /* MSI is enabled after System reset, activate PLL with MSI as source */
+     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
+     RCC_OscInitStruct.MSIState = RCC_MSI_ON;
+      RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_8;
+       RCC_OscInitStruct.MSICalibrationValue = RCC_MSICALIBRATION_DEFAULT;
+
+      RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+        RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
+       RCC_OscInitStruct.PLL.PLLM = 2;
+       RCC_OscInitStruct.PLL.PLLN = 20;
+       RCC_OscInitStruct.PLL.PLLR = 2;
+       RCC_OscInitStruct.PLL.PLLP = 7;
+       RCC_OscInitStruct.PLL.PLLQ = 5;
+      if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+     {
+        /* Initialization Error */
+       while(1);
+       }
+
+   /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2
+    clocks dividers */
+   RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+if(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+   {
+   /* Initialization Error */
+    while(1);
+  }
+ }
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
