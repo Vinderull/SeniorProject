@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
   29:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****       (+) Prefetch on I-Code
   30:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****       (+) 32 cache lines of 4*64 bits on I-Code
   31:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****       (+) 8 cache lines of 4*64 bits on D-Code
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 2
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 2
 
 
   32:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****       (+) Error code correction (ECC) : Data in flash are 72-bits word
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
   86:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   *      and/or other materials provided with the distribution.
   87:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
   88:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   *      may be used to endorse or promote products derived from this software
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 3
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 3
 
 
   89:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   *      without specific prior written permission.
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  143:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** /**
  144:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   * @}
  145:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   */
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 4
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 4
 
 
  146:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  200:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   assert_param(IS_FLASH_TYPEPROGRAM(TypeProgram));
  201:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
  202:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   /* Wait for last operation to be completed */
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 5
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 5
 
 
  203:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   status = FLASH_WaitForLastOperation((uint32_t)FLASH_TIMEOUT_VALUE);
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  257:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   __HAL_UNLOCK(&pFlash);
  258:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
  259:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   return status;
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 6
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 6
 
 
  260:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** }
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  314:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****     FLASH_Program_DoubleWord(Address, Data);
  315:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   }
  316:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   else if((TypeProgram == FLASH_TYPEPROGRAM_FAST) || (TypeProgram == FLASH_TYPEPROGRAM_FAST_AND_LAS
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 7
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 7
 
 
  317:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   {
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  371:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****     {
  372:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****        HAL_FLASH_OperationErrorCallback(pFlash.Page);
  373:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****     }
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 8
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 8
 
 
  374:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****     else if(procedure == FLASH_PROC_MASS_ERASE)
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  428:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****     else
  429:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****     {
  430:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****       /* Flush the caches to be sure of the data consistency */
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 9
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 9
 
 
  431:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****       FLASH_FlushCaches() ;
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  485:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
  486:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** /**
  487:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   * @brief  FLASH operation error interrupt callback.
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 10
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 10
 
 
  488:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   * @param  ReturnValue: The value saved in this parameter depends on the ongoing procedure
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  542:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   }
  543:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
  544:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   return status;
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 11
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 11
 
 
  545:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** }
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  599:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
  600:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   /* Wait for last operation to be completed */
  601:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   return(FLASH_WaitForLastOperation((uint32_t)FLASH_TIMEOUT_VALUE));
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 12
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 12
 
 
  602:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** }
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  656:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   */
  657:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
  658:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** /* Private functions ---------------------------------------------------------*/
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 13
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 13
 
 
  659:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  713:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
  714:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** /**
  715:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   * @brief  Program double-word (64-bit) at a specified address.
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 14
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 14
 
 
  716:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   * @param  Address: specifies the address to be programmed.
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  733:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** /**
  734:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   * @brief  Fast program a row double-word (64-bit) at a specified address.
  735:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   * @param  Address: specifies the address to be programmed.
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 15
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 15
 
 
  736:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   * @param  DataAddress: specifies the address where the data are stored.
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
   27:Drivers/CMSIS/Include/cmsis_gcc.h ****    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
   28:Drivers/CMSIS/Include/cmsis_gcc.h ****    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
   29:Drivers/CMSIS/Include/cmsis_gcc.h ****    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 16
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 16
 
 
   30:Drivers/CMSIS/Include/cmsis_gcc.h ****    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  750:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
  751:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   /* Disable interrupts to avoid any interruption during the loop */
  752:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   __disable_irq();
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 17
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 17
 
 
  753:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  137              		.cfi_offset 3, -16
  138              		.cfi_offset 4, -12
  139              		.cfi_offset 5, -8
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 18
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 18
 
 
  140              		.cfi_offset 14, -4
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  184              		.loc 1 304 0
  185 0042 0325     		movs	r5, #3
  186 0044 0D4C     		ldr	r4, .L19
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 19
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 19
 
 
  187 0046 2572     		strb	r5, [r4, #8]
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  231              		.loc 1 326 0
  232 0078 0020     		movs	r0, #0
  233              	.LVL18:
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 20
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 20
 
 
  327:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  290              		.cfi_startproc
  291              		@ args = 0, pretend = 0, frame = 0
  292              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 21
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 21
 
 
  334:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   uint32_t tmp_page;
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  338 0044 4A60     		str	r2, [r1, #4]
  363:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
  339              		.loc 1 363 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 22
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 22
 
 
  340 0046 13F04040 		ands	r0, r3, #-1073741824
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  385 0082 07E0     		b	.L29
  386              	.LVL33:
  387              	.L30:
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 23
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 23
 
 
  378:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****             (procedure == FLASH_PROC_PROGRAM_LAST))
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  433              	.LVL37:
  410:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****         tmp_page = pFlash.Page;
  434              		.loc 1 410 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 24
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 24
 
 
  435 00c8 6369     		ldr	r3, [r4, #20]
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  479              	.LVL45:
  480 0106 07E0     		b	.L35
  481              	.LVL46:
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 25
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 25
 
 
  482              	.L34:
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  532              	.LFB311:
  528:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   HAL_StatusTypeDef status = HAL_OK;
  533              		.loc 1 528 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 26
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 26
 
 
  534              		.cfi_startproc
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  552:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   /* Set the LOCK Bit to lock the FLASH Registers access */
  583              		.loc 1 552 0
  584              		.cfi_startproc
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 27
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 27
 
 
  585              		@ args = 0, pretend = 0, frame = 0
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  633 001a 0120     		movs	r0, #1
  577:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
  634              		.loc 1 577 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 28
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 28
 
 
  635 001c 7047     		bx	lr
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  648:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c **** 
  688              		.loc 1 648 0
  689 0004 7047     		bx	lr
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 29
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 29
 
 
  690              	.L59:
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  740 0020 13F4803F 		tst	r3, #65536
  741 0024 F2D1     		bne	.L64
  689:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   error |= (FLASH->ECCR & FLASH_FLAG_ECCD);
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 30
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 30
 
 
  742              		.loc 1 689 0
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  787 0066 08D0     		beq	.L69
  707:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c ****   }
  788              		.loc 1 707 0 discriminator 4
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 31
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 31
 
 
  789 0068 0122     		movs	r2, #1
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  839              		.cfi_offset 7, -12
  840              		.cfi_offset 8, -8
  841              		.cfi_offset 14, -4
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 32
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 32
 
 
  842              	.LVL68:
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  887 004a 0022     		movs	r2, #0
  888 004c 174B     		ldr	r3, .L85
  889 004e 1A77     		strb	r2, [r3, #28]
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 33
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 33
 
 
  890              	.L77:
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  935 007e 4CF25030 		movw	r0, #50000
  936 0082 FFF7FEFF 		bl	FLASH_WaitForLastOperation
  937              	.LVL83:
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 34
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 34
 
 
  938 0086 0446     		mov	r4, r0
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  986              		@ frame_needed = 0, uses_anonymous_args = 0
  987 0000 08B5     		push	{r3, lr}
  988              	.LCFI6:
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 35
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 35
 
 
  989              		.cfi_def_cfa_offset 8
@@ -2089,53 +2089,53 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 1
  1034              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h"
  1035              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
  1036              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s 			page 36
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s 			page 36
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_hal_flash.c
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:21     .text.FLASH_Program_DoubleWord:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:25     .text.FLASH_Program_DoubleWord:0000000000000000 FLASH_Program_DoubleWord
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:56     .text.FLASH_Program_DoubleWord:0000000000000018 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:61     .text.FLASH_Program_Fast:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:65     .text.FLASH_Program_Fast:0000000000000000 FLASH_Program_Fast
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:115    .text.FLASH_Program_Fast:0000000000000024 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:122    .text.HAL_FLASH_Program_IT:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:127    .text.HAL_FLASH_Program_IT:0000000000000000 HAL_FLASH_Program_IT
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:240    .text.HAL_FLASH_Program_IT:000000000000007c $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:246    .text.HAL_FLASH_EndOfOperationCallback:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:251    .text.HAL_FLASH_EndOfOperationCallback:0000000000000000 HAL_FLASH_EndOfOperationCallback
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:264    .text.HAL_FLASH_OperationErrorCallback:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:269    .text.HAL_FLASH_OperationErrorCallback:0000000000000000 HAL_FLASH_OperationErrorCallback
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:282    .text.HAL_FLASH_IRQHandler:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:287    .text.HAL_FLASH_IRQHandler:0000000000000000 HAL_FLASH_IRQHandler
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:520    .text.HAL_FLASH_IRQHandler:000000000000013c $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:526    .text.HAL_FLASH_Unlock:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:531    .text.HAL_FLASH_Unlock:0000000000000000 HAL_FLASH_Unlock
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:570    .text.HAL_FLASH_Unlock:0000000000000028 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:576    .text.HAL_FLASH_Lock:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:581    .text.HAL_FLASH_Lock:0000000000000000 HAL_FLASH_Lock
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:599    .text.HAL_FLASH_Lock:0000000000000010 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:604    .text.HAL_FLASH_OB_Unlock:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:609    .text.HAL_FLASH_OB_Unlock:0000000000000000 HAL_FLASH_OB_Unlock
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:639    .text.HAL_FLASH_OB_Unlock:0000000000000020 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:645    .text.HAL_FLASH_OB_Lock:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:650    .text.HAL_FLASH_OB_Lock:0000000000000000 HAL_FLASH_OB_Lock
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:668    .text.HAL_FLASH_OB_Lock:0000000000000010 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:673    .text.HAL_FLASH_GetError:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:678    .text.HAL_FLASH_GetError:0000000000000000 HAL_FLASH_GetError
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:693    .text.HAL_FLASH_GetError:0000000000000008 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:698    .text.FLASH_WaitForLastOperation:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:703    .text.FLASH_WaitForLastOperation:0000000000000000 FLASH_WaitForLastOperation
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:815    .text.FLASH_WaitForLastOperation:0000000000000080 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:821    .text.HAL_FLASH_Program:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:826    .text.HAL_FLASH_Program:0000000000000000 HAL_FLASH_Program
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:970    .text.HAL_FLASH_Program:00000000000000ac $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:976    .text.HAL_FLASH_OB_Launch:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:981    .text.HAL_FLASH_OB_Launch:0000000000000000 HAL_FLASH_OB_Launch
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:1006   .text.HAL_FLASH_OB_Launch:0000000000000018 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:1016   .data.pFlash:0000000000000000 pFlash
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cchAqnMT.s:1012   .data.pFlash:0000000000000000 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:21     .text.FLASH_Program_DoubleWord:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:25     .text.FLASH_Program_DoubleWord:0000000000000000 FLASH_Program_DoubleWord
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:56     .text.FLASH_Program_DoubleWord:0000000000000018 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:61     .text.FLASH_Program_Fast:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:65     .text.FLASH_Program_Fast:0000000000000000 FLASH_Program_Fast
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:115    .text.FLASH_Program_Fast:0000000000000024 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:122    .text.HAL_FLASH_Program_IT:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:127    .text.HAL_FLASH_Program_IT:0000000000000000 HAL_FLASH_Program_IT
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:240    .text.HAL_FLASH_Program_IT:000000000000007c $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:246    .text.HAL_FLASH_EndOfOperationCallback:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:251    .text.HAL_FLASH_EndOfOperationCallback:0000000000000000 HAL_FLASH_EndOfOperationCallback
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:264    .text.HAL_FLASH_OperationErrorCallback:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:269    .text.HAL_FLASH_OperationErrorCallback:0000000000000000 HAL_FLASH_OperationErrorCallback
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:282    .text.HAL_FLASH_IRQHandler:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:287    .text.HAL_FLASH_IRQHandler:0000000000000000 HAL_FLASH_IRQHandler
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:520    .text.HAL_FLASH_IRQHandler:000000000000013c $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:526    .text.HAL_FLASH_Unlock:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:531    .text.HAL_FLASH_Unlock:0000000000000000 HAL_FLASH_Unlock
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:570    .text.HAL_FLASH_Unlock:0000000000000028 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:576    .text.HAL_FLASH_Lock:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:581    .text.HAL_FLASH_Lock:0000000000000000 HAL_FLASH_Lock
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:599    .text.HAL_FLASH_Lock:0000000000000010 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:604    .text.HAL_FLASH_OB_Unlock:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:609    .text.HAL_FLASH_OB_Unlock:0000000000000000 HAL_FLASH_OB_Unlock
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:639    .text.HAL_FLASH_OB_Unlock:0000000000000020 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:645    .text.HAL_FLASH_OB_Lock:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:650    .text.HAL_FLASH_OB_Lock:0000000000000000 HAL_FLASH_OB_Lock
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:668    .text.HAL_FLASH_OB_Lock:0000000000000010 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:673    .text.HAL_FLASH_GetError:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:678    .text.HAL_FLASH_GetError:0000000000000000 HAL_FLASH_GetError
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:693    .text.HAL_FLASH_GetError:0000000000000008 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:698    .text.FLASH_WaitForLastOperation:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:703    .text.FLASH_WaitForLastOperation:0000000000000000 FLASH_WaitForLastOperation
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:815    .text.FLASH_WaitForLastOperation:0000000000000080 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:821    .text.HAL_FLASH_Program:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:826    .text.HAL_FLASH_Program:0000000000000000 HAL_FLASH_Program
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:970    .text.HAL_FLASH_Program:00000000000000ac $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:976    .text.HAL_FLASH_OB_Launch:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:981    .text.HAL_FLASH_OB_Launch:0000000000000000 HAL_FLASH_OB_Launch
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:1006   .text.HAL_FLASH_OB_Launch:0000000000000018 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:1016   .data.pFlash:0000000000000000 pFlash
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccOLxfUj.s:1012   .data.pFlash:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

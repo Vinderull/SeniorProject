@@ -59,16 +59,22 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void DMA_Init(int arg);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
+void SystemClock_Config_MSI(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
 #define SAMPLE_SIZE 1000
 volatile uint32_t adc[SAMPLE_SIZE];
 volatile uint32_t buffer[SAMPLE_SIZE];
+volatile uint32_t Buffer_Ping[SAMPLE_SIZE];
+volatile uint32_t Buffer_Pong[SAMPLE_SIZE];
+volatile uint32_t *pReadyWrite = Buffer_Ping;
+volatile uint32_t *pReadyProcess = Buffer_Pong;
+volatile uint32_t ADC_DMA_DONE = 0;
 float vsense = 3.3/4095;
 /* USER CODE END 0 */
 
@@ -82,6 +88,7 @@ int main(void)
   /* USER CODE BEGIN 1 */
   char Message[40] = "thing\n\r";
   float frequency = 0;
+  float samples[SAMPLE_SIZE];
 
   /* USER CODE END 1 */
 
@@ -103,8 +110,8 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_DMA_Init();
-  //ADC_Calibration();
+  //MX_DMA_Init();
+  DMA_Init(SAMPLE_SIZE);  //ADC_Calibration();
   MX_ADC1_Init();
   MX_TIM4_Init();
   MX_USART2_UART_Init();
@@ -116,7 +123,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   HAL_TIM_Base_Init(&htim4);
   HAL_TIM_Base_Start(&htim4);
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t *) buffer, SAMPLE_SIZE);
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t *) pReadyProcess, SAMPLE_SIZE);
 
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
@@ -125,10 +132,17 @@ int main(void)
 
   /* USER CODE END WHILE */
 
-  findFrequency(adc, SAMPLE_SIZE, &frequency);
+
+  while(ADC_DMA_DONE == 0);
+  getFloat(pReadyProcess, samples, SAMPLE_SIZE);
+  findFrequency(samples, SAMPLE_SIZE, &frequency);
+
+  ADC_DMA_DONE = 0;
+
+
 
   //gcvt(frequency, 4, Message);
-  sprintf(Message, "The Note is %f, adc is %f\n\r", frequency, ((float) adc[10])*vsense);
+  sprintf(Message, "The Note is %f, adc is %f\n\r", frequency, ((float) pReadyProcess[0])*vsense);
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 
@@ -157,7 +171,9 @@ void SystemClock_Config_MSI(void)
 
       RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
         RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
-       RCC_OscInitStruct.PLL.PLLM = 2;   RCC_OscInitStruct.PLL.PLLN = 20;
+       RCC_OscInitStruct.PLL.PLLM = 2;
+       RCC_OscInitStruct.PLL.PLLN = 20;
+       RCC_OscInitStruct.PLL.PLLR = 2;
        RCC_OscInitStruct.PLL.PLLP = 7;
        RCC_OscInitStruct.PLL.PLLQ = 5;
       if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
@@ -252,10 +268,134 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
-{ int i = 0;
+{
+
+
+
+
+
+  int i = 0;
   for(i =0; i<SAMPLE_SIZE; i++){
       adc[i] = buffer[i];
   }
+}
+
+
+void DMA_Init(int arg)
+{
+//arg number of conversions
+//uint32_t ADC_Results[arg];
+
+
+/* Enable DMA1 Clock */
+RCC->AHB1ENR |= RCC_AHB1ENR_DMA1EN;
+
+//Enable DMA channel
+DMA1_Channel1->CCR &= ~DMA_CCR_EN;
+
+/*DMA1 channel 1 config for ADC1 */
+//disable memory to memory mode
+DMA1_Channel1->CCR &= ~DMA_CCR_MEM2MEM;
+
+//Channel Priorty level
+// 00 = low, 01 = medium, 10 = high, 11 = very high
+//set to high priority
+DMA1_Channel1->CCR &= ~DMA_CCR_PL;
+DMA1_Channel1->CCR |= DMA_CCR_PL_1;
+
+//peripheral size
+//00 = 8bit, 01 = 16-bit, 10 = 32 bit, 11 = reserved
+DMA1_Channel1->CCR &= ~DMA_CCR_PSIZE;
+DMA1_Channel1->CCR |= DMA_CCR_PSIZE_0;
+
+//Memory size
+//00 = 8bit, 01 = 16-bit, 10 = 32 bit, 11 = reserved
+DMA1_Channel1->CCR &= ~DMA_CCR_MSIZE;
+DMA1_Channel1->CCR |= DMA_CCR_MSIZE_0;
+
+//peripheral increment mode
+//0 = disabled, 1 = enabled
+DMA1_Channel1->CCR &= ~DMA_CCR_PINC;
+
+
+//memory increment mode
+//0 = disabled, 1 = enabled
+DMA1_Channel1->CCR &= ~DMA_CCR_MINC;
+DMA1_Channel1->CCR |= DMA_CCR_MINC;
+
+//Circular
+// 0 = disabled, 1 = enabled
+DMA1_Channel1->CCR |= DMA_CCR_CIRC;
+
+//Data trasnfer rate
+//O read from peripheral
+//1 read from memory
+DMA1_Channel1->CCR &= ~DMA_CCR_DIR;
+
+//number of ADC results to transfer
+DMA1_Channel1->CNDTR = arg;
+
+//peripheral address registers
+DMA1_Channel1->CPAR = (uint32_t) &(ADC1->DR);
+
+//memory address registers
+//ping pong buffer
+DMA1_Channel1->CMAR =  (uint32_t) pReadyProcess;
+
+//transfer complete interrupt enable
+DMA1_Channel1->CCR |= DMA_CCR_TCIE;
+
+//disable half complete
+DMA1_Channel1->CCR &= ~DMA_CCR_HTIE;
+DMA1_Channel1->CCR |= DMA_CCR_HTIE;
+
+// configure ADC for DMA in circular mode
+//ADC1->CFGR |= ADC_CFGR_DMACFG;
+//DMA enable?
+//ADC1->CFGR |= ADC_CFGR_DMAEN;
+
+//set DMA interrupt priority
+NVIC_SetPriority(DMA1_Channel1_IRQn, 1);
+
+//enable DMA INTERRUPT
+NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+
+
+//DMA Channel selection
+//map DMA channel 1 to ADC1
+//0000: Channel 1 mapped to ADC1
+DMA1_CSELR->CSELR &= ~DMA_CSELR_C1S;
+
+//Enable DMA channel
+DMA1_Channel1->CCR |= DMA_CCR_EN;
+
+}
+
+
+void DMA1_Channel1_IRQHandler(void){
+
+if((DMA1->ISR & DMA_ISR_TCIF1) == DMA_ISR_TCIF1){
+
+  //write 1 to clear flag
+  DMA1->IFCR |= DMA_IFCR_CTCIF1;
+
+  if (pReadyWrite == Buffer_Ping){
+    pReadyWrite = Buffer_Pong;
+    pReadyProcess = Buffer_Ping;
+  }
+  else{
+    pReadyWrite = Buffer_Ping;
+    pReadyProcess = Buffer_Pong;
+  }
+
+  //DMA memory address
+  DMA1_Channel1->CMAR = (uint32_t) pReadyWrite;
+  ADC_DMA_DONE = 1;
+ }
+
+
+//clear flags
+DMA1->IFCR |= (DMA_IFCR_CHTIF1 | DMA_IFCR_CGIF1 | DMA_IFCR_CTEIF1);
 }
 
 

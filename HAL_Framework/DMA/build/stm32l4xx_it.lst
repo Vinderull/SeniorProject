@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s 			page 1
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccvOUpFl.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s 			page 1
   28:Src/stm32l4xx_it.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   29:Src/stm32l4xx_it.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   30:Src/stm32l4xx_it.c ****   *
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s 			page 2
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccvOUpFl.s 			page 2
 
 
   31:Src/stm32l4xx_it.c ****   ******************************************************************************
@@ -77,7 +77,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s 			page 1
   44:Src/stm32l4xx_it.c **** extern ADC_HandleTypeDef hadc1;
   45:Src/stm32l4xx_it.c **** 
   46:Src/stm32l4xx_it.c **** /******************************************************************************/
-  47:Src/stm32l4xx_it.c **** /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
+  47:Src/stm32l4xx_it.c **** /*            Cortex-M4 Processor Interruption and Exception Handlers         */
   48:Src/stm32l4xx_it.c **** /******************************************************************************/
   49:Src/stm32l4xx_it.c **** 
   50:Src/stm32l4xx_it.c **** /**
@@ -108,17 +108,17 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s 			page 1
   44 000a 08BD     		pop	{r3, pc}
   45              		.cfi_endproc
   46              	.LFE306:
-  48              		.section	.text.DMA1_Channel1_IRQHandler,"ax",%progbits
+  48              		.section	.text.ADC1_2_IRQHandler,"ax",%progbits
   49              		.align	2
-  50              		.global	DMA1_Channel1_IRQHandler
+  50              		.global	ADC1_2_IRQHandler
   51              		.thumb
   52              		.thumb_func
-  54              	DMA1_Channel1_IRQHandler:
+  54              	ADC1_2_IRQHandler:
   55              	.LFB307:
   60:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 1 */
   61:Src/stm32l4xx_it.c **** 
   62:Src/stm32l4xx_it.c ****   /* USER CODE END SysTick_IRQn 1 */
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s 			page 3
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccvOUpFl.s 			page 3
 
 
   63:Src/stm32l4xx_it.c **** }
@@ -133,9 +133,23 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s 			page 1
   72:Src/stm32l4xx_it.c **** /**
   73:Src/stm32l4xx_it.c **** * @brief This function handles DMA1 channel1 global interrupt.
   74:Src/stm32l4xx_it.c **** */
-  75:Src/stm32l4xx_it.c **** void DMA1_Channel1_IRQHandler(void)
-  76:Src/stm32l4xx_it.c **** {
-  56              		.loc 1 76 0
+  75:Src/stm32l4xx_it.c **** //void DMA1_Channel1_IRQHandler(void)
+  76:Src/stm32l4xx_it.c **** //{
+  77:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
+  78:Src/stm32l4xx_it.c **** 
+  79:Src/stm32l4xx_it.c ****   /* USER CODE END DMA1_Channel1_IRQn 0 */
+  80:Src/stm32l4xx_it.c ****   //HAL_DMA_IRQHandler(&hdma_adc1);
+  81:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
+  82:Src/stm32l4xx_it.c **** 
+  83:Src/stm32l4xx_it.c ****   /* USER CODE END DMA1_Channel1_IRQn 1 */
+  84:Src/stm32l4xx_it.c **** //}
+  85:Src/stm32l4xx_it.c **** 
+  86:Src/stm32l4xx_it.c **** /**
+  87:Src/stm32l4xx_it.c **** * @brief This function handles ADC1 and ADC2 interrupts.
+  88:Src/stm32l4xx_it.c **** */
+  89:Src/stm32l4xx_it.c **** void ADC1_2_IRQHandler(void)
+  90:Src/stm32l4xx_it.c **** {
+  56              		.loc 1 90 0
   57              		.cfi_startproc
   58              		@ args = 0, pretend = 0, frame = 0
   59              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -144,95 +158,49 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s 			page 1
   62              		.cfi_def_cfa_offset 8
   63              		.cfi_offset 3, -8
   64              		.cfi_offset 14, -4
-  77:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
-  78:Src/stm32l4xx_it.c **** 
-  79:Src/stm32l4xx_it.c ****   /* USER CODE END DMA1_Channel1_IRQn 0 */
-  80:Src/stm32l4xx_it.c ****   HAL_DMA_IRQHandler(&hdma_adc1);
-  65              		.loc 1 80 0
+  91:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN ADC1_2_IRQn 0 */
+  92:Src/stm32l4xx_it.c **** 
+  93:Src/stm32l4xx_it.c ****   /* USER CODE END ADC1_2_IRQn 0 */
+  94:Src/stm32l4xx_it.c ****   HAL_ADC_IRQHandler(&hadc1);
+  65              		.loc 1 94 0
   66 0002 0248     		ldr	r0, .L5
-  67 0004 FFF7FEFF 		bl	HAL_DMA_IRQHandler
+  67 0004 FFF7FEFF 		bl	HAL_ADC_IRQHandler
   68              	.LVL2:
   69 0008 08BD     		pop	{r3, pc}
   70              	.L6:
   71 000a 00BF     		.align	2
   72              	.L5:
-  73 000c 00000000 		.word	hdma_adc1
+  73 000c 00000000 		.word	hadc1
   74              		.cfi_endproc
   75              	.LFE307:
-  77              		.section	.text.ADC1_2_IRQHandler,"ax",%progbits
-  78              		.align	2
-  79              		.global	ADC1_2_IRQHandler
-  80              		.thumb
-  81              		.thumb_func
-  83              	ADC1_2_IRQHandler:
-  84              	.LFB308:
-  81:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
-  82:Src/stm32l4xx_it.c **** 
-  83:Src/stm32l4xx_it.c ****   /* USER CODE END DMA1_Channel1_IRQn 1 */
-  84:Src/stm32l4xx_it.c **** }
-  85:Src/stm32l4xx_it.c **** 
-  86:Src/stm32l4xx_it.c **** /**
-  87:Src/stm32l4xx_it.c **** * @brief This function handles ADC1 and ADC2 interrupts.
-  88:Src/stm32l4xx_it.c **** */
-  89:Src/stm32l4xx_it.c **** void ADC1_2_IRQHandler(void)
-  90:Src/stm32l4xx_it.c **** {
-  85              		.loc 1 90 0
-  86              		.cfi_startproc
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s 			page 4
+  77              		.text
+  78              	.Letext0:
+  79              		.file 2 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_ty
+  80              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h"
+  81              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccvOUpFl.s 			page 4
 
 
-  87              		@ args = 0, pretend = 0, frame = 0
-  88              		@ frame_needed = 0, uses_anonymous_args = 0
-  89 0000 08B5     		push	{r3, lr}
-  90              	.LCFI2:
-  91              		.cfi_def_cfa_offset 8
-  92              		.cfi_offset 3, -8
-  93              		.cfi_offset 14, -4
-  91:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN ADC1_2_IRQn 0 */
-  92:Src/stm32l4xx_it.c **** 
-  93:Src/stm32l4xx_it.c ****   /* USER CODE END ADC1_2_IRQn 0 */
-  94:Src/stm32l4xx_it.c ****   HAL_ADC_IRQHandler(&hadc1);
-  94              		.loc 1 94 0
-  95 0002 0248     		ldr	r0, .L9
-  96 0004 FFF7FEFF 		bl	HAL_ADC_IRQHandler
-  97              	.LVL3:
-  98 0008 08BD     		pop	{r3, pc}
-  99              	.L10:
- 100 000a 00BF     		.align	2
- 101              	.L9:
- 102 000c 00000000 		.word	hadc1
- 103              		.cfi_endproc
- 104              	.LFE308:
- 106              		.text
- 107              	.Letext0:
- 108              		.file 2 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_ty
- 109              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h"
- 110              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
- 111              		.file 5 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
- 112              		.file 6 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
- 113              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
- 114              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
- 115              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
- 116              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s 			page 5
+  82              		.file 5 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+  83              		.file 6 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+  84              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
+  85              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
+  86              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+  87              		.file 10 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccvOUpFl.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_it.c
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s:21     .text.SysTick_Handler:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s:26     .text.SysTick_Handler:0000000000000000 SysTick_Handler
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s:49     .text.DMA1_Channel1_IRQHandler:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s:54     .text.DMA1_Channel1_IRQHandler:0000000000000000 DMA1_Channel1_IRQHandler
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s:73     .text.DMA1_Channel1_IRQHandler:000000000000000c $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s:78     .text.ADC1_2_IRQHandler:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s:83     .text.ADC1_2_IRQHandler:0000000000000000 ADC1_2_IRQHandler
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccJ1DOyv.s:102    .text.ADC1_2_IRQHandler:000000000000000c $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccvOUpFl.s:21     .text.SysTick_Handler:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccvOUpFl.s:26     .text.SysTick_Handler:0000000000000000 SysTick_Handler
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccvOUpFl.s:49     .text.ADC1_2_IRQHandler:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccvOUpFl.s:54     .text.ADC1_2_IRQHandler:0000000000000000 ADC1_2_IRQHandler
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccvOUpFl.s:73     .text.ADC1_2_IRQHandler:000000000000000c $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
 HAL_IncTick
 HAL_SYSTICK_IRQHandler
-HAL_DMA_IRQHandler
-hdma_adc1
 HAL_ADC_IRQHandler
 hadc1

@@ -6,11 +6,6 @@
 
 
 
-volatile uint32_t Buffer_Ping[1000];
-volatile uint32_t Buffer_Pong[1000];
-volatile uint32_t *pReadyWrite = Buffer_Ping;
-volatile uint32_t *pReadyProcess = Buffer_Pong;
-volatile uint32_t ADC_DMA_DONE = 0;
 
 ///ADC1 Initialization
 /// NOTE: ADC needs HSI
@@ -280,9 +275,23 @@ void ADC_Calibration(void){
 
 }
 
+void getFloat(int *input, float *output, int nsamp)
+{
+  int i;
+
+  // Now convert the valid ADC data into the caller's array of floats.
+  // Samples are normalized to range from -1.0 to 1.0
+  // 1/32768 = 3.0517578e-05  (Multiplication is much faster than dividing)
+
+  for (i=0; i<nsamp; i++) {
+     // 1/32768 = 3.0517578e-05  (Multiplication is much faster than dividing)
+        output[i] = ((float)((int)input[i]-32767))*3.0517578e-05f;
+      }
+
+}
 
 
-void findFrequency(int *samples, int nsamp, float *note)
+void findFrequency(float *samples, int nsamp, float *note)
 {
    uint32_t i, n, j, maxIndex;
    float avg, dev, maxVal;
@@ -290,17 +299,7 @@ void findFrequency(int *samples, int nsamp, float *note)
    n=1;
 
 
-
-   // Now convert the valid ADC data into the caller's array of floats.
-   // Samples are normalized to range from -1.0 to 1.0
-   // 1/32768 = 3.0517578e-05  (Multiplication is much faster than dividing)
-
-   for (i=0; i<nsamp; i++) {
-      // 1/32768 = 3.0517578e-05  (Multiplication is much faster than dividing)
-         input[i] = ((float)((int)samples[i]-32767))*3.0517578e-05f;
-       }
-
- arm_correlate_f32(input, nsamp, input, nsamp, output1);
+ arm_correlate_f32(samples, nsamp, samples, nsamp, output1);
 //arm_rfft_fast_f32(&fftStruct, input, output1, 0);
   arm_mean_f32(output1, nsamp*2, &avg);
 
@@ -369,98 +368,6 @@ for(i=0; i<nsamp*2; i++){
 }
 
 
-
-
-
-void DMA_Init(int arg)
-{
-//arg number of conversions
-//uint16_t ADC_Results[arg];
-
-
-/* Enable DMA1 Clock */
-RCC->AHB1ENR |= RCC_AHB1ENR_DMA1EN;
-
-//Enable DMA channel
-DMA1_Channel1->CCR &= ~DMA_CCR_EN;
-
-/*DMA1 channel 1 config for ADC1 */
-//disable memory to memory mode
-DMA1_Channel1->CCR &= ~DMA_CCR_MEM2MEM;
-
-//Channel Priorty level
-// 00 = low, 01 = medium, 10 = high, 11 = very high
-//set to high priority
-DMA1_Channel1->CCR &= ~DMA_CCR_PL;
-DMA1_Channel1->CCR |= DMA_CCR_PL_1;
-
-//peripheral size
-//00 = 8bit, 01 = 16-bit, 10 = 32 bit, 11 = reserved
-DMA1_Channel1->CCR &= ~DMA_CCR_PSIZE;
-DMA1_Channel1->CCR |= DMA_CCR_PSIZE_0;
-
-//Memory size
-//00 = 8bit, 01 = 16-bit, 10 = 32 bit, 11 = reserved
-DMA1_Channel1->CCR &= ~DMA_CCR_MSIZE;
-DMA1_Channel1->CCR |= DMA_CCR_MSIZE_0;
-
-//peripheral increment mode
-//0 = disabled, 1 = enabled
-DMA1_Channel1->CCR &= ~DMA_CCR_PINC;
-
-
-//memory increment mode
-//0 = disabled, 1 = enabled
-DMA1_Channel1->CCR &= ~DMA_CCR_MINC;
-DMA1_Channel1->CCR |= DMA_CCR_MINC;
-
-//Circular
-// 0 = disabled, 1 = enabled
-DMA1_Channel1->CCR |= DMA_CCR_CIRC;
-
-//Data trasnfer rate
-//O read from peripheral
-//1 read from memory
-DMA1_Channel1->CCR &= ~DMA_CCR_DIR;
-
-//number of ADC results to transfer
-DMA1_Channel1->CNDTR = arg;
-
-//peripheral address registers
-DMA1_Channel1->CPAR = (uint32_t) &(ADC1->DR);
-
-//memory address registers
-//ping pong buffer
-DMA1_Channel1->CMAR =  (uint32_t) pReadyProcess;
-
-//transfer complete interrupt enable
-DMA1_Channel1->CCR |= DMA_CCR_TCIE;
-
-//disable half complete
-DMA1_Channel1->CCR &= ~DMA_CCR_HTIE;
-DMA1_Channel1->CCR |= DMA_CCR_HTIE;
-
-// configure ADC for DMA in circular mode
-//ADC1->CFGR |= ADC_CFGR_DMACFG;
-//DMA enable?
-//ADC1->CFGR |= ADC_CFGR_DMAEN;
-
-//set DMA interrupt priority
-NVIC_SetPriority(DMA1_Channel1_IRQn, 1);
-
-//enable DMA INTERRUPT
-NVIC_EnableIRQ(DMA1_Channel1_IRQn);
-
-
-//DMA Channel selection
-//map DMA channel 1 to ADC1
-//0000: Channel 1 mapped to ADC1
-DMA1_CSELR->CSELR &= ~DMA_CSELR_C1S;
-
-//Enable DMA channel
-DMA1_Channel1->CCR |= DMA_CCR_EN;
-
-}
 
 
 
