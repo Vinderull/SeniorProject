@@ -358,7 +358,7 @@ for(i=0; i<nsamp*2; i++){
 
           /*sample rate /divided by number of samples to peak */
           /*returns frequency in Hz */
-   *note = 10000.0/((float) n);
+   *note = 4000.0/((float) n);
 
 
 
