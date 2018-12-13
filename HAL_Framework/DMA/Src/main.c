@@ -228,7 +228,7 @@ void SystemClock_Config(void)
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
-/* USER CODE BEGIN 4
+/* USER CODE BEGIN 4 */
 
 
 void SystemClock_Config_MSI(void)
@@ -268,19 +268,6 @@ if(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
     while(1);
   }
  }
-
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
-{
-
-
-
-
-
-  int i = 0;
-  for(i =0; i<SAMPLE_SIZE; i++){
-      adc[i] = buffer[i];
-  }
-}
 
 
 void DMA_Init(int arg)
