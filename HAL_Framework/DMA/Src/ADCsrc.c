@@ -238,9 +238,9 @@ void TIM4_Init(void)
   /*Timer driving frequency = 80MHz/(1+PSC) = 80M/(1+7)= 10MHz */
   /*Trigger frequency 10MHz / (1 + ARR)= 10KHz */
   TIM4->PSC = 7;
-  TIM4->ARR = 999;
+  TIM4->ARR = 499;
   /*Duty ratio of 50% */
-  TIM4->CCR1 = 500;
+  TIM4->CCR1 = 250;
 
   /*OC1 Signal is output */
   TIM4->CCER |= TIM_CCER_CC1E;
@@ -358,7 +358,7 @@ for(i=0; i<nsamp*2; i++){
 
           /*sample rate /divided by number of samples to peak */
           /*returns frequency in Hz */
-   *note = 4000.0/((float) n);
+   *note = 10000.0/((float) n);
 
 
 

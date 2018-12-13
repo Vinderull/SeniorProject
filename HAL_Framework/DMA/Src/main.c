@@ -113,7 +113,8 @@ int main(void)
   //MX_DMA_Init();
   DMA_Init(SAMPLE_SIZE);  //ADC_Calibration();
   MX_ADC1_Init();
-  MX_TIM4_Init();
+  //MX_TIM4_Init();
+  TIM4_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
@@ -121,8 +122,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_TIM_Base_Init(&htim4);
-  HAL_TIM_Base_Start(&htim4);
+  //HAL_TIM_Base_Init(&htim4);
+  //HAL_TIM_Base_Start(&htim4);
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *) pReadyProcess, SAMPLE_SIZE);
 
   /*transmit sring over usart2 */
