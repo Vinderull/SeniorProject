@@ -48,6 +48,7 @@
 /* USER CODE BEGIN Includes */
 #include "ADCsrc.h"
 #include "opamp.h"
+#include "i2c.h"
 //#include "stm32l4xx_hal_opamp.h"
 /* USER CODE END Includes */
 

@@ -93,6 +93,7 @@ Common symbol       size              file
 hopamp2             0x34              build/opamp.o
 htim4               0x40              build/tim.o
 errno               0x4               /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-reent.o)
+hi2c1               0x4c              build/i2c.o
 uwTick              0x4               build/stm32l4xx_hal.o
 hadc1               0x68              build/adc.o
 buffer              0xfa0             build/main.o
@@ -185,6 +186,30 @@ Discarded input sections
  .ARM.attributes
                 0x0000000000000000       0x39 build/tim.o
  COMMON         0x0000000000000000       0x40 build/tim.o
+ .text          0x0000000000000000        0x0 build/i2c.o
+ .data          0x0000000000000000        0x0 build/i2c.o
+ .bss           0x0000000000000000        0x0 build/i2c.o
+ .text.MX_I2C1_Init
+                0x0000000000000000       0x64 build/i2c.o
+ .text.HAL_I2C_MspInit
+                0x0000000000000000       0x54 build/i2c.o
+ .text.HAL_I2C_MspDeInit
+                0x0000000000000000       0x2c build/i2c.o
+ .rodata.str1.4
+                0x0000000000000000        0xa build/i2c.o
+ .debug_info    0x0000000000000000      0xc03 build/i2c.o
+ .debug_abbrev  0x0000000000000000      0x1ef build/i2c.o
+ .debug_loc     0x0000000000000000       0xd1 build/i2c.o
+ .debug_aranges
+                0x0000000000000000       0x30 build/i2c.o
+ .debug_ranges  0x0000000000000000       0x20 build/i2c.o
+ .debug_line    0x0000000000000000      0x234 build/i2c.o
+ .debug_str     0x0000000000000000      0x90d build/i2c.o
+ .comment       0x0000000000000000       0x71 build/i2c.o
+ .debug_frame   0x0000000000000000       0x6c build/i2c.o
+ .ARM.attributes
+                0x0000000000000000       0x39 build/i2c.o
+ COMMON         0x0000000000000000       0x4c build/i2c.o
  .text          0x0000000000000000        0x0 build/usart.o
  .data          0x0000000000000000        0x0 build/usart.o
  .bss           0x0000000000000000        0x0 build/usart.o
@@ -1640,6 +1665,7 @@ LOAD build/opamp.o
 LOAD build/adc.o
 LOAD build/dma.o
 LOAD build/tim.o
+LOAD build/i2c.o
 LOAD build/usart.o
 LOAD build/stm32l4xx_it.o
 LOAD build/stm32l4xx_hal_msp.o
@@ -2969,6 +2995,7 @@ HAL_FLASH_Program_IT                              build/stm32l4xx_hal_flash.o
 HAL_FLASH_Unlock                                  build/stm32l4xx_hal_flash.o
 HAL_GPIO_DeInit                                   build/stm32l4xx_hal_gpio.o
                                                   build/usart.o
+                                                  build/i2c.o
                                                   build/adc.o
                                                   build/opamp.o
 HAL_GPIO_EXTI_Callback                            build/stm32l4xx_hal_gpio.o
@@ -2977,6 +3004,7 @@ HAL_GPIO_Init                                     build/stm32l4xx_hal_gpio.o
                                                   build/stm32l4xx_hal_rcc_ex.o
                                                   build/stm32l4xx_hal_rcc.o
                                                   build/usart.o
+                                                  build/i2c.o
                                                   build/adc.o
                                                   build/opamp.o
                                                   build/gpio.o
@@ -3005,7 +3033,9 @@ HAL_HalfDuplex_EnableReceiver                     build/stm32l4xx_hal_uart.o
 HAL_HalfDuplex_EnableTransmitter                  build/stm32l4xx_hal_uart.o
 HAL_HalfDuplex_Init                               build/stm32l4xx_hal_uart.o
 HAL_I2CEx_ConfigAnalogFilter                      build/stm32l4xx_hal_i2c_ex.o
+                                                  build/i2c.o
 HAL_I2CEx_ConfigDigitalFilter                     build/stm32l4xx_hal_i2c_ex.o
+                                                  build/i2c.o
 HAL_I2CEx_DisableFastModePlus                     build/stm32l4xx_hal_i2c_ex.o
 HAL_I2CEx_DisableWakeUp                           build/stm32l4xx_hal_i2c_ex.o
 HAL_I2CEx_EnableFastModePlus                      build/stm32l4xx_hal_i2c_ex.o
@@ -3022,6 +3052,7 @@ HAL_I2C_GetError                                  build/stm32l4xx_hal_i2c.o
 HAL_I2C_GetMode                                   build/stm32l4xx_hal_i2c.o
 HAL_I2C_GetState                                  build/stm32l4xx_hal_i2c.o
 HAL_I2C_Init                                      build/stm32l4xx_hal_i2c.o
+                                                  build/i2c.o
 HAL_I2C_IsDeviceReady                             build/stm32l4xx_hal_i2c.o
 HAL_I2C_ListenCpltCallback                        build/stm32l4xx_hal_i2c.o
 HAL_I2C_MasterRxCpltCallback                      build/stm32l4xx_hal_i2c.o
@@ -3045,8 +3076,8 @@ HAL_I2C_Mem_Read_IT                               build/stm32l4xx_hal_i2c.o
 HAL_I2C_Mem_Write                                 build/stm32l4xx_hal_i2c.o
 HAL_I2C_Mem_Write_DMA                             build/stm32l4xx_hal_i2c.o
 HAL_I2C_Mem_Write_IT                              build/stm32l4xx_hal_i2c.o
-HAL_I2C_MspDeInit                                 build/stm32l4xx_hal_i2c.o
-HAL_I2C_MspInit                                   build/stm32l4xx_hal_i2c.o
+HAL_I2C_MspDeInit                                 build/i2c.o
+HAL_I2C_MspInit                                   build/i2c.o
 HAL_I2C_SlaveRxCpltCallback                       build/stm32l4xx_hal_i2c.o
 HAL_I2C_SlaveTxCpltCallback                       build/stm32l4xx_hal_i2c.o
 HAL_I2C_Slave_Receive                             build/stm32l4xx_hal_i2c.o
@@ -3425,6 +3456,7 @@ MX_ADC1_Init                                      build/adc.o
 MX_DMA_Init                                       build/dma.o
 MX_GPIO_Init                                      build/gpio.o
                                                   build/main.o
+MX_I2C1_Init                                      build/i2c.o
 MX_OPAMP2_Init                                    build/opamp.o
                                                   build/main.o
 MX_TIM4_Init                                      build/tim.o
@@ -3517,6 +3549,7 @@ _Bfree                                            /usr/local/Cellar/gcc-arm-none
                                                   /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-dtoa.o)
 _Error_Handler                                    build/main.o
                                                   build/usart.o
+                                                  build/i2c.o
                                                   build/tim.o
                                                   build/adc.o
                                                   build/opamp.o
@@ -3746,6 +3779,7 @@ hadc1                                             build/adc.o
                                                   build/main.o
 hardware_init_hook                                /usr/local/Cellar/gcc-arm-none-eabi-49/20150925/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
 hdma_adc1                                         build/adc.o
+hi2c1                                             build/i2c.o
 hopamp2                                           build/opamp.o
                                                   build/main.o
 htim4                                             build/tim.o

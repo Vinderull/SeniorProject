@@ -43,6 +43,7 @@ Src/opamp.c \
 Src/adc.c \
 Src/dma.c \
 Src/tim.c \
+Src/i2c.c \
 Src/usart.c \
 Src/stm32l4xx_it.c \
 Src/stm32l4xx_hal_msp.c \
