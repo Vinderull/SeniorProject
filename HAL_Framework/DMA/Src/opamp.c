@@ -6,7 +6,7 @@
   ******************************************************************************
   ** This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
-  * USER CODE END. Other portions of this file, whether 
+  * USER CODE END. Other portions of this file, whether
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
@@ -78,11 +78,11 @@ void HAL_OPAMP_MspInit(OPAMP_HandleTypeDef* opampHandle)
   /* USER CODE END OPAMP2_MspInit 0 */
     /* OPAMP2 clock enable */
     __HAL_RCC_OPAMP_CLK_ENABLE();
-  
-    /**OPAMP2 GPIO Configuration    
+
+    /**OPAMP2 GPIO Configuration
     PA6     ------> OPAMP2_VINP
     PA7     ------> OPAMP2_VINM
-    PB0     ------> OPAMP2_VOUT 
+    PB0     ------> OPAMP2_VOUT
     */
     GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
@@ -110,11 +110,11 @@ void HAL_OPAMP_MspDeInit(OPAMP_HandleTypeDef* opampHandle)
   /* USER CODE END OPAMP2_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_OPAMP_CLK_DISABLE();
-  
-    /**OPAMP2 GPIO Configuration    
+
+    /**OPAMP2 GPIO Configuration
     PA6     ------> OPAMP2_VINP
     PA7     ------> OPAMP2_VINM
-    PB0     ------> OPAMP2_VOUT 
+    PB0     ------> OPAMP2_VOUT
     */
     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_6|GPIO_PIN_7);
 
@@ -124,7 +124,7 @@ void HAL_OPAMP_MspDeInit(OPAMP_HandleTypeDef* opampHandle)
 
   /* USER CODE END OPAMP2_MspDeInit 1 */
   }
-} 
+}
 
 /* USER CODE BEGIN 1 */
 

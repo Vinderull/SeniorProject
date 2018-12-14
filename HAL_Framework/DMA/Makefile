@@ -39,12 +39,15 @@ C_SOURCES =  \
 Src/ADCsrc.c \
 Src/main.c \
 Src/gpio.c \
+Src/opamp.c \
 Src/adc.c \
 Src/dma.c \
 Src/tim.c \
 Src/usart.c \
 Src/stm32l4xx_it.c \
 Src/stm32l4xx_hal_msp.c \
+Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c \
+Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc_ex.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c \
