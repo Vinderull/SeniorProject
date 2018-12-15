@@ -70,8 +70,6 @@ void SystemClock_Config_MSI(void);
 
 /* USER CODE BEGIN 0 */
 #define SAMPLE_SIZE 1000
-volatile uint32_t adc[SAMPLE_SIZE];
-volatile uint32_t buffer[SAMPLE_SIZE];
 volatile uint32_t Buffer_Ping[SAMPLE_SIZE];
 volatile uint32_t Buffer_Pong[SAMPLE_SIZE];
 volatile uint32_t *pReadyWrite = Buffer_Ping;
@@ -147,7 +145,7 @@ int main(void)
 
 
   //gcvt(frequency, 4, Message);
-  sprintf(Message, "The Note is %f, adc is %f\n\r", frequency, ((float) pReadyProcess[0])*vsense);
+  sprintf(Message, "The Note is %f, adc is %f\n\r", frequency/2.0, ((float) pReadyProcess[0])*vsense);
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 
@@ -279,10 +277,10 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 
 
 
-  int i = 0;
-  for(i =0; i<SAMPLE_SIZE; i++){
-      adc[i] = buffer[i];
-  }
+  //int i = 0;
+  //for(i =0; i<SAMPLE_SIZE; i++){
+    //  adc[i] = buffer[i];
+  //}
 }
 
 
@@ -360,7 +358,7 @@ DMA1_Channel1->CCR |= DMA_CCR_HTIE;
 //ADC1->CFGR |= ADC_CFGR_DMAEN;
 
 //set DMA interrupt priority
-NVIC_SetPriority(DMA1_Channel1_IRQn, 1);
+NVIC_SetPriority(DMA1_Channel1_IRQn, 0);
 
 //enable DMA INTERRUPT
 NVIC_EnableIRQ(DMA1_Channel1_IRQn);

@@ -10,6 +10,33 @@
 ///ADC1 Initialization
 /// NOTE: ADC needs HSI
 
+
+void TIM4_Config(uint16_t fs)
+ {
+static TIM_HandleTypeDef htim;
+TIM_MasterConfigTypeDef  sMasterConfig;
+
+htim.Instance = TIM4;
+
+  /* Number of timer counts per ADC sample....  The timer 4 clock frequency is
+  * the APB1 Bus frequency: 80 MHz.  For example, To get 50 ksps, we're
+  * counting (50 MHz)/(50 ksps) = 1600 counts
+  */
+  htim.Init.Period = fs;
+  htim.Init.Prescaler = 0;
+  htim.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim.Init.CounterMode = TIM_COUNTERMODE_UP;
+  HAL_TIM_Base_Init(&htim);
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+
+  HAL_TIMEx_MasterConfigSynchronization(&htim, &sMasterConfig);
+
+  /*##-2- Enable TIM peripheral counter ######################################*/
+  HAL_TIM_Base_Start(&htim);
+}
+
 void ADC1_Init(void)
 {
   /*Enable clock to ADC */
@@ -238,9 +265,9 @@ void TIM4_Init(void)
   /*Timer driving frequency = 80MHz/(1+PSC) = 80M/(1+7)= 10MHz */
   /*Trigger frequency 10MHz / (1 + ARR)= 10KHz */
   TIM4->PSC = 7;
-  TIM4->ARR = 499;
+  TIM4->ARR = 999;
   /*Duty ratio of 50% */
-  TIM4->CCR1 = 250;
+  TIM4->CCR1 = 500;
 
   /*OC1 Signal is output */
   TIM4->CCER |= TIM_CCER_CC1E;
