@@ -37,6 +37,8 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Src/ADCsrc.c \
+Src/ssd1306.c \
+Src/fonts.c \
 Src/main.c \
 Src/gpio.c \
 Src/opamp.c \

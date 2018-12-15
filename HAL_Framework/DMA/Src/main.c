@@ -49,6 +49,8 @@
 #include "ADCsrc.h"
 #include "opamp.h"
 #include "i2c.h"
+#include "ssd1306.h"
+#include "fonts.h"
 //#include "stm32l4xx_hal_opamp.h"
 /* USER CODE END Includes */
 
@@ -118,6 +120,7 @@ int main(void)
   TIM4_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  MX_I2C1_Init();
 
   /* USER CODE END 2 */
 
@@ -130,6 +133,19 @@ int main(void)
 
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+
+
+    ssd1306_Init();
+    HAL_Delay(1000);
+    ssd1306_Fill(White);
+    ssd1306_UpdateScreen();
+
+    HAL_Delay(1000);
+
+    ssd1306_SetCursor(23,23);
+    ssd1306_WriteString("4ilo",Font_11x18,Black);
+
+    ssd1306_UpdateScreen();
   while (1)
   {
 
@@ -145,9 +161,15 @@ int main(void)
 
 
   //gcvt(frequency, 4, Message);
-  sprintf(Message, "The Note is %f, adc is %f\n\r", frequency/2.0, ((float) pReadyProcess[0])*vsense);
+  sprintf(Message, "%.2f", frequency/2.0);
   /*transmit sring over usart2 */
-  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
+
+  ssd1306_SetCursor(23,23);
+  ssd1306_WriteString(Message,Font_11x18,Black);
+
+  ssd1306_UpdateScreen();
+  HAL_Delay(1000);
+  //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 
 
   /* USER CODE BEGIN 3 */

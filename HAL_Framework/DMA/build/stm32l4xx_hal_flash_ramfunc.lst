@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s 			page 1
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLQoANa.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s 			page 1
   28:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c **** 
   29:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c ****     *** GNU Compiler ***
   30:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c ****     --------------------
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s 			page 2
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLQoANa.s 			page 2
 
 
   31:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c ****     [..] RAM functions are defined using a specific toolchain attribute
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s 			page 1
   85:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c **** /* Private function prototypes -----------------------------------------------*/
   86:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c **** /* Exported functions -------------------------------------------------------*/
   87:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c **** 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s 			page 3
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLQoANa.s 			page 3
 
 
   88:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c **** /** @defgroup FLASH_RAMFUNC_Exported_Functions FLASH in RAM function Exported Functions
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s 			page 1
   52              		.cfi_endproc
   53              	.LFE306:
   55              		.align	2
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s 			page 4
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLQoANa.s 			page 4
 
 
   56              		.global	HAL_FLASHEx_DisableRunPowerDown
@@ -231,17 +231,17 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s 			page 1
   92              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
   93              		.file 5 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
   94              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s 			page 5
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLQoANa.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_hal_flash_ramfunc.c
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s:21     .RamFunc:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s:26     .RamFunc:0000000000000000 HAL_FLASHEx_EnableRunPowerDown
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s:49     .RamFunc:0000000000000018 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s:55     .RamFunc:0000000000000024 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s:60     .RamFunc:0000000000000024 HAL_FLASHEx_DisableRunPowerDown
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccx1EAwm.s:82     .RamFunc:000000000000003c $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLQoANa.s:21     .RamFunc:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLQoANa.s:26     .RamFunc:0000000000000000 HAL_FLASHEx_EnableRunPowerDown
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLQoANa.s:49     .RamFunc:0000000000000018 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLQoANa.s:55     .RamFunc:0000000000000024 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLQoANa.s:60     .RamFunc:0000000000000024 HAL_FLASHEx_DisableRunPowerDown
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLQoANa.s:82     .RamFunc:000000000000003c $d
                      .debug_frame:0000000000000010 $d
 
 NO UNDEFINED SYMBOLS
