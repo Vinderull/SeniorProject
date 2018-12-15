@@ -1,0 +1,205 @@
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccasjQWM.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.file	"gpio.c"
+  17              		.text
+  18              	.Ltext0:
+  19              		.cfi_sections	.debug_frame
+  20              		.section	.text.MX_GPIO_Init,"ax",%progbits
+  21              		.align	2
+  22              		.global	MX_GPIO_Init
+  23              		.thumb
+  24              		.thumb_func
+  26              	MX_GPIO_Init:
+  27              	.LFB306:
+  28              		.file 1 "Src/gpio.c"
+   1:Src/gpio.c    **** /**
+   2:Src/gpio.c    ****   ******************************************************************************
+   3:Src/gpio.c    ****   * File Name          : gpio.c
+   4:Src/gpio.c    ****   * Description        : This file provides code for the configuration
+   5:Src/gpio.c    ****   *                      of all used GPIO pins.
+   6:Src/gpio.c    ****   ******************************************************************************
+   7:Src/gpio.c    ****   ** This notice applies to any and all portions of this file
+   8:Src/gpio.c    ****   * that are not between comment pairs USER CODE BEGIN and
+   9:Src/gpio.c    ****   * USER CODE END. Other portions of this file, whether
+  10:Src/gpio.c    ****   * inserted by the user or by software development tools
+  11:Src/gpio.c    ****   * are owned by their respective copyright owners.
+  12:Src/gpio.c    ****   *
+  13:Src/gpio.c    ****   * COPYRIGHT(c) 2018 STMicroelectronics
+  14:Src/gpio.c    ****   *
+  15:Src/gpio.c    ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:Src/gpio.c    ****   * are permitted provided that the following conditions are met:
+  17:Src/gpio.c    ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:Src/gpio.c    ****   *      this list of conditions and the following disclaimer.
+  19:Src/gpio.c    ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:Src/gpio.c    ****   *      this list of conditions and the following disclaimer in the documentation
+  21:Src/gpio.c    ****   *      and/or other materials provided with the distribution.
+  22:Src/gpio.c    ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:Src/gpio.c    ****   *      may be used to endorse or promote products derived from this software
+  24:Src/gpio.c    ****   *      without specific prior written permission.
+  25:Src/gpio.c    ****   *
+  26:Src/gpio.c    ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:Src/gpio.c    ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:Src/gpio.c    ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:Src/gpio.c    ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:Src/gpio.c    ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccasjQWM.s 			page 2
+
+
+  31:Src/gpio.c    ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  32:Src/gpio.c    ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  33:Src/gpio.c    ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:Src/gpio.c    ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:Src/gpio.c    ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:Src/gpio.c    ****   *
+  37:Src/gpio.c    ****   ******************************************************************************
+  38:Src/gpio.c    ****   */
+  39:Src/gpio.c    **** 
+  40:Src/gpio.c    **** /* Includes ------------------------------------------------------------------*/
+  41:Src/gpio.c    **** #include "gpio.h"
+  42:Src/gpio.c    **** /* USER CODE BEGIN 0 */
+  43:Src/gpio.c    **** 
+  44:Src/gpio.c    **** /* USER CODE END 0 */
+  45:Src/gpio.c    **** 
+  46:Src/gpio.c    **** /*----------------------------------------------------------------------------*/
+  47:Src/gpio.c    **** /* Configure GPIO                                                             */
+  48:Src/gpio.c    **** /*----------------------------------------------------------------------------*/
+  49:Src/gpio.c    **** /* USER CODE BEGIN 1 */
+  50:Src/gpio.c    **** 
+  51:Src/gpio.c    **** /* USER CODE END 1 */
+  52:Src/gpio.c    **** 
+  53:Src/gpio.c    **** /** Configure pins as
+  54:Src/gpio.c    ****         * Analog
+  55:Src/gpio.c    ****         * Input
+  56:Src/gpio.c    ****         * Output
+  57:Src/gpio.c    ****         * EVENT_OUT
+  58:Src/gpio.c    ****         * EXTI
+  59:Src/gpio.c    **** */
+  60:Src/gpio.c    **** void MX_GPIO_Init(void)
+  61:Src/gpio.c    **** {
+  29              		.loc 1 61 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 16
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34 0000 84B0     		sub	sp, sp, #16
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 16
+  37              	.LBB2:
+  62:Src/gpio.c    **** 
+  63:Src/gpio.c    ****   GPIO_InitTypeDef GPIO_InitStruct;
+  64:Src/gpio.c    **** 
+  65:Src/gpio.c    ****   /* GPIO Ports Clock Enable */
+  66:Src/gpio.c    ****   __HAL_RCC_GPIOC_CLK_ENABLE();
+  38              		.loc 1 66 0
+  39 0002 134B     		ldr	r3, .L3
+  40 0004 DA6C     		ldr	r2, [r3, #76]
+  41 0006 42F00402 		orr	r2, r2, #4
+  42 000a DA64     		str	r2, [r3, #76]
+  43 000c DA6C     		ldr	r2, [r3, #76]
+  44 000e 02F00402 		and	r2, r2, #4
+  45 0012 0092     		str	r2, [sp]
+  46 0014 009A     		ldr	r2, [sp]
+  47              	.LBE2:
+  48              	.LBB3:
+  67:Src/gpio.c    ****   __HAL_RCC_GPIOH_CLK_ENABLE();
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccasjQWM.s 			page 3
+
+
+  49              		.loc 1 67 0
+  50 0016 DA6C     		ldr	r2, [r3, #76]
+  51 0018 42F08002 		orr	r2, r2, #128
+  52 001c DA64     		str	r2, [r3, #76]
+  53 001e DA6C     		ldr	r2, [r3, #76]
+  54 0020 02F08002 		and	r2, r2, #128
+  55 0024 0192     		str	r2, [sp, #4]
+  56 0026 019A     		ldr	r2, [sp, #4]
+  57              	.LBE3:
+  58              	.LBB4:
+  68:Src/gpio.c    ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+  59              		.loc 1 68 0
+  60 0028 DA6C     		ldr	r2, [r3, #76]
+  61 002a 42F00102 		orr	r2, r2, #1
+  62 002e DA64     		str	r2, [r3, #76]
+  63 0030 DA6C     		ldr	r2, [r3, #76]
+  64 0032 02F00102 		and	r2, r2, #1
+  65 0036 0292     		str	r2, [sp, #8]
+  66 0038 029A     		ldr	r2, [sp, #8]
+  67              	.LBE4:
+  68              	.LBB5:
+  69:Src/gpio.c    ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+  69              		.loc 1 69 0
+  70 003a DA6C     		ldr	r2, [r3, #76]
+  71 003c 42F00202 		orr	r2, r2, #2
+  72 0040 DA64     		str	r2, [r3, #76]
+  73 0042 DB6C     		ldr	r3, [r3, #76]
+  74 0044 03F00203 		and	r3, r3, #2
+  75 0048 0393     		str	r3, [sp, #12]
+  76 004a 039B     		ldr	r3, [sp, #12]
+  77              	.LBE5:
+  70:Src/gpio.c    **** 
+  71:Src/gpio.c    ****   /*Configure GPIO pin Output Level */
+  72:Src/gpio.c    ****   //HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+  73:Src/gpio.c    **** 
+  74:Src/gpio.c    ****   /*Configure GPIO pin : PtPin */
+  75:Src/gpio.c    ****   //GPIO_InitStruct.Pin = B1_Pin;
+  76:Src/gpio.c    ****   //GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  77:Src/gpio.c    ****   //GPIO_InitStruct.Pull = GPIO_NOPULL;
+  78:Src/gpio.c    ****   //HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+  79:Src/gpio.c    **** 
+  80:Src/gpio.c    ****   /*Configure GPIO pin : PtPin */
+  81:Src/gpio.c    ****   //GPIO_InitStruct.Pin = LD2_Pin;
+  82:Src/gpio.c    ****   //GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  83:Src/gpio.c    ****   //GPIO_InitStruct.Pull = GPIO_NOPULL;
+  84:Src/gpio.c    ****   //GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  85:Src/gpio.c    ****   //HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+  86:Src/gpio.c    **** 
+  87:Src/gpio.c    **** }
+  78              		.loc 1 87 0
+  79 004c 04B0     		add	sp, sp, #16
+  80              	.LCFI1:
+  81              		.cfi_def_cfa_offset 0
+  82              		@ sp needed
+  83 004e 7047     		bx	lr
+  84              	.L4:
+  85              		.align	2
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccasjQWM.s 			page 4
+
+
+  86              	.L3:
+  87 0050 00100240 		.word	1073876992
+  88              		.cfi_endproc
+  89              	.LFE306:
+  91              		.text
+  92              	.Letext0:
+  93              		.file 2 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_ty
+  94              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h"
+  95              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
+  96              		.file 5 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
+  97              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccasjQWM.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gpio.c
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccasjQWM.s:21     .text.MX_GPIO_Init:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccasjQWM.s:26     .text.MX_GPIO_Init:0000000000000000 MX_GPIO_Init
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccasjQWM.s:87     .text.MX_GPIO_Init:0000000000000050 $d
+                     .debug_frame:0000000000000010 $d
+
+NO UNDEFINED SYMBOLS
