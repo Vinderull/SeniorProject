@@ -34,7 +34,8 @@ build/main.o: Src/main.c Inc/main.h \
  Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
  Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h Inc/adc.h \
  Inc/dma.h Inc/tim.h Inc/usart.h Inc/gpio.h Inc/ADCsrc.h Inc/tim.h \
- Inc/opamp.h Inc/i2c.h Inc/ssd1306.h Inc/fonts.h Inc/fonts.h
+ Inc/opamp.h Inc/i2c.h Inc/ssd1306.h Inc/fonts.h Inc/fonts.h \
+ Inc/noteDetect.h Inc/ssd1306.h
 
 Inc/main.h:
 
@@ -135,3 +136,7 @@ Inc/ssd1306.h:
 Inc/fonts.h:
 
 Inc/fonts.h:
+
+Inc/noteDetect.h:
+
+Inc/ssd1306.h:

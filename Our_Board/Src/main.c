@@ -51,6 +51,7 @@
 #include "i2c.h"
 #include "ssd1306.h"
 #include "fonts.h"
+#include "noteDetect.h"
 //#include "stm32l4xx_hal_opamp.h"
 /* USER CODE END Includes */
 
@@ -72,11 +73,19 @@ void SystemClock_Config_MSI(void);
 
 /* USER CODE BEGIN 0 */
 #define SAMPLE_SIZE 1000
+
+#define NOTEX 40
+#define NOTEY 40
+#define FREQX 40
+#define FREQY 15
+
+
 volatile uint32_t Buffer_Ping[SAMPLE_SIZE];
 volatile uint32_t Buffer_Pong[SAMPLE_SIZE];
 volatile uint32_t *pReadyWrite = Buffer_Ping;
 volatile uint32_t *pReadyProcess = Buffer_Pong;
 volatile uint32_t ADC_DMA_DONE = 0;
+
 float vsense = 3.3/4095;
 /* USER CODE END 0 */
 
@@ -144,7 +153,7 @@ int main(void)
 
     HAL_Delay(1000);
 
-    ssd1306_SetCursor(30,20);
+    ssd1306_SetCursor(40,40);
     ssd1306_WriteString("Init",Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -159,7 +168,7 @@ int main(void)
   findFrequency(samples, SAMPLE_SIZE, &frequency);
 
   /*correction due to maybe wrong clock selection */
-  frequency /= 2;
+  frequency /= 2.0;
 
   ADC_DMA_DONE = 0;
 
@@ -167,12 +176,17 @@ int main(void)
 
   //gcvt(frequency, 4, Message);
   if (counter == 3){
-//  print2Screen(frequency, &printNote[0], &printFreq[0]);
-findNote(frequency, &printNote[0], &printFreq[0]);
-  counter = 0;
+
+     /*find note and display */
+     findNote(frequency);
+
+     /* reset counter for display */
+     counter = 0;
 }
+  /*increment counter to display */
   counter++;
-  //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
+  frequency = 0;
+
 
 
   /* USER CODE BEGIN 3 */

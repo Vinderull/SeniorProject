@@ -3,17 +3,23 @@
 #include "fonts.h"
 
 
+#define NOTEX 40
+#define NOTEY 40
+#define FREQX 40
+#define FREQY 15
 
-void findNote(float frequency, char *note, char *noteFreq)
+
+void findNote(float frequency)
 {
-
+  char note[40] = "thing\n\r";
+  char noteFreq[40] = "thing\n\r";
   /*B1 note */
   if(frequency>= 59.98 && frequency <= 63.55){
     sprintf(note, "B1");
-    sprintf(noteFreq, "%.2f", frequency);
-    ssd1306_SetCursor(50,50);
+    sprintf(noteFreq, "%4.2f", frequency);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -24,9 +30,9 @@ void findNote(float frequency, char *note, char *noteFreq)
   else if(frequency>= 63.56 && frequency <= 67.33){
     sprintf(note, "C2");
     sprintf(noteFreq, "%.2f", frequency);
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -37,9 +43,9 @@ void findNote(float frequency, char *note, char *noteFreq)
   else if(frequency>= 67.34 && frequency <= 71.33){
     sprintf(note, "Db2");
     sprintf(noteFreq, "%.2f", frequency);
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -51,9 +57,9 @@ void findNote(float frequency, char *note, char *noteFreq)
   else if(frequency>= 71.34 && frequency <= 75.53){
     sprintf(note, "D2");
     sprintf(noteFreq, "%.2f", frequency);
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -65,9 +71,9 @@ void findNote(float frequency, char *note, char *noteFreq)
   else if(frequency <= 80.59 && frequency >= 75.57 ){
     sprintf(note, "Eb2");
     sprintf(noteFreq, "%.2f", frequency);
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -79,9 +85,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "E2");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -94,9 +100,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "F2");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -108,9 +114,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "Gb2");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -122,9 +128,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "G2");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -136,9 +142,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "Ab2");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -150,9 +156,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "A2");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -164,9 +170,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "B2");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -178,9 +184,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "C3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -192,9 +198,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "Db3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -206,9 +212,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "D3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -220,9 +226,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "Eb3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -234,9 +240,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "E3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -248,9 +254,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "F3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -262,9 +268,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "Gb3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -276,9 +282,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "G3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -290,9 +296,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "Ab3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -304,9 +310,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "A3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -318,9 +324,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "Bb3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -332,9 +338,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "B3");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -346,9 +352,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "C4");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -360,9 +366,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "Db4");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -374,9 +380,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "D4");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -388,9 +394,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "Eb4");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -402,9 +408,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "E4");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -416,9 +422,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "F4");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -429,31 +435,42 @@ void findNote(float frequency, char *note, char *noteFreq)
   else if(frequency <= 380.83 && frequency >= 359.47){
     sprintf(note, "Gb4");
     sprintf(noteFreq, "%.2f", frequency);
-  }
 
-
-  /*G4 note */
-  else if(frequency <= 403.49 && frequency >= 380.83){
-    sprintf(note, "G4");
-    sprintf(noteFreq, "%.2f", frequency);
-
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
 
+
+  /*G4 note */
+  else if(frequency <= 403.49 && frequency >= 380.83){
+    sprintf(note, "G4");
+    sprintf(noteFreq, "%4.2f", frequency);
+
+    ssd1306_SetCursor(NOTEX, NOTEY);
+    ssd1306_WriteString(note,Font_11x18,Black);
+    ssd1306_SetCursor(FREQX,FREQY);
+    ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    ssd1306_UpdateScreen();
+    HAL_Delay(500);
+  }
+
+
+
+
   /*Ab4 note */
-  else if(frequency <= 427.56 && frequency >= 452.89){
+  else if(frequency >= 403.50 && frequency <= 427.56){
     sprintf(note, "Ab4");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -465,9 +482,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "A4");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -479,9 +496,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "Bb4");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -492,9 +509,9 @@ void findNote(float frequency, char *note, char *noteFreq)
     sprintf(note, "NULL");
     sprintf(noteFreq, "%.2f", frequency);
 
-    ssd1306_SetCursor(50,50);
+    ssd1306_SetCursor(NOTEX, NOTEY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();
@@ -508,10 +525,10 @@ void findNote(float frequency, char *note, char *noteFreq)
 void print2Screen(float frequency, char *note, char *noteFreq)
 {
 
-    findNote(frequency, note, noteFreq);
-    ssd1306_SetCursor(50,50);
+    findNote(frequency);
+    ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(note,Font_11x18,Black);
-    ssd1306_SetCursor(10,10);
+    ssd1306_SetCursor(NOTEX,NOTEY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
     ssd1306_UpdateScreen();

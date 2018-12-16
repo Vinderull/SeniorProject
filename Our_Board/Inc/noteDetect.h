@@ -2,7 +2,7 @@
 #include "ssd1306.h"
 #include "fonts.h"
 
-void findNote(float frequency, char *note, char *noteFreq);
+void findNote(float frequency);
 
 
 void print2Screen(float frequency, char *note, char *noteFreq);
