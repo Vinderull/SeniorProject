@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 1
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 1
   28:Src/opamp.c   ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
   29:Src/opamp.c   ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
   30:Src/opamp.c   ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 2
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s 			page 2
 
 
   31:Src/opamp.c   ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 1
   53 0014 3022     		movs	r2, #48
   54 0016 8261     		str	r2, [r0, #24]
   61:Src/opamp.c   ****   hopamp1.Init.PowerMode = OPAMP_POWERMODE_NORMAL;
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 3
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s 			page 3
 
 
   55              		.loc 1 61 0
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 1
   97              		.loc 1 71 0
   98 0008 30B5     		push	{r4, r5, lr}
   99              	.LCFI1:
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 4
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s 			page 4
 
 
  100              		.cfi_def_cfa_offset 12
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 1
  135              		.loc 1 93 0
  136 003a 0294     		str	r4, [sp, #8]
   94:Src/opamp.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 5
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s 			page 5
 
 
  137              		.loc 1 94 0
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 1
  105:Src/opamp.c   **** 
  106:Src/opamp.c   ****   if(opampHandle->Instance==OPAMP1)
  183              		.loc 1 106 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 6
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s 			page 6
 
 
  184 0002 0268     		ldr	r2, [r0]
@@ -358,29 +358,29 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 1
  222              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h"
  223              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
  224              		.file 5 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 7
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s 			page 7
 
 
  225              		.file 6 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
  226              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
  227              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
  228              		.file 9 "Inc/opamp.h"
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s 			page 8
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 opamp.c
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s:21     .text.MX_OPAMP1_Init:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s:26     .text.MX_OPAMP1_Init:0000000000000000 MX_OPAMP1_Init
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s:73     .text.MX_OPAMP1_Init:000000000000002c $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s:21     .text.MX_OPAMP1_Init:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s:26     .text.MX_OPAMP1_Init:0000000000000000 MX_OPAMP1_Init
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s:73     .text.MX_OPAMP1_Init:000000000000002c $d
                             *COM*:0000000000000034 hopamp1
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s:80     .text.HAL_OPAMP_MspInit:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s:85     .text.HAL_OPAMP_MspInit:0000000000000000 HAL_OPAMP_MspInit
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s:161    .text.HAL_OPAMP_MspInit:0000000000000050 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s:166    .text.HAL_OPAMP_MspDeInit:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s:171    .text.HAL_OPAMP_MspDeInit:0000000000000000 HAL_OPAMP_MspDeInit
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s:209    .text.HAL_OPAMP_MspDeInit:000000000000002c $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//cckKCuje.s:216    .rodata.str1.4:0000000000000000 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s:80     .text.HAL_OPAMP_MspInit:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s:85     .text.HAL_OPAMP_MspInit:0000000000000000 HAL_OPAMP_MspInit
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s:161    .text.HAL_OPAMP_MspInit:0000000000000050 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s:166    .text.HAL_OPAMP_MspDeInit:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s:171    .text.HAL_OPAMP_MspDeInit:0000000000000000 HAL_OPAMP_MspDeInit
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s:209    .text.HAL_OPAMP_MspDeInit:000000000000002c $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccVkn9Z4.s:216    .rodata.str1.4:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

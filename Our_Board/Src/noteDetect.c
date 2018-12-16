@@ -7,12 +7,14 @@
 #define NOTEY 40
 #define FREQX 40
 #define FREQY 15
+#define INTUNE 10;
 
 
 void findNote(float frequency)
 {
   char note[40] = "thing\n\r";
   char noteFreq[40] = "thing\n\r";
+  char dot[40] = "O";
   /*B1 note */
   if(frequency>= 59.98 && frequency <= 63.55){
     sprintf(note, "B1");
@@ -22,8 +24,15 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
-    ssd1306_UpdateScreen();
-    HAL_Delay(500);
+      /*if in tune plus/minus 10 cents */
+      if(frequency>= 61.38 && frequency <= 62.09){
+        ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+        ssd1306_WriteString(dot,Font_11x18,Red);
+
+      }
+
+      ssd1306_UpdateScreen();
+      HAL_Delay(500);
   }
 
   /*C2 note */
@@ -34,6 +43,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 65.03 && frequency <= 65.79){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -47,6 +63,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 68.9 && frequency <= 69.7){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -62,6 +85,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 68.9 && frequency <= 69.7){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -76,6 +106,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 77.33 && frequency <= 78.23){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -89,6 +126,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 81.93 && frequency <= 82.89){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -105,6 +149,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 86.81 && frequency <= 87.81){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -118,6 +169,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 91.96 && frequency <= 93.03){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -133,6 +191,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 97.435 && frequency <= 98.57){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -146,6 +211,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 103.23 && frequency <= 104.43){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -161,6 +233,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 109.36 && frequency <= 110.64){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -174,6 +253,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 115.85 && frequency <= 117.19){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -190,6 +276,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 122.76 && frequency <= 124.19){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -203,6 +296,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 130.05 && frequency <= 131.57){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -218,6 +318,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 137.79 && frequency <= 139.39){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -231,6 +338,15 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 145.98 && frequency <= 147.68){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
+
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -246,6 +362,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 154.66 && frequency <= 156.46){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -259,6 +382,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 163.86 && frequency <= 165.76){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -274,6 +404,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 174.59 && frequency <= 176.63){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -287,6 +424,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 183.93 && frequency <= 186.07){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -302,6 +446,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 194.87 && frequency <= 197.14){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -315,6 +466,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 206.45 && frequency <= 208.85){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -330,6 +488,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 218.73 && frequency <= 221.27){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -343,6 +508,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 231.73 && frequency <= 234.43){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -358,6 +530,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 245.52 && frequency <= 248.37){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -371,6 +550,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 260.12 && frequency <= 263.15){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -386,6 +572,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 275.59 && frequency <= 278.78){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -399,6 +592,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 291.97 && frequency <= 295.36){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -414,6 +614,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 309.34 && frequency <= 312.93){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -427,6 +634,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 327.73 && frequency <= 331.54){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -442,6 +656,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 347.22 && frequency <= 351.25){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -455,6 +676,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 367.86 && frequency <= 372.13){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -470,6 +698,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 389.74 && frequency <= 394.27){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
@@ -488,6 +723,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 412.99 && frequency <= 417.79){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -502,6 +744,13 @@ void findNote(float frequency)
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
 
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 437.47 && frequency <= 442.55){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
+
     ssd1306_UpdateScreen();
     HAL_Delay(500);
   }
@@ -515,6 +764,13 @@ void findNote(float frequency)
     ssd1306_WriteString(note,Font_11x18,Black);
     ssd1306_SetCursor(FREQX,FREQY);
     ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    /*if in tune plus/minus 10 cents */
+    if(frequency>= 463.48 && frequency <= 468.86){
+      ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
+      ssd1306_WriteString(dot,Font_11x18,Red);
+
+    }
 
     ssd1306_UpdateScreen();
     HAL_Delay(500);
