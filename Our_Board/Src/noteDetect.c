@@ -165,6 +165,21 @@ void findNote(float frequency)
     HAL_Delay(500);
   }
 
+  /*Bb2 note */
+  else if(frequency <= 119.929 && frequency >= 106.9){
+    sprintf(note, "Bb2");
+    sprintf(noteFreq, "%.2f", frequency);
+
+    ssd1306_SetCursor(NOTEX, NOTEY);
+    ssd1306_WriteString(note,Font_11x18,Black);
+    ssd1306_SetCursor(FREQX,FREQY);
+    ssd1306_WriteString(noteFreq,Font_11x18,Black);
+
+    ssd1306_UpdateScreen();
+    HAL_Delay(500);
+  }
+
+
   /*B2 note */
   else if(frequency <= 127.08 && frequency >= 119.93){
     sprintf(note, "B2");

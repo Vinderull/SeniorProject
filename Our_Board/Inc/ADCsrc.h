@@ -11,7 +11,7 @@ void ADC1_Wakeup(void);
 
 void TIM4_Config(uint16_t fs);
 
-void getFloat(int *input, float *output, int nsamp);
+void getFloat(uint32_t *input, float *output, int nsamp);
 
 void findFrequency(float *samples, int nsamp, float *note);
 

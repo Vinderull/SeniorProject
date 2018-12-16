@@ -302,7 +302,7 @@ void ADC_Calibration(void){
 
 }
 
-void getFloat(int *input, float *output, int nsamp)
+void getFloat(uint32_t *input, float *output, int nsamp)
 {
   int i;
 
@@ -327,7 +327,8 @@ void findFrequency(float *samples, int nsamp, float *note)
 
 
  arm_correlate_f32(samples, nsamp, samples, nsamp, output1);
-//arm_rfft_fast_f32(&fftStruct, input, output1, 0);
+
+
   arm_mean_f32(output1, nsamp*2, &avg);
 
 
@@ -335,11 +336,8 @@ void findFrequency(float *samples, int nsamp, float *note)
 
 /* subtract mean */
 for(i=0; i<nsamp*2; i++){
-  //output1[i] *= 10;
   output1[i] -= avg;
 
-  /*zero out negative correlations */
-  //if(output1[i]<0) output1[i] = 0;
 }
 
   /*Find Max value as well as corresponding index of said value */
@@ -366,7 +364,7 @@ for(i=0; i<nsamp*2; i++){
 
 /* eliminate non dominant peaks */
  for(i=0; i<nsamp; i++){
-  if ((output2[i] < avg + (2*dev))) output2[i] = 0;
+  if ((output2[i] < avg + (2*dev))) output2[i] = 0.0;
  }
 
 
