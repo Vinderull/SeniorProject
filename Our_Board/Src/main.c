@@ -88,7 +88,8 @@ float vsense = 3.3/4095;
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  char Message[40] = "thing\n\r";
+  char printNote[40] = "thing\n\r";
+  char printFreq[40] = "thing\n\r";
   float frequency = 0;
   float samples[SAMPLE_SIZE];
   int counter = 0;
@@ -143,8 +144,8 @@ int main(void)
 
     HAL_Delay(1000);
 
-    ssd1306_SetCursor(23,23);
-    ssd1306_WriteString("4ilo",Font_11x18,Black);
+    ssd1306_SetCursor(30,20);
+    ssd1306_WriteString("Init",Font_11x18,Black);
 
     ssd1306_UpdateScreen();
   while (1)
@@ -157,20 +158,17 @@ int main(void)
   getFloat(pReadyProcess, samples, SAMPLE_SIZE);
   findFrequency(samples, SAMPLE_SIZE, &frequency);
 
+  /*correction due to maybe wrong clock selection */
+  frequency /= 2;
+
   ADC_DMA_DONE = 0;
 
 
 
   //gcvt(frequency, 4, Message);
   if (counter == 3){
-  sprintf(Message, "%.2f", frequency/2.0);
-  /*transmit sring over usart2 */
-
-  ssd1306_SetCursor(23,23);
-  ssd1306_WriteString(Message,Font_11x18,Black);
-
-  ssd1306_UpdateScreen();
-  HAL_Delay(500);
+//  print2Screen(frequency, &printNote[0], &printFreq[0]);
+findNote(frequency, &printNote[0], &printFreq[0]);
   counter = 0;
 }
   counter++;

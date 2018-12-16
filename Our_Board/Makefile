@@ -44,6 +44,7 @@ Src/gpio.c \
 Src/opamp.c \
 Src/adc.c \
 Src/dma.c \
+Src/noteDetect.c \
 Src/tim.c \
 Src/i2c.c \
 Src/usart.c \
