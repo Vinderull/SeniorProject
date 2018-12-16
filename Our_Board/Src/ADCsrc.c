@@ -345,6 +345,8 @@ for(i=0; i<nsamp*2; i++){
 
 
 /* normalize */
+/*Amplitude of most dominant peak of Lag matrix is total energy */
+/*divide by total energy of signal to normalize */
    for(i=0; i<nsamp*2; i++){
      output1[i] /= maxVal;
    }
