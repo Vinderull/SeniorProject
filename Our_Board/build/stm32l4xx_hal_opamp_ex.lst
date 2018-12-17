@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
   28:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   *
   29:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
   30:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 2
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 2
 
 
   31:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
   85:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
   86:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** /*  2 OPAMPS available */
   87:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** /*  2 OPAMPS can be calibrated in parallel */
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 3
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 3
 
 
   88:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** /*  Not available on STM32L43x/STM32L44x where only one OPAMP available */
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
   47              		.cfi_offset 10, -12
   48              		.cfi_offset 11, -8
   49              		.cfi_offset 14, -4
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 4
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 4
 
 
   50 000a 85B0     		sub	sp, sp, #20
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
   83              		.loc 1 143 0
   84 004e 0A68     		ldr	r2, [r1]
   85              	.LVL2:
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 5
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 5
 
 
   86 0050 1268     		ldr	r2, [r2]
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  163:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       if (hopamp2->Init.PowerMode == OPAMP_POWERMODE_NORMAL)
  121              		.loc 1 163 0
  122 0088 8B68     		ldr	r3, [r1, #8]
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 6
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 6
 
 
  123 008a 0BB9     		cbnz	r3, .L32
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  158              		.loc 1 182 0
  159 00c6 0A68     		ldr	r2, [r1]
  160 00c8 1368     		ldr	r3, [r2]
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 7
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 7
 
 
  161 00ca 43F00103 		orr	r3, r3, #1
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  203:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         { 
  204:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****           /* OPAMP_CSR_CALOUT is HIGH try lower trimming */
  205:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****           trimmingvaluen1 -= delta;
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 8
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 8
 
 
  193              		.loc 1 205 0
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  229:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       /* Set candidate trimming */
  230:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       MODIFY_REG(*tmp_opamp1_reg_trimming, OPAMP_OTR_TRIMOFFSETN, trimmingvaluen1);
  223              		.loc 1 230 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 9
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 9
 
 
  224 0128 3B68     		ldr	r3, [r7]
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  259              		.loc 1 249 0
  260 016e 3368     		ldr	r3, [r6]
  261 0170 23F01F03 		bic	r3, r3, #31
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 10
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 10
 
 
  262 0174 43EA0A03 		orr	r3, r3, r10
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  296 01b4 3360     		str	r3, [r6]
  268:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
  269:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         /* OFFTRIMmax delay 1 ms as per datasheet (electrical characteristics */ 
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 11
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 11
 
 
  270:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         /* Offset trim time: during calibration, minimum time needed between */
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  291:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         {
  292:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****           /* OPAMP_CSR_CALOUT is LOW try lower trimming */
  293:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****           trimmingvaluep2 -= delta;
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 12
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 12
 
 
  330              		.loc 1 293 0
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  363 021e 0133     		adds	r3, r3, #1
  364 0220 1A46     		mov	r2, r3
  365 0222 0193     		str	r3, [sp, #4]
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 13
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 13
 
 
  366              	.LVL28:
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  403              		.loc 1 330 0
  404 0268 2268     		ldr	r2, [r4]
  405 026a 1368     		ldr	r3, [r2]
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 14
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 14
 
 
  406 026c 23F48053 		bic	r3, r3, #4096
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  357:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         /* Write calibration result N */
  358:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         hopamp2->Init.TrimmingValueN = trimmingvaluen2;
  434              		.loc 1 358 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 15
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 15
 
 
  435 0298 C4F824A0 		str	r10, [r4, #36]
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  470              	.LCFI2:
  471              		.cfi_def_cfa_offset 0
  472              		.cfi_restore 4
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 16
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 16
 
 
  473              		.cfi_restore 5
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  515              		.loc 1 381 0
  516 02e4 0120     		movs	r0, #1
  517              	.LVL40:
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 17
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 17
 
 
  518 02e6 00E0     		b	.L2
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  411:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   * @retval HAL status
  412:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   */
  413:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** HAL_StatusTypeDef HAL_OPAMPEx_Unlock(OPAMP_HandleTypeDef* hopamp)
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 18
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 18
 
 
  414:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** {
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  582 0032 7047     		bx	lr
  583              	.LVL46:
  584              	.L38:
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 19
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 19
 
 
  425:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   }
@@ -1122,16 +1122,16 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 1
  620              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
  621              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
  622              		.file 9 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s 			page 20
+ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s 			page 20
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_hal_opamp_ex.c
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s:21     .text.HAL_OPAMPEx_SelfCalibrateAll:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s:26     .text.HAL_OPAMPEx_SelfCalibrateAll:0000000000000000 HAL_OPAMPEx_SelfCalibrateAll
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s:534    .text.HAL_OPAMPEx_SelfCalibrateAll:00000000000002f0 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s:542    .text.HAL_OPAMPEx_Unlock:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccLon2vW.s:547    .text.HAL_OPAMPEx_Unlock:0000000000000000 HAL_OPAMPEx_Unlock
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s:21     .text.HAL_OPAMPEx_SelfCalibrateAll:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s:26     .text.HAL_OPAMPEx_SelfCalibrateAll:0000000000000000 HAL_OPAMPEx_SelfCalibrateAll
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s:534    .text.HAL_OPAMPEx_SelfCalibrateAll:00000000000002f0 $d
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s:542    .text.HAL_OPAMPEx_Unlock:0000000000000000 $t
+/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccrMzEaC.s:547    .text.HAL_OPAMPEx_Unlock:0000000000000000 HAL_OPAMPEx_Unlock
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS

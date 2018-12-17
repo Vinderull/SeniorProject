@@ -209,19 +209,9 @@ RCC->AHB2ENR &= ~RCC_AHB2ENR_GPIOAEN;
 RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
 
 
-/*SET PA1 as analog*/
-/*00 = digital input, 01 = digital Output*/
-/*10 = alternate function, 11 = analog (default) */
-GPIOA->MODER &= ~GPIO_MODER_MODE1;
-GPIOA->MODER |= GPIO_MODER_MODE1_0 | GPIO_MODER_MODE1_1;
-
-
-//clear pupdr
-GPIOA->PUPDR &= ~GPIO_PUPDR_PUPD1;
-
-/*set firsrt bit of ASCR to close analog switch */
-GPIOA->ASCR |= GPIO_ASCR_ASC1;
-
+//Enable clock for GPIOB
+RCC->AHB2ENR &= ~RCC_AHB2ENR_GPIOBEN;
+RCC->AHB2ENR |= RCC_AHB2ENR_GPIOBEN;
 
 
 }
@@ -310,6 +300,8 @@ void getFloat(uint32_t *input, float *output, int nsamp)
   // Samples are normalized to range from -1.0 to 1.0
   // 1/32768 = 3.0517578e-05  (Multiplication is much faster than dividing)
 
+  /*crazy left aligned math to normalize data */
+  /*shamelessly borrowed from DONALD HUMMELS of ECE department */
   for (i=0; i<nsamp; i++) {
      // 1/32768 = 3.0517578e-05  (Multiplication is much faster than dividing)
         output[i] = ((float)((int)input[i]-32767))*3.0517578e-05f;
@@ -322,19 +314,23 @@ void findFrequency(float *samples, int nsamp, float *note)
 {
    uint32_t i, n, j, maxIndex;
    float avg, dev, maxVal;
-   float output1[nsamp*2], output2[nsamp], input[nsamp];
+   float output1[nsamp*2], output2[nsamp];
    n=1;
 
 
+
+ /*Perform correlation, performing on "samples" is autocorrelation */
+ /*save to output buffer of twice size of input*/
  arm_correlate_f32(samples, nsamp, samples, nsamp, output1);
 
+/*find mean of output1 one buffer, save to avg passed by reference */
+/*faster since function doesn't make local coyp of avg */
+ arm_mean_f32(output1, nsamp*2, &avg);
 
-  arm_mean_f32(output1, nsamp*2, &avg);
 
 
 
-
-/* subtract mean */
+/* subtract mean to center signal at 0*/
 for(i=0; i<nsamp*2; i++){
   output1[i] -= avg;
 
@@ -347,6 +343,7 @@ for(i=0; i<nsamp*2; i++){
 /* normalize */
 /*Amplitude of most dominant peak of Lag matrix is total energy */
 /*divide by total energy of signal to normalize */
+/*nice property of autocorrelation */
    for(i=0; i<nsamp*2; i++){
      output1[i] /= maxVal;
    }
@@ -365,12 +362,16 @@ for(i=0; i<nsamp*2; i++){
 
 
 /* eliminate non dominant peaks */
+/*using std deviation and avg as threshold */
  for(i=0; i<nsamp; i++){
   if ((output2[i] < avg + (2*dev))) output2[i] = 0.0;
  }
 
 
 /* peak detection */
+/*BRUTE force iterate through array */
+/*check next value and last value */
+/*iterate if not peak */
    for(i = 1; i<nsamp-1; i++ ){
 
       if(((output2[i] - output2[i-1])>0) && ((output2[i+1]-output2[i])<0)){
@@ -386,10 +387,6 @@ for(i=0; i<nsamp*2; i++){
           /*sample rate /divided by number of samples to peak */
           /*returns frequency in Hz */
    *note = 10000.0/((float) n);
-
-
-
-  //printf("%f\n\r", note);
 
 
 }
