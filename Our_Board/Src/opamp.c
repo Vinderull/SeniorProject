@@ -57,7 +57,7 @@ void MX_OPAMP1_Init(void)
   hopamp1.Init.Mode = OPAMP_PGA_MODE;
   hopamp1.Init.NonInvertingInput = OPAMP_NONINVERTINGINPUT_IO0;
   hopamp1.Init.InvertingInput = OPAMP_INVERTINGINPUT_IO0;
-  hopamp1.Init.PgaGain = OPAMP_PGA_GAIN_16;
+  hopamp1.Init.PgaGain = OPAMP_PGA_GAIN_2;
   hopamp1.Init.PowerMode = OPAMP_POWERMODE_NORMAL;
   hopamp1.Init.UserTrimming = OPAMP_TRIMMING_FACTORY;
   if (HAL_OPAMP_Init(&hopamp1) != HAL_OK)
