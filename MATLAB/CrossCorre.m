@@ -1,26 +1,36 @@
 %[ip, fs] = audioread('440pure.mp4', [1 20000]); %[1 20000]
 %a = csvread('low_e_10k.csv', 11);
-%a = csvread('high_e_10kHz.csv', 11);
+a = csvread('high_e_10kHz.csv', 11);
 % a = csvread('d_10k.csv', 11);
-a = csvread('a_10k.csv', 11);
+%a = csvread('a_10k.csv', 11);
 %a = textread('a_10k.csv',%d, 11);
 ip = a(:,2);
 axis = a(:,1);
-ip = ip*100;
-avg = mean(ip)
-ip = ip -avg %-2.5;
+
+
+%Sampling rate
 fs = 10e3;
 
 
 min_expected_period = 50;
 max_expected_period = 500;
+%number of samples
 frame_len = 1024;
 
+
+ 
 figure(1)
 plot(axis, ip);
 xlabel('Time')
-xlim([0 .2024])
+xlim([0 .020])
 ylabel('Voltage')
+
+%scale CSV
+ip = ip*100;
+
+%center at zero
+avg = mean(ip);
+ip = ip -avg;
 
 
 
@@ -67,7 +77,7 @@ for k = 1 : length(ip)/(frame_len -1)
         
         
         if((onlyPeaks(i) - onlyPeaks(i-1) > 0) && ((onlyPeaks(i+1) - onlyPeaks(i)) < 0))
-            thePeakIs = i 
+            thePeakIs = i; 
              
         elseif((onlyPeaks(i) - onlyPeaks(i-1) > 0))
             continue
@@ -89,6 +99,8 @@ for k = 1 : length(ip)/(frame_len -1)
     
     figure(2)
     plot(x, ryy)
+    xlabel('n (sample)')
+    ylabel('Magnitude (Normalized)')
     
     %pause and wait for use input
     pause

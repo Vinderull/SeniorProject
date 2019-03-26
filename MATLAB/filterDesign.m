@@ -10,6 +10,8 @@ f = 500;
 freqs(bb,ab,4096);
 
 plot(wb/(2*pi),mag2db(abs(hb)))
+ylabel('Magnitude (dB)')
+xlabel('Frequency (Hz)')
 xlim([0 2000])
 
 % s = j*2*pi*f;
@@ -51,10 +53,10 @@ xlim([0 2000])
 % a3*w0 = 1.9619
 
 
-firststage = s^2 + 0.3902*s + 1;
-secondstage = s^2 + 1.1111*s + 1;
-thirdstage = s^2 + 1.6629*s + 1;
-fourthstage = s^2 + 1.9619*s + 1;
+% firststage = s^2 + 0.3902*s + 1;
+% secondstage = s^2 + 1.1111*s + 1;
+% thirdstage = s^2 + 1.6629*s + 1;
+% fourthstage = s^2 + 1.9619*s + 1;
 % 
 % final = tf(12, firststage*secondstage*thirdstage)
 % bode(final, opts)
