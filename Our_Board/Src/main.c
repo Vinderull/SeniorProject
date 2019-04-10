@@ -56,7 +56,6 @@
 #include "ssd1306.h"
 #include "fonts.h"
 #include "noteDetect.h"
-//#include "stm32l4xx_hal_opamp.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -78,7 +77,7 @@ void SystemClock_Config_MSI(void);
 /* USER CODE BEGIN 0 */
 
 /*buffer size  for processing */
-#define SAMPLE_SIZE 1000
+#define SAMPLE_SIZE 1024
 
 /*counter limit to restrict screen updates */
 #define SCREEN_DELAY 3
@@ -106,6 +105,7 @@ int main(void)
   char printFreq[40] = "thing\n\r";
   float frequency = 0;
   float samples[SAMPLE_SIZE];
+
   int counter = 0;
 
   /* USER CODE END 1 */
@@ -128,13 +128,14 @@ int main(void)
   GPIO_Init();
   DMA_Init(SAMPLE_SIZE);
   TIM4_Init();
+  MX_USART2_UART_Init();
   ADC_Calibration();
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  //MX_GPIO_Init();
-  MX_OPAMP1_Init();
+  MX_GPIO_Init();
+  //MX_OPAMP1_Init();
 
   MX_ADC1_Init();
 
@@ -145,12 +146,13 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_OPAMP_Start(&hopamp1);
+  //HAL_OPAMP_Start(&hopamp1);
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *) pReadyProcess, SAMPLE_SIZE);
 
 
 
   /*perform screen Init */
+  /*
     ssd1306_Init();
     HAL_Delay(1000);
     ssd1306_Fill(White);
@@ -159,6 +161,7 @@ int main(void)
     ssd1306_SetCursor(40,40);
     ssd1306_WriteString("Init",Font_11x18,Black);
     ssd1306_UpdateScreen();
+    */
   while (1)
   {
 
@@ -188,7 +191,9 @@ int main(void)
   if (counter == SCREEN_DELAY){
 
      /*find note and display */
-     findNote(frequency);
+     //findNote(frequency);
+     sprintf(Message, "%f\n\r", frequency);
+     HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
 
      /* reset counter for display */
      counter = 0;
@@ -236,7 +241,7 @@ void SystemClock_Config_MSI(void)
 
    /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2
     clocks dividers */
-   RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
+   RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK| RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
@@ -319,14 +324,7 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
-{
 
-  //int i = 0;
-  //for(i =0; i<SAMPLE_SIZE; i++){
-    //  adc[i] = buffer[i];
-  //}
-}
 
 
 void DMA_Init(int arg)

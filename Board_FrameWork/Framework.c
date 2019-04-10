@@ -27,7 +27,7 @@
 //#include "UART.c"
 
 
-#define nsamp 1000
+#define nsamp 2048
 
 
 extern FlagStatus KeyPressed;   // Use to detect button presses
@@ -37,12 +37,11 @@ int main(void)
 
   uint32_t i, n, j, maxIndex;
   float avg, dev, note, maxVal;
-  float input[nsamp], output1[nsamp*2], output2[nsamp], output3[nsamp/2];
+  float input[nsamp], output1[nsamp*2], output2[nsamp];
   static float sign=1.0;
   static int button_count = 0;
   uint16_t FFT_len = nsamp;
   char lcd_str[8];
-  arm_rfft_fast_instance_f32 fftStruct;
 
 
 
@@ -63,7 +62,7 @@ int main(void)
    * on the development board.
    */
   setblocksize(nsamp);
-  initialize_ece486(FS_10K, MONO_IN, MONO_OUT, MSI_INTERNAL_RC);
+  initialize_ece486(FS_20K, MONO_IN, MONO_OUT, MSI_INTERNAL_RC);
   //UART2_Init();
   //initialize_ece486(FS_10K, MONO_IN, MONO_OUT, HSE_EXTERNAL_8MHz);
 
@@ -158,7 +157,7 @@ int main(void)
 
    /* eliminate non dominant peaks */
     for(i=0; i<nsamp; i++){
-     if ((output2[i] < avg + (2*dev))) output2[i] = 0;
+     if ((output2[i] < avg + (0.5*dev))) output2[i] = 0;
     }
 
 
@@ -175,7 +174,7 @@ int main(void)
          else if((output2[i+1] - output2[i]) < 0) continue;
       }
 
-      note = 10000.0/((float) n);
+      note = 20000.0/((float) n);
 
 
 

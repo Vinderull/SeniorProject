@@ -53,7 +53,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-#define SAMPLE_SIZE 1000
+#define SAMPLE_SIZE 4096
 
 volatile uint32_t Buffer_Ping[SAMPLE_SIZE];
 volatile uint32_t Buffer_Pong[SAMPLE_SIZE];

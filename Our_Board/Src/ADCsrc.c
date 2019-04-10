@@ -68,7 +68,7 @@ void ADC1_Init(void)
 1011: input ADC clock divided by 256
 */
   ADC123_COMMON->CCR &= ~ADC_CCR_PRESC;
-  ADC123_COMMON->CCR |= ADC_CCR_PRESC_0;
+  // ADC123_COMMON->CCR |= ADC_CCR_PRESC_0;
 
   /*configure ADC clock to be synchonous HCLK/1 */
 /*
@@ -253,7 +253,7 @@ void TIM4_Init(void)
   TIM4->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2;
 
   /*Timer driving frequency = 80MHz/(1+PSC) = 80M/(1+7)= 10MHz */
-  /*Trigger frequency 10MHz / (1 + ARR)= 10KHz */
+  /*Trigger frequency 10MHz / (1 + ARR)= 10kHz */
   TIM4->PSC = 7;
   TIM4->ARR = 999;
   /*Duty ratio of 50% */
@@ -363,8 +363,8 @@ for(i=0; i<nsamp*2; i++){
 
 /* eliminate non dominant peaks */
 /*using std deviation and avg as threshold */
- for(i=0; i<nsamp; i++){
-  if ((output2[i] < avg + (2*dev))) output2[i] = 0.0;
+ for (i=0; i<nsamp; i++) {
+        if ((output2[i] < avg + (2*dev))) output2[i] = 0.0;
  }
 
 
@@ -372,14 +372,16 @@ for(i=0; i<nsamp*2; i++){
 /*BRUTE force iterate through array */
 /*check next value and last value */
 /*iterate if not peak */
-   for(i = 1; i<nsamp-1; i++ ){
+   for (i = 1; i<nsamp-1; i++ ) {
 
+      /*forward difference operator to find discrete difference */
+      /*effectively derivative */
       if(((output2[i] - output2[i-1])>0) && ((output2[i+1]-output2[i])<0)){
         n = i;
         break;
       }
 
-      else if((output2[i] - output2[i-1])>0) continue;
+      else if((output2[i] - output2[i-1]) > 0) continue;
 
       else if((output2[i+1] - output2[i]) < 0) continue;
    }
