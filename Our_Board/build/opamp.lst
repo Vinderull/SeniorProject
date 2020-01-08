@@ -1,33 +1,39 @@
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s 			page 1
+ARM GAS  /tmp/ccUtIrY1.s 			page 1
 
 
-   1              		.syntax unified
-   2              		.cpu cortex-m4
-   3              		.eabi_attribute 27, 1
-   4              		.eabi_attribute 28, 1
-   5              		.fpu fpv4-sp-d16
-   6              		.eabi_attribute 20, 1
-   7              		.eabi_attribute 21, 1
-   8              		.eabi_attribute 23, 3
-   9              		.eabi_attribute 24, 1
-  10              		.eabi_attribute 25, 1
-  11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
-  13              		.eabi_attribute 34, 1
-  14              		.eabi_attribute 18, 4
-  15              		.thumb
-  16              		.file	"opamp.c"
-  17              		.text
-  18              	.Ltext0:
-  19              		.cfi_sections	.debug_frame
-  20              		.section	.text.MX_OPAMP1_Init,"ax",%progbits
-  21              		.align	2
-  22              		.global	MX_OPAMP1_Init
-  23              		.thumb
-  24              		.thumb_func
-  26              	MX_OPAMP1_Init:
-  27              	.LFB306:
-  28              		.file 1 "Src/opamp.c"
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"opamp.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata.MX_OPAMP1_Init.str1.4,"aMS",%progbits,1
+  18              		.align	2
+  19              	.LC0:
+  20 0000 5372632F 		.ascii	"Src/opamp.c\000"
+  20      6F70616D 
+  20      702E6300 
+  21              		.section	.text.MX_OPAMP1_Init,"ax",%progbits
+  22              		.align	1
+  23              		.global	MX_OPAMP1_Init
+  24              		.arch armv7e-m
+  25              		.syntax unified
+  26              		.thumb
+  27              		.thumb_func
+  28              		.fpu fpv4-sp-d16
+  30              	MX_OPAMP1_Init:
+  31              	.LFB309:
+  32              		.file 1 "Src/opamp.c"
    1:Src/opamp.c   **** /**
    2:Src/opamp.c   ****   ******************************************************************************
    3:Src/opamp.c   ****   * File Name          : OPAMP.c
@@ -52,15 +58,15 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s 			page 1
   22:Src/opamp.c   ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
   23:Src/opamp.c   ****   *      may be used to endorse or promote products derived from this software
   24:Src/opamp.c   ****   *      without specific prior written permission.
+ARM GAS  /tmp/ccUtIrY1.s 			page 2
+
+
   25:Src/opamp.c   ****   *
   26:Src/opamp.c   ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
   27:Src/opamp.c   ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
   28:Src/opamp.c   ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
   29:Src/opamp.c   ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
   30:Src/opamp.c   ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s 			page 2
-
-
   31:Src/opamp.c   ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
   32:Src/opamp.c   ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
   33:Src/opamp.c   ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
@@ -84,237 +90,265 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s 			page 1
   51:Src/opamp.c   **** /* OPAMP2 init function */
   52:Src/opamp.c   **** void MX_OPAMP1_Init(void)
   53:Src/opamp.c   **** {
-  29              		.loc 1 53 0
-  30              		.cfi_startproc
-  31              		@ args = 0, pretend = 0, frame = 0
-  32              		@ frame_needed = 0, uses_anonymous_args = 0
-  33 0000 08B5     		push	{r3, lr}
-  34              	.LCFI0:
-  35              		.cfi_def_cfa_offset 8
-  36              		.cfi_offset 3, -8
-  37              		.cfi_offset 14, -4
+  33              		.loc 1 53 1 view -0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 0, uses_anonymous_args = 0
+  37 0000 08B5     		push	{r3, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 3, -8
+  41              		.cfi_offset 14, -4
   54:Src/opamp.c   **** 
   55:Src/opamp.c   ****   hopamp1.Instance = OPAMP1;
-  38              		.loc 1 55 0
-  39 0002 0A48     		ldr	r0, .L4
-  40 0004 0A4B     		ldr	r3, .L4+4
-  41 0006 0360     		str	r3, [r0]
+  42              		.loc 1 55 3 view .LVU1
+  43              		.loc 1 55 20 is_stmt 0 view .LVU2
+  44 0002 0A48     		ldr	r0, .L5
+  45 0004 0A4B     		ldr	r3, .L5+4
+  46 0006 0360     		str	r3, [r0]
   56:Src/opamp.c   ****   hopamp1.Init.PowerSupplyRange = OPAMP_POWERSUPPLY_LOW;
-  42              		.loc 1 56 0
-  43 0008 0023     		movs	r3, #0
-  44 000a 4360     		str	r3, [r0, #4]
+  47              		.loc 1 56 3 is_stmt 1 view .LVU3
+  48              		.loc 1 56 33 is_stmt 0 view .LVU4
+  49 0008 0023     		movs	r3, #0
+  50 000a 4360     		str	r3, [r0, #4]
   57:Src/opamp.c   ****   hopamp1.Init.Mode = OPAMP_PGA_MODE;
-  45              		.loc 1 57 0
-  46 000c 0822     		movs	r2, #8
-  47 000e C260     		str	r2, [r0, #12]
+  51              		.loc 1 57 3 is_stmt 1 view .LVU5
+  52              		.loc 1 57 21 is_stmt 0 view .LVU6
+  53 000c 0822     		movs	r2, #8
+  54 000e C260     		str	r2, [r0, #12]
   58:Src/opamp.c   ****   hopamp1.Init.NonInvertingInput = OPAMP_NONINVERTINGINPUT_IO0;
-  48              		.loc 1 58 0
-  49 0010 4361     		str	r3, [r0, #20]
+  55              		.loc 1 58 3 is_stmt 1 view .LVU7
+ARM GAS  /tmp/ccUtIrY1.s 			page 3
+
+
+  56              		.loc 1 58 34 is_stmt 0 view .LVU8
+  57 0010 4361     		str	r3, [r0, #20]
   59:Src/opamp.c   ****   hopamp1.Init.InvertingInput = OPAMP_INVERTINGINPUT_IO0;
-  50              		.loc 1 59 0
-  51 0012 0361     		str	r3, [r0, #16]
+  58              		.loc 1 59 3 is_stmt 1 view .LVU9
+  59              		.loc 1 59 31 is_stmt 0 view .LVU10
+  60 0012 0361     		str	r3, [r0, #16]
   60:Src/opamp.c   ****   hopamp1.Init.PgaGain = OPAMP_PGA_GAIN_2;
-  52              		.loc 1 60 0
-  53 0014 8361     		str	r3, [r0, #24]
+  61              		.loc 1 60 3 is_stmt 1 view .LVU11
+  62              		.loc 1 60 24 is_stmt 0 view .LVU12
+  63 0014 8361     		str	r3, [r0, #24]
   61:Src/opamp.c   ****   hopamp1.Init.PowerMode = OPAMP_POWERMODE_NORMAL;
-  54              		.loc 1 61 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s 			page 3
-
-
-  55 0016 8360     		str	r3, [r0, #8]
+  64              		.loc 1 61 3 is_stmt 1 view .LVU13
+  65              		.loc 1 61 26 is_stmt 0 view .LVU14
+  66 0016 8360     		str	r3, [r0, #8]
   62:Src/opamp.c   ****   hopamp1.Init.UserTrimming = OPAMP_TRIMMING_FACTORY;
-  56              		.loc 1 62 0
-  57 0018 C361     		str	r3, [r0, #28]
+  67              		.loc 1 62 3 is_stmt 1 view .LVU15
+  68              		.loc 1 62 29 is_stmt 0 view .LVU16
+  69 0018 C361     		str	r3, [r0, #28]
   63:Src/opamp.c   ****   if (HAL_OPAMP_Init(&hopamp1) != HAL_OK)
-  58              		.loc 1 63 0
-  59 001a FFF7FEFF 		bl	HAL_OPAMP_Init
-  60              	.LVL0:
-  61 001e 18B1     		cbz	r0, .L1
+  70              		.loc 1 63 3 is_stmt 1 view .LVU17
+  71              		.loc 1 63 7 is_stmt 0 view .LVU18
+  72 001a FFF7FEFF 		bl	HAL_OPAMP_Init
+  73              	.LVL0:
+  74              		.loc 1 63 6 view .LVU19
+  75 001e 00B9     		cbnz	r0, .L4
+  76              	.L1:
   64:Src/opamp.c   ****   {
   65:Src/opamp.c   ****     _Error_Handler(__FILE__, __LINE__);
-  62              		.loc 1 65 0
-  63 0020 0448     		ldr	r0, .L4+8
-  64 0022 4121     		movs	r1, #65
-  65 0024 FFF7FEFF 		bl	_Error_Handler
-  66              	.LVL1:
-  67              	.L1:
-  68 0028 08BD     		pop	{r3, pc}
-  69              	.L5:
-  70 002a 00BF     		.align	2
-  71              	.L4:
-  72 002c 00000000 		.word	hopamp1
-  73 0030 00780040 		.word	1073772544
-  74 0034 00000000 		.word	.LC0
-  75              		.cfi_endproc
-  76              	.LFE306:
-  78              		.section	.text.HAL_OPAMP_MspInit,"ax",%progbits
-  79              		.align	2
-  80              		.global	HAL_OPAMP_MspInit
-  81              		.thumb
-  82              		.thumb_func
-  84              	HAL_OPAMP_MspInit:
-  85              	.LFB307:
   66:Src/opamp.c   ****   }
   67:Src/opamp.c   **** 
   68:Src/opamp.c   **** }
+  77              		.loc 1 68 1 view .LVU20
+  78 0020 08BD     		pop	{r3, pc}
+  79              	.L4:
+  65:Src/opamp.c   ****   }
+  80              		.loc 1 65 5 is_stmt 1 view .LVU21
+  81 0022 4121     		movs	r1, #65
+  82 0024 0348     		ldr	r0, .L5+8
+  83 0026 FFF7FEFF 		bl	_Error_Handler
+  84              	.LVL1:
+  85              		.loc 1 68 1 is_stmt 0 view .LVU22
+  86 002a F9E7     		b	.L1
+  87              	.L6:
+  88              		.align	2
+  89              	.L5:
+  90 002c 00000000 		.word	hopamp1
+  91 0030 00780040 		.word	1073772544
+  92 0034 00000000 		.word	.LC0
+  93              		.cfi_endproc
+  94              	.LFE309:
+  96              		.section	.text.HAL_OPAMP_MspInit,"ax",%progbits
+  97              		.align	1
+  98              		.global	HAL_OPAMP_MspInit
+  99              		.syntax unified
+ 100              		.thumb
+ 101              		.thumb_func
+ 102              		.fpu fpv4-sp-d16
+ARM GAS  /tmp/ccUtIrY1.s 			page 4
+
+
+ 104              	HAL_OPAMP_MspInit:
+ 105              	.LVL2:
+ 106              	.LFB310:
   69:Src/opamp.c   **** 
   70:Src/opamp.c   **** void HAL_OPAMP_MspInit(OPAMP_HandleTypeDef* opampHandle)
   71:Src/opamp.c   **** {
-  86              		.loc 1 71 0
-  87              		.cfi_startproc
-  88              		@ args = 0, pretend = 0, frame = 24
-  89              		@ frame_needed = 0, uses_anonymous_args = 0
-  90              	.LVL2:
+ 107              		.loc 1 71 1 is_stmt 1 view -0
+ 108              		.cfi_startproc
+ 109              		@ args = 0, pretend = 0, frame = 24
+ 110              		@ frame_needed = 0, uses_anonymous_args = 0
   72:Src/opamp.c   **** 
   73:Src/opamp.c   ****   GPIO_InitTypeDef GPIO_InitStruct;
+ 111              		.loc 1 73 3 view .LVU24
   74:Src/opamp.c   ****   if(opampHandle->Instance==OPAMP1)
-  91              		.loc 1 74 0
-  92 0000 0268     		ldr	r2, [r0]
-  93 0002 134B     		ldr	r3, .L10
-  94 0004 9A42     		cmp	r2, r3
-  95 0006 21D1     		bne	.L9
+ 112              		.loc 1 74 3 view .LVU25
+ 113              		.loc 1 74 17 is_stmt 0 view .LVU26
+ 114 0000 0268     		ldr	r2, [r0]
+ 115              		.loc 1 74 5 view .LVU27
+ 116 0002 134B     		ldr	r3, .L14
+ 117 0004 9A42     		cmp	r2, r3
+ 118 0006 00D0     		beq	.L13
+ 119 0008 7047     		bx	lr
+ 120              	.L13:
   71:Src/opamp.c   **** 
-  96              		.loc 1 71 0
-  97 0008 30B5     		push	{r4, r5, lr}
-  98              	.LCFI1:
-  99              		.cfi_def_cfa_offset 12
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s 			page 4
-
-
- 100              		.cfi_offset 4, -12
- 101              		.cfi_offset 5, -8
- 102              		.cfi_offset 14, -4
- 103 000a 87B0     		sub	sp, sp, #28
- 104              	.LCFI2:
- 105              		.cfi_def_cfa_offset 40
- 106              	.LBB2:
+ 121              		.loc 1 71 1 view .LVU28
+ 122 000a 30B5     		push	{r4, r5, lr}
+ 123              	.LCFI1:
+ 124              		.cfi_def_cfa_offset 12
+ 125              		.cfi_offset 4, -12
+ 126              		.cfi_offset 5, -8
+ 127              		.cfi_offset 14, -4
+ 128 000c 87B0     		sub	sp, sp, #28
+ 129              	.LCFI2:
+ 130              		.cfi_def_cfa_offset 40
   75:Src/opamp.c   ****   {
   76:Src/opamp.c   ****   /* USER CODE BEGIN OPAMP2_MspInit 0 */
   77:Src/opamp.c   **** 
   78:Src/opamp.c   ****   /* USER CODE END OPAMP2_MspInit 0 */
   79:Src/opamp.c   ****     /* OPAMP2 clock enable */
   80:Src/opamp.c   ****     __HAL_RCC_OPAMP_CLK_ENABLE();
- 107              		.loc 1 80 0
- 108 000c 03F5CC33 		add	r3, r3, #104448
- 109 0010 9A6D     		ldr	r2, [r3, #88]
- 110 0012 42F08042 		orr	r2, r2, #1073741824
- 111 0016 9A65     		str	r2, [r3, #88]
- 112 0018 9B6D     		ldr	r3, [r3, #88]
- 113 001a 03F08043 		and	r3, r3, #1073741824
- 114 001e 0093     		str	r3, [sp]
- 115 0020 009B     		ldr	r3, [sp]
- 116              	.LBE2:
+ 131              		.loc 1 80 5 is_stmt 1 view .LVU29
+ 132              	.LBB2:
+ 133              		.loc 1 80 5 view .LVU30
+ 134              		.loc 1 80 5 view .LVU31
+ 135 000e 03F5CC33 		add	r3, r3, #104448
+ 136 0012 9A6D     		ldr	r2, [r3, #88]
+ 137 0014 42F08042 		orr	r2, r2, #1073741824
+ 138 0018 9A65     		str	r2, [r3, #88]
+ 139              		.loc 1 80 5 view .LVU32
+ 140 001a 9B6D     		ldr	r3, [r3, #88]
+ 141 001c 03F08043 		and	r3, r3, #1073741824
+ 142 0020 0093     		str	r3, [sp]
+ 143              		.loc 1 80 5 view .LVU33
+ 144 0022 009B     		ldr	r3, [sp]
+ 145              	.LBE2:
+ 146              		.loc 1 80 5 view .LVU34
   81:Src/opamp.c   **** 
+ARM GAS  /tmp/ccUtIrY1.s 			page 5
+
+
   82:Src/opamp.c   ****     /**OPAMP2 GPIO Configuration
   83:Src/opamp.c   ****     PA6     ------> OPAMP2_VINP
   84:Src/opamp.c   ****     PA7     ------> OPAMP2_VINM
   85:Src/opamp.c   ****     PB0     ------> OPAMP2_VOUT
   86:Src/opamp.c   ****     */
   87:Src/opamp.c   ****     GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
- 117              		.loc 1 87 0
- 118 0022 0324     		movs	r4, #3
- 119 0024 0194     		str	r4, [sp, #4]
+ 147              		.loc 1 87 5 view .LVU35
+ 148              		.loc 1 87 25 is_stmt 0 view .LVU36
+ 149 0024 0324     		movs	r4, #3
+ 150 0026 0194     		str	r4, [sp, #4]
   88:Src/opamp.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
- 120              		.loc 1 88 0
- 121 0026 0294     		str	r4, [sp, #8]
+ 151              		.loc 1 88 5 is_stmt 1 view .LVU37
+ 152              		.loc 1 88 26 is_stmt 0 view .LVU38
+ 153 0028 0294     		str	r4, [sp, #8]
   89:Src/opamp.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 122              		.loc 1 89 0
- 123 0028 0025     		movs	r5, #0
- 124 002a 0395     		str	r5, [sp, #12]
+ 154              		.loc 1 89 5 is_stmt 1 view .LVU39
+ 155              		.loc 1 89 26 is_stmt 0 view .LVU40
+ 156 002a 0025     		movs	r5, #0
+ 157 002c 0395     		str	r5, [sp, #12]
   90:Src/opamp.c   ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 125              		.loc 1 90 0
- 126 002c 4FF09040 		mov	r0, #1207959552
- 127              	.LVL3:
- 128 0030 01A9     		add	r1, sp, #4
- 129 0032 FFF7FEFF 		bl	HAL_GPIO_Init
- 130              	.LVL4:
+ 158              		.loc 1 90 5 is_stmt 1 view .LVU41
+ 159 002e 01A9     		add	r1, sp, #4
+ 160 0030 4FF09040 		mov	r0, #1207959552
+ 161              	.LVL3:
+ 162              		.loc 1 90 5 is_stmt 0 view .LVU42
+ 163 0034 FFF7FEFF 		bl	HAL_GPIO_Init
+ 164              	.LVL4:
   91:Src/opamp.c   **** 
   92:Src/opamp.c   ****     GPIO_InitStruct.Pin = GPIO_PIN_3;
- 131              		.loc 1 92 0
- 132 0036 0823     		movs	r3, #8
- 133 0038 0193     		str	r3, [sp, #4]
+ 165              		.loc 1 92 5 is_stmt 1 view .LVU43
+ 166              		.loc 1 92 25 is_stmt 0 view .LVU44
+ 167 0038 0823     		movs	r3, #8
+ 168 003a 0193     		str	r3, [sp, #4]
   93:Src/opamp.c   ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
- 134              		.loc 1 93 0
- 135 003a 0294     		str	r4, [sp, #8]
+ 169              		.loc 1 93 5 is_stmt 1 view .LVU45
+ 170              		.loc 1 93 26 is_stmt 0 view .LVU46
+ 171 003c 0294     		str	r4, [sp, #8]
   94:Src/opamp.c   ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
- 136              		.loc 1 94 0
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s 			page 5
-
-
- 137 003c 0395     		str	r5, [sp, #12]
+ 172              		.loc 1 94 5 is_stmt 1 view .LVU47
+ 173              		.loc 1 94 26 is_stmt 0 view .LVU48
+ 174 003e 0395     		str	r5, [sp, #12]
   95:Src/opamp.c   ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 138              		.loc 1 95 0
- 139 003e 4FF09040 		mov	r0, #1207959552
- 140 0042 01A9     		add	r1, sp, #4
- 141 0044 FFF7FEFF 		bl	HAL_GPIO_Init
- 142              	.LVL5:
+ 175              		.loc 1 95 5 is_stmt 1 view .LVU49
+ 176 0040 01A9     		add	r1, sp, #4
+ 177 0042 4FF09040 		mov	r0, #1207959552
+ 178 0046 FFF7FEFF 		bl	HAL_GPIO_Init
+ 179              	.LVL5:
   96:Src/opamp.c   **** 
   97:Src/opamp.c   ****   /* USER CODE BEGIN OPAMP2_MspInit 1 */
   98:Src/opamp.c   **** 
   99:Src/opamp.c   ****   /* USER CODE END OPAMP2_MspInit 1 */
  100:Src/opamp.c   ****   }
  101:Src/opamp.c   **** }
- 143              		.loc 1 101 0
- 144 0048 07B0     		add	sp, sp, #28
- 145              	.LCFI3:
- 146              		.cfi_def_cfa_offset 12
- 147              		@ sp needed
- 148 004a 30BD     		pop	{r4, r5, pc}
- 149              	.LVL6:
- 150              	.L9:
- 151              	.LCFI4:
- 152              		.cfi_def_cfa_offset 0
- 153              		.cfi_restore 4
- 154              		.cfi_restore 5
- 155              		.cfi_restore 14
- 156 004c 7047     		bx	lr
- 157              	.L11:
- 158 004e 00BF     		.align	2
- 159              	.L10:
- 160 0050 00780040 		.word	1073772544
- 161              		.cfi_endproc
- 162              	.LFE307:
- 164              		.section	.text.HAL_OPAMP_MspDeInit,"ax",%progbits
- 165              		.align	2
- 166              		.global	HAL_OPAMP_MspDeInit
- 167              		.thumb
- 168              		.thumb_func
- 170              	HAL_OPAMP_MspDeInit:
- 171              	.LFB308:
+ 180              		.loc 1 101 1 is_stmt 0 view .LVU50
+ 181 004a 07B0     		add	sp, sp, #28
+ 182              	.LCFI3:
+ 183              		.cfi_def_cfa_offset 12
+ARM GAS  /tmp/ccUtIrY1.s 			page 6
+
+
+ 184              		@ sp needed
+ 185 004c 30BD     		pop	{r4, r5, pc}
+ 186              	.L15:
+ 187 004e 00BF     		.align	2
+ 188              	.L14:
+ 189 0050 00780040 		.word	1073772544
+ 190              		.cfi_endproc
+ 191              	.LFE310:
+ 193              		.section	.text.HAL_OPAMP_MspDeInit,"ax",%progbits
+ 194              		.align	1
+ 195              		.global	HAL_OPAMP_MspDeInit
+ 196              		.syntax unified
+ 197              		.thumb
+ 198              		.thumb_func
+ 199              		.fpu fpv4-sp-d16
+ 201              	HAL_OPAMP_MspDeInit:
+ 202              	.LVL6:
+ 203              	.LFB311:
  102:Src/opamp.c   **** 
  103:Src/opamp.c   **** void HAL_OPAMP_MspDeInit(OPAMP_HandleTypeDef* opampHandle)
  104:Src/opamp.c   **** {
- 172              		.loc 1 104 0
- 173              		.cfi_startproc
- 174              		@ args = 0, pretend = 0, frame = 0
- 175              		@ frame_needed = 0, uses_anonymous_args = 0
- 176              	.LVL7:
- 177 0000 08B5     		push	{r3, lr}
- 178              	.LCFI5:
- 179              		.cfi_def_cfa_offset 8
- 180              		.cfi_offset 3, -8
- 181              		.cfi_offset 14, -4
+ 204              		.loc 1 104 1 is_stmt 1 view -0
+ 205              		.cfi_startproc
+ 206              		@ args = 0, pretend = 0, frame = 0
+ 207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 208              		.loc 1 104 1 is_stmt 0 view .LVU52
+ 209 0000 08B5     		push	{r3, lr}
+ 210              	.LCFI4:
+ 211              		.cfi_def_cfa_offset 8
+ 212              		.cfi_offset 3, -8
+ 213              		.cfi_offset 14, -4
  105:Src/opamp.c   **** 
  106:Src/opamp.c   ****   if(opampHandle->Instance==OPAMP1)
- 182              		.loc 1 106 0
- 183 0002 0268     		ldr	r2, [r0]
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s 			page 6
-
-
- 184 0004 094B     		ldr	r3, .L15
- 185 0006 9A42     		cmp	r2, r3
- 186 0008 0ED1     		bne	.L12
+ 214              		.loc 1 106 3 is_stmt 1 view .LVU53
+ 215              		.loc 1 106 17 is_stmt 0 view .LVU54
+ 216 0002 0268     		ldr	r2, [r0]
+ 217              		.loc 1 106 5 view .LVU55
+ 218 0004 094B     		ldr	r3, .L20
+ 219 0006 9A42     		cmp	r2, r3
+ 220 0008 00D0     		beq	.L19
+ 221              	.LVL7:
+ 222              	.L16:
  107:Src/opamp.c   ****   {
  108:Src/opamp.c   ****   /* USER CODE BEGIN OPAMP2_MspDeInit 0 */
  109:Src/opamp.c   **** 
  110:Src/opamp.c   ****   /* USER CODE END OPAMP2_MspDeInit 0 */
  111:Src/opamp.c   ****     /* Peripheral clock disable */
  112:Src/opamp.c   ****     __HAL_RCC_OPAMP_CLK_DISABLE();
- 187              		.loc 1 112 0
- 188 000a 094A     		ldr	r2, .L15+4
- 189 000c 936D     		ldr	r3, [r2, #88]
- 190 000e 23F08043 		bic	r3, r3, #1073741824
- 191 0012 9365     		str	r3, [r2, #88]
  113:Src/opamp.c   **** 
  114:Src/opamp.c   ****     /**OPAMP2 GPIO Configuration
  115:Src/opamp.c   ****     PA6     ------> OPAMP2_VINP
@@ -322,65 +356,83 @@ ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s 			page 1
  117:Src/opamp.c   ****     PB0     ------> OPAMP2_VOUT
  118:Src/opamp.c   ****     */
  119:Src/opamp.c   ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_0|GPIO_PIN_1);
- 192              		.loc 1 119 0
- 193 0014 4FF09040 		mov	r0, #1207959552
- 194              	.LVL8:
- 195 0018 0321     		movs	r1, #3
- 196 001a FFF7FEFF 		bl	HAL_GPIO_DeInit
- 197              	.LVL9:
  120:Src/opamp.c   **** 
  121:Src/opamp.c   ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_3);
- 198              		.loc 1 121 0
- 199 001e 4FF09040 		mov	r0, #1207959552
- 200 0022 0821     		movs	r1, #8
- 201 0024 FFF7FEFF 		bl	HAL_GPIO_DeInit
- 202              	.LVL10:
- 203              	.L12:
- 204 0028 08BD     		pop	{r3, pc}
- 205              	.L16:
- 206 002a 00BF     		.align	2
- 207              	.L15:
- 208 002c 00780040 		.word	1073772544
- 209 0030 00100240 		.word	1073876992
- 210              		.cfi_endproc
- 211              	.LFE308:
- 213              		.comm	hopamp1,52,4
- 214              		.section	.rodata.str1.4,"aMS",%progbits,1
- 215              		.align	2
- 216              	.LC0:
- 217 0000 5372632F 		.ascii	"Src/opamp.c\000"
- 217      6F70616D 
- 217      702E6300 
- 218              		.text
- 219              	.Letext0:
- 220              		.file 2 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/machine/_default_ty
- 221              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi-49/20150925/arm-none-eabi/include/sys/_stdint.h"
- 222              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
- 223              		.file 5 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
- 224              		.file 6 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s 			page 7
+ARM GAS  /tmp/ccUtIrY1.s 			page 7
 
 
- 225              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
- 226              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
- 227              		.file 9 "Inc/opamp.h"
-ARM GAS  /var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s 			page 8
+ 122:Src/opamp.c   **** 
+ 123:Src/opamp.c   ****   /* USER CODE BEGIN OPAMP2_MspDeInit 1 */
+ 124:Src/opamp.c   **** 
+ 125:Src/opamp.c   ****   /* USER CODE END OPAMP2_MspDeInit 1 */
+ 126:Src/opamp.c   ****   }
+ 127:Src/opamp.c   **** }
+ 223              		.loc 1 127 1 view .LVU56
+ 224 000a 08BD     		pop	{r3, pc}
+ 225              	.LVL8:
+ 226              	.L19:
+ 112:Src/opamp.c   **** 
+ 227              		.loc 1 112 5 is_stmt 1 view .LVU57
+ 228 000c 084A     		ldr	r2, .L20+4
+ 229 000e 936D     		ldr	r3, [r2, #88]
+ 230 0010 23F08043 		bic	r3, r3, #1073741824
+ 231 0014 9365     		str	r3, [r2, #88]
+ 119:Src/opamp.c   **** 
+ 232              		.loc 1 119 5 view .LVU58
+ 233 0016 0321     		movs	r1, #3
+ 234 0018 4FF09040 		mov	r0, #1207959552
+ 235              	.LVL9:
+ 119:Src/opamp.c   **** 
+ 236              		.loc 1 119 5 is_stmt 0 view .LVU59
+ 237 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 238              	.LVL10:
+ 121:Src/opamp.c   **** 
+ 239              		.loc 1 121 5 is_stmt 1 view .LVU60
+ 240 0020 0821     		movs	r1, #8
+ 241 0022 4FF09040 		mov	r0, #1207959552
+ 242 0026 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 243              	.LVL11:
+ 244              		.loc 1 127 1 is_stmt 0 view .LVU61
+ 245 002a EEE7     		b	.L16
+ 246              	.L21:
+ 247              		.align	2
+ 248              	.L20:
+ 249 002c 00780040 		.word	1073772544
+ 250 0030 00100240 		.word	1073876992
+ 251              		.cfi_endproc
+ 252              	.LFE311:
+ 254              		.comm	hopamp1,52,4
+ 255              		.text
+ 256              	.Letext0:
+ 257              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 258              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 259              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 260              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+ 261              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
+ 262              		.file 7 "/usr/arm-none-eabi/include/sys/lock.h"
+ 263              		.file 8 "/usr/arm-none-eabi/include/sys/_types.h"
+ 264              		.file 9 "/usr/lib/gcc/arm-none-eabi/9.2.0/include/stddef.h"
+ 265              		.file 10 "/usr/arm-none-eabi/include/sys/reent.h"
+ 266              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 267              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
+ 268              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
+ 269              		.file 14 "Inc/opamp.h"
+ARM GAS  /tmp/ccUtIrY1.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 opamp.c
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s:21     .text.MX_OPAMP1_Init:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s:26     .text.MX_OPAMP1_Init:0000000000000000 MX_OPAMP1_Init
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s:72     .text.MX_OPAMP1_Init:000000000000002c $d
+     /tmp/ccUtIrY1.s:18     .rodata.MX_OPAMP1_Init.str1.4:0000000000000000 $d
+     /tmp/ccUtIrY1.s:22     .text.MX_OPAMP1_Init:0000000000000000 $t
+     /tmp/ccUtIrY1.s:30     .text.MX_OPAMP1_Init:0000000000000000 MX_OPAMP1_Init
+     /tmp/ccUtIrY1.s:90     .text.MX_OPAMP1_Init:000000000000002c $d
                             *COM*:0000000000000034 hopamp1
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s:79     .text.HAL_OPAMP_MspInit:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s:84     .text.HAL_OPAMP_MspInit:0000000000000000 HAL_OPAMP_MspInit
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s:160    .text.HAL_OPAMP_MspInit:0000000000000050 $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s:165    .text.HAL_OPAMP_MspDeInit:0000000000000000 $t
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s:170    .text.HAL_OPAMP_MspDeInit:0000000000000000 HAL_OPAMP_MspDeInit
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s:208    .text.HAL_OPAMP_MspDeInit:000000000000002c $d
-/var/folders/bq/zy6zjhwd1qn4sn8dk3jpjcq80000gn/T//ccQhvhhh.s:215    .rodata.str1.4:0000000000000000 $d
-                     .debug_frame:0000000000000010 $d
+     /tmp/ccUtIrY1.s:97     .text.HAL_OPAMP_MspInit:0000000000000000 $t
+     /tmp/ccUtIrY1.s:104    .text.HAL_OPAMP_MspInit:0000000000000000 HAL_OPAMP_MspInit
+     /tmp/ccUtIrY1.s:189    .text.HAL_OPAMP_MspInit:0000000000000050 $d
+     /tmp/ccUtIrY1.s:194    .text.HAL_OPAMP_MspDeInit:0000000000000000 $t
+     /tmp/ccUtIrY1.s:201    .text.HAL_OPAMP_MspDeInit:0000000000000000 HAL_OPAMP_MspDeInit
+     /tmp/ccUtIrY1.s:249    .text.HAL_OPAMP_MspDeInit:000000000000002c $d
 
 UNDEFINED SYMBOLS
 HAL_OPAMP_Init

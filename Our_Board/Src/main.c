@@ -192,8 +192,8 @@ int main(void)
 
      /*find note and display */
      //findNote(frequency);
-     sprintf(Message, "%f\n\r", frequency);
-     HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+     //sprintf(Message, "%f\n\r", frequency);
+     //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
 
      /* reset counter for display */
      counter = 0;
