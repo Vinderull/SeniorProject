@@ -101,8 +101,9 @@ volatile int DMA_DONE = 0;
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  char printNote[40] = "thing\n\r";
-  char printFreq[40] = "thing\n\r";
+  //char printNote[40] = "thing\n\r";
+  //char printFreq[40] = "thing\n\r";
+  char Message[40] = "Hello World\n\r";
   float frequency = 0;
   float samples[SAMPLE_SIZE];
 
@@ -140,7 +141,7 @@ int main(void)
   MX_ADC1_Init();
 
   /* USER CODE BEGIN 2 */
-  MX_I2C1_Init();
+//  MX_I2C1_Init();
 
   /* USER CODE END 2 */
 
@@ -164,6 +165,7 @@ int main(void)
     */
   while (1)
   {
+HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
 
   /* USER CODE END WHILE */
 
@@ -192,8 +194,8 @@ int main(void)
 
      /*find note and display */
      //findNote(frequency);
-     //sprintf(Message, "%f\n\r", frequency);
-     //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+    sprintf(Message, "%f\n\r", frequency);
+    HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
 
      /* reset counter for display */
      counter = 0;
@@ -398,7 +400,7 @@ DMA1_Channel1->CCR |= DMA_CCR_HTIE;
 // configure ADC for DMA in circular mode
 //ADC1->CFGR |= ADC_CFGR_DMACFG;
 //DMA enable?
-//ADC1->CFGR |= ADC_CFGR_DMAEN;
+ADC1->CFGR |= ADC_CFGR_DMAEN;
 
 //set DMA interrupt priority
 NVIC_SetPriority(DMA1_Channel1_IRQn, 0);

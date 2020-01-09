@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccG815Ge.s 			page 1
+ARM GAS  /tmp/ccLRXjp6.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
   22:Src/adc.c     ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
   23:Src/adc.c     ****   *      may be used to endorse or promote products derived from this software
   24:Src/adc.c     ****   *      without specific prior written permission.
-ARM GAS  /tmp/ccG815Ge.s 			page 2
+ARM GAS  /tmp/ccLRXjp6.s 			page 2
 
 
   25:Src/adc.c     ****   *
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
   50 0008 0360     		str	r3, [r0]
   62:Src/adc.c     ****   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
   51              		.loc 1 62 3 is_stmt 1 view .LVU5
-ARM GAS  /tmp/ccG815Ge.s 			page 3
+ARM GAS  /tmp/ccLRXjp6.s 			page 3
 
 
   52              		.loc 1 62 29 is_stmt 0 view .LVU6
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
   94              		.loc 1 74 3 is_stmt 1 view .LVU29
   95              		.loc 1 74 36 is_stmt 0 view .LVU30
   96 0036 4263     		str	r2, [r0, #52]
-ARM GAS  /tmp/ccG815Ge.s 			page 4
+ARM GAS  /tmp/ccLRXjp6.s 			page 4
 
 
   75:Src/adc.c     ****   hadc1.Init.Overrun = ADC_OVR_DATA_OVERWRITTEN;
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
   94:Src/adc.c     ****   sConfig.SamplingTime = ADC_SAMPLETIME_92CYCLES_5;
  132              		.loc 1 94 3 is_stmt 1 view .LVU47
  133              		.loc 1 94 24 is_stmt 0 view .LVU48
-ARM GAS  /tmp/ccG815Ge.s 			page 5
+ARM GAS  /tmp/ccLRXjp6.s 			page 5
 
 
  134 005c 0523     		movs	r3, #5
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
  177 008a FFF7FEFF 		bl	_Error_Handler
  178              	.LVL4:
  179 008e E1E7     		b	.L3
-ARM GAS  /tmp/ccG815Ge.s 			page 6
+ARM GAS  /tmp/ccLRXjp6.s 			page 6
 
 
  180              	.L8:
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
  228              		.cfi_offset 5, -8
  229              		.cfi_offset 14, -4
  230 000c 87B0     		sub	sp, sp, #28
-ARM GAS  /tmp/ccG815Ge.s 			page 7
+ARM GAS  /tmp/ccLRXjp6.s 			page 7
 
 
  231              	.LCFI5:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
  270              	.LVL7:
  271              		.loc 1 124 5 is_stmt 0 view .LVU83
  272 0046 FFF7FEFF 		bl	HAL_GPIO_Init
-ARM GAS  /tmp/ccG815Ge.s 			page 8
+ARM GAS  /tmp/ccLRXjp6.s 			page 8
 
 
  273              	.LVL8:
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
  314              	.L13:
  138:Src/adc.c     ****     {
  139:Src/adc.c     ****       _Error_Handler(__FILE__, __LINE__);
-ARM GAS  /tmp/ccG815Ge.s 			page 9
+ARM GAS  /tmp/ccLRXjp6.s 			page 9
 
 
  140:Src/adc.c     ****     }
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
  139:Src/adc.c     ****     }
  353              		.loc 1 139 7 is_stmt 1 view .LVU114
  354 00a0 8B21     		movs	r1, #139
-ARM GAS  /tmp/ccG815Ge.s 			page 10
+ARM GAS  /tmp/ccLRXjp6.s 			page 10
 
 
  355 00a2 0648     		ldr	r0, .L20+16
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
  165:Src/adc.c     ****     /* Peripheral clock disable */
  166:Src/adc.c     ****     __HAL_RCC_ADC_CLK_DISABLE();
  401              		.loc 1 166 5 is_stmt 1 view .LVU120
-ARM GAS  /tmp/ccG815Ge.s 			page 11
+ARM GAS  /tmp/ccLRXjp6.s 			page 11
 
 
  402 000e 094A     		ldr	r2, .L29+4
@@ -609,27 +609,27 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
  168:Src/adc.c     ****     /**ADC1 GPIO Configuration
  169:Src/adc.c     ****     PA1     ------> ADC1_IN6
  170:Src/adc.c     ****     */
- 171:Src/adc.c     ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_1);
+ 171:Src/adc.c     ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_0);
  406              		.loc 1 171 5 view .LVU121
- 407 0018 0221     		movs	r1, #2
- 408 001a 4FF09040 		mov	r0, #1207959552
+ 407 0018 0121     		movs	r1, #1
+ 408 001a 0748     		ldr	r0, .L29+8
  409              	.LVL17:
  410              		.loc 1 171 5 is_stmt 0 view .LVU122
- 411 001e FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 411 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
  412              	.LVL18:
  172:Src/adc.c     **** 
  173:Src/adc.c     ****     /* ADC1 DMA DeInit */
  174:Src/adc.c     ****     HAL_DMA_DeInit(adcHandle->DMA_Handle);
  413              		.loc 1 174 5 is_stmt 1 view .LVU123
- 414 0022 206D     		ldr	r0, [r4, #80]
- 415 0024 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 414 0020 206D     		ldr	r0, [r4, #80]
+ 415 0022 FFF7FEFF 		bl	HAL_DMA_DeInit
  416              	.LVL19:
  175:Src/adc.c     **** 
  176:Src/adc.c     ****     /* ADC1 interrupt Deinit */
  177:Src/adc.c     ****     HAL_NVIC_DisableIRQ(ADC1_2_IRQn);
  417              		.loc 1 177 5 view .LVU124
- 418 0028 1220     		movs	r0, #18
- 419 002a FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 418 0026 1220     		movs	r0, #18
+ 419 0028 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
  420              	.LVL20:
  178:Src/adc.c     ****   /* USER CODE BEGIN ADC1_MspDeInit 1 */
  179:Src/adc.c     **** 
@@ -637,58 +637,59 @@ ARM GAS  /tmp/ccG815Ge.s 			page 1
  181:Src/adc.c     ****   }
  182:Src/adc.c     **** }
  421              		.loc 1 182 1 is_stmt 0 view .LVU125
- 422 002e 10BD     		pop	{r4, pc}
+ 422 002c 10BD     		pop	{r4, pc}
  423              	.LVL21:
  424              	.L30:
  425              		.loc 1 182 1 view .LVU126
- 426              		.align	2
+ 426 002e 00BF     		.align	2
  427              	.L29:
  428 0030 00000450 		.word	1342439424
  429 0034 00100240 		.word	1073876992
- 430              		.cfi_endproc
- 431              	.LFE311:
- 433              		.comm	hdma_adc1,72,4
- 434              		.comm	hadc1,104,4
- 435              		.text
- 436              	.Letext0:
- 437              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
- 438              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
- 439              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 440              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
- 441              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
- 442              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h"
- 443              		.file 8 "/usr/arm-none-eabi/include/sys/lock.h"
-ARM GAS  /tmp/ccG815Ge.s 			page 12
+ 430 0038 00040048 		.word	1207960576
+ 431              		.cfi_endproc
+ 432              	.LFE311:
+ 434              		.comm	hdma_adc1,72,4
+ 435              		.comm	hadc1,104,4
+ 436              		.text
+ 437              	.Letext0:
+ 438              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 439              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 440              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 441              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+ 442              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
+ 443              		.file 7 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h"
+ARM GAS  /tmp/ccLRXjp6.s 			page 12
 
 
- 444              		.file 9 "/usr/arm-none-eabi/include/sys/_types.h"
- 445              		.file 10 "/usr/lib/gcc/arm-none-eabi/9.2.0/include/stddef.h"
- 446              		.file 11 "/usr/arm-none-eabi/include/sys/reent.h"
- 447              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
- 448              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
- 449              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
- 450              		.file 15 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
- 451              		.file 16 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h"
- 452              		.file 17 "Inc/adc.h"
- 453              		.file 18 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
- 454              		.file 19 "Inc/dma.h"
-ARM GAS  /tmp/ccG815Ge.s 			page 13
+ 444              		.file 8 "/usr/arm-none-eabi/include/sys/lock.h"
+ 445              		.file 9 "/usr/arm-none-eabi/include/sys/_types.h"
+ 446              		.file 10 "/usr/lib/gcc/arm-none-eabi/9.2.0/include/stddef.h"
+ 447              		.file 11 "/usr/arm-none-eabi/include/sys/reent.h"
+ 448              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 449              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
+ 450              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+ 451              		.file 15 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
+ 452              		.file 16 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc_ex.h"
+ 453              		.file 17 "Inc/adc.h"
+ 454              		.file 18 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
+ 455              		.file 19 "Inc/dma.h"
+ARM GAS  /tmp/ccLRXjp6.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 adc.c
-     /tmp/ccG815Ge.s:18     .rodata.MX_ADC1_Init.str1.4:0000000000000000 $d
-     /tmp/ccG815Ge.s:22     .text.MX_ADC1_Init:0000000000000000 $t
-     /tmp/ccG815Ge.s:30     .text.MX_ADC1_Init:0000000000000000 MX_ADC1_Init
-     /tmp/ccG815Ge.s:191    .text.MX_ADC1_Init:000000000000009c $d
+     /tmp/ccLRXjp6.s:18     .rodata.MX_ADC1_Init.str1.4:0000000000000000 $d
+     /tmp/ccLRXjp6.s:22     .text.MX_ADC1_Init:0000000000000000 $t
+     /tmp/ccLRXjp6.s:30     .text.MX_ADC1_Init:0000000000000000 MX_ADC1_Init
+     /tmp/ccLRXjp6.s:191    .text.MX_ADC1_Init:000000000000009c $d
                             *COM*:0000000000000068 hadc1
-     /tmp/ccG815Ge.s:199    .text.HAL_ADC_MspInit:0000000000000000 $t
-     /tmp/ccG815Ge.s:206    .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
-     /tmp/ccG815Ge.s:362    .text.HAL_ADC_MspInit:00000000000000ac $d
+     /tmp/ccLRXjp6.s:199    .text.HAL_ADC_MspInit:0000000000000000 $t
+     /tmp/ccLRXjp6.s:206    .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
+     /tmp/ccLRXjp6.s:362    .text.HAL_ADC_MspInit:00000000000000ac $d
                             *COM*:0000000000000048 hdma_adc1
-     /tmp/ccG815Ge.s:371    .text.HAL_ADC_MspDeInit:0000000000000000 $t
-     /tmp/ccG815Ge.s:378    .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
-     /tmp/ccG815Ge.s:428    .text.HAL_ADC_MspDeInit:0000000000000030 $d
+     /tmp/ccLRXjp6.s:371    .text.HAL_ADC_MspDeInit:0000000000000000 $t
+     /tmp/ccLRXjp6.s:378    .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
+     /tmp/ccLRXjp6.s:428    .text.HAL_ADC_MspDeInit:0000000000000030 $d
 
 UNDEFINED SYMBOLS
 HAL_ADC_Init

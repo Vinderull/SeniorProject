@@ -69,8 +69,6 @@ void SystemClock_Config_MSI(void);
 
 /* USER CODE BEGIN 0 */
 #define SAMPLE_SIZE 1000
-volatile uint32_t adc[SAMPLE_SIZE];
-volatile uint32_t buffer[SAMPLE_SIZE];
 volatile uint32_t Buffer_Ping[SAMPLE_SIZE];
 volatile uint32_t Buffer_Pong[SAMPLE_SIZE];
 volatile uint32_t *pReadyWrite = Buffer_Ping;
@@ -110,22 +108,21 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-   MX_OPAMP2_Init();
+  GPIO_Init();
+  // MX_OPAMP2_Init();
   //MX_DMA_Init();
-  DMA_Init(SAMPLE_SIZE);  //ADC_Calibration();
-  MX_ADC1_Init();
+  DMA_Init(SAMPLE_SIZE);  
+ // MX_ADC1_Init();
   //MX_TIM4_Init();
   TIM4_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  ADC_Calibration();
   /* USER CODE END 2 */
 
-  /* Infinite loop */
+  MX_GPIO_Init();
   /* USER CODE BEGIN WHILE */
-  //HAL_TIM_Base_Init(&htim4);
-  //HAL_TIM_Base_Start(&htim4);
+  MX_ADC1_Init();
   HAL_OPAMP_Start(&hopamp2);
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *) pReadyProcess, SAMPLE_SIZE);
 
@@ -136,7 +133,7 @@ int main(void)
 
   /* USER CODE END WHILE */
 
-
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
   while(ADC_DMA_DONE == 0);
   getFloat(pReadyProcess, samples, SAMPLE_SIZE);
   findFrequency(samples, SAMPLE_SIZE, &frequency);
@@ -271,19 +268,6 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
-{
-
-
-
-
-
-  int i = 0;
-  for(i =0; i<SAMPLE_SIZE; i++){
-      adc[i] = buffer[i];
-  }
-}
-
 
 void DMA_Init(int arg)
 {
@@ -359,7 +343,8 @@ DMA1_Channel1->CCR |= DMA_CCR_HTIE;
 //ADC1->CFGR |= ADC_CFGR_DMAEN;
 
 //set DMA interrupt priority
-NVIC_SetPriority(DMA1_Channel1_IRQn, 1);
+NVIC_SetPriority(DMA1_Channel1_IRQn, 0);
+
 
 //enable DMA INTERRUPT
 NVIC_EnableIRQ(DMA1_Channel1_IRQn);

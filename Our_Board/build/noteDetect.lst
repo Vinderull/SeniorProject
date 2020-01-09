@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccvijnTH.s 			page 1
+ARM GAS  /tmp/cch6rVsi.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
   47 0040 46322020 		.ascii	"F2  \000"
   47      00
   48 0045 000000   		.align	2
-ARM GAS  /tmp/ccvijnTH.s 			page 2
+ARM GAS  /tmp/cch6rVsi.s 			page 2
 
 
   49              	.LC10:
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
   89      00
   90 00b5 000000   		.align	2
   91              	.LC24:
-ARM GAS  /tmp/ccvijnTH.s 			page 3
+ARM GAS  /tmp/cch6rVsi.s 			page 3
 
 
   92 00b8 41623320 		.ascii	"Ab3  \000"
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  132 0125 000000   		.align	2
  133              	.LC38:
  134 0128 42623420 		.ascii	"Bb4  \000"
-ARM GAS  /tmp/ccvijnTH.s 			page 4
+ARM GAS  /tmp/cch6rVsi.s 			page 4
 
 
  134      2000
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  173 0010 83E80300 		stm	r3, {r0, r1}
  174 0014 2025     		movs	r5, #32
  175 0016 2A46     		mov	r2, r5
-ARM GAS  /tmp/ccvijnTH.s 			page 5
+ARM GAS  /tmp/cch6rVsi.s 			page 5
 
 
  176 0018 0021     		movs	r1, #0
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
   24:Src/noteDetect.c ****     ssd1306_SetCursor(FREQX,FREQY);
   25:Src/noteDetect.c ****     ssd1306_WriteString(noteFreq,Font_11x18,Black);
   26:Src/noteDetect.c **** 
-ARM GAS  /tmp/ccvijnTH.s 			page 6
+ARM GAS  /tmp/cch6rVsi.s 			page 6
 
 
   27:Src/noteDetect.c ****       /*if in tune plus/minus 10 cents */
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  243 0090 79A3     		adr	r3, .L436+32
  244 0092 D3E90023 		ldrd	r2, [r3]
  245 0096 2046     		mov	r0, r4
-ARM GAS  /tmp/ccvijnTH.s 			page 7
+ARM GAS  /tmp/cch6rVsi.s 			page 7
 
 
  246 0098 2946     		mov	r1, r5
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
   81:Src/noteDetect.c ****     sprintf(note, "D2  ");
   82:Src/noteDetect.c ****     sprintf(noteFreq, "%.2f", frequency);
   83:Src/noteDetect.c ****     ssd1306_SetCursor(NOTEX, NOTEY);
-ARM GAS  /tmp/ccvijnTH.s 			page 8
+ARM GAS  /tmp/cch6rVsi.s 			page 8
 
 
   84:Src/noteDetect.c ****     ssd1306_WriteString(note,Font_11x18,Black);
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  119:Src/noteDetect.c **** 
  120:Src/noteDetect.c ****   /*E2 note */
  121:Src/noteDetect.c ****   else if(frequency<=84.824 && frequency>=80.06){
-ARM GAS  /tmp/ccvijnTH.s 			page 9
+ARM GAS  /tmp/cch6rVsi.s 			page 9
 
 
  298              		.loc 1 121 8 is_stmt 1 view .LVU24
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  330 0138 2946     		mov	r1, r5
  331 013a FFF7FEFF 		bl	__aeabi_dcmpge
  332              	.LVL18:
-ARM GAS  /tmp/ccvijnTH.s 			page 10
+ARM GAS  /tmp/cch6rVsi.s 			page 10
 
 
  333 013e 0028     		cmp	r0, #0
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  176:Src/noteDetect.c ****       ssd1306_WriteString(dot,Font_11x18,Black);
  177:Src/noteDetect.c **** 
  178:Src/noteDetect.c ****     }
-ARM GAS  /tmp/ccvijnTH.s 			page 11
+ARM GAS  /tmp/cch6rVsi.s 			page 11
 
 
  179:Src/noteDetect.c **** 
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  381              	.LVL23:
  382 019a 48B1     		cbz	r0, .L57
  383              		.loc 1 206 32 discriminator 1 view .LVU38
-ARM GAS  /tmp/ccvijnTH.s 			page 12
+ARM GAS  /tmp/cch6rVsi.s 			page 12
 
 
  384 019c 54A3     		adr	r3, .L436+152
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  233:Src/noteDetect.c ****     ssd1306_SetCursor(FREQX,FREQY);
  234:Src/noteDetect.c ****     ssd1306_WriteString(noteFreq,Font_11x18,Black);
  235:Src/noteDetect.c **** 
-ARM GAS  /tmp/ccvijnTH.s 			page 13
+ARM GAS  /tmp/cch6rVsi.s 			page 13
 
 
  236:Src/noteDetect.c ****     /*if in tune plus/minus 10 cents */
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  431              		.loc 1 270 8 is_stmt 1 view .LVU45
  432              		.loc 1 270 10 is_stmt 0 view .LVU46
  433 01f8 47A3     		adr	r3, .L436+192
-ARM GAS  /tmp/ccvijnTH.s 			page 14
+ARM GAS  /tmp/cch6rVsi.s 			page 14
 
 
  434 01fa D3E90023 		ldrd	r2, [r3]
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  467 023c 40F0C686 		bne	.L377
  468              	.L81:
  292:Src/noteDetect.c ****     sprintf(note, "C3  ");
-ARM GAS  /tmp/ccvijnTH.s 			page 15
+ARM GAS  /tmp/cch6rVsi.s 			page 15
 
 
  293:Src/noteDetect.c ****     sprintf(noteFreq, "%.2f", frequency);
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  503 02a8 DBF97E6A 		.word	1786706395
  504 02ac BC345540 		.word	1079325884
  505 02b0 A4703D0A 		.word	171798692
-ARM GAS  /tmp/ccvijnTH.s 			page 16
+ARM GAS  /tmp/cch6rVsi.s 			page 16
 
 
  506 02b4 D7035440 		.word	1079247831
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  322:Src/noteDetect.c ****     if(frequency>= 137.79 && frequency <= 139.39){
  323:Src/noteDetect.c ****       ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
  324:Src/noteDetect.c ****       ssd1306_WriteString(dot,Font_11x18,Black);
-ARM GAS  /tmp/ccvijnTH.s 			page 17
+ARM GAS  /tmp/cch6rVsi.s 			page 17
 
 
  325:Src/noteDetect.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  573 037e D3E90023 		ldrd	r2, [r3]
  574 0382 2046     		mov	r0, r4
  575 0384 2946     		mov	r1, r5
-ARM GAS  /tmp/ccvijnTH.s 			page 18
+ARM GAS  /tmp/cch6rVsi.s 			page 18
 
 
  576 0386 FFF7FEFF 		bl	__aeabi_dcmple
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  379:Src/noteDetect.c ****     sprintf(noteFreq, "%.2f", frequency);
  380:Src/noteDetect.c **** 
  381:Src/noteDetect.c ****     ssd1306_SetCursor(NOTEX, NOTEY);
-ARM GAS  /tmp/ccvijnTH.s 			page 19
+ARM GAS  /tmp/cch6rVsi.s 			page 19
 
 
  382:Src/noteDetect.c ****     ssd1306_WriteString(note,Font_11x18,Black);
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  417:Src/noteDetect.c **** 
  418:Src/noteDetect.c ****   /*Gb3 note */
  419:Src/noteDetect.c ****   else if(frequency <= 190.42 && frequency >= 180.76){
-ARM GAS  /tmp/ccvijnTH.s 			page 20
+ARM GAS  /tmp/cch6rVsi.s 			page 20
 
 
  627              		.loc 1 419 8 is_stmt 1 view .LVU66
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  660 0438 FFF7FEFF 		bl	__aeabi_dcmpge
  661              	.LVL46:
  662 043c 0028     		cmp	r0, #0
-ARM GAS  /tmp/ccvijnTH.s 			page 21
+ARM GAS  /tmp/cch6rVsi.s 			page 21
 
 
  663 043e 40F0D987 		bne	.L384
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  474:Src/noteDetect.c **** 
  475:Src/noteDetect.c ****     }
  476:Src/noteDetect.c **** 
-ARM GAS  /tmp/ccvijnTH.s 			page 22
+ARM GAS  /tmp/cch6rVsi.s 			page 22
 
 
  477:Src/noteDetect.c ****     ssd1306_UpdateScreen();
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  711 04a2 50B1     		cbz	r0, .L141
  712              		.loc 1 503 31 discriminator 1 view .LVU80
  713 04a4 0FF25043 		adr	r3, .L439+288
-ARM GAS  /tmp/ccvijnTH.s 			page 23
+ARM GAS  /tmp/cch6rVsi.s 			page 23
 
 
  714 04a8 D3E90023 		ldrd	r2, [r3]
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  531:Src/noteDetect.c ****     ssd1306_WriteString(noteFreq,Font_11x18,Black);
  532:Src/noteDetect.c **** 
  533:Src/noteDetect.c ****     /*if in tune plus/minus 10 cents */
-ARM GAS  /tmp/ccvijnTH.s 			page 24
+ARM GAS  /tmp/cch6rVsi.s 			page 24
 
 
  534:Src/noteDetect.c ****     if(frequency>= 245.52 && frequency <= 248.37){
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  762 050a 0FF21443 		adr	r3, .L439+328
  763 050e D3E90023 		ldrd	r2, [r3]
  764 0512 2046     		mov	r0, r4
-ARM GAS  /tmp/ccvijnTH.s 			page 25
+ARM GAS  /tmp/cch6rVsi.s 			page 25
 
 
  765 0514 2946     		mov	r1, r5
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  588:Src/noteDetect.c ****     sprintf(note, "D4  ");
  589:Src/noteDetect.c ****     sprintf(noteFreq, "%.2f", frequency);
  590:Src/noteDetect.c **** 
-ARM GAS  /tmp/ccvijnTH.s 			page 26
+ARM GAS  /tmp/cch6rVsi.s 			page 26
 
 
  591:Src/noteDetect.c ****     ssd1306_SetCursor(NOTEX, NOTEY);
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  628:Src/noteDetect.c ****   /*E4 note */
  629:Src/noteDetect.c ****   else if(frequency <= 339.29 && frequency >= 320.26){
  815              		.loc 1 629 8 is_stmt 1 view .LVU96
-ARM GAS  /tmp/ccvijnTH.s 			page 27
+ARM GAS  /tmp/cch6rVsi.s 			page 27
 
 
  816              		.loc 1 629 10 is_stmt 0 view .LVU97
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  849              	.LVL65:
  850 05bc 0028     		cmp	r0, #0
  851 05be 41F03182 		bne	.L394
-ARM GAS  /tmp/ccvijnTH.s 			page 28
+ARM GAS  /tmp/cch6rVsi.s 			page 28
 
 
  852              	.L183:
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  685:Src/noteDetect.c ****     }
  686:Src/noteDetect.c **** 
  687:Src/noteDetect.c ****     ssd1306_UpdateScreen();
-ARM GAS  /tmp/ccvijnTH.s 			page 29
+ARM GAS  /tmp/cch6rVsi.s 			page 29
 
 
  688:Src/noteDetect.c ****     HAL_Delay(500);
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  896 0616 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  897 061a 09DB     		blt	.L201
  898              		.loc 1 717 31 discriminator 1 view .LVU110
-ARM GAS  /tmp/ccvijnTH.s 			page 30
+ARM GAS  /tmp/cch6rVsi.s 			page 30
 
 
  899 061c 7EA3     		adr	r3, .L439+64
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  744:Src/noteDetect.c ****     ssd1306_SetCursor(FREQX,FREQY);
  745:Src/noteDetect.c ****     ssd1306_WriteString(noteFreq,Font_11x18,Black);
  746:Src/noteDetect.c **** 
-ARM GAS  /tmp/ccvijnTH.s 			page 31
+ARM GAS  /tmp/cch6rVsi.s 			page 31
 
 
  747:Src/noteDetect.c ****     /*if in tune plus/minus 10 cents */
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  947 0678 7B4B     		ldr	r3, .L439+144
  948 067a 93E80300 		ldm	r3, {r0, r1}
  949 067e 1490     		str	r0, [sp, #80]
-ARM GAS  /tmp/ccvijnTH.s 			page 32
+ARM GAS  /tmp/cch6rVsi.s 			page 32
 
 
  950 0680 8DF85410 		strb	r1, [sp, #84]
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
   20:Src/noteDetect.c ****     sprintf(noteFreq, "%4.2f", frequency);
  991              		.loc 1 20 5 is_stmt 1 view .LVU126
  992 06c8 6A4B     		ldr	r3, .L439+156
-ARM GAS  /tmp/ccvijnTH.s 			page 33
+ARM GAS  /tmp/cch6rVsi.s 			page 33
 
 
  993 06ca 93E80300 		ldm	r3, {r0, r1}
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1038 071a 4BA3     		adr	r3, .L439+112
  1039 071c D3E90023 		ldrd	r2, [r3]
  1040 0720 2046     		mov	r0, r4
-ARM GAS  /tmp/ccvijnTH.s 			page 34
+ARM GAS  /tmp/cch6rVsi.s 			page 34
 
 
  1041 0722 2946     		mov	r1, r5
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1089              	.LVL95:
   42:Src/noteDetect.c ****     ssd1306_WriteString(note,Font_11x18,Black);
  1090              		.loc 1 42 5 view .LVU143
-ARM GAS  /tmp/ccvijnTH.s 			page 35
+ARM GAS  /tmp/cch6rVsi.s 			page 35
 
 
  1091 0768 2821     		movs	r1, #40
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1136              		.loc 1 55 5 view .LVU152
  1137 07b6 4FF4FA70 		mov	r0, #500
  1138 07ba FFF7FEFF 		bl	HAL_Delay
-ARM GAS  /tmp/ccvijnTH.s 			page 36
+ARM GAS  /tmp/cch6rVsi.s 			page 36
 
 
  1139              	.LVL104:
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1191 0860 0020A043 		.word	1134567424
  1192 0864 00C0C943 		.word	1137295360
  1193 0868 30010000 		.word	.LC39
-ARM GAS  /tmp/ccvijnTH.s 			page 37
+ARM GAS  /tmp/cch6rVsi.s 			page 37
 
 
  1194 086c 18000000 		.word	.LC4
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1247              		.loc 1 60 5 view .LVU155
  1248 0938 B74B     		ldr	r3, .L441+64
  1249 093a 93E80300 		ldm	r3, {r0, r1}
-ARM GAS  /tmp/ccvijnTH.s 			page 38
+ARM GAS  /tmp/cch6rVsi.s 			page 38
 
 
  1250 093e 1490     		str	r0, [sp, #80]
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1295 098c D3E90023 		ldrd	r2, [r3]
  1296 0990 2046     		mov	r0, r4
  1297 0992 2946     		mov	r1, r5
-ARM GAS  /tmp/ccvijnTH.s 			page 39
+ARM GAS  /tmp/cch6rVsi.s 			page 39
 
 
  1298 0994 FFF7FEFF 		bl	__aeabi_dcmple
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1344              	.LVL123:
   84:Src/noteDetect.c ****     ssd1306_SetCursor(FREQX,FREQY);
  1345              		.loc 1 84 5 is_stmt 0 view .LVU173
-ARM GAS  /tmp/ccvijnTH.s 			page 40
+ARM GAS  /tmp/cch6rVsi.s 			page 40
 
 
  1346 09e0 0023     		movs	r3, #0
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1392 0a32 FFF7FEFF 		bl	ssd1306_SetCursor
  1393              	.LVL131:
   91:Src/noteDetect.c **** 
-ARM GAS  /tmp/ccvijnTH.s 			page 41
+ARM GAS  /tmp/cch6rVsi.s 			page 41
 
 
  1394              		.loc 1 91 7 view .LVU182
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1440              		.loc 1 110 5 view .LVU190
  110:Src/noteDetect.c ****       ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
  1441              		.loc 1 110 7 is_stmt 0 view .LVU191
-ARM GAS  /tmp/ccvijnTH.s 			page 42
+ARM GAS  /tmp/cch6rVsi.s 			page 42
 
 
  1442 0a86 58A3     		adr	r3, .L441+16
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1489 0ada 5049     		ldr	r1, .L441+68
  1490 0adc 0AA8     		add	r0, sp, #40
  1491 0ade FFF7FEFF 		bl	sprintf
-ARM GAS  /tmp/ccvijnTH.s 			page 43
+ARM GAS  /tmp/cch6rVsi.s 			page 43
 
 
  1492              	.LVL147:
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1537 0b2c FFF7FEFF 		bl	ssd1306_UpdateScreen
  1538              	.LVL155:
  138:Src/noteDetect.c ****   }
-ARM GAS  /tmp/ccvijnTH.s 			page 44
+ARM GAS  /tmp/cch6rVsi.s 			page 44
 
 
  1539              		.loc 1 138 5 view .LVU208
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1585              		.loc 1 149 5 is_stmt 1 view .LVU216
  1586 0b7e 0F21     		movs	r1, #15
  1587 0b80 2820     		movs	r0, #40
-ARM GAS  /tmp/ccvijnTH.s 			page 45
+ARM GAS  /tmp/cch6rVsi.s 			page 45
 
 
  1588 0b82 FFF7FEFF 		bl	ssd1306_SetCursor
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1634 0bd4 EDE7     		b	.L42
  1635              	.L442:
  1636 0bd6 00BF     		.align	3
-ARM GAS  /tmp/ccvijnTH.s 			page 46
+ARM GAS  /tmp/cch6rVsi.s 			page 46
 
 
  1637              	.L441:
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1686 0c5c 14A8     		add	r0, sp, #80
  1687 0c5e FFF7FEFF 		bl	ssd1306_WriteString
  1688              	.LVL176:
-ARM GAS  /tmp/ccvijnTH.s 			page 47
+ARM GAS  /tmp/cch6rVsi.s 			page 47
 
 
  170:Src/noteDetect.c ****     ssd1306_WriteString(noteFreq,Font_11x18,Black);
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1734 0cae D6E90012 		ldrd	r1, r2, [r6]
  1735 0cb2 6846     		mov	r0, sp
  1736 0cb4 FFF7FEFF 		bl	ssd1306_WriteString
-ARM GAS  /tmp/ccvijnTH.s 			page 48
+ARM GAS  /tmp/cch6rVsi.s 			page 48
 
 
  1737              	.LVL184:
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1782 0d02 2046     		mov	r0, r4
  1783 0d04 2946     		mov	r1, r5
  1784 0d06 FFF7FEFF 		bl	__aeabi_dcmpge
-ARM GAS  /tmp/ccvijnTH.s 			page 49
+ARM GAS  /tmp/cch6rVsi.s 			page 49
 
 
  1785              	.LVL192:
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1831              		.loc 1 210 5 view .LVU255
  1832 0d58 2821     		movs	r1, #40
  1833 0d5a 0846     		mov	r0, r1
-ARM GAS  /tmp/ccvijnTH.s 			page 50
+ARM GAS  /tmp/cch6rVsi.s 			page 50
 
 
  1834 0d5c FFF7FEFF 		bl	ssd1306_SetCursor
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1879 0daa FFF7FEFF 		bl	HAL_Delay
  1880              	.LVL208:
  1881 0dae C2E4     		b	.L1
-ARM GAS  /tmp/ccvijnTH.s 			page 51
+ARM GAS  /tmp/cch6rVsi.s 			page 51
 
 
  1882              	.L409:
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  234:Src/noteDetect.c **** 
  1928              		.loc 1 234 5 view .LVU273
  1929 0dfc 0023     		movs	r3, #0
-ARM GAS  /tmp/ccvijnTH.s 			page 52
+ARM GAS  /tmp/cch6rVsi.s 			page 52
 
 
  1930 0dfe 96E80600 		ldm	r6, {r1, r2}
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  1976 0e4c 3C4B     		ldr	r3, .L443+104
  1977 0e4e 93E80300 		ldm	r3, {r0, r1}
  1978 0e52 1490     		str	r0, [sp, #80]
-ARM GAS  /tmp/ccvijnTH.s 			page 53
+ARM GAS  /tmp/cch6rVsi.s 			page 53
 
 
  1979 0e54 ADF85410 		strh	r1, [sp, #84]	@ movhi
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2024 0ea4 2046     		mov	r0, r4
  2025 0ea6 2946     		mov	r1, r5
  2026 0ea8 FFF7FEFF 		bl	__aeabi_dcmple
-ARM GAS  /tmp/ccvijnTH.s 			page 54
+ARM GAS  /tmp/cch6rVsi.s 			page 54
 
 
  2027              	.LVL232:
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2076 0f30 00000000 		.word	Font_11x18
  2077 0f34 50000000 		.word	.LC11
  2078 0f38 58000000 		.word	.LC12
-ARM GAS  /tmp/ccvijnTH.s 			page 55
+ARM GAS  /tmp/cch6rVsi.s 			page 55
 
 
  2079 0f3c 60000000 		.word	.LC13
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2124 0f8c 2046     		mov	r0, r4
  2125 0f8e 2946     		mov	r1, r5
  2126 0f90 FFF7FEFF 		bl	__aeabi_dcmpge
-ARM GAS  /tmp/ccvijnTH.s 			page 56
+ARM GAS  /tmp/cch6rVsi.s 			page 56
 
 
  2127              	.LVL244:
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2173              		.loc 1 295 5 view .LVU311
  2174 0fe4 2821     		movs	r1, #40
  2175 0fe6 0846     		mov	r0, r1
-ARM GAS  /tmp/ccvijnTH.s 			page 57
+ARM GAS  /tmp/cch6rVsi.s 			page 57
 
 
  2176 0fe8 FFF7FEFF 		bl	ssd1306_SetCursor
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2221 1036 FFF7FEFF 		bl	HAL_Delay
  2222              	.LVL260:
  2223 103a FFF77CBB 		b	.L1
-ARM GAS  /tmp/ccvijnTH.s 			page 58
+ARM GAS  /tmp/cch6rVsi.s 			page 58
 
 
  2224              	.L413:
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  319:Src/noteDetect.c **** 
  2270              		.loc 1 319 5 view .LVU329
  2271 108a 0023     		movs	r3, #0
-ARM GAS  /tmp/ccvijnTH.s 			page 59
+ARM GAS  /tmp/cch6rVsi.s 			page 59
 
 
  2272 108c 96E80600 		ldm	r6, {r1, r2}
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2318 10dc 5D4B     		ldr	r3, .L445+100
  2319 10de 93E80300 		ldm	r3, {r0, r1}
  2320 10e2 1490     		str	r0, [sp, #80]
-ARM GAS  /tmp/ccvijnTH.s 			page 60
+ARM GAS  /tmp/cch6rVsi.s 			page 60
 
 
  2321 10e4 8DF85410 		strb	r1, [sp, #84]
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2366 1134 2046     		mov	r0, r4
  2367 1136 2946     		mov	r1, r5
  2368 1138 FFF7FEFF 		bl	__aeabi_dcmple
-ARM GAS  /tmp/ccvijnTH.s 			page 61
+ARM GAS  /tmp/cch6rVsi.s 			page 61
 
 
  2369              	.LVL284:
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  361:Src/noteDetect.c ****     ssd1306_SetCursor(FREQX,FREQY);
  2415              		.loc 1 361 5 is_stmt 0 view .LVU355
  2416 1186 0023     		movs	r3, #0
-ARM GAS  /tmp/ccvijnTH.s 			page 62
+ARM GAS  /tmp/cch6rVsi.s 			page 62
 
 
  2417 1188 96E80600 		ldm	r6, {r1, r2}
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2463              	.LVL300:
  368:Src/noteDetect.c **** 
  2464              		.loc 1 368 7 view .LVU364
-ARM GAS  /tmp/ccvijnTH.s 			page 63
+ARM GAS  /tmp/cch6rVsi.s 			page 63
 
 
  2465 11de 0023     		movs	r3, #0
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2516 1274 2821     		movs	r1, #40
  2517 1276 0846     		mov	r0, r1
  2518 1278 FFF7FEFF 		bl	ssd1306_SetCursor
-ARM GAS  /tmp/ccvijnTH.s 			page 64
+ARM GAS  /tmp/cch6rVsi.s 			page 64
 
 
  2519              	.LVL304:
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2564              	.LVL312:
  2565 12ca FFF734BA 		b	.L1
  2566              	.L417:
-ARM GAS  /tmp/ccvijnTH.s 			page 65
+ARM GAS  /tmp/cch6rVsi.s 			page 65
 
 
  388:Src/noteDetect.c ****       ssd1306_WriteString(dot,Font_11x18,Black);
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2612              		.loc 1 405 5 view .LVU385
  2613 131a 0023     		movs	r3, #0
  2614 131c 96E80600 		ldm	r6, {r1, r2}
-ARM GAS  /tmp/ccvijnTH.s 			page 66
+ARM GAS  /tmp/cch6rVsi.s 			page 66
 
 
  2615 1320 0AA8     		add	r0, sp, #40
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2661 136e 93E80300 		ldm	r3, {r0, r1}
  2662 1372 1490     		str	r0, [sp, #80]
  2663 1374 ADF85410 		strh	r1, [sp, #84]	@ movhi
-ARM GAS  /tmp/ccvijnTH.s 			page 67
+ARM GAS  /tmp/cch6rVsi.s 			page 67
 
 
  421:Src/noteDetect.c **** 
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2709 13c6 2946     		mov	r1, r5
  2710 13c8 FFF7FEFF 		bl	__aeabi_dcmple
  2711              	.LVL336:
-ARM GAS  /tmp/ccvijnTH.s 			page 68
+ARM GAS  /tmp/cch6rVsi.s 			page 68
 
 
  2712 13cc 38B9     		cbnz	r0, .L419
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2757              		.loc 1 445 5 is_stmt 0 view .LVU411
  2758 1416 0023     		movs	r3, #0
  2759 1418 96E80600 		ldm	r6, {r1, r2}
-ARM GAS  /tmp/ccvijnTH.s 			page 69
+ARM GAS  /tmp/cch6rVsi.s 			page 69
 
 
  2760 141c 14A8     		add	r0, sp, #80
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  452:Src/noteDetect.c **** 
  2806              		.loc 1 452 7 view .LVU420
  2807 146e 0023     		movs	r3, #0
-ARM GAS  /tmp/ccvijnTH.s 			page 70
+ARM GAS  /tmp/cch6rVsi.s 			page 70
 
 
  2808 1470 D6E90012 		ldrd	r1, r2, [r6]
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2853              		.loc 1 471 7 is_stmt 0 view .LVU429
  2854 14be 22A3     		adr	r3, .L447+64
  2855 14c0 D3E90023 		ldrd	r2, [r3]
-ARM GAS  /tmp/ccvijnTH.s 			page 71
+ARM GAS  /tmp/cch6rVsi.s 			page 71
 
 
  2856 14c4 2046     		mov	r0, r4
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2905 1534 3D426740 		.word	1080508989
  2906 1538 A4703D0A 		.word	171798692
  2907 153c D75B6840 		.word	1080581079
-ARM GAS  /tmp/ccvijnTH.s 			page 72
+ARM GAS  /tmp/cch6rVsi.s 			page 72
 
 
  2908 1540 14AE47E1 		.word	3779571220
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  2955 15aa 0023     		movs	r3, #0
  2956 15ac 96E80600 		ldm	r6, {r1, r2}
  2957 15b0 0AA8     		add	r0, sp, #40
-ARM GAS  /tmp/ccvijnTH.s 			page 73
+ARM GAS  /tmp/cch6rVsi.s 			page 73
 
 
  2958 15b2 FFF7FEFF 		bl	ssd1306_WriteString
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3004 1602 1490     		str	r0, [sp, #80]
  3005 1604 ADF85410 		strh	r1, [sp, #84]	@ movhi
  505:Src/noteDetect.c **** 
-ARM GAS  /tmp/ccvijnTH.s 			page 74
+ARM GAS  /tmp/cch6rVsi.s 			page 74
 
 
  3006              		.loc 1 505 5 view .LVU450
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3052 1658 FFF7FEFF 		bl	__aeabi_dcmple
  3053              	.LVL388:
  3054 165c 38B9     		cbnz	r0, .L423
-ARM GAS  /tmp/ccvijnTH.s 			page 75
+ARM GAS  /tmp/cch6rVsi.s 			page 75
 
 
  3055              	.L144:
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3100 16a6 0023     		movs	r3, #0
  3101 16a8 96E80600 		ldm	r6, {r1, r2}
  3102 16ac 14A8     		add	r0, sp, #80
-ARM GAS  /tmp/ccvijnTH.s 			page 76
+ARM GAS  /tmp/cch6rVsi.s 			page 76
 
 
  3103 16ae FFF7FEFF 		bl	ssd1306_WriteString
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3148              		.loc 1 536 7 view .LVU476
  3149 16fe 0023     		movs	r3, #0
  3150 1700 D6E90012 		ldrd	r1, r2, [r6]
-ARM GAS  /tmp/ccvijnTH.s 			page 77
+ARM GAS  /tmp/cch6rVsi.s 			page 77
 
 
  3151 1704 6846     		mov	r0, sp
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3196 174e 40A3     		adr	r3, .L449+48
  3197 1750 D3E90023 		ldrd	r2, [r3]
  3198 1754 2046     		mov	r0, r4
-ARM GAS  /tmp/ccvijnTH.s 			page 78
+ARM GAS  /tmp/cch6rVsi.s 			page 78
 
 
  3199 1756 2946     		mov	r1, r5
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3246              	.LVL420:
  570:Src/noteDetect.c ****     ssd1306_WriteString(note,Font_11x18,Black);
  3247              		.loc 1 570 5 view .LVU493
-ARM GAS  /tmp/ccvijnTH.s 			page 79
+ARM GAS  /tmp/cch6rVsi.s 			page 79
 
 
  3248 17ac 2821     		movs	r1, #40
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3293              		.loc 1 583 5 view .LVU502
  3294 17fa 4FF4FA70 		mov	r0, #500
  3295 17fe FFF7FEFF 		bl	HAL_Delay
-ARM GAS  /tmp/ccvijnTH.s 			page 80
+ARM GAS  /tmp/cch6rVsi.s 			page 80
 
 
  3296              	.LVL429:
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3347 1894 8DF85410 		strb	r1, [sp, #84]
  589:Src/noteDetect.c **** 
  3348              		.loc 1 589 5 view .LVU506
-ARM GAS  /tmp/ccvijnTH.s 			page 81
+ARM GAS  /tmp/cch6rVsi.s 			page 81
 
 
  3349 1898 2246     		mov	r2, r4
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3395              	.LVL440:
  3396 18ec 38B9     		cbnz	r0, .L427
  3397              	.L168:
-ARM GAS  /tmp/ccvijnTH.s 			page 82
+ARM GAS  /tmp/cch6rVsi.s 			page 82
 
 
  603:Src/noteDetect.c ****     HAL_Delay(500);
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3443 1938 96E80600 		ldm	r6, {r1, r2}
  3444 193c 14A8     		add	r0, sp, #80
  3445 193e FFF7FEFF 		bl	ssd1306_WriteString
-ARM GAS  /tmp/ccvijnTH.s 			page 83
+ARM GAS  /tmp/cch6rVsi.s 			page 83
 
 
  3446              	.LVL449:
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3491 198e 0023     		movs	r3, #0
  3492 1990 D6E90012 		ldrd	r1, r2, [r6]
  3493 1994 6846     		mov	r0, sp
-ARM GAS  /tmp/ccvijnTH.s 			page 84
+ARM GAS  /tmp/cch6rVsi.s 			page 84
 
 
  3494 1996 FFF7FEFF 		bl	ssd1306_WriteString
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3539 19e0 D3E90023 		ldrd	r2, [r3]
  3540 19e4 2046     		mov	r0, r4
  3541 19e6 2946     		mov	r1, r5
-ARM GAS  /tmp/ccvijnTH.s 			page 85
+ARM GAS  /tmp/cch6rVsi.s 			page 85
 
 
  3542 19e8 FFF7FEFF 		bl	__aeabi_dcmpge
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  654:Src/noteDetect.c ****     ssd1306_WriteString(note,Font_11x18,Black);
  3589              		.loc 1 654 5 view .LVU549
  3590 1a3c 2821     		movs	r1, #40
-ARM GAS  /tmp/ccvijnTH.s 			page 86
+ARM GAS  /tmp/cch6rVsi.s 			page 86
 
 
  3591 1a3e 0846     		mov	r0, r1
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  661:Src/noteDetect.c ****       ssd1306_WriteString(dot,Font_11x18,Black);
  3637              		.loc 1 661 7 view .LVU558
  3638 1a98 2821     		movs	r1, #40
-ARM GAS  /tmp/ccvijnTH.s 			page 87
+ARM GAS  /tmp/cch6rVsi.s 			page 87
 
 
  3639 1a9a 4B20     		movs	r0, #75
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3685 1aec FFF7FEFF 		bl	ssd1306_WriteString
  3686              	.LVL487:
  681:Src/noteDetect.c ****       ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
-ARM GAS  /tmp/ccvijnTH.s 			page 88
+ARM GAS  /tmp/cch6rVsi.s 			page 88
 
 
  3687              		.loc 1 681 5 view .LVU567
@@ -5278,7 +5278,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3735 1b50 7B14AE47 		.word	1202590843
  3736 1b54 E18E7340 		.word	1081315041
  3737 1b58 48E17A14 		.word	343597384
-ARM GAS  /tmp/ccvijnTH.s 			page 89
+ARM GAS  /tmp/cch6rVsi.s 			page 89
 
 
  3738 1b5c AE7B7440 		.word	1081375662
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3786 1bd2 FFF7FEFF 		bl	ssd1306_SetCursor
  3787              	.LVL499:
  700:Src/noteDetect.c **** 
-ARM GAS  /tmp/ccvijnTH.s 			page 90
+ARM GAS  /tmp/cch6rVsi.s 			page 90
 
 
  3788              		.loc 1 700 5 view .LVU580
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  718:Src/noteDetect.c ****     sprintf(noteFreq, "%.2f", frequency);
  3835              		.loc 1 718 5 view .LVU588
  3836 1c28 784B     		ldr	r3, .L453+76
-ARM GAS  /tmp/ccvijnTH.s 			page 91
+ARM GAS  /tmp/cch6rVsi.s 			page 91
 
 
  3837 1c2a 93E80300 		ldm	r3, {r0, r1}
@@ -5458,7 +5458,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3882 1c7a 57A3     		adr	r3, .L453+24
  3883 1c7c D3E90023 		ldrd	r2, [r3]
  3884 1c80 2046     		mov	r0, r4
-ARM GAS  /tmp/ccvijnTH.s 			page 92
+ARM GAS  /tmp/cch6rVsi.s 			page 92
 
 
  3885 1c82 2946     		mov	r1, r5
@@ -5518,7 +5518,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3931 1cd0 4D4E     		ldr	r6, .L453+72
  3932              	.LVL523:
  743:Src/noteDetect.c ****     ssd1306_SetCursor(FREQX,FREQY);
-ARM GAS  /tmp/ccvijnTH.s 			page 93
+ARM GAS  /tmp/cch6rVsi.s 			page 93
 
 
  3933              		.loc 1 743 5 is_stmt 0 view .LVU606
@@ -5578,7 +5578,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  3979 1d24 4B20     		movs	r0, #75
  3980 1d26 FFF7FEFF 		bl	ssd1306_SetCursor
  3981              	.LVL531:
-ARM GAS  /tmp/ccvijnTH.s 			page 94
+ARM GAS  /tmp/cch6rVsi.s 			page 94
 
 
  750:Src/noteDetect.c **** 
@@ -5638,7 +5638,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  769:Src/noteDetect.c ****       ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
  4028              		.loc 1 769 5 view .LVU623
  769:Src/noteDetect.c ****       ssd1306_SetCursor(NOTEX + INTUNE, NOTEY);
-ARM GAS  /tmp/ccvijnTH.s 			page 95
+ARM GAS  /tmp/cch6rVsi.s 			page 95
 
 
  4029              		.loc 1 769 7 is_stmt 0 view .LVU624
@@ -5698,7 +5698,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  4078 1de0 EC51B81E 		.word	515396076
  4079 1de4 85577B40 		.word	1081825157
  4080 1de8 CDCCCCCC 		.word	3435973837
-ARM GAS  /tmp/ccvijnTH.s 			page 96
+ARM GAS  /tmp/cch6rVsi.s 			page 96
 
 
  4081 1dec CCA87B40 		.word	1081845964
@@ -5758,7 +5758,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  4129              		.loc 1 801 5 view .LVU634
  4130 0012 0C4C     		ldr	r4, .L457
  4131 0014 0023     		movs	r3, #0
-ARM GAS  /tmp/ccvijnTH.s 			page 97
+ARM GAS  /tmp/cch6rVsi.s 			page 97
 
 
  4132 0016 94E80600 		ldm	r4, {r1, r2}
@@ -5818,7 +5818,7 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  4176              		.file 5 "/usr/lib/gcc/arm-none-eabi/9.2.0/include/stddef.h"
  4177              		.file 6 "/usr/arm-none-eabi/include/sys/reent.h"
  4178              		.file 7 "/usr/arm-none-eabi/include/sys/_stdint.h"
-ARM GAS  /tmp/ccvijnTH.s 			page 98
+ARM GAS  /tmp/cch6rVsi.s 			page 98
 
 
  4179              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
@@ -5832,35 +5832,35 @@ ARM GAS  /tmp/ccvijnTH.s 			page 1
  4187              		.file 16 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
  4188              		.file 17 "/usr/arm-none-eabi/include/stdio.h"
  4189              		.file 18 "<built-in>"
-ARM GAS  /tmp/ccvijnTH.s 			page 99
+ARM GAS  /tmp/cch6rVsi.s 			page 99
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 noteDetect.c
-     /tmp/ccvijnTH.s:21     .rodata.findNote.str1.4:0000000000000000 $d
-     /tmp/ccvijnTH.s:139    .text.findNote:0000000000000000 $t
-     /tmp/ccvijnTH.s:147    .text.findNote:0000000000000000 findNote
-     /tmp/ccvijnTH.s:483    .text.findNote:0000000000000258 $d
-     /tmp/ccvijnTH.s:542    .text.findNote:000000000000033c $t
-     /tmp/ccvijnTH.s:1157   .text.findNote:00000000000007d8 $d
-     /tmp/ccvijnTH.s:1248   .text.findNote:0000000000000938 $t
-     /tmp/ccvijnTH.s:1638   .text.findNote:0000000000000bd8 $d
-     /tmp/ccvijnTH.s:1664   .text.findNote:0000000000000c34 $t
-     /tmp/ccvijnTH.s:2054   .text.findNote:0000000000000ed8 $d
-     /tmp/ccvijnTH.s:2084   .text.findNote:0000000000000f44 $t
-     /tmp/ccvijnTH.s:2474   .text.findNote:00000000000011f0 $d
-     /tmp/ccvijnTH.s:2504   .text.findNote:000000000000125c $t
-     /tmp/ccvijnTH.s:2894   .text.findNote:0000000000001508 $d
-     /tmp/ccvijnTH.s:2924   .text.findNote:0000000000001574 $t
-     /tmp/ccvijnTH.s:3314   .text.findNote:0000000000001820 $d
-     /tmp/ccvijnTH.s:3344   .text.findNote:000000000000188c $t
-     /tmp/ccvijnTH.s:3729   .text.findNote:0000000000001b38 $d
-     /tmp/ccvijnTH.s:3758   .text.findNote:0000000000001ba0 $t
-     /tmp/ccvijnTH.s:4070   .text.findNote:0000000000001dc0 $d
-     /tmp/ccvijnTH.s:4097   .text.print2Screen:0000000000000000 $t
-     /tmp/ccvijnTH.s:4104   .text.print2Screen:0000000000000000 print2Screen
-     /tmp/ccvijnTH.s:4161   .text.print2Screen:0000000000000044 $d
-     /tmp/ccvijnTH.s:4166   .rodata:0000000000000000 $d
+     /tmp/cch6rVsi.s:21     .rodata.findNote.str1.4:0000000000000000 $d
+     /tmp/cch6rVsi.s:139    .text.findNote:0000000000000000 $t
+     /tmp/cch6rVsi.s:147    .text.findNote:0000000000000000 findNote
+     /tmp/cch6rVsi.s:483    .text.findNote:0000000000000258 $d
+     /tmp/cch6rVsi.s:542    .text.findNote:000000000000033c $t
+     /tmp/cch6rVsi.s:1157   .text.findNote:00000000000007d8 $d
+     /tmp/cch6rVsi.s:1248   .text.findNote:0000000000000938 $t
+     /tmp/cch6rVsi.s:1638   .text.findNote:0000000000000bd8 $d
+     /tmp/cch6rVsi.s:1664   .text.findNote:0000000000000c34 $t
+     /tmp/cch6rVsi.s:2054   .text.findNote:0000000000000ed8 $d
+     /tmp/cch6rVsi.s:2084   .text.findNote:0000000000000f44 $t
+     /tmp/cch6rVsi.s:2474   .text.findNote:00000000000011f0 $d
+     /tmp/cch6rVsi.s:2504   .text.findNote:000000000000125c $t
+     /tmp/cch6rVsi.s:2894   .text.findNote:0000000000001508 $d
+     /tmp/cch6rVsi.s:2924   .text.findNote:0000000000001574 $t
+     /tmp/cch6rVsi.s:3314   .text.findNote:0000000000001820 $d
+     /tmp/cch6rVsi.s:3344   .text.findNote:000000000000188c $t
+     /tmp/cch6rVsi.s:3729   .text.findNote:0000000000001b38 $d
+     /tmp/cch6rVsi.s:3758   .text.findNote:0000000000001ba0 $t
+     /tmp/cch6rVsi.s:4070   .text.findNote:0000000000001dc0 $d
+     /tmp/cch6rVsi.s:4097   .text.print2Screen:0000000000000000 $t
+     /tmp/cch6rVsi.s:4104   .text.print2Screen:0000000000000000 print2Screen
+     /tmp/cch6rVsi.s:4161   .text.print2Screen:0000000000000044 $d
+     /tmp/cch6rVsi.s:4166   .rodata:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_f2d

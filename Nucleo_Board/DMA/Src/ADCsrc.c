@@ -41,7 +41,7 @@ void ADC1_Init(void)
 1011: input ADC clock divided by 256
 */
   ADC123_COMMON->CCR &= ~ADC_CCR_PRESC;
-  ADC123_COMMON->CCR |= ADC_CCR_PRESC_0;
+//  ADC123_COMMON->CCR |= ADC_CCR_PRESC_0;
 
   /*configure ADC clock to be synchonous HCLK/1 */
 /*
@@ -109,12 +109,9 @@ has a 50% duty cycle.
   ADC1->CFGR |= ADC_CFGR_OVRMOD;
   //ADC1->CFGR &= ~ADC_CFGR_OVRMOD;
 
-
-
-
-    //select TIm4_TRGO
-    ADC1->CFGR &= ~ADC_CFGR_EXTSEL;
-    ADC1->CFGR |= ADC_CFGR_EXTSEL_3 | ADC_CFGR_EXTSEL_2;
+  //select TIm4_TRGO
+  ADC1->CFGR &= ~ADC_CFGR_EXTSEL;
+  ADC1->CFGR |= ADC_CFGR_EXTSEL_3 | ADC_CFGR_EXTSEL_2;
 
   /*Select software trigger */
   //select rising edge of hardware triggers
@@ -169,11 +166,7 @@ void ADC1_Wakeup(void){
 }
 
 
-
 //GPIO Initialization
-
-
-
 
 void GPIO_Init(void)
 {
@@ -181,19 +174,22 @@ void GPIO_Init(void)
 RCC->AHB2ENR &= ~RCC_AHB2ENR_GPIOAEN;
 RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
 
+//Enable clock for GPIOB
+RCC->AHB2ENR &= ~RCC_AHB2ENR_GPIOBEN;
+RCC->AHB2ENR |= RCC_AHB2ENR_GPIOBEN;
 
 /*SET PA1 as analog*/
 /*00 = digital input, 01 = digital Output*/
 /*10 = alternate function, 11 = analog (default) */
-GPIOA->MODER &= ~GPIO_MODER_MODE1;
-GPIOA->MODER |= GPIO_MODER_MODE1_0 | GPIO_MODER_MODE1_1;
+//GPIOA->MODER &= ~GPIO_MODER_MODE1;
+//GPIOA->MODER |= GPIO_MODER_MODE1_0 | GPIO_MODER_MODE1_1;
 
 
 //clear pupdr
-GPIOA->PUPDR &= ~GPIO_PUPDR_PUPD1;
+//GPIOA->PUPDR &= ~GPIO_PUPDR_PUPD1;
 
 /*set firsrt bit of ASCR to close analog switch */
-GPIOA->ASCR |= GPIO_ASCR_ASC1;
+//GPIOA->ASCR |= GPIO_ASCR_ASC1;
 
 
 

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccdHqyqk.s 			page 1
+ARM GAS  /tmp/ccXMER5U.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
   27:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   *      without specific prior written permission.
   28:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   *
   29:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-ARM GAS  /tmp/ccdHqyqk.s 			page 2
+ARM GAS  /tmp/ccXMER5U.s 			page 2
 
 
   30:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
   84:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   */
   85:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
   86:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** /*  2 OPAMPS available */
-ARM GAS  /tmp/ccdHqyqk.s 			page 3
+ARM GAS  /tmp/ccXMER5U.s 			page 3
 
 
   87:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** /*  2 OPAMPS can be calibrated in parallel */
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  106:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****   HAL_StatusTypeDef status = HAL_OK;
   48              		.loc 1 106 1 discriminator 1 view .LVU13
   49 0006 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
-ARM GAS  /tmp/ccdHqyqk.s 			page 4
+ARM GAS  /tmp/ccXMER5U.s 			page 4
 
 
   50              	.LCFI0:
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  137:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       assert_param(IS_OPAMP_POWERMODE(hopamp2->Init.PowerMode));
  138:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
  139:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       /* Save OPAMP mode as in                                       */
-ARM GAS  /tmp/ccdHqyqk.s 			page 5
+ARM GAS  /tmp/ccXMER5U.s 			page 5
 
 
  140:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       /* STM32L471xx STM32L475xx STM32L476xx STM32L485xx STM32L486xx */
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  194:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         MODIFY_REG(*tmp_opamp1_reg_trimming, OPAMP_OTR_TRIMOFFSETN, trimmingvaluen1);
  195:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         MODIFY_REG(*tmp_opamp2_reg_trimming, OPAMP_OTR_TRIMOFFSETN, trimmingvaluen2);
  196:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
-ARM GAS  /tmp/ccdHqyqk.s 			page 6
+ARM GAS  /tmp/ccXMER5U.s 			page 6
 
 
  197:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         /* OFFTRIMmax delay 1 ms as per datasheet (electrical characteristics */ 
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  251:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       
  252:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       /* 2nd calibration - P */
  253:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       SET_BIT (hopamp1->Instance->CSR, OPAMP_CSR_CALSEL);
-ARM GAS  /tmp/ccdHqyqk.s 			page 7
+ARM GAS  /tmp/ccXMER5U.s 			page 7
 
 
  254:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       SET_BIT (hopamp2->Instance->CSR, OPAMP_CSR_CALSEL);
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  308:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       HAL_Delay(OPAMP_TRIMMING_DELAY);
  309:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       
  310:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       if (READ_BIT(hopamp1->Instance->CSR, OPAMP_CSR_CALOUT) != RESET)
-ARM GAS  /tmp/ccdHqyqk.s 			page 8
+ARM GAS  /tmp/ccXMER5U.s 			page 8
 
 
  311:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       {
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  365:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         hopamp2->Init.TrimmingValueNLowPower = trimmingvaluen2;
  366:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         /* Write calibration result P */
  367:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         hopamp2->Init.TrimmingValuePLowPower = trimmingvaluep2;
-ARM GAS  /tmp/ccdHqyqk.s 			page 9
+ARM GAS  /tmp/ccXMER5U.s 			page 9
 
 
  368:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       }
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  143:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
  118              		.loc 1 143 18 view .LVU36
  119 0056 02F00C02 		and	r2, r2, #12
-ARM GAS  /tmp/ccdHqyqk.s 			page 10
+ARM GAS  /tmp/ccXMER5U.s 			page 10
 
 
  120 005a 0392     		str	r2, [sp, #12]
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  173:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       SET_BIT (hopamp2->Instance->CSR, OPAMP_CSR_CALON);
  161              		.loc 1 173 7 is_stmt 1 view .LVU50
  162 008e 2A68     		ldr	r2, [r5]
-ARM GAS  /tmp/ccdHqyqk.s 			page 11
+ARM GAS  /tmp/ccXMER5U.s 			page 11
 
 
  163 0090 1368     		ldr	r3, [r2]
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  204              	.LVL9:
  205              	.L30:
  160:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       }
-ARM GAS  /tmp/ccdHqyqk.s 			page 12
+ARM GAS  /tmp/ccXMER5U.s 			page 12
 
 
  206              		.loc 1 160 33 view .LVU64
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  248 0108 FFF7FEFF 		bl	HAL_Delay
  249              	.LVL15:
  202:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         { 
-ARM GAS  /tmp/ccdHqyqk.s 			page 13
+ARM GAS  /tmp/ccXMER5U.s 			page 13
 
 
  250              		.loc 1 202 9 view .LVU77
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  290              		.loc 1 238 7 view .LVU91
  238:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       {
  291              		.loc 1 238 12 is_stmt 0 view .LVU92
-ARM GAS  /tmp/ccdHqyqk.s 			page 14
+ARM GAS  /tmp/ccXMER5U.s 			page 14
 
 
  292 0148 2B68     		ldr	r3, [r5]
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  258:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       trimmingvaluep2 = 16; 
  334              		.loc 1 258 7 view .LVU105
  335              	.LVL21:
-ARM GAS  /tmp/ccdHqyqk.s 			page 15
+ARM GAS  /tmp/ccXMER5U.s 			page 15
 
 
  259:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       delta = 8; 
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  374 01b8 23F4F853 		bic	r3, r3, #7936
  375 01bc 019A     		ldr	r2, [sp, #4]
  376 01be 43EA0223 		orr	r3, r3, r2, lsl #8
-ARM GAS  /tmp/ccdHqyqk.s 			page 16
+ARM GAS  /tmp/ccXMER5U.s 			page 16
 
 
  377 01c2 3B60     		str	r3, [r7]
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  417 01f6 23F4F853 		bic	r3, r3, #7936
  418 01fa 019A     		ldr	r2, [sp, #4]
  419 01fc 43EA0223 		orr	r3, r3, r2, lsl #8
-ARM GAS  /tmp/ccdHqyqk.s 			page 17
+ARM GAS  /tmp/ccXMER5U.s 			page 17
 
 
  420 0200 3B60     		str	r3, [r7]
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  321:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       }
  461              		.loc 1 321 9 is_stmt 1 view .LVU149
  462 023e 3368     		ldr	r3, [r6]
-ARM GAS  /tmp/ccdHqyqk.s 			page 18
+ARM GAS  /tmp/ccXMER5U.s 			page 18
 
 
  463 0240 23F4F853 		bic	r3, r3, #7936
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  503              		.loc 1 345 9 is_stmt 1 view .LVU163
  345:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****       }
  504              		.loc 1 345 38 is_stmt 0 view .LVU164
-ARM GAS  /tmp/ccdHqyqk.s 			page 19
+ARM GAS  /tmp/ccXMER5U.s 			page 19
 
 
  505 0284 019B     		ldr	r3, [sp, #4]
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  544              		.loc 1 376 7 view .LVU179
  545 02be 0CE0     		b	.L2
  546              	.L21:
-ARM GAS  /tmp/ccdHqyqk.s 			page 20
+ARM GAS  /tmp/ccXMER5U.s 			page 20
 
 
  350:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****         /* Write calibration result P */
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  588              		.cfi_offset 6, -28
  589              		.cfi_offset 7, -24
  590              		.cfi_offset 8, -20
-ARM GAS  /tmp/ccdHqyqk.s 			page 21
+ARM GAS  /tmp/ccXMER5U.s 			page 21
 
 
  591              		.cfi_offset 9, -16
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  641              	HAL_OPAMPEx_Unlock:
  642              	.LVL42:
  643              	.LFB310:
-ARM GAS  /tmp/ccdHqyqk.s 			page 22
+ARM GAS  /tmp/ccXMER5U.s 			page 22
 
 
  386:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c **** 
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  663              		.loc 1 420 23 view .LVU206
  664 0010 0128     		cmp	r0, #1
  665 0012 15D0     		beq	.L42
-ARM GAS  /tmp/ccdHqyqk.s 			page 23
+ARM GAS  /tmp/ccXMER5U.s 			page 23
 
 
  421:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c ****                       || (hopamp->State == HAL_OPAMP_STATE_CALIBBUSY)
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  702 003c 7047     		bx	lr
  703              	.L46:
  704 003e 0120     		movs	r0, #1
-ARM GAS  /tmp/ccdHqyqk.s 			page 24
+ARM GAS  /tmp/ccXMER5U.s 			page 24
 
 
  705              	.L42:
@@ -1406,16 +1406,16 @@ ARM GAS  /tmp/ccdHqyqk.s 			page 1
  725              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
  726              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_opamp.h"
  727              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
-ARM GAS  /tmp/ccdHqyqk.s 			page 25
+ARM GAS  /tmp/ccXMER5U.s 			page 25
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32l4xx_hal_opamp_ex.c
-     /tmp/ccdHqyqk.s:18     .text.HAL_OPAMPEx_SelfCalibrateAll:0000000000000000 $t
-     /tmp/ccdHqyqk.s:26     .text.HAL_OPAMPEx_SelfCalibrateAll:0000000000000000 HAL_OPAMPEx_SelfCalibrateAll
-     /tmp/ccdHqyqk.s:626    .text.HAL_OPAMPEx_SelfCalibrateAll:00000000000002e8 $d
-     /tmp/ccdHqyqk.s:634    .text.HAL_OPAMPEx_Unlock:0000000000000000 $t
-     /tmp/ccdHqyqk.s:641    .text.HAL_OPAMPEx_Unlock:0000000000000000 HAL_OPAMPEx_Unlock
+     /tmp/ccXMER5U.s:18     .text.HAL_OPAMPEx_SelfCalibrateAll:0000000000000000 $t
+     /tmp/ccXMER5U.s:26     .text.HAL_OPAMPEx_SelfCalibrateAll:0000000000000000 HAL_OPAMPEx_SelfCalibrateAll
+     /tmp/ccXMER5U.s:626    .text.HAL_OPAMPEx_SelfCalibrateAll:00000000000002e8 $d
+     /tmp/ccXMER5U.s:634    .text.HAL_OPAMPEx_Unlock:0000000000000000 $t
+     /tmp/ccXMER5U.s:641    .text.HAL_OPAMPEx_Unlock:0000000000000000 HAL_OPAMPEx_Unlock
 
 UNDEFINED SYMBOLS
 HAL_Delay
