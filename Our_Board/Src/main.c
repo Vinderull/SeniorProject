@@ -106,6 +106,7 @@ int main(void)
   char Message[40] = "Hello World\n\r";
   float frequency = 0;
   float samples[SAMPLE_SIZE];
+  int ret;
 
   int counter = 0;
 
@@ -121,7 +122,7 @@ int main(void)
   /* USER CODE END Init */
 
   /* Configure the system clock */
-  SystemClock_Config_MSI();
+  SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
 
@@ -148,7 +149,11 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   //HAL_OPAMP_Start(&hopamp1);
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t *) pReadyProcess, SAMPLE_SIZE);
+  ret = HAL_ADC_Start_DMA(&hadc1, (uint32_t *) pReadyProcess, SAMPLE_SIZE);
+
+
+  sprintf(Message, "%d\n\r", ret);
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
 
 
 
@@ -165,7 +170,6 @@ int main(void)
     */
   while (1)
   {
-HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
 
   /* USER CODE END WHILE */
 
@@ -190,7 +194,7 @@ HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
 
 
   /*don't update screen constantly */
-  if (counter == SCREEN_DELAY){
+  if (counter == SCREEN_DELAY) {
 
      /*find note and display */
      //findNote(frequency);
