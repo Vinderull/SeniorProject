@@ -103,7 +103,7 @@ int main(void)
   /* USER CODE BEGIN 1 */
   //char printNote[40] = "thing\n\r";
   //char printFreq[40] = "thing\n\r";
-  char Message[40] = "Hello World\n\r";
+  char Message[56] = "Hello World\n\r";
   float frequency = 0;
   float samples[SAMPLE_SIZE];
   int ret;
@@ -127,19 +127,24 @@ int main(void)
   /* USER CODE BEGIN SysInit */
 
   /*perform our DMA init, don't trust HAL */
-  GPIO_Init();
-  DMA_Init(SAMPLE_SIZE);
-  TIM4_Init();
+  //GPIO_Init();
+  MX_GPIO_Init();
+  //DMA_Init(SAMPLE_SIZE);
+  MX_DMA_Init();
+  //TIM4_Init();
+  MX_TIM4_Init();
+  MX_ADC1_Init();
   MX_USART2_UART_Init();
-  ADC_Calibration();
+  //ADC_Calibration();
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
+
   //MX_OPAMP1_Init();
 
-  MX_ADC1_Init();
+  //MX_ADC1_Init();
+  //ADC1_Init();
 
   /* USER CODE BEGIN 2 */
 //  MX_I2C1_Init();
@@ -150,6 +155,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   //HAL_OPAMP_Start(&hopamp1);
   ret = HAL_ADC_Start_DMA(&hadc1, (uint32_t *) pReadyProcess, SAMPLE_SIZE);
+  ret = HAL_ADC_GetState(&hadc1);
+
+  ret = HAL_ADC_GetError(&hadc1);
 
 
   sprintf(Message, "%d\n\r", ret);
@@ -192,9 +200,12 @@ int main(void)
   /*reset flag and wait for next transfer */
   DMA_DONE = 0;
 
+  sprintf(Message, "%f\n\r", frequency);
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
 
   /*don't update screen constantly */
-  if (counter == SCREEN_DELAY) {
+  if (counter == SCREEN_DELAY)
+  {
 
      /*find note and display */
      //findNote(frequency);
@@ -203,7 +214,7 @@ int main(void)
 
      /* reset counter for display */
      counter = 0;
-}
+  }
   /*increment counter to display */
   counter++;
   frequency = 0;
@@ -377,7 +388,7 @@ DMA1_Channel1->CCR |= DMA_CCR_MINC;
 
 //Circular
 // 0 = disabled, 1 = enabled
-DMA1_Channel1->CCR |= DMA_CCR_CIRC;
+//DMA1_Channel1->CCR |= DMA_CCR_CIRC;
 
 //Data trasnfer rate
 //O read from peripheral
@@ -402,7 +413,7 @@ DMA1_Channel1->CCR &= ~DMA_CCR_HTIE;
 DMA1_Channel1->CCR |= DMA_CCR_HTIE;
 
 // configure ADC for DMA in circular mode
-//ADC1->CFGR |= ADC_CFGR_DMACFG;
+ADC1->CFGR |= ADC_CFGR_DMACFG;
 //DMA enable?
 ADC1->CFGR |= ADC_CFGR_DMAEN;
 
@@ -447,7 +458,6 @@ if((DMA1->ISR & DMA_ISR_TCIF1) == DMA_ISR_TCIF1){
   /*set transfer complete flag to 1 or ready */
   DMA_DONE = 1;
  }
-
 
 //clear all flags
 /*error, transfer Half complete, full complete transfer */

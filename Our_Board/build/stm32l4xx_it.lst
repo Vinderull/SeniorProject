@@ -1,0 +1,218 @@
+ARM GAS  /tmp/ccuPQgur.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32l4xx_it.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SysTick_Handler,"ax",%progbits
+  18              		.align	1
+  19              		.global	SysTick_Handler
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	SysTick_Handler:
+  27              	.LFB309:
+  28              		.file 1 "Src/stm32l4xx_it.c"
+   1:Src/stm32l4xx_it.c **** /**
+   2:Src/stm32l4xx_it.c ****   ******************************************************************************
+   3:Src/stm32l4xx_it.c ****   * @file    stm32l4xx_it.c
+   4:Src/stm32l4xx_it.c ****   * @brief   Interrupt Service Routines.
+   5:Src/stm32l4xx_it.c ****   ******************************************************************************
+   6:Src/stm32l4xx_it.c ****   *
+   7:Src/stm32l4xx_it.c ****   * COPYRIGHT(c) 2018 STMicroelectronics
+   8:Src/stm32l4xx_it.c ****   *
+   9:Src/stm32l4xx_it.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  10:Src/stm32l4xx_it.c ****   * are permitted provided that the following conditions are met:
+  11:Src/stm32l4xx_it.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  12:Src/stm32l4xx_it.c ****   *      this list of conditions and the following disclaimer.
+  13:Src/stm32l4xx_it.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  14:Src/stm32l4xx_it.c ****   *      this list of conditions and the following disclaimer in the documentation
+  15:Src/stm32l4xx_it.c ****   *      and/or other materials provided with the distribution.
+  16:Src/stm32l4xx_it.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  17:Src/stm32l4xx_it.c ****   *      may be used to endorse or promote products derived from this software
+  18:Src/stm32l4xx_it.c ****   *      without specific prior written permission.
+  19:Src/stm32l4xx_it.c ****   *
+  20:Src/stm32l4xx_it.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  21:Src/stm32l4xx_it.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  22:Src/stm32l4xx_it.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  23:Src/stm32l4xx_it.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  24:Src/stm32l4xx_it.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  25:Src/stm32l4xx_it.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  26:Src/stm32l4xx_it.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  27:Src/stm32l4xx_it.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  28:Src/stm32l4xx_it.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  29:Src/stm32l4xx_it.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  30:Src/stm32l4xx_it.c ****   *
+ARM GAS  /tmp/ccuPQgur.s 			page 2
+
+
+  31:Src/stm32l4xx_it.c ****   ******************************************************************************
+  32:Src/stm32l4xx_it.c ****   */
+  33:Src/stm32l4xx_it.c **** /* Includes ------------------------------------------------------------------*/
+  34:Src/stm32l4xx_it.c **** #include "stm32l4xx_hal.h"
+  35:Src/stm32l4xx_it.c **** #include "stm32l4xx.h"
+  36:Src/stm32l4xx_it.c **** #include "stm32l4xx_it.h"
+  37:Src/stm32l4xx_it.c **** 
+  38:Src/stm32l4xx_it.c **** /* USER CODE BEGIN 0 */
+  39:Src/stm32l4xx_it.c **** 
+  40:Src/stm32l4xx_it.c **** /* USER CODE END 0 */
+  41:Src/stm32l4xx_it.c **** 
+  42:Src/stm32l4xx_it.c **** /* External variables --------------------------------------------------------*/
+  43:Src/stm32l4xx_it.c **** extern DMA_HandleTypeDef hdma_adc1;
+  44:Src/stm32l4xx_it.c **** extern ADC_HandleTypeDef hadc1;
+  45:Src/stm32l4xx_it.c **** 
+  46:Src/stm32l4xx_it.c **** /******************************************************************************/
+  47:Src/stm32l4xx_it.c **** /*            Cortex-M4 Processor Interruption and Exception Handlers         */
+  48:Src/stm32l4xx_it.c **** /******************************************************************************/
+  49:Src/stm32l4xx_it.c **** 
+  50:Src/stm32l4xx_it.c **** /**
+  51:Src/stm32l4xx_it.c **** * @brief This function handles System tick timer.
+  52:Src/stm32l4xx_it.c **** */
+  53:Src/stm32l4xx_it.c **** void SysTick_Handler(void)
+  54:Src/stm32l4xx_it.c **** {
+  29              		.loc 1 54 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  55:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 0 */
+  56:Src/stm32l4xx_it.c **** 
+  57:Src/stm32l4xx_it.c ****   /* USER CODE END SysTick_IRQn 0 */
+  58:Src/stm32l4xx_it.c ****   HAL_IncTick();
+  38              		.loc 1 58 3 view .LVU1
+  39 0002 FFF7FEFF 		bl	HAL_IncTick
+  40              	.LVL0:
+  59:Src/stm32l4xx_it.c ****   HAL_SYSTICK_IRQHandler();
+  41              		.loc 1 59 3 view .LVU2
+  42 0006 FFF7FEFF 		bl	HAL_SYSTICK_IRQHandler
+  43              	.LVL1:
+  60:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 1 */
+  61:Src/stm32l4xx_it.c **** 
+  62:Src/stm32l4xx_it.c ****   /* USER CODE END SysTick_IRQn 1 */
+  63:Src/stm32l4xx_it.c **** }
+  44              		.loc 1 63 1 is_stmt 0 view .LVU3
+  45 000a 08BD     		pop	{r3, pc}
+  46              		.cfi_endproc
+  47              	.LFE309:
+  49              		.section	.text.ADC1_2_IRQHandler,"ax",%progbits
+  50              		.align	1
+  51              		.global	ADC1_2_IRQHandler
+  52              		.syntax unified
+  53              		.thumb
+ARM GAS  /tmp/ccuPQgur.s 			page 3
+
+
+  54              		.thumb_func
+  55              		.fpu fpv4-sp-d16
+  57              	ADC1_2_IRQHandler:
+  58              	.LFB310:
+  64:Src/stm32l4xx_it.c **** 
+  65:Src/stm32l4xx_it.c **** /******************************************************************************/
+  66:Src/stm32l4xx_it.c **** /* STM32L4xx Peripheral Interrupt Handlers                                    */
+  67:Src/stm32l4xx_it.c **** /* Add here the Interrupt Handlers for the used peripherals.                  */
+  68:Src/stm32l4xx_it.c **** /* For the available peripheral interrupt handler names,                      */
+  69:Src/stm32l4xx_it.c **** /* please refer to the startup file (startup_stm32l4xx.s).                    */
+  70:Src/stm32l4xx_it.c **** /******************************************************************************/
+  71:Src/stm32l4xx_it.c **** 
+  72:Src/stm32l4xx_it.c **** /**
+  73:Src/stm32l4xx_it.c **** * @brief This function handles DMA1 channel1 global interrupt.
+  74:Src/stm32l4xx_it.c **** */
+  75:Src/stm32l4xx_it.c **** //void DMA1_Channel1_IRQHandler(void)
+  76:Src/stm32l4xx_it.c **** //{
+  77:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
+  78:Src/stm32l4xx_it.c **** 
+  79:Src/stm32l4xx_it.c ****   /* USER CODE END DMA1_Channel1_IRQn 0 */
+  80:Src/stm32l4xx_it.c ****   //HAL_DMA_IRQHandler(&hdma_adc1);
+  81:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
+  82:Src/stm32l4xx_it.c **** 
+  83:Src/stm32l4xx_it.c ****   /* USER CODE END DMA1_Channel1_IRQn 1 */
+  84:Src/stm32l4xx_it.c **** //}
+  85:Src/stm32l4xx_it.c **** 
+  86:Src/stm32l4xx_it.c **** /**
+  87:Src/stm32l4xx_it.c **** * @brief This function handles ADC1 and ADC2 interrupts.
+  88:Src/stm32l4xx_it.c **** */
+  89:Src/stm32l4xx_it.c **** void ADC1_2_IRQHandler(void)
+  90:Src/stm32l4xx_it.c **** {
+  59              		.loc 1 90 1 is_stmt 1 view -0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 08B5     		push	{r3, lr}
+  64              	.LCFI1:
+  65              		.cfi_def_cfa_offset 8
+  66              		.cfi_offset 3, -8
+  67              		.cfi_offset 14, -4
+  91:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN ADC1_2_IRQn 0 */
+  92:Src/stm32l4xx_it.c **** 
+  93:Src/stm32l4xx_it.c ****   /* USER CODE END ADC1_2_IRQn 0 */
+  94:Src/stm32l4xx_it.c ****   HAL_ADC_IRQHandler(&hadc1);
+  68              		.loc 1 94 3 view .LVU5
+  69 0002 0248     		ldr	r0, .L5
+  70 0004 FFF7FEFF 		bl	HAL_ADC_IRQHandler
+  71              	.LVL2:
+  95:Src/stm32l4xx_it.c ****   /* USER CODE BEGIN ADC1_2_IRQn 1 */
+  96:Src/stm32l4xx_it.c **** 
+  97:Src/stm32l4xx_it.c ****   /* USER CODE END ADC1_2_IRQn 1 */
+  98:Src/stm32l4xx_it.c **** }
+  72              		.loc 1 98 1 is_stmt 0 view .LVU6
+  73 0008 08BD     		pop	{r3, pc}
+  74              	.L6:
+  75 000a 00BF     		.align	2
+  76              	.L5:
+ARM GAS  /tmp/ccuPQgur.s 			page 4
+
+
+  77 000c 00000000 		.word	hadc1
+  78              		.cfi_endproc
+  79              	.LFE310:
+  81              		.text
+  82              	.Letext0:
+  83              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
+  84              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
+  85              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+  86              		.file 5 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+  87              		.file 6 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
+  88              		.file 7 "/usr/arm-none-eabi/include/sys/lock.h"
+  89              		.file 8 "/usr/arm-none-eabi/include/sys/_types.h"
+  90              		.file 9 "/usr/lib/gcc/arm-none-eabi/9.2.0/include/stddef.h"
+  91              		.file 10 "/usr/arm-none-eabi/include/sys/reent.h"
+  92              		.file 11 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+  93              		.file 12 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+  94              		.file 13 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_adc.h"
+  95              		.file 14 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
+  96              		.file 15 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
+ARM GAS  /tmp/ccuPQgur.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32l4xx_it.c
+     /tmp/ccuPQgur.s:18     .text.SysTick_Handler:0000000000000000 $t
+     /tmp/ccuPQgur.s:26     .text.SysTick_Handler:0000000000000000 SysTick_Handler
+     /tmp/ccuPQgur.s:50     .text.ADC1_2_IRQHandler:0000000000000000 $t
+     /tmp/ccuPQgur.s:57     .text.ADC1_2_IRQHandler:0000000000000000 ADC1_2_IRQHandler
+     /tmp/ccuPQgur.s:77     .text.ADC1_2_IRQHandler:000000000000000c $d
+
+UNDEFINED SYMBOLS
+HAL_IncTick
+HAL_SYSTICK_IRQHandler
+HAL_ADC_IRQHandler
+hadc1
