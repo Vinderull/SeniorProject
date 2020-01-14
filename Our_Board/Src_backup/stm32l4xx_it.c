@@ -1,14 +1,8 @@
 /**
   ******************************************************************************
-  * File Name          : OPAMP.h
-  * Description        : This file provides code for the configuration
-  *                      of the OPAMP instances.
+  * @file    stm32l4xx_it.c
+  * @brief   Interrupt Service Routines.
   ******************************************************************************
-  ** This notice applies to any and all portions of this file
-  * that are not between comment pairs USER CODE BEGIN and
-  * USER CODE END. Other portions of this file, whether
-  * inserted by the user or by software development tools
-  * are owned by their respective copyright owners.
   *
   * COPYRIGHT(c) 2018 STMicroelectronics
   *
@@ -36,46 +30,74 @@
   *
   ******************************************************************************
   */
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __opamp_H
-#define __opamp_H
-#ifdef __cplusplus
- extern "C" {
-#endif
-
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l4xx_hal.h"
-#include "main.h"
+#include "stm32l4xx.h"
+#include "stm32l4xx_it.h"
 
-/* USER CODE BEGIN Includes */
+/* USER CODE BEGIN 0 */
 
-/* USER CODE END Includes */
+/* USER CODE END 0 */
 
-extern OPAMP_HandleTypeDef hopamp1;
+/* External variables --------------------------------------------------------*/
+extern DMA_HandleTypeDef hdma_adc1;
+extern ADC_HandleTypeDef hadc1;
 
-/* USER CODE BEGIN Private defines */
+/******************************************************************************/
+/*            Cortex-M4 Processor Interruption and Exception Handlers         */
+/******************************************************************************/
 
-/* USER CODE END Private defines */
+/**
+* @brief This function handles System tick timer.
+*/
+void SysTick_Handler(void)
+{
+  /* USER CODE BEGIN SysTick_IRQn 0 */
 
-extern void _Error_Handler(char *, int);
+  /* USER CODE END SysTick_IRQn 0 */
+  HAL_IncTick();
+  HAL_SYSTICK_IRQHandler();
+  /* USER CODE BEGIN SysTick_IRQn 1 */
 
-void MX_OPAMP1_Init(void);
-
-/* USER CODE BEGIN Prototypes */
-
-/* USER CODE END Prototypes */
-
-#ifdef __cplusplus
+  /* USER CODE END SysTick_IRQn 1 */
 }
-#endif
-#endif /*__ opamp_H */
+
+/******************************************************************************/
+/* STM32L4xx Peripheral Interrupt Handlers                                    */
+/* Add here the Interrupt Handlers for the used peripherals.                  */
+/* For the available peripheral interrupt handler names,                      */
+/* please refer to the startup file (startup_stm32l4xx.s).                    */
+/******************************************************************************/
 
 /**
-  * @}
-  */
+* @brief This function handles DMA1 channel1 global interrupt.
+*/
+//void DMA1_Channel1_IRQHandler(void)
+//{
+  /* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
+
+  /* USER CODE END DMA1_Channel1_IRQn 0 */
+  //HAL_DMA_IRQHandler(&hdma_adc1);
+  /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
+
+  /* USER CODE END DMA1_Channel1_IRQn 1 */
+//}
 
 /**
-  * @}
-  */
+* @brief This function handles ADC1 and ADC2 interrupts.
+*/
+void ADC1_2_IRQHandler(void)
+{
+  /* USER CODE BEGIN ADC1_2_IRQn 0 */
 
+  /* USER CODE END ADC1_2_IRQn 0 */
+  HAL_ADC_IRQHandler(&hadc1);
+  /* USER CODE BEGIN ADC1_2_IRQn 1 */
+
+  /* USER CODE END ADC1_2_IRQn 1 */
+}
+
+/* USER CODE BEGIN 1 */
+
+/* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

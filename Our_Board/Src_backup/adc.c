@@ -113,6 +113,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
   /* USER CODE END ADC1_MspInit 0 */
     /* ADC1 clock enable */
     __HAL_RCC_ADC_CLK_ENABLE();
+    //__HAL_RCC_ADC_CONFIG(RCC_ADCCLKSOURCE_SYSCLK);
 
     /**ADC1 GPIO Configuration
     PA1     ------> ADC1_IN6
@@ -167,7 +168,7 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
     /**ADC1 GPIO Configuration
     PA1     ------> ADC1_IN6
     */
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_1);
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_0);
 
     /* ADC1 DMA DeInit */
     HAL_DMA_DeInit(adcHandle->DMA_Handle);

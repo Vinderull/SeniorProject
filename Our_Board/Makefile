@@ -37,21 +37,14 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Src/ADCsrc.c \
-Src/ssd1306.c \
-Src/fonts.c \
 Src/main.c \
 Src/gpio.c \
-Src/opamp.c \
 Src/adc.c \
 Src/dma.c \
-Src/noteDetect.c \
 Src/tim.c \
-Src/i2c.c \
 Src/usart.c \
 Src/stm32l4xx_it.c \
 Src/stm32l4xx_hal_msp.c \
-Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp.c \
-Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_opamp_ex.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc_ex.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c \
@@ -59,8 +52,6 @@ Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c \
-Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c \
-Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c \
 Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c \

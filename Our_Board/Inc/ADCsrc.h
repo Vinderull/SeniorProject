@@ -2,18 +2,15 @@
 
 #ifndef __ADCsrc_H
 #define __ADCsrc_H
-
-#include "tim.h"
+#include "stm32l4xx_hal.h"
 
 void ADC1_Init(void);
 
 void ADC1_Wakeup(void);
 
-void TIM4_Config(uint16_t fs);
+void getFloat(uint32_t *input, float *output, uint32_t nsamp);
 
-void getFloat(uint32_t *input, float *output, int nsamp);
-
-void findFrequency(float *samples, int nsamp, float *note);
+void findFrequency(float *samples, uint32_t nsamp, float *note);
 
 void GPIO_Init(void);
 

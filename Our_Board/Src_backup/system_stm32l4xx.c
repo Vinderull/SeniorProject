@@ -112,7 +112,7 @@
 #endif /* HSE_VALUE */
 
 #if !defined  (MSI_VALUE)
-  #define MSI_VALUE    4000000U  /*!< Value of the Internal oscillator in Hz*/
+  #define MSI_VALUE    16000000U///4000000U  /*!< Value of the Internal oscillator in Hz*/
 #endif /* MSI_VALUE */
 
 #if !defined  (HSI_VALUE)

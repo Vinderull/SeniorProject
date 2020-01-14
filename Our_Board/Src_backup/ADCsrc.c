@@ -41,7 +41,7 @@ void ADC1_Init(void)
 1011: input ADC clock divided by 256
 */
   ADC123_COMMON->CCR &= ~ADC_CCR_PRESC;
-  //ADC123_COMMON->CCR |= ADC_CCR_PRESC_0;
+  ADC123_COMMON->CCR |= ADC_CCR_PRESC_0;
 
   /*configure ADC clock to be synchonous HCLK/1 */
 /*
@@ -93,6 +93,10 @@ has a 50% duty cycle.
  */
   ADC1->SMPR1 &= ~ADC_SMPR1_SMP6;
   ADC1->SMPR1 |= ADC_SMPR1_SMP6_0 | ADC_SMPR1_SMP6_2;
+
+
+  /*select single ended input */
+  ADC1->DIFSEL &= ~ADC_DIFSEL_DIFSEL_6;
 
   /*Set ADC in discontinuous mode */
   // 0 = discontinuous
@@ -182,6 +186,11 @@ RCC->AHB2ENR &= ~RCC_AHB2ENR_GPIOAEN;
 RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
 
 
+//Enable clock for GPIOB
+RCC->AHB2ENR &= ~RCC_AHB2ENR_GPIOBEN;
+RCC->AHB2ENR |= RCC_AHB2ENR_GPIOBEN;
+
+
 /*SET PA1 as analog*/
 /*00 = digital input, 01 = digital Output*/
 /*10 = alternate function, 11 = analog (default) */
@@ -194,6 +203,7 @@ GPIOA->PUPDR &= ~GPIO_PUPDR_PUPD1;
 
 /*set firsrt bit of ASCR to close analog switch */
 GPIOA->ASCR |= GPIO_ASCR_ASC1;
+
 
 
 
@@ -236,7 +246,7 @@ void TIM4_Init(void)
   TIM4->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2;
 
   /*Timer driving frequency = 80MHz/(1+PSC) = 80M/(1+7)= 10MHz */
-  /*Trigger frequency 10MHz / (1 + ARR)= 10KHz */
+  /*Trigger frequency 10MHz / (1 + ARR)= 10kHz */
   TIM4->PSC = 7;
   TIM4->ARR = 999;
   /*Duty ratio of 50% */
@@ -275,7 +285,7 @@ void ADC_Calibration(void){
 
 }
 
-void getFloat(uint32_t *input, float *output, uint32_t nsamp)
+void getFloat(uint32_t *input, float *output, int nsamp)
 {
   int i;
 
@@ -283,6 +293,8 @@ void getFloat(uint32_t *input, float *output, uint32_t nsamp)
   // Samples are normalized to range from -1.0 to 1.0
   // 1/32768 = 3.0517578e-05  (Multiplication is much faster than dividing)
 
+  /*crazy left aligned math to normalize data */
+  /*shamelessly borrowed from DONALD HUMMELS of ECE department */
   for (i=0; i<nsamp; i++) {
      // 1/32768 = 3.0517578e-05  (Multiplication is much faster than dividing)
         output[i] = ((float)((int)input[i]-32767))*3.0517578e-05f;
@@ -291,28 +303,30 @@ void getFloat(uint32_t *input, float *output, uint32_t nsamp)
 }
 
 
-void findFrequency(float *samples, uint32_t nsamp, float *note)
+void findFrequency(float *samples, int nsamp, float *note)
 {
    uint32_t i, n, j, maxIndex;
    float avg, dev, maxVal;
-   float output1[nsamp*2], output2[nsamp], input[nsamp];
+   float output1[nsamp*2], output2[nsamp];
    n=1;
 
 
+
+ /*Perform correlation, performing on "samples" is autocorrelation */
+ /*save to output buffer of twice size of input*/
  arm_correlate_f32(samples, nsamp, samples, nsamp, output1);
-//arm_rfft_fast_f32(&fftStruct, input, output1, 0);
-  arm_mean_f32(output1, nsamp*2, &avg);
+
+/*find mean of output1 one buffer, save to avg passed by reference */
+/*faster since function doesn't make local coyp of avg */
+ arm_mean_f32(output1, nsamp*2, &avg);
 
 
 
 
-/* subtract mean */
+/* subtract mean to center signal at 0*/
 for(i=0; i<nsamp*2; i++){
-  //output1[i] *= 10;
   output1[i] -= avg;
 
-  /*zero out negative correlations */
-  //if(output1[i]<0) output1[i] = 0;
 }
 
   /*Find Max value as well as corresponding index of said value */
@@ -320,6 +334,9 @@ for(i=0; i<nsamp*2; i++){
 
 
 /* normalize */
+/*Amplitude of most dominant peak of Lag matrix is total energy */
+/*divide by total energy of signal to normalize */
+/*nice property of autocorrelation */
    for(i=0; i<nsamp*2; i++){
      output1[i] /= maxVal;
    }
@@ -338,20 +355,26 @@ for(i=0; i<nsamp*2; i++){
 
 
 /* eliminate non dominant peaks */
- for(i=0; i<nsamp; i++){
-  if ((output2[i] < avg + (2*dev))) output2[i] = 0;
+/*using std deviation and avg as threshold */
+ for (i=0; i<nsamp; i++) {
+        if ((output2[i] < avg + (2*dev))) output2[i] = 0.0;
  }
 
 
 /* peak detection */
-   for(i = 1; i<nsamp-1; i++ ){
+/*BRUTE force iterate through array */
+/*check next value and last value */
+/*iterate if not peak */
+   for (i = 1; i<nsamp-1; i++ ) {
 
+      /*forward difference operator to find discrete difference */
+      /*effectively derivative */
       if(((output2[i] - output2[i-1])>0) && ((output2[i+1]-output2[i])<0)){
         n = i;
         break;
       }
 
-      else if((output2[i] - output2[i-1])>0) continue;
+      else if((output2[i] - output2[i-1]) > 0) continue;
 
       else if((output2[i+1] - output2[i]) < 0) continue;
    }
@@ -359,10 +382,6 @@ for(i=0; i<nsamp*2; i++){
           /*sample rate /divided by number of samples to peak */
           /*returns frequency in Hz */
    *note = 10000.0/((float) n);
-
-
-
-  //printf("%f\n\r", note);
 
 
 }
