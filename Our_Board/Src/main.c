@@ -44,7 +44,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include "yin.h"
+#include "Yin.h"
 
 /* USER CODE BEGIN Includes */
 #include "ADCsrc.h"
@@ -76,11 +76,13 @@ void SystemClock_Config_MSI(void);
 //volatile uint32_t *pReadyWrite = Buffer_Ping;
 //volatile uint32_t *pReadyProcess = Buffer_Pong;
 
+/*trying out 16 bit, ADC resolution is only 12-bit to begin with */
+/* DMA data bus may be 32-bit, but setting transfer to HALFWORD seems to work */
 volatile uint16_t Buffer_Ping[SAMPLE_SIZE];
 volatile uint16_t Buffer_Pong[SAMPLE_SIZE];
 volatile uint16_t *pReadyWrite = Buffer_Ping;
 volatile uint16_t *pReadyProcess = Buffer_Pong;
-volatile uint32_t ADC_DMA_DONE = 0;
+volatile uint8_t ADC_DMA_DONE = 0;
 /* USER CODE END 0 */
 
 /**
@@ -142,15 +144,13 @@ int main(void)
 
 
   while(ADC_DMA_DONE == 0);
-  //getFloat(pReadyProcess, samples, SAMPLE_SIZE);
-  //for ( i = 0; i < SAMPLE_SIZE; i++)
-//        pReadyProcess[i] -= 32768;
+
+  /*Initialize Yin struct and get pitch. Yin_init dynamically allocates memory*/
+  /* and as a result the buffer needs to be freed after each calculation */
   Yin_init(&yin, SAMPLE_SIZE, YIN_DEFAULT_THRESHOLD);
   frequency = Yin_getPitch(&yin, pReadyProcess);
   free(yin.yinBuffer);
-  //sprintf(Message, "The First Value in Hex is %x\n\r", pReadyProcess[0]);
-  //findFrequency(samples, SAMPLE_SIZE, &frequency);
-  //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+
 
   sprintf(Message, "The Note is %f\n\r", frequency);
   /*transmit sring over usart2 */
