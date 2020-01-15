@@ -44,6 +44,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "yin.h"
 
 /* USER CODE BEGIN Includes */
 #include "ADCsrc.h"
@@ -67,13 +68,18 @@ void SystemClock_Config_MSI(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-#define SAMPLE_SIZE 2048
+#define SAMPLE_SIZE 4096
 #define FREQUENCY_CORRECTION 2
 
-volatile uint32_t Buffer_Ping[SAMPLE_SIZE];
-volatile uint32_t Buffer_Pong[SAMPLE_SIZE];
-volatile uint32_t *pReadyWrite = Buffer_Ping;
-volatile uint32_t *pReadyProcess = Buffer_Pong;
+//volatile uint32_t Buffer_Ping[SAMPLE_SIZE];
+//volatile uint32_t Buffer_Pong[SAMPLE_SIZE];
+//volatile uint32_t *pReadyWrite = Buffer_Ping;
+//volatile uint32_t *pReadyProcess = Buffer_Pong;
+
+volatile uint16_t Buffer_Ping[SAMPLE_SIZE];
+volatile uint16_t Buffer_Pong[SAMPLE_SIZE];
+volatile uint16_t *pReadyWrite = Buffer_Ping;
+volatile uint16_t *pReadyProcess = Buffer_Pong;
 volatile uint32_t ADC_DMA_DONE = 0;
 /* USER CODE END 0 */
 
@@ -86,8 +92,11 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
   char Message[40] = "thing\n\r";
+  uint16_t mask = 0XFFFF;
+  uint16_t i;
   float frequency = 0;
-  float samples[SAMPLE_SIZE];
+  //float samples[SAMPLE_SIZE];
+  Yin yin;
 
   /* USER CODE END 1 */
 
@@ -122,7 +131,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   HAL_TIM_Base_Init(&htim4);
   HAL_TIM_Base_Start(&htim4);
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t *) pReadyProcess, SAMPLE_SIZE);
+  HAL_ADC_Start_DMA(&hadc1, (uint16_t *) pReadyProcess, SAMPLE_SIZE);
 
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
@@ -133,20 +142,27 @@ int main(void)
 
 
   while(ADC_DMA_DONE == 0);
-  getFloat(pReadyProcess, samples, SAMPLE_SIZE);
-  findFrequency(samples, SAMPLE_SIZE, &frequency);
+  //getFloat(pReadyProcess, samples, SAMPLE_SIZE);
+  //for ( i = 0; i < SAMPLE_SIZE; i++)
+//        pReadyProcess[i] -= 32768;
+  Yin_init(&yin, SAMPLE_SIZE, YIN_DEFAULT_THRESHOLD);
+  frequency = Yin_getPitch(&yin, pReadyProcess);
+  free(yin.yinBuffer);
+  //sprintf(Message, "The First Value in Hex is %x\n\r", pReadyProcess[0]);
+  //findFrequency(samples, SAMPLE_SIZE, &frequency);
+  //HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 15, 0xFFF);
+
+  sprintf(Message, "The Note is %f\n\r", frequency);
+  /*transmit sring over usart2 */
+  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 
   /*Scale Frequency by scaling factor */
-  frequency /= FREQUENCY_CORRECTION;
+  //frequency /= FREQUENCY_CORRECTION;
 
   ADC_DMA_DONE = 0;
 
 
 
-  //gcvt(frequency, 4, Message);
-  sprintf(Message, "The Note is %f\n\r", frequency);
-  /*transmit sring over usart2 */
-  HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 
 
   /* USER CODE BEGIN 3 */

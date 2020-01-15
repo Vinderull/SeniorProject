@@ -40,6 +40,7 @@ Src/ADCsrc.c \
 Src/main.c \
 Src/gpio.c \
 Src/adc.c \
+Src/Yin.c \
 Src/dma.c \
 Src/tim.c \
 Src/usart.c \
