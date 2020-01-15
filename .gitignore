@@ -1,3 +1,6 @@
+#remove mac specific INODE files
+.DS_Store
+
 # Prerequisites
 *.d
 
