@@ -37,6 +37,7 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Src/ADCsrc.c \
+Src/PA5_Timer.c \
 Src/main.c \
 Src/gpio.c \
 Src/adc.c \

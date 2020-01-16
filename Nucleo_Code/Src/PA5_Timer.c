@@ -1,10 +1,13 @@
 /*Timer for PA5 and PA5 GPIO inits */
 /*Timer 2 channel 1 */
 
+#include "PA5_Timer.h"
+#include "stm32l4xx_hal.h"
+
 void PA5_Timer(void)
 {
         //Enable the clock to port A
-        RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
+        RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
 
         //set pin 5 to I/O Mode as Alternate Function (10)
         GPIOA->MODER &= ~(GPIO_MODER_MODE5_1 | GPIO_MODER_MODE5_0);
@@ -43,5 +46,73 @@ void PA5_Timer(void)
         TIM2->CCER |= TIM_CCER_CC1E;
 
         //enable timer 2
-        TIM2->CR1 |= TIM_CR1_CEN; 
+        TIM2->CR1 |= TIM_CR1_CEN;
+}
+
+void TIM2_Init(void)
+{
+        //enable clock
+        RCC->APB1ENR1 |= RCC_APB1ENR1_TIM2EN;
+
+        //prescalar = 60
+        TIM2->PSC = 63;
+        TIM2->ARR = 200 - 1;
+
+        //OC1m = 110 for PWM mode 1 output for channel 1
+        TIM2->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2;
+
+        //output 1 preload Enable
+        TIM2->CCMR1 |=  TIM_CCMR1_OC1PE;
+
+        //auto reload preload Enable
+        TIM2->CR1 |= TIM_CR1_ARPE;
+
+        //Enable output for channel 1
+        TIM2->CCER |= TIM_CCER_CC1E;
+
+        //Force update
+        TIM2->EGR |= TIM_EGR_UG;
+
+        //clear update flag
+        TIM2->SR &= ~TIM_SR_UIF;
+
+        //Enable interrupt on update
+        TIM2->DIER |= TIM_DIER_UIE;
+
+        //enable counter
+        TIM2->CR1 |= TIM_CR1_CEN;
+}
+
+int calcBeat(float frequency, float reference)
+{
+        float decBeat;
+
+        /*check to see which is bigger. decBeat should be non negative */
+        if (frequency > reference)
+                decBeat = frequency - reference;
+
+        else
+                decBeat = reference - frequency;
+
+        /* If decBeat is 0, don't divide, just return always on */
+        /*since it is in perfect tune. This should be rare, but still possible */
+        if (decBeat == 0.0)
+                return 255;
+
+        decBeat = 1/decBeat;
+
+        /*scale to fix value as int, cast out of float */
+        decBeat *= 100;
+
+        return (int) decBeat;
+
+}
+
+void TIM2_Strobe(int beat)
+{
+        int brightness;
+        int stepSize;
+
+        //beating is recipricol of the difference between reference frequency and measured
+        TIM4->CCR1 = beat;
 }

@@ -48,6 +48,7 @@
 
 /* USER CODE BEGIN Includes */
 #include "ADCsrc.h"
+#include "PA5_Timer.h"
 
 /* USER CODE END Includes */
 
@@ -97,6 +98,7 @@ int main(void)
   uint16_t mask = 0XFFFF;
   uint16_t i;
   float frequency = 0;
+  int beat;
   //float samples[SAMPLE_SIZE];
   Yin yin;
 
@@ -125,6 +127,7 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM4_Init();
   MX_USART2_UART_Init();
+  TIM2_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -151,6 +154,8 @@ int main(void)
   frequency = Yin_getPitch(&yin, pReadyProcess);
   free(yin.yinBuffer);
 
+  /*beat calc */
+  beat = calcBeat(frequency, 82.41);
 
   sprintf(Message, "The Note is %f\n\r", frequency);
   /*transmit sring over usart2 */
