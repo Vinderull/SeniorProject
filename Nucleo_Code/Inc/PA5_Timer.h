@@ -1,7 +1,7 @@
 //PA5_Timer.h
 
-#ifndef __MAIN_H__
-#define __MAIN_H__
+#ifndef __PA5_Timer_H__
+#define __PA5_TIMER_H__
 
 void PA5_Timer(void);
 

@@ -49,6 +49,7 @@
 /* USER CODE BEGIN Includes */
 #include "ADCsrc.h"
 #include "PA5_Timer.h"
+#include <stdlib.h>
 
 /* USER CODE END Includes */
 
@@ -157,7 +158,7 @@ int main(void)
   /*beat calc */
   beat = calcBeat(frequency, 82.41);
 
-  sprintf(Message, "The Note is %f\n\r", frequency);
+  sprintf(Message, "The Note is %f\n\r", beat);
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 
