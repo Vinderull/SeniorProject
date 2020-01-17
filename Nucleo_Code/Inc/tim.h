@@ -40,10 +40,11 @@ extern TIM_HandleTypeDef htim2;
 
 void MX_TIM2_Init(void);
 void MX_TIM4_Init(void);
-                        
+
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
-                    
+
 /* USER CODE BEGIN Prototypes */
+void set_PWM(uint16_t x);
 
 /* USER CODE END Prototypes */
 

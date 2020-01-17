@@ -60,6 +60,7 @@
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
+void DMA_Init(uint16_t arg);
 void SystemClock_Config_MSI(void);
 /* USER CODE END PFP */
 
@@ -153,7 +154,9 @@ int main(void)
   free(yin.yinBuffer);
 
   /*beat calc */
-  //beat = calcBeat(frequency, 82.41);
+  frequency = 82;
+  beat = calcBeat(frequency, 82.41);
+  set_PWM(beat);
 
   sprintf(Message, "The Note is %d\n\r", beat);
   /*transmit sring over usart2 */
@@ -234,7 +237,7 @@ void SystemClock_Config(void)
 
 
 
-void DMA_Init(int arg)
+void DMA_Init(uint16_t arg)
 {
 //arg number of conversions
 //uint32_t ADC_Results[arg];
