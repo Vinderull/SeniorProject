@@ -99,7 +99,7 @@ int main(void)
   uint16_t mask = 0XFFFF;
   uint16_t i;
   float frequency = 0;
-  int beat;
+  int beat = 0;
   //float samples[SAMPLE_SIZE];
   Yin yin;
 
@@ -115,7 +115,7 @@ int main(void)
   /* USER CODE END Init */
 
   /* Configure the system clock */
-  SystemClock_Config_MSI();
+  SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
 
@@ -127,16 +127,21 @@ int main(void)
   DMA_Init(SAMPLE_SIZE);  //ADC_Calibration();
   MX_ADC1_Init();
   MX_TIM4_Init();
+  MX_TIM2_Init();
   MX_USART2_UART_Init();
-  TIM2_Init();
+  //PA5_Timer();
+  //TIM2_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_TIM_Base_Init(&htim4);
+  //HAL_TIM_Base_Init(&htim2);
+  //HAL_TIM_Base_Start(&htim2);
+  //HAL_TIM_Base_Init(&htim4);
   HAL_TIM_Base_Start(&htim4);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   HAL_ADC_Start_DMA(&hadc1, (uint16_t *) pReadyProcess, SAMPLE_SIZE);
 
   /*transmit sring over usart2 */
@@ -156,9 +161,9 @@ int main(void)
   free(yin.yinBuffer);
 
   /*beat calc */
-  beat = calcBeat(frequency, 82.41);
+  //beat = calcBeat(frequency, 82.41);
 
-  sprintf(Message, "The Note is %f\n\r", beat);
+  sprintf(Message, "The Note is %d\n\r", beat);
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 
@@ -219,75 +224,60 @@ if(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
     while(1);
   }
  }
-/**
-  * @brief System Clock Configuration
-  * @retval None
-  */
-void SystemClock_Config(void)
-{
 
-  RCC_OscInitTypeDef RCC_OscInitStruct;
-  RCC_ClkInitTypeDef RCC_ClkInitStruct;
-  RCC_PeriphCLKInitTypeDef PeriphClkInit;
+ /**
+   * @brief System Clock Configuration
+   * @retval None
+   */
+ void SystemClock_Config(void)
+ {
+   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
-    /**Initializes the CPU, AHB and APB busses clocks
-    */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = 16;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
+   /** Initializes the CPU, AHB and APB busses clocks
+   */
+   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+   RCC_OscInitStruct.PLL.PLLM = 1;
+   RCC_OscInitStruct.PLL.PLLN = 10;
+   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
+   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+   {
+     Error_Handler();
+   }
+   /** Initializes the CPU, AHB and APB busses clocks
+   */
+   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-    /**Initializes the CPU, AHB and APB busses clocks
-    */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+   {
+     Error_Handler();
+   }
+   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART2;
+   PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
+   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+   {
+     Error_Handler();
+   }
+   /** Configure the main internal regulator output voltage
+   */
+   if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
+   {
+     Error_Handler();
+   }
+ }
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART2|RCC_PERIPHCLK_ADC;
-  PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
-  PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
-  PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_HSI;
-  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
-  PeriphClkInit.PLLSAI1.PLLSAI1N = 8;
-  PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
-  PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
-  PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
-  PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_ADC1CLK;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-
-    /**Configure the main internal regulator output voltage
-    */
-  if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-
-    /**Configure the Systick interrupt time
-    */
-  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
-
-    /**Configure the Systick
-    */
-  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
-
-  /* SysTick_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
-}
 
 /* USER CODE BEGIN 4 */
 
