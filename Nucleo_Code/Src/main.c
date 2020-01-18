@@ -155,8 +155,8 @@ int main(void)
   free(yin.yinBuffer);
 
   /*beat calc */
-  frequency = 79.3;
-  beat = calcBeat(frequency, 82.41);
+  //frequency = 79.3;
+  //beat = calcBeat(frequency, 82.41);
 
 /*
   HAL_Delay(100);
@@ -166,7 +166,7 @@ int main(void)
 */
   //set_PWM(beat);
 
-  sprintf(Message, "The Note is %f\n\r", beat);
+  sprintf(Message, "The Note is %f\n\r", frequency);
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 
