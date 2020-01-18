@@ -32,6 +32,7 @@
 #include "PA5_Timer.h"
 #include <stdlib.h>
 #include "Yin.h"
+#include <stdio.h>
 
 /* USER CODE END Includes */
 
@@ -154,11 +155,18 @@ int main(void)
   free(yin.yinBuffer);
 
   /*beat calc */
-  frequency = 82;
+  frequency = 79.3;
   beat = calcBeat(frequency, 82.41);
-  set_PWM(beat);
 
-  sprintf(Message, "The Note is %d\n\r", beat);
+/*
+  HAL_Delay(100);
+  if(pwm_value == 0) step = 100;
+  if(pwm_value == 2000) step = -100;
+  pwm_value += step;
+*/
+  //set_PWM(beat);
+
+  sprintf(Message, "The Note is %f\n\r", beat);
   /*transmit sring over usart2 */
   HAL_UART_Transmit(&huart2, (uint8_t *) &Message, 40, 0xFFF);
 

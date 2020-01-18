@@ -94,17 +94,12 @@ int calcBeat(float frequency, float reference)
         else
                 decBeat = reference - frequency;
 
-        /* If decBeat is 0, don't divide, just return always on */
-        /*since it is in perfect tune. This should be rare, but still possible */
-        if (decBeat == 0.0)
-                return 255;
+        decBeat = frequency - reference;
+        /*percent difference calc */
+        decBeat = (fabsf(decBeat)) / ( (frequency + reference)/2.0 );
+        decBeat *= 100.0;
 
-        decBeat = 1/decBeat;
-
-        /*scale to fix value as int, cast out of float */
-        decBeat *= 100;
-
-        return (int) decBeat;
+        return decBeat;
 
 }
 

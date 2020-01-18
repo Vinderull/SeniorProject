@@ -21,6 +21,39 @@
 #include "tim.h"
 
 /* USER CODE BEGIN 0 */
+/*
+How to calculate the prescaler of TIM?
+
+In terms of frequency:
+
+HandleTimer.Init.Prescaler = Timer'sClockFrequency/DesiredFrequency -1;
+
+and in terms of period
+
+HandleTimer.Init.Prescaler = Timer'sClockFrequency*DesiredPeriod -1;
+
+Frequency is in Hz  and Period in Seconds.
+
+Example to get a counter period 1 sec (1HZ)
+
+HandleTimer.Init.Prescaler = Timer'sClockFrequency -1;
+
+Example to get a counter frequency 100 Hz (10 msec period)
+
+HandleTimer.Init.Prescaler = Timer'sClockFrequency/100 -1;
+
+Regards
+
+vf
+
+
+OR
+
+
+Frequency = ClockFreq / ((PSC + 1) * (ARR + 1))
+
+Dutyin% = (CCRx * 100) / ARR for the fast PWM
+*/
 
 /* USER CODE END 0 */
 
@@ -35,10 +68,10 @@ void MX_TIM2_Init(void)
   TIM_OC_InitTypeDef sConfigOC = {0};
 
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 8000;
+  htim2.Init.Prescaler = 39000;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 1000;
-  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.Period = 100;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
   {
@@ -60,7 +93,7 @@ void MX_TIM2_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 600;
+  sConfigOC.Pulse = 75;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_ENABLE;
   if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
