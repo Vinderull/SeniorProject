@@ -1,0 +1,2 @@
+cargo:rustc-link-search=/Users/RoastBeefy/SeniorProject/target/thumbv7em-none-eabihf/debug/build/guitar-tuner-123582d15ee99853/out
+cargo:rerun-if-changed=memory.x

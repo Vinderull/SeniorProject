@@ -1,0 +1,2 @@
+cargo:rustc-link-search=/Users/RoastBeefy/rust_projects/blink-led/target/thumbv7em-none-eabihf/debug/build/blink-led-be12e2416a4cb2db/out
+cargo:rerun-if-changed=memory.x

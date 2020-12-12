@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/RoastBeefy/SeniorProject/target/rls/thumbv7em-none-eabihf/debug/build/typenum-a80b683caf412d8e/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/Users/RoastBeefy/SeniorProject/target/rls/thumbv7em-none-eabihf/debug/build/typenum-a80b683caf412d8e/out/op.rs

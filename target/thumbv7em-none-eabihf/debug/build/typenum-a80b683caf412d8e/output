@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/RoastBeefy/rust_projects/blink-led/target/thumbv7em-none-eabihf/debug/build/typenum-a80b683caf412d8e/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/Users/RoastBeefy/rust_projects/blink-led/target/thumbv7em-none-eabihf/debug/build/typenum-a80b683caf412d8e/out/op.rs
