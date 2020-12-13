@@ -57,6 +57,23 @@ pub mod led {
 
 
 pub mod usart {
+    pub fn rcc_init(rcc: &stm32l4::stm32l4x6::RCC) {
+        rcc.cr.modify(|_, w| w.hsion().set_bit());
+        
+        //wait for HSI to be ready
+        while !rcc.cr.read().hsirdy().bit() {}
+
+        //set HSI as clock
+        rcc.cfgr.modify(|_, w| unsafe {w.sw().bits(0b1)});
+
+        while rcc.cfgr.read().sws().bits() == 0 {}
+
+        //turn clock on to GPIOA
+        rcc.ahb2enr.modify(|_, w| w.gpioaen().set_bit());
+
+        //enable clock for usart2
+        rcc.apb1enr1.modify(|_, w| w.usart2en().set_bit());
+    }
     pub fn usart_init(usart: &stm32l4::stm32l4x6::USART2) {
         // set word length 8 bits
         usart.cr1.modify(|_, w| w.m0().set_bit());
