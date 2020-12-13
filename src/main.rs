@@ -81,10 +81,24 @@ pub mod usart {
 
         //enable USART
         usart.cr1.modify(|_, w| w.ue().set_bit());
-    
+
+        //enable recieved data ready interrupt
+        usart.cr1.modify(|_, w| w.rxneie().set_bit());
     }
 
-    pub fn usart_read(usart: &stm32l4::stm32l4x6::USART2) {
-        // to do: implement read functionality
+    pub fn usart_write(usart: &stm32l4::stm32l4x6::USART2, buffer: [u16; 5]) {
+
+        for element in buffer.iter() { 
+            //wait until TXE is set
+            while !usart.isr.read().txe().bit() {}
+            //write buffer out
+            usart.tdr.write(|w| unsafe { w.tdr().bits(element & 0x1FF)}) 
+        }
+        // wait until transmission complete
+        while ! usart.isr.read().tc().bit() {}
+
+        // clear transmission complete flag
+        usart.icr.write(|w| w.tccf().clear_bit());
+
     }
 }
