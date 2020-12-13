@@ -8,29 +8,51 @@ use panic_halt as _; // you can put a breakpoint on `rust_begin_unwind` to catch
 // use panic_semihosting as _; // logs messages to the host stderr; requires a debugger
 
 use stm32l4::stm32l4x6;
+use cortex_m::peripheral::{syst, Peripherals};
 use cortex_m_rt::entry;
 
 #[entry]
 fn main() -> ! {
     
     let mut peripherals = stm32l4x6::Peripherals::take().unwrap();
+    let cort_peri = Peripherals::take().unwrap();
+    let mut systick = cort_peri.SYST;
     let gpioa = &peripherals.GPIOA;
+    let rcc = &peripherals.RCC;
     let usart = &peripherals.USART2;
 
-    loop {
-        led::turn_led_on(gpioa);
+    systick.set_clock_source(syst::SystClkSource::Core);
+    systick.set_reload(1_000);
+    systick.clear_current();
+    systick.enable_counter();
 
-        led::turn_led_off(gpioa);
+    led::init(rcc, gpioa);
+
+    loop {
+        led::blink_led(gpioa);
+
+        while !systick.has_wrapped() {}
     }
 }
 
 
 pub mod led {
-    pub fn blink_led(gpioa: &stm32l4::stm32l4x6::GPIOA) {gpioa.odr.modify(|_, w| w.odr5().set_bit());}
+    pub fn init(rcc: &stm32l4::stm32l4x6::RCC, gpioa: &stm32l4::stm32l4x6::GPIOA) {
 
-    pub fn turn_led_on(gpioa: &stm32l4::stm32l4x6::GPIOA) {gpioa.odr.modify(|_, w| w.odr5().set_bit()); }
+        //turn clock on to GPIOA
+        rcc.ahb2enr.modify(|_, w| w.gpioaen().set_bit());
 
-    pub fn turn_led_off(gpioa: &stm32l4::stm32l4x6::GPIOA) {gpioa.odr.modify(|_, w| w.odr5().clear_bit()); }
+        //set as outpout
+        gpioa.moder.modify(|_, w| w.moder5().output());
+
+        //no pull up no pull down
+        gpioa.pupdr.modify(|_, w| w.pupdr5().floating());        
+    }
+    pub fn blink_led(gpioa: &stm32l4::stm32l4x6::GPIOA) {gpioa.odr.modify(|r, w| w.odr5().bit(!r.odr5().bit()));}
+
+    pub fn turn_led_on(gpioa: &stm32l4::stm32l4x6::GPIOA) {gpioa.odr.modify(|_, w| w.odr5().high()); }
+
+    pub fn turn_led_off(gpioa: &stm32l4::stm32l4x6::GPIOA) {gpioa.odr.modify(|_, w| w.odr5().low()); }
 }
 
 
