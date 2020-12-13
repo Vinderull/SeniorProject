@@ -1,6 +1,0 @@
-cargo:rustc-link-lib=static=cortex-m-rt
-cargo:rustc-cfg=cortex_m
-cargo:rustc-cfg=armv6m
-cargo:rustc-link-search=/Users/RoastBeefy/rust_projects/blink-led/target/thumbv6m-none-eabi/debug/build/cortex-m-rt-1bfee85ad67b32db/out
-cargo:rerun-if-changed=build.rs
-cargo:rerun-if-changed=link.x.in

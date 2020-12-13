@@ -22,7 +22,7 @@ fn main() -> ! {
     let usart = &peripherals.USART2;
 
     systick.set_clock_source(syst::SystClkSource::Core);
-    systick.set_reload(1_000);
+    systick.set_reload(500_000);
     systick.clear_current();
     systick.enable_counter();
 
